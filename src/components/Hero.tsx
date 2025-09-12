@@ -3,11 +3,12 @@ import { ArrowRight, Microscope, FlaskConical, Shield, Atom, Dna, TestTube, Beak
 import { Link } from "react-router-dom";
 const Hero = () => {
   return <section id="home" className="relative min-h-screen flex items-center overflow-hidden bg-gradient-to-br from-slate-900 via-blue-900 to-indigo-900">
-      {/* Background Image with Enhanced Overlay */}
+      {/* Background Image with Baby Blue Overlay */}
       <div className="absolute inset-0 z-0">
-        <img src="/assets/hero-lab.jpg" alt="Advanced laboratory testing facility" className="w-full h-full object-cover opacity-30" />
-        <div className="absolute inset-0 bg-gradient-to-br from-blue-900/90 via-blue-800/80 to-blue-900/70"></div>
-        <div className="absolute inset-0 bg-gradient-to-t from-blue-950/60 via-transparent to-transparent"></div>
+        <img src="/assets/hero-lab.jpg" alt="Advanced laboratory testing facility" className="w-full h-full object-cover opacity-25" />
+        <div className="absolute inset-0 bg-gradient-to-br from-sky-500/85 via-cyan-500/75 to-blue-500/80"></div>
+        <div className="absolute inset-0 bg-gradient-to-t from-cyan-600/50 via-transparent to-transparent"></div>
+        <div className="absolute inset-0 bg-gradient-to-r from-transparent via-sky-400/20 to-transparent"></div>
       </div>
 
       {/* Animated Particles Background */}
@@ -115,12 +116,12 @@ const Hero = () => {
           <div className="animate-fade-up" style={{
           animationDelay: '0.2s'
         }}>
-            <h1 className="font-display font-bold text-4xl md:text-6xl lg:text-7xl text-white mb-6 leading-tight">
-              <span className="bg-gradient-to-r from-white via-blue-100 to-cyan-200 bg-clip-text text-transparent">
+            <h1 className="font-display font-bold text-4xl md:text-6xl lg:text-7xl mb-6 leading-tight">
+              <span className="bg-gradient-to-r from-white via-white to-gray-100 bg-clip-text text-transparent drop-shadow-lg">
                 Analytical Testing
               </span>
               <br />
-              <span className="bg-gradient-to-r from-emerald-400 via-cyan-400 to-blue-400 bg-clip-text text-transparent animate-pulse">
+              <span className="bg-gradient-to-r from-white via-cyan-100 to-white bg-clip-text text-transparent animate-pulse drop-shadow-xl">
                 Laboratory
               </span>
             </h1>
@@ -130,9 +131,9 @@ const Hero = () => {
           <div className="animate-fade-up" style={{
           animationDelay: '0.4s'
         }}>
-            <p className="text-lg md:text-xl text-white/90 mb-10 max-w-3xl leading-relaxed backdrop-blur-sm">
+            <p className="text-lg md:text-xl text-white mb-10 max-w-3xl leading-relaxed drop-shadow-md">
               The modern consumer marketplace demands products in terms of quality, performance, 
-              sustainability and value for money. <span className="text-cyan-300 font-semibold">TESTHUB</span> provides 
+              sustainability and value for money. <span className="text-white font-bold drop-shadow-lg">TESTHUB</span> provides 
               services to do it right, saving time, effort and money.
             </p>
           </div>
@@ -151,10 +152,15 @@ const Hero = () => {
               <div className="absolute inset-0 rounded-xl bg-white/20 opacity-0 group-hover:opacity-100 transition-opacity blur-xl"></div>
             </Link>
             
-            <Button size="lg" className="group relative bg-transparent border-2 border-blue-400/50 backdrop-blur-md text-white hover:bg-blue-500/20 hover:scale-105 transition-all duration-300 px-8 py-4 text-lg font-semibold rounded-xl h-auto">
-              <span className="relative z-10">Our Services</span>
-              <div className="absolute inset-0 rounded-xl bg-gradient-to-r from-blue-600/20 to-blue-500/20 opacity-0 group-hover:opacity-100 transition-opacity"></div>
-            </Button>
+            <Link to="/services" className="group relative inline-flex items-center justify-center px-8 py-4 text-lg font-semibold rounded-xl overflow-hidden transition-all duration-300 hover:scale-105">
+              <div className="absolute inset-0 bg-transparent border-2 border-white/60 backdrop-blur-md"></div>
+              <div className="absolute inset-0 bg-gradient-to-r from-white/10 to-cyan-200/20 opacity-0 group-hover:opacity-100 transition-opacity"></div>
+              <span className="relative z-10 text-white flex items-center space-x-2">
+                <span>Our Services</span>
+                <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
+              </span>
+              <div className="absolute inset-0 rounded-xl bg-white/10 opacity-0 group-hover:opacity-100 transition-opacity blur-xl"></div>
+            </Link>
           </div>
 
           {/* Enhanced Stats with Modern Design */}
