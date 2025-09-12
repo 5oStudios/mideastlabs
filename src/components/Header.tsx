@@ -27,7 +27,7 @@ const Header = () => {
     label: "Contact Us",
     href: "/contact"
   }];
-  return <header className="fixed top-0 left-0 right-0 z-50 bg-background/95 backdrop-blur-sm border-b shadow-elegant">
+  return <header className="fixed top-0 left-0 right-0 z-50 bg-primary-deep/90 backdrop-blur-md border-b border-primary-glow/30 shadow-glow">
       <div className="container mx-auto px-4 lg:px-8">
         <div className="flex items-center justify-between h-16 lg:h-20">
           {/* Logo */}
@@ -50,11 +50,11 @@ const Header = () => {
                   key={item.label} 
                   to={item.href} 
                   className={`text-sm font-medium transition-smooth relative group ${
-                    isActive ? 'text-blue-600 hover:text-blue-800' : 'text-foreground hover:text-primary'
+                    isActive ? 'text-accent-light hover:text-accent' : 'text-primary-foreground hover:text-accent-light'
                   }`}
                 >
                   {item.label}
-                  <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-primary group-hover:w-full transition-smooth"></span>
+                  <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-accent group-hover:w-full transition-smooth"></span>
                 </Link>
               );
             })}
@@ -62,20 +62,20 @@ const Header = () => {
 
           {/* Contact Button */}
           <div className="hidden lg:flex items-center space-x-4">
-            <Button variant="outline" className="flex items-center space-x-2">
+            <Button variant="outline" className="flex items-center space-x-2 border-accent/50 text-primary-foreground hover:bg-accent/20">
               <Phone className="w-4 h-4" />
               <span>+96522251588</span>
             </Button>
           </div>
 
           {/* Mobile Menu Toggle */}
-          <Button variant="ghost" size="icon" className="lg:hidden" onClick={() => setIsMenuOpen(!isMenuOpen)}>
+          <Button variant="ghost" size="icon" className="lg:hidden text-primary-foreground hover:bg-accent/20" onClick={() => setIsMenuOpen(!isMenuOpen)}>
             {isMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
           </Button>
         </div>
 
         {/* Mobile Navigation */}
-        {isMenuOpen && <div className="lg:hidden absolute top-full left-0 right-0 bg-background/95 backdrop-blur-sm border-b shadow-medium animate-fade-up">
+        {isMenuOpen && <div className="lg:hidden absolute top-full left-0 right-0 bg-primary-deep/95 backdrop-blur-md border-b border-primary-glow/30 shadow-glow animate-fade-up">
             <nav className="container mx-auto px-4 py-4">
               <div className="flex flex-col space-y-4">
                 {navItems.map(item => {
@@ -85,7 +85,7 @@ const Header = () => {
                       key={item.label} 
                       to={item.href} 
                       className={`transition-smooth py-2 ${
-                        isActive ? 'text-blue-600 hover:text-blue-800' : 'text-foreground hover:text-primary'
+                        isActive ? 'text-accent-light hover:text-accent' : 'text-primary-foreground hover:text-accent-light'
                       }`}
                       onClick={() => setIsMenuOpen(false)}
                     >
@@ -93,7 +93,7 @@ const Header = () => {
                     </Link>
                   );
                 })}
-                <Button className="flex items-center space-x-2 mt-4">
+                <Button className="flex items-center space-x-2 mt-4 bg-accent hover:bg-accent/80">
                   <Phone className="w-4 h-4" />
                   <span>+96522251588</span>
                 </Button>
