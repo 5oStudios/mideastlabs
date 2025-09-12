@@ -1,5 +1,6 @@
 import { Button } from "@/components/ui/button";
 import { ArrowRight, Microscope, FlaskConical, Shield } from "lucide-react";
+import { Link } from "react-router-dom";
 import heroImage from "@/assets/hero-lab.jpg";
 
 const Hero = () => {
@@ -58,10 +59,13 @@ const Hero = () => {
           </div>
 
           <div className="animate-fade-up flex flex-col sm:flex-row gap-4" style={{ animationDelay: '0.6s' }}>
-            <Button size="lg" className="bg-accent hover:bg-accent/90 text-accent-foreground flex items-center space-x-2 shadow-glow">
+            <Link 
+              to="/about-us"
+              className="inline-flex items-center justify-center px-6 py-3 text-lg bg-accent hover:bg-accent/90 text-accent-foreground rounded-lg shadow-glow transition-colors duration-300 space-x-2"
+            >
               <span>About Us</span>
               <ArrowRight className="w-5 h-5" />
-            </Button>
+            </Link>
             <Button size="lg" variant="outline" className="border-white text-white hover:bg-white hover:text-primary">
               Our Services
             </Button>
