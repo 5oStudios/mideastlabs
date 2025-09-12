@@ -1,0 +1,162 @@
+import { Card } from "@/components/ui/card";
+import { Button } from "@/components/ui/button";
+import { ArrowRight, Camera, ChevronLeft, ChevronRight } from "lucide-react";
+import { useState } from "react";
+
+const Gallery = () => {
+  const [currentSlide, setCurrentSlide] = useState(0);
+
+  const galleryImages = [
+    { 
+      title: "Main Laboratory", 
+      description: "State-of-the-art analytical testing facility with advanced equipment",
+      category: "Laboratory"
+    },
+    { 
+      title: "Chemistry Lab", 
+      description: "Specialized chemical analysis and testing laboratory",
+      category: "Chemistry"
+    },
+    { 
+      title: "Microbiology Lab", 
+      description: "Advanced microbiology testing and research facility",
+      category: "Microbiology"
+    },
+    { 
+      title: "Lab Equipment", 
+      description: "High-precision scientific instruments and testing equipment",
+      category: "Equipment"
+    },
+    { 
+      title: "Quality Control", 
+      description: "Quality assurance and control testing stations",
+      category: "Quality"
+    },
+    { 
+      title: "Research Area", 
+      description: "Dedicated research and development laboratory space",
+      category: "Research"
+    }
+  ];
+
+  const nextSlide = () => {
+    setCurrentSlide((prev) => (prev + 1) % galleryImages.length);
+  };
+
+  const prevSlide = () => {
+    setCurrentSlide((prev) => (prev - 1 + galleryImages.length) % galleryImages.length);
+  };
+
+  return (
+    <section id="gallery" className="py-20 bg-gradient-to-b from-secondary/50 to-background">
+      <div className="container mx-auto px-4 lg:px-8">
+        {/* Header */}
+        <div className="text-center max-w-3xl mx-auto mb-16">
+          <div className="inline-flex items-center space-x-2 bg-accent/10 px-4 py-2 rounded-full mb-6">
+            <Camera className="w-4 h-4 text-accent" />
+            <span className="text-accent font-medium">Our Facilities</span>
+          </div>
+          
+          <h2 className="font-display font-bold text-heading text-foreground mb-6">
+            Gallery
+          </h2>
+          
+          <p className="text-muted-foreground leading-relaxed">
+            Take a virtual tour of our state-of-the-art laboratory facilities and 
+            advanced testing equipment that ensure accurate and reliable results.
+          </p>
+        </div>
+
+        {/* Main Gallery Carousel */}
+        <div className="relative mb-12">
+          <Card className="overflow-hidden shadow-strong">
+            <div className="relative h-96 lg:h-[500px] bg-gradient-to-br from-primary/20 to-accent/20 flex items-center justify-center">
+              {/* Placeholder for main image */}
+              <div className="text-center animate-pulse-slow">
+                <Camera className="w-24 h-24 text-primary/60 mx-auto mb-4" />
+                <h3 className="text-2xl font-semibold text-foreground mb-2">
+                  {galleryImages[currentSlide].title}
+                </h3>
+                <p className="text-muted-foreground max-w-md">
+                  {galleryImages[currentSlide].description}
+                </p>
+                <span className="inline-block mt-4 px-3 py-1 bg-primary/10 text-primary text-sm rounded-full">
+                  {galleryImages[currentSlide].category}
+                </span>
+              </div>
+            </div>
+
+            {/* Navigation Arrows */}
+            <Button
+              variant="ghost"
+              size="icon"
+              className="absolute left-4 top-1/2 transform -translate-y-1/2 bg-white/90 hover:bg-white shadow-medium"
+              onClick={prevSlide}
+            >
+              <ChevronLeft className="w-6 h-6" />
+            </Button>
+            <Button
+              variant="ghost"
+              size="icon"
+              className="absolute right-4 top-1/2 transform -translate-y-1/2 bg-white/90 hover:bg-white shadow-medium"
+              onClick={nextSlide}
+            >
+              <ChevronRight className="w-6 h-6" />
+            </Button>
+
+            {/* Slide Indicators */}
+            <div className="absolute bottom-4 left-1/2 transform -translate-x-1/2 flex space-x-2">
+              {galleryImages.map((_, index) => (
+                <button
+                  key={index}
+                  className={`w-3 h-3 rounded-full transition-smooth ${
+                    index === currentSlide ? 'bg-white' : 'bg-white/50'
+                  }`}
+                  onClick={() => setCurrentSlide(index)}
+                />
+              ))}
+            </div>
+          </Card>
+        </div>
+
+        {/* Thumbnail Grid */}
+        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-4 mb-12">
+          {galleryImages.map((image, index) => (
+            <Card 
+              key={index}
+              className={`group cursor-pointer overflow-hidden transition-spring ${
+                index === currentSlide ? 'ring-2 ring-primary shadow-glow' : 'shadow-elegant hover:shadow-medium'
+              }`}
+              onClick={() => setCurrentSlide(index)}
+            >
+              <div className="relative h-24 bg-gradient-to-br from-primary/10 to-accent/10 flex items-center justify-center">
+                <Camera className={`w-8 h-8 transition-smooth ${
+                  index === currentSlide ? 'text-primary' : 'text-muted-foreground group-hover:text-primary'
+                }`} />
+                <div className="absolute inset-0 bg-black/0 group-hover:bg-black/10 transition-smooth"></div>
+              </div>
+              <div className="p-3">
+                <div className="text-xs font-medium text-foreground truncate">
+                  {image.title}
+                </div>
+                <div className="text-xs text-muted-foreground mt-1">
+                  {image.category}
+                </div>
+              </div>
+            </Card>
+          ))}
+        </div>
+
+        {/* CTA */}
+        <div className="text-center">
+          <Button size="lg" variant="outline" className="group">
+            <span>Explore More Images</span>
+            <ArrowRight className="w-5 h-5 ml-2 group-hover:translate-x-1 transition-spring" />
+          </Button>
+        </div>
+      </div>
+    </section>
+  );
+};
+
+export default Gallery;
