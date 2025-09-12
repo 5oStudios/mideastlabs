@@ -1,9 +1,10 @@
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Menu, X, Phone } from "lucide-react";
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const location = useLocation();
   const navItems = [{
     label: "Home",
     href: "/"
@@ -40,10 +41,21 @@ const Header = () => {
 
           {/* Desktop Navigation */}
           <nav className="hidden lg:flex items-center space-x-8">
-            {navItems.map(item => <Link key={item.label} to={item.href} className="text-sm font-medium text-blue-600 hover:text-blue-800 transition-smooth relative group">
-                {item.label}
-                <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-primary group-hover:w-full transition-smooth"></span>
-              </Link>)}
+            {navItems.map(item => {
+              const isActive = location.pathname === item.href;
+              return (
+                <Link 
+                  key={item.label} 
+                  to={item.href} 
+                  className={`text-sm font-medium transition-smooth relative group ${
+                    isActive ? 'text-blue-600 hover:text-blue-800' : 'text-foreground hover:text-primary'
+                  }`}
+                >
+                  {item.label}
+                  <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-primary group-hover:w-full transition-smooth"></span>
+                </Link>
+              );
+            })}
           </nav>
 
           {/* Contact Button */}
@@ -64,9 +76,21 @@ const Header = () => {
         {isMenuOpen && <div className="lg:hidden absolute top-full left-0 right-0 bg-background/95 backdrop-blur-sm border-b shadow-medium animate-fade-up">
             <nav className="container mx-auto px-4 py-4">
               <div className="flex flex-col space-y-4">
-                {navItems.map(item => <Link key={item.label} to={item.href} className="text-foreground hover:text-primary transition-smooth py-2" onClick={() => setIsMenuOpen(false)}>
-                    {item.label}
-                  </Link>)}
+                {navItems.map(item => {
+                  const isActive = location.pathname === item.href;
+                  return (
+                    <Link 
+                      key={item.label} 
+                      to={item.href} 
+                      className={`transition-smooth py-2 ${
+                        isActive ? 'text-blue-600 hover:text-blue-800' : 'text-foreground hover:text-primary'
+                      }`}
+                      onClick={() => setIsMenuOpen(false)}
+                    >
+                      {item.label}
+                    </Link>
+                  );
+                })}
                 <Button className="flex items-center space-x-2 mt-4">
                   <Phone className="w-4 h-4" />
                   <span>+971 4 824 8015</span>
