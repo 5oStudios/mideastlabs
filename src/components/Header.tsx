@@ -27,8 +27,8 @@ const Header = () => {
     label: "Contact Us",
     href: "/contact"
   }];
-  return <header className="fixed top-0 left-0 right-0 z-50 bg-background/95 backdrop-blur-sm border-b shadow-elegant">
-      <div className="container mx-auto px-4 lg:px-8">
+  return <header className="fixed top-0 left-0 right-0 z-50 bg-gradient-to-br from-background/80 via-background/90 to-background/95 backdrop-blur-xl border-b border-white/20 shadow-glow before:absolute before:inset-0 before:bg-gradient-to-r before:from-transparent before:via-white/5 before:to-transparent before:opacity-60">
+      <div className="container mx-auto px-4 lg:px-8 relative z-10">
         <div className="flex items-center justify-between h-16 lg:h-20">
           {/* Logo */}
           <div className="flex items-center space-x-2">
