@@ -40,7 +40,7 @@ const Header = () => {
 
           {/* Desktop Navigation */}
           <nav className="hidden lg:flex items-center space-x-8">
-            {navItems.map(item => <Link key={item.label} to={item.href} className="text-sm font-medium text-foreground hover:text-primary transition-smooth relative group">
+            {navItems.map(item => <Link key={item.label} to={item.href} className="text-sm font-medium text-blue-600 hover:text-blue-800 transition-smooth relative group">
                 {item.label}
                 <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-primary group-hover:w-full transition-smooth"></span>
               </Link>)}
