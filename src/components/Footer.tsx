@@ -27,15 +27,11 @@ const Footer = () => {
           {/* Company Info */}
           <div className="space-y-6">
             <div className="flex items-center space-x-2">
-              <div className="w-10 h-10 bg-white/20 rounded-lg flex items-center justify-center transform rotate-45">
-                <div className="w-6 h-6 bg-white rounded-sm transform -rotate-45 flex items-center justify-center">
-                  <span className="text-primary font-bold text-xs">ME</span>
-                </div>
-              </div>
-              <div className="flex flex-col">
-                <span className="font-display font-bold text-sm">MIDDLE EAST ENVIRONMENTAL</span>
-                <span className="text-xs text-white/80 -mt-1">LABORATORIES Co.</span>
-              </div>
+            <img 
+              src="/lovable-uploads/1ebeb099-7be5-468c-abea-c14172407db6.png" 
+              alt="Middle East Environmental Laboratories Co. Logo"
+              className="h-12 w-auto"
+            />
             </div>
             
             <p className="text-white/90 text-sm leading-relaxed">
