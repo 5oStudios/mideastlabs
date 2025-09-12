@@ -1,9 +1,6 @@
 import { Card } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { ArrowRight, Droplets, Utensils, TestTube, Clock, Microscope, Palette, Recycle, Building, PaintBucket, Shield, Leaf, Package, Dna, TreePine, Beaker, Layers } from "lucide-react";
-import waterTestingImg from "@/assets/water-testing.jpg";
-import foodTestingImg from "@/assets/food-testing.jpg";
-import soilTestingImg from "@/assets/soil-testing.jpg";
 
 const Services = () => {
   const services = [
@@ -11,19 +8,19 @@ const Services = () => {
       icon: Droplets,
       title: "Water & Waste Water Testing",
       description: "Testhub Laboratories LLC offers a comprehensive range of Microbiological and Chemical water testing solutions to support various regulatory...",
-      image: waterTestingImg
+      image: "/assets/water-testing.jpg"
     },
     {
       icon: Utensils,
       title: "Food – Microbiological, Chemical & Nutritional Labelling",
       description: "To ensure your food is free from contamination we offer an extensive range of testing programmes...",
-      image: foodTestingImg
+      image: "/assets/food-testing.jpg"
     },
     {
       icon: TreePine,
       title: "Soil & Sludge",
       description: "We provide analysis of priority pollutants and emerging substances in wastewater treatment sewage sludge...",
-      image: soilTestingImg
+      image: "/assets/soil-testing.jpg"
     },
     {
       icon: Clock,

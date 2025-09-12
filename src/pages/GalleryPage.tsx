@@ -4,12 +4,6 @@ import { Badge } from "@/components/ui/badge";
 import { useState } from "react";
 import { Dialog, DialogContent, DialogTrigger } from "@/components/ui/dialog";
 import { ZoomIn } from "lucide-react";
-import heroLab from "@/assets/hero-lab.jpg";
-import waterTesting from "@/assets/water-testing.jpg";
-import foodTesting from "@/assets/food-testing.jpg";
-import soilTesting from "@/assets/soil-testing.jpg";
-import scientist1 from "@/assets/scientist-1.jpg";
-import scientist2 from "@/assets/scientist-2.jpg";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 
@@ -21,42 +15,42 @@ const GalleryPage = () => {
       id: 1,
       title: "Main Laboratory Facility",
       category: "Facilities",
-      image: heroLab,
+      image: "/assets/hero-lab.jpg",
       description: "Our state-of-the-art laboratory facility equipped with modern analytical instruments"
     },
     {
       id: 2,
       title: "Water Testing Laboratory",
       category: "Testing Areas",
-      image: waterTesting,
+      image: "/assets/water-testing.jpg",
       description: "Specialized water and wastewater analysis section with advanced equipment"
     },
     {
       id: 3,
       title: "Food Testing Department",
       category: "Testing Areas",
-      image: foodTesting,
+      image: "/assets/food-testing.jpg",
       description: "Comprehensive food safety and nutrition analysis laboratory"
     },
     {
       id: 4,
       title: "Soil Analysis Laboratory",
       category: "Testing Areas",
-      image: soilTesting,
+      image: "/assets/soil-testing.jpg",
       description: "Environmental soil and sludge testing facility"
     },
     {
       id: 5,
       title: "Senior Analyst",
       category: "Team",
-      image: scientist1,
+      image: "/assets/scientist-1.jpg",
       description: "Our experienced analytical chemist conducting precision measurements"
     },
     {
       id: 6,
       title: "Microbiologist at Work",
       category: "Team",
-      image: scientist2,
+      image: "/assets/scientist-2.jpg",
       description: "Microbiological testing and analysis being performed by our expert team"
     }
   ];

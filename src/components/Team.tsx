@@ -1,21 +1,19 @@
 import { Card } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { ArrowRight, Users, Mail, Phone, LinkedinIcon } from "lucide-react";
-import scientist1 from "@/assets/scientist-1.jpg";
-import scientist2 from "@/assets/scientist-2.jpg";
 
 const Team = () => {
   const teamMembers = [
     {
       name: "Dr. Sarah Johnson",
       position: "Laboratory Director",
-      image: scientist1,
+      image: "/assets/scientist-1.jpg",
       description: "Leading expert in analytical chemistry with 15+ years of experience in laboratory management and quality assurance."
     },
     {
       name: "Dr. Michael Chen",
       position: "Senior Microbiologist",
-      image: scientist2,
+      image: "/assets/scientist-2.jpg",
       description: "Specialized in microbiology testing and environmental monitoring with extensive research background."
     },
     {

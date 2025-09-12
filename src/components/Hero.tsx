@@ -1,7 +1,6 @@
 import { Button } from "@/components/ui/button";
 import { ArrowRight, Microscope, FlaskConical, Shield, Atom, Dna, TestTube, Beaker } from "lucide-react";
 import { Link } from "react-router-dom";
-import heroImage from "@/assets/hero-lab.jpg";
 
 const Hero = () => {
   return (
@@ -9,7 +8,7 @@ const Hero = () => {
       {/* Background Image with Enhanced Overlay */}
       <div className="absolute inset-0 z-0">
         <img 
-          src={heroImage} 
+          src="/assets/hero-lab.jpg" 
           alt="Advanced laboratory testing facility"
           className="w-full h-full object-cover opacity-30"
         />
