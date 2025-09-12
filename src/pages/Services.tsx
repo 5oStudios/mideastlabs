@@ -116,8 +116,16 @@ const Services = () => {
       <Header />
       <div className="min-h-screen pt-20">
       {/* Hero Section */}
-      <section className="relative py-20 bg-gradient-to-r from-primary to-primary-glow text-white overflow-hidden">
-        <div className="absolute inset-0 bg-black/10"></div>
+      <section className="relative py-20 text-white overflow-hidden">
+        {/* Background Image */}
+        <div className="absolute inset-0 z-0">
+          <img 
+            src="/src/assets/food-testing.jpg" 
+            alt="Food testing laboratory"
+            className="w-full h-full object-cover"
+          />
+          <div className="absolute inset-0 bg-blue-600/40"></div>
+        </div>
         <div className="container mx-auto px-4 lg:px-8 relative z-10">
           <ScrollAnimation>
             <div className="max-w-4xl mx-auto text-center">
