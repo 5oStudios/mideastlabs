@@ -34,8 +34,8 @@ const ContactPage = () => {
     {
       title: "Phone Numbers",
       details: [
-        "+971 4 824 8015",
-        "+971 56 990 6509"
+        "+96522251588",
+        "+96522251588"
       ],
       icon: Phone
     },
@@ -307,18 +307,18 @@ const ContactPage = () => {
               </p>
               <div className="flex flex-col sm:flex-row gap-4 justify-center">
                 <a
-                  href="tel:+97148248015"
+                  href="tel:+96522251588"
                   className="inline-flex items-center justify-center px-6 py-3 bg-primary text-white font-semibold rounded-lg hover:bg-primary-glow transition-colors duration-300"
                 >
                   <Phone className="w-4 h-4 mr-2" />
-                  +971 4 824 8015
+                  +96522251588
                 </a>
                 <a
-                  href="tel:+971569906509"
+                  href="tel:+96522251588"
                   className="inline-flex items-center justify-center px-6 py-3 border border-primary text-primary font-semibold rounded-lg hover:bg-primary hover:text-white transition-colors duration-300"
                 >
                   <Phone className="w-4 h-4 mr-2" />
-                  +971 56 990 6509
+                  +96522251588
                 </a>
               </div>
             </Card>

@@ -39,7 +39,7 @@ const Contact = () => {
                     </div>
                     <div>
                       <h4 className="font-semibold mb-2">Phone Number</h4>
-                      <p className="text-muted-foreground">+971 4 824 8015</p>
+                      <p className="text-muted-foreground">+96522251588</p>
                       <p className="text-muted-foreground">Available 24/7 for urgent testing needs</p>
                     </div>
                   </div>
@@ -96,7 +96,7 @@ const Contact = () => {
               </p>
               <Button size="lg" className="bg-white text-primary hover:bg-white/90 shadow-medium">
                 <Phone className="w-5 h-5 mr-2" />
-                Call: +971 4 824 8015
+                Call: +96522251588
               </Button>
             </Card>
           </div>

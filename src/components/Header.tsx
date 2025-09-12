@@ -93,7 +93,7 @@ const Header = () => {
                 })}
                 <Button className="flex items-center space-x-2 mt-4">
                   <Phone className="w-4 h-4" />
-                  <span>+971 4 824 8015</span>
+                  <span>+96522251588</span>
                 </Button>
               </div>
             </nav>
