@@ -22,12 +22,14 @@ const Header = () => {
         <div className="flex items-center justify-between h-16 lg:h-20">
           {/* Logo */}
           <div className="flex items-center space-x-2">
-            <div className="w-10 h-10 bg-gradient-to-br from-primary to-accent rounded-lg flex items-center justify-center">
-              <span className="text-white font-bold text-lg">T</span>
+            <div className="w-10 h-10 bg-gradient-to-br from-primary to-primary-glow rounded-lg flex items-center justify-center transform rotate-45">
+              <div className="w-6 h-6 bg-white rounded-sm transform -rotate-45 flex items-center justify-center">
+                <span className="text-primary font-bold text-xs">ME</span>
+              </div>
             </div>
             <div className="flex flex-col">
-              <span className="font-display font-bold text-lg text-primary">TESTHUB</span>
-              <span className="text-xs text-muted-foreground -mt-1">LABORATORIES L.L.C</span>
+              <span className="font-display font-bold text-sm text-primary">MIDDLE EAST ENVIRONMENTAL</span>
+              <span className="text-xs text-muted-foreground -mt-1">LABORATORIES Co.</span>
             </div>
           </div>
 

@@ -27,12 +27,14 @@ const Footer = () => {
           {/* Company Info */}
           <div className="space-y-6">
             <div className="flex items-center space-x-2">
-              <div className="w-10 h-10 bg-white/20 rounded-lg flex items-center justify-center">
-                <span className="text-white font-bold text-lg">T</span>
+              <div className="w-10 h-10 bg-white/20 rounded-lg flex items-center justify-center transform rotate-45">
+                <div className="w-6 h-6 bg-white rounded-sm transform -rotate-45 flex items-center justify-center">
+                  <span className="text-primary font-bold text-xs">ME</span>
+                </div>
               </div>
               <div className="flex flex-col">
-                <span className="font-display font-bold text-lg">TESTHUB</span>
-                <span className="text-xs text-white/80 -mt-1">LABORATORIES L.L.C</span>
+                <span className="font-display font-bold text-sm">MIDDLE EAST ENVIRONMENTAL</span>
+                <span className="text-xs text-white/80 -mt-1">LABORATORIES Co.</span>
               </div>
             </div>
             
@@ -135,7 +137,7 @@ const Footer = () => {
         <div className="pt-8 border-t border-white/20">
           <div className="flex flex-col md:flex-row justify-between items-center space-y-4 md:space-y-0">
             <div className="text-white/80 text-sm">
-              © 2024 TestHub Laboratories L.L.C. All rights reserved.
+              © 2024 Middle East Environmental Laboratories Co. All rights reserved.
             </div>
             
             <div className="flex space-x-6 text-sm">
