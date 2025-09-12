@@ -1,210 +1,234 @@
 import { Button } from "@/components/ui/button";
-import { ArrowRight, Microscope, FlaskConical, Shield, Atom, Dna, TestTube, Beaker } from "lucide-react";
+import { ArrowRight, Microscope, FlaskConical, Shield, Atom, Dna, TestTube, Beaker, Activity, Zap, ChevronDown } from "lucide-react";
 import { Link } from "react-router-dom";
+
 const Hero = () => {
-  return <section id="home" className="relative min-h-screen flex items-center overflow-hidden bg-gradient-to-br from-slate-900 via-blue-900 to-indigo-900">
-      {/* Background Image with Baby Blue Overlay */}
+  return (
+    <section id="home" className="relative min-h-screen flex items-center justify-center overflow-hidden">
+      {/* Multi-layered Background with Laboratory Images */}
       <div className="absolute inset-0 z-0">
-        <img src="/assets/hero-lab.jpg" alt="Advanced laboratory testing facility" className="w-full h-full object-cover opacity-25" />
-        <div className="absolute inset-0 bg-gradient-to-br from-sky-500/85 via-cyan-500/75 to-blue-500/80"></div>
-        <div className="absolute inset-0 bg-gradient-to-t from-cyan-600/50 via-transparent to-transparent"></div>
-        <div className="absolute inset-0 bg-gradient-to-r from-transparent via-sky-400/20 to-transparent"></div>
-      </div>
-
-      {/* Animated Particles Background */}
-      <div className="absolute inset-0 z-1">
-        {[...Array(20)].map((_, i) => <div key={i} className="absolute w-1 h-1 bg-blue-400/30 rounded-full animate-float" style={{
-        left: `${Math.random() * 100}%`,
-        top: `${Math.random() * 100}%`,
-        animationDelay: `${Math.random() * 5}s`,
-        animationDuration: `${3 + Math.random() * 4}s`
-      }} />)}
-      </div>
-
-      {/* Advanced Floating Laboratory Elements */}
-      <div className="absolute inset-0 z-2">
-        {/* DNA Helix Animation */}
-        <div className="absolute top-1/4 right-8 md:right-16 animate-pulse-slow">
-          <div className="relative w-20 h-32 md:w-24 md:h-40">
-            <Dna className="w-full h-full text-cyan-400/60 animate-spin" style={{
-            animationDuration: '8s'
-          }} />
-            <div className="absolute inset-0 bg-cyan-400/20 rounded-full blur-xl animate-pulse"></div>
-          </div>
+        {/* Primary Background Image */}
+        <div className="absolute inset-0">
+          <img 
+            src="/assets/hero-lab.jpg" 
+            alt="Advanced laboratory testing facility" 
+            className="w-full h-full object-cover"
+          />
+        </div>
+        
+        {/* Secondary Background Image - Blended */}
+        <div className="absolute inset-0 opacity-40">
+          <img 
+            src="/assets/scientist-1.jpg" 
+            alt="Scientific research" 
+            className="w-full h-full object-cover mix-blend-overlay"
+          />
         </div>
 
-        {/* Floating Laboratory Equipment */}
-        <div className="absolute top-20 left-8 md:left-16 animate-float">
-          <div className="relative group">
-            <div className="w-16 h-16 md:w-20 md:h-20 bg-gradient-to-br from-blue-500/20 to-blue-600/20 rounded-2xl backdrop-blur-md border border-blue-300/20 flex items-center justify-center hover:scale-110 transition-all duration-500">
-              <Microscope className="w-8 h-8 md:w-10 md:h-10 text-blue-300" />
-            </div>
-            <div className="absolute inset-0 bg-blue-400/30 rounded-2xl blur-lg opacity-50 group-hover:opacity-80 transition-opacity"></div>
-          </div>
-        </div>
-
-        <div className="absolute bottom-1/3 right-12 md:right-24 animate-float" style={{
-        animationDelay: '2s'
-      }}>
-          <div className="relative group">
-            <div className="w-12 h-12 md:w-16 md:h-16 bg-gradient-to-br from-blue-400/20 to-blue-500/20 rounded-xl backdrop-blur-md border border-blue-300/20 flex items-center justify-center hover:scale-110 transition-all duration-500">
-              <FlaskConical className="w-6 h-6 md:w-8 md:h-8 text-blue-300" />
-            </div>
-            <div className="absolute inset-0 bg-blue-400/30 rounded-xl blur-lg opacity-50 group-hover:opacity-80 transition-opacity"></div>
-          </div>
-        </div>
-
-        <div className="absolute top-1/2 left-4 md:left-12 animate-float" style={{
-        animationDelay: '4s'
-      }}>
-          <div className="relative group">
-            <div className="w-14 h-14 md:w-18 md:h-18 bg-gradient-to-br from-blue-600/20 to-blue-700/20 rounded-2xl backdrop-blur-md border border-blue-300/20 flex items-center justify-center hover:scale-110 transition-all duration-500">
-              <TestTube className="w-7 h-7 md:w-9 md:h-9 text-blue-300" />
-            </div>
-            <div className="absolute inset-0 bg-blue-400/30 rounded-2xl blur-lg opacity-50 group-hover:opacity-80 transition-opacity"></div>
-          </div>
-        </div>
-
-        <div className="absolute bottom-20 left-1/4 animate-float" style={{
-        animationDelay: '1s'
-      }}>
-          <div className="relative group">
-            <div className="w-10 h-10 md:w-14 md:h-14 bg-gradient-to-br from-blue-500/20 to-blue-600/20 rounded-xl backdrop-blur-md border border-blue-300/20 flex items-center justify-center hover:scale-110 transition-all duration-500">
-              <Beaker className="w-5 h-5 md:w-7 md:h-7 text-blue-300" />
-            </div>
-            <div className="absolute inset-0 bg-blue-400/30 rounded-xl blur-lg opacity-50 group-hover:opacity-80 transition-opacity"></div>
-          </div>
-        </div>
-
-        <div className="absolute top-32 right-1/3 animate-float" style={{
-        animationDelay: '3s'
-      }}>
-          <div className="relative group">
-            <div className="w-8 h-8 md:w-12 md:h-12 bg-gradient-to-br from-blue-400/20 to-blue-500/20 rounded-full backdrop-blur-md border border-blue-300/20 flex items-center justify-center hover:scale-110 transition-all duration-500">
-              <Atom className="w-4 h-4 md:w-6 md:h-6 text-blue-300 animate-spin" style={{
-              animationDuration: '6s'
-            }} />
-            </div>
-            <div className="absolute inset-0 bg-blue-400/30 rounded-full blur-lg opacity-50 group-hover:opacity-80 transition-opacity"></div>
-          </div>
-        </div>
-
-        {/* Molecular Structure Animation */}
-        <div className="absolute bottom-1/4 right-8 md:right-20">
-          <div className="relative w-16 h-16 md:w-20 md:h-20">
-            {[...Array(6)].map((_, i) => <div key={i} className="absolute w-3 h-3 bg-gradient-to-r from-blue-400 to-cyan-400 rounded-full animate-pulse" style={{
-            left: `${20 + Math.cos(i * 60 * Math.PI / 180) * 25}px`,
-            top: `${20 + Math.sin(i * 60 * Math.PI / 180) * 25}px`,
-            animationDelay: `${i * 0.3}s`
-          }} />)}
-            <div className="absolute inset-0 border-2 border-cyan-400/30 rounded-full animate-spin" style={{
-            animationDuration: '10s'
-          }}></div>
-          </div>
+        {/* Futuristic Gradient Overlays */}
+        <div className="absolute inset-0 bg-gradient-to-br from-slate-900/95 via-primary-deep/90 to-primary/85"></div>
+        <div className="absolute inset-0 bg-gradient-to-t from-primary-deep/80 via-transparent to-transparent"></div>
+        <div className="absolute inset-0 bg-gradient-to-r from-transparent via-primary/20 to-transparent"></div>
+        
+        {/* Animated Mesh Gradient */}
+        <div className="absolute inset-0 opacity-30">
+          <div className="absolute top-0 left-0 w-full h-full bg-gradient-to-br from-primary-glow/40 via-transparent to-primary-deep/40 animate-pulse-slow"></div>
         </div>
       </div>
 
-      {/* Main Content */}
-      <div className="relative z-10 container mx-auto px-4 lg:px-8">
-        <div className="max-w-5xl">
-          {/* Brand Badge */}
-          <div className="animate-fade-up">
-            
+      {/* Animated Particle System */}
+      <div className="absolute inset-0 z-10">
+        {/* DNA Helixes */}
+        {[...Array(3)].map((_, i) => (
+          <div
+            key={`dna-${i}`}
+            className="absolute animate-float"
+            style={{
+              left: `${20 + i * 30}%`,
+              top: `${10 + i * 20}%`,
+              animationDelay: `${i * 2}s`,
+              animationDuration: `${8 + i * 2}s`
+            }}
+          >
+            <Dna className="w-8 h-16 md:w-12 md:h-20 text-primary-glow/60 animate-spin" 
+                 style={{ animationDuration: `${10 + i * 5}s` }} />
           </div>
+        ))}
+
+        {/* Floating Scientific Elements */}
+        {[
+          { icon: Microscope, size: 'w-6 h-6 md:w-8 md:h-8', position: { top: '15%', right: '10%' } },
+          { icon: FlaskConical, size: 'w-5 h-5 md:w-7 md:h-7', position: { top: '60%', left: '5%' } },
+          { icon: TestTube, size: 'w-4 h-4 md:w-6 md:h-6', position: { top: '25%', left: '80%' } },
+          { icon: Beaker, size: 'w-5 h-5 md:w-7 md:h-7', position: { bottom: '20%', right: '15%' } },
+          { icon: Atom, size: 'w-6 h-6 md:w-8 md:h-8', position: { top: '70%', right: '25%' } },
+        ].map((item, index) => {
+          const IconComponent = item.icon;
+          return (
+            <div
+              key={`element-${index}`}
+              className="absolute animate-float group"
+              style={{
+                ...item.position,
+                animationDelay: `${index * 1.5}s`,
+                animationDuration: `${6 + index}s`
+              }}
+            >
+              <div className="relative">
+                <div className="p-3 md:p-4 bg-white/10 backdrop-blur-md rounded-2xl border border-white/20 group-hover:bg-white/20 transition-all duration-500 group-hover:scale-110">
+                  <IconComponent className={`${item.size} text-primary-glow group-hover:text-white transition-colors`} />
+                </div>
+                <div className="absolute inset-0 bg-primary-glow/20 rounded-2xl blur-xl opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+              </div>
+            </div>
+          );
+        })}
+
+        {/* Energy Pulses */}
+        {[...Array(5)].map((_, i) => (
+          <div
+            key={`pulse-${i}`}
+            className="absolute w-2 h-2 bg-primary-glow/80 rounded-full animate-ping"
+            style={{
+              left: `${Math.random() * 100}%`,
+              top: `${Math.random() * 100}%`,
+              animationDelay: `${i * 0.8}s`,
+              animationDuration: `${2 + Math.random() * 3}s`
+            }}
+          />
+        ))}
+      </div>
+
+      {/* Circuit Pattern Overlay */}
+      <div className="absolute inset-0 z-5 opacity-10">
+        <svg className="w-full h-full" viewBox="0 0 1000 1000">
+          <defs>
+            <pattern id="circuit" x="0" y="0" width="100" height="100" patternUnits="userSpaceOnUse">
+              <path d="M 10 10 L 90 10 L 90 90 L 10 90 Z" fill="none" stroke="currentColor" strokeWidth="0.5"/>
+              <circle cx="10" cy="10" r="2" fill="currentColor"/>
+              <circle cx="90" cy="90" r="2" fill="currentColor"/>
+            </pattern>
+          </defs>
+          <rect width="100%" height="100%" fill="url(#circuit)" className="text-primary-glow"/>
+        </svg>
+      </div>
+
+      {/* Main Content Container */}
+      <div className="relative z-20 container mx-auto px-4 lg:px-8 text-center">
+        <div className="max-w-6xl mx-auto">
           
-          {/* Main Heading with Enhanced Typography */}
-          <div className="animate-fade-up" style={{
-          animationDelay: '0.2s'
-        }}>
-            <h1 className="font-display font-bold text-4xl md:text-6xl lg:text-7xl mb-6 leading-tight">
-              <span className="bg-gradient-to-r from-white via-white to-gray-100 bg-clip-text text-transparent drop-shadow-lg">
-                Analytical Testing
+          {/* Animated Badge */}
+          <div className="animate-fade-up mb-8">
+            <div className="inline-flex items-center gap-2 px-4 py-2 bg-white/10 backdrop-blur-md rounded-full border border-white/20 text-white/90 text-sm font-medium">
+              <Shield className="w-4 h-4 text-primary-glow" />
+              <span>ISO Certified Laboratory</span>
+              <Activity className="w-4 h-4 text-success animate-pulse" />
+            </div>
+          </div>
+
+          {/* Main Headline */}
+          <div className="animate-fade-up mb-8" style={{ animationDelay: '0.2s' }}>
+            <h1 className="font-display font-bold text-4xl md:text-6xl lg:text-7xl xl:text-8xl leading-tight mb-6">
+              <span className="block bg-gradient-to-r from-white via-primary-glow to-white bg-clip-text text-transparent">
+                Precision
               </span>
-              <br />
-              <span className="bg-gradient-to-r from-white via-cyan-100 to-white bg-clip-text text-transparent animate-pulse drop-shadow-xl">
+              <span className="block bg-gradient-to-r from-primary-glow via-white to-primary-glow bg-clip-text text-transparent">
                 Laboratory
+              </span>
+              <span className="block text-2xl md:text-3xl lg:text-4xl font-medium text-white/80 mt-4">
+                Testing Solutions
               </span>
             </h1>
           </div>
 
-          {/* Enhanced Description */}
-          <div className="animate-fade-up" style={{
-          animationDelay: '0.4s'
-        }}>
-            <p className="text-lg md:text-xl text-white mb-10 max-w-3xl leading-relaxed drop-shadow-md">
-              The modern consumer marketplace demands products in terms of quality, performance, 
-              sustainability and value for money. <span className="text-white font-bold drop-shadow-lg">TESTHUB</span> provides 
-              services to do it right, saving time, effort and money.
+          {/* Subtitle */}
+          <div className="animate-fade-up mb-12" style={{ animationDelay: '0.4s' }}>
+            <p className="text-lg md:text-xl lg:text-2xl text-white/90 max-w-4xl mx-auto leading-relaxed">
+              Advanced analytical testing with cutting-edge technology and scientific precision. 
+              <span className="text-primary-glow font-semibold"> TESTHUB</span> delivers reliable results 
+              for quality assurance, compliance, and innovation.
             </p>
           </div>
 
-          {/* Enhanced Action Buttons */}
-          <div className="animate-fade-up flex flex-col sm:flex-row gap-4 mb-16" style={{
-          animationDelay: '0.6s'
-        }}>
-            <Link to="/about-us" className="group relative inline-flex items-center justify-center px-8 py-4 text-lg font-semibold rounded-xl overflow-hidden transition-all duration-300 hover:scale-105">
-              <div className="absolute inset-0 bg-gradient-to-r from-blue-600 to-blue-500 opacity-100 group-hover:opacity-90 transition-opacity"></div>
-              <div className="absolute inset-0 bg-gradient-to-r from-blue-700 to-blue-600 opacity-0 group-hover:opacity-100 transition-opacity"></div>
-              <span className="relative text-white flex items-center space-x-2">
-                <span>About Us</span>
-                <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
-              </span>
-              <div className="absolute inset-0 rounded-xl bg-white/20 opacity-0 group-hover:opacity-100 transition-opacity blur-xl"></div>
-            </Link>
-            
-            <Link to="/services" className="group relative inline-flex items-center justify-center px-8 py-4 text-lg font-semibold rounded-xl overflow-hidden transition-all duration-300 hover:scale-105">
-              <div className="absolute inset-0 bg-transparent border-2 border-white/60 backdrop-blur-md"></div>
-              <div className="absolute inset-0 bg-gradient-to-r from-white/10 to-cyan-200/20 opacity-0 group-hover:opacity-100 transition-opacity"></div>
-              <span className="relative z-10 text-white flex items-center space-x-2">
-                <span>Our Services</span>
-                <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
-              </span>
-              <div className="absolute inset-0 rounded-xl bg-white/10 opacity-0 group-hover:opacity-100 transition-opacity blur-xl"></div>
-            </Link>
+          {/* Action Buttons */}
+          <div className="animate-fade-up mb-16" style={{ animationDelay: '0.6s' }}>
+            <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
+              <Link to="/about-us" className="group relative">
+                <Button 
+                  size="lg" 
+                  className="bg-primary hover:bg-primary-deep text-white px-8 py-4 text-lg font-semibold rounded-xl shadow-glow hover:shadow-2xl transition-all duration-300 hover:scale-105 border-2 border-primary-glow/50"
+                >
+                  <span className="flex items-center gap-2">
+                    Discover More
+                    <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
+                  </span>
+                </Button>
+              </Link>
+              
+              <Link to="/services" className="group relative">
+                <Button 
+                  variant="outline" 
+                  size="lg" 
+                  className="bg-white/10 backdrop-blur-md border-2 border-white/30 text-white hover:bg-white/20 hover:border-white/50 px-8 py-4 text-lg font-semibold rounded-xl transition-all duration-300 hover:scale-105"
+                >
+                  <span className="flex items-center gap-2">
+                    Our Services
+                    <Zap className="w-5 h-5 group-hover:rotate-12 transition-transform" />
+                  </span>
+                </Button>
+              </Link>
+            </div>
           </div>
 
-          {/* Enhanced Stats with Modern Design */}
-          <div className="grid grid-cols-2 lg:grid-cols-4 gap-6 md:gap-8 animate-fade-up" style={{
-          animationDelay: '0.8s'
-        }}>
-            {[{
-            number: "15+",
-            label: "Years Experience",
-            color: "from-emerald-400 to-cyan-400"
-          }, {
-            number: "50+",
-            label: "Testing Services",
-            color: "from-blue-400 to-purple-400"
-          }, {
-            number: "1000+",
-            label: "Satisfied Clients",
-            color: "from-purple-400 to-pink-400"
-          }, {
-            number: "24/7",
-            label: "Support Available",
-            color: "from-cyan-400 to-teal-400"
-          }].map((stat, index) => <div key={index} className="group relative">
-                <div className="text-center p-4 md:p-6 bg-white/10 backdrop-blur-md rounded-2xl border border-white/20 hover:bg-white/15 transition-all duration-300 hover:scale-105">
-                  <div className={`text-2xl md:text-3xl font-bold bg-gradient-to-r ${stat.color} bg-clip-text text-transparent mb-2`}>
-                    {stat.number}
+          {/* Statistics Grid */}
+          <div className="animate-fade-up" style={{ animationDelay: '0.8s' }}>
+            <div className="grid grid-cols-2 lg:grid-cols-4 gap-6 md:gap-8">
+              {[
+                { number: "15+", label: "Years of Excellence", icon: Shield },
+                { number: "500+", label: "Testing Parameters", icon: TestTube },
+                { number: "10K+", label: "Samples Analyzed", icon: Microscope },
+                { number: "99.9%", label: "Accuracy Rate", icon: Activity }
+              ].map((stat, index) => {
+                const IconComponent = stat.icon;
+                return (
+                  <div 
+                    key={index} 
+                    className="group relative"
+                    style={{ animationDelay: `${1 + index * 0.1}s` }}
+                  >
+                    <div className="text-center p-6 bg-white/5 backdrop-blur-md rounded-2xl border border-white/20 hover:bg-white/10 transition-all duration-500 hover:scale-105">
+                      <IconComponent className="w-8 h-8 text-primary-glow mx-auto mb-4 group-hover:scale-110 transition-transform" />
+                      <div className="text-3xl md:text-4xl font-bold text-white mb-2 group-hover:text-primary-glow transition-colors">
+                        {stat.number}
+                      </div>
+                      <div className="text-white/70 text-sm md:text-base font-medium">
+                        {stat.label}
+                      </div>
+                    </div>
+                    <div className="absolute inset-0 rounded-2xl bg-primary-glow/10 opacity-0 group-hover:opacity-100 transition-opacity blur-xl"></div>
                   </div>
-                  <div className="text-white/80 text-xs md:text-sm font-medium">{stat.label}</div>
-                </div>
-                <div className={`absolute inset-0 rounded-2xl bg-gradient-to-r ${stat.color} opacity-0 group-hover:opacity-20 transition-opacity blur-xl`}></div>
-              </div>)}
+                );
+              })}
+            </div>
           </div>
         </div>
       </div>
 
-      {/* Enhanced Scroll Indicator */}
-      <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2 z-10">
-        <div className="relative">
-          <div className="w-6 h-10 border-2 border-white/50 rounded-full flex justify-center backdrop-blur-sm">
-            <div className="w-1 h-3 bg-gradient-to-b from-cyan-400 to-blue-400 rounded-full mt-2 animate-bounce"></div>
+      {/* Scroll Indicator */}
+      <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2 z-20 animate-fade-up" style={{ animationDelay: '1.2s' }}>
+        <div className="flex flex-col items-center gap-2 text-white/60 hover:text-white/80 transition-colors cursor-pointer">
+          <span className="text-sm font-medium">Scroll to explore</span>
+          <div className="w-6 h-10 border-2 border-white/40 rounded-full flex justify-center backdrop-blur-sm">
+            <ChevronDown className="w-4 h-4 animate-bounce mt-2" />
           </div>
-          <div className="absolute inset-0 rounded-full bg-cyan-400/20 blur-lg animate-pulse"></div>
         </div>
       </div>
-    </section>;
+
+      {/* Ambient Glow Effects */}
+      <div className="absolute top-1/4 left-1/4 w-64 h-64 bg-primary-glow/20 rounded-full blur-3xl animate-pulse-slow"></div>
+      <div className="absolute bottom-1/4 right-1/4 w-48 h-48 bg-primary-deep/30 rounded-full blur-3xl animate-pulse-slow" style={{ animationDelay: '2s' }}></div>
+    </section>
+  );
 };
+
 export default Hero;
