@@ -1,19 +1,19 @@
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Menu, X, Phone } from "lucide-react";
+import { Link } from "react-router-dom";
 
 const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   const navItems = [
-    { label: "Home", href: "#home" },
-    { label: "About Us", href: "#about" },
-    { label: "Services", href: "#services" },
-    { label: "Accreditation", href: "#accreditation" },
-    { label: "Gallery", href: "#gallery" },
-    { label: "Career", href: "#career" },
-    { label: "Blog", href: "#blog" },
-    { label: "Contact Us", href: "#contact" }
+    { label: "Home", href: "/" },
+    { label: "About Us", href: "/about-us" },
+    { label: "Services", href: "/services" },
+    { label: "Accreditation", href: "/accreditation" },
+    { label: "Gallery", href: "/gallery" },
+    { label: "Career", href: "/career" },
+    { label: "Contact Us", href: "/contact" }
   ];
 
   return (
@@ -36,14 +36,14 @@ const Header = () => {
           {/* Desktop Navigation */}
           <nav className="hidden lg:flex items-center space-x-8">
             {navItems.map((item) => (
-              <a
+              <Link
                 key={item.label}
-                href={item.href}
+                to={item.href}
                 className="text-sm font-medium text-foreground hover:text-primary transition-smooth relative group"
               >
                 {item.label}
                 <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-primary group-hover:w-full transition-smooth"></span>
-              </a>
+              </Link>
             ))}
           </nav>
 
@@ -72,14 +72,14 @@ const Header = () => {
             <nav className="container mx-auto px-4 py-4">
               <div className="flex flex-col space-y-4">
                 {navItems.map((item) => (
-                  <a
+                  <Link
                     key={item.label}
-                    href={item.href}
+                    to={item.href}
                     className="text-foreground hover:text-primary transition-smooth py-2"
                     onClick={() => setIsMenuOpen(false)}
                   >
                     {item.label}
-                  </a>
+                  </Link>
                 ))}
                 <Button className="flex items-center space-x-2 mt-4">
                   <Phone className="w-4 h-4" />
