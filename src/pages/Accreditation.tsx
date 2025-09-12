@@ -129,7 +129,7 @@ const Accreditation = () => {
               <div className="w-full max-w-2xl mx-auto">
                 <div className="aspect-[3/4] bg-gradient-to-br from-secondary to-secondary/50 rounded-lg flex items-center justify-center mb-6">
                   <div className="text-center">
-                    <Certificate className="w-16 h-16 text-primary mx-auto mb-4" />
+                    <FileCheck className="w-16 h-16 text-primary mx-auto mb-4" />
                     <h3 className="text-xl font-semibold text-primary mb-2">
                       Accreditation Certificate
                     </h3>
