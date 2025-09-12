@@ -2,22 +2,31 @@ import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Menu, X, Phone } from "lucide-react";
 import { Link } from "react-router-dom";
-
 const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
-
-  const navItems = [
-    { label: "Home", href: "/" },
-    { label: "About Us", href: "/about-us" },
-    { label: "Services", href: "/services" },
-    { label: "Accreditation", href: "/accreditation" },
-    { label: "Gallery", href: "/gallery" },
-    { label: "Career", href: "/career" },
-    { label: "Contact Us", href: "/contact" }
-  ];
-
-  return (
-    <header className="fixed top-0 left-0 right-0 z-50 bg-background/95 backdrop-blur-sm border-b shadow-elegant">
+  const navItems = [{
+    label: "Home",
+    href: "/"
+  }, {
+    label: "About Us",
+    href: "/about-us"
+  }, {
+    label: "Services",
+    href: "/services"
+  }, {
+    label: "Accreditation",
+    href: "/accreditation"
+  }, {
+    label: "Gallery",
+    href: "/gallery"
+  }, {
+    label: "Career",
+    href: "/career"
+  }, {
+    label: "Contact Us",
+    href: "/contact"
+  }];
+  return <header className="fixed top-0 left-0 right-0 z-50 bg-background/95 backdrop-blur-sm border-b shadow-elegant">
       <div className="container mx-auto px-4 lg:px-8">
         <div className="flex items-center justify-between h-16 lg:h-20">
           {/* Logo */}
@@ -35,63 +44,41 @@ const Header = () => {
 
           {/* Desktop Navigation */}
           <nav className="hidden lg:flex items-center space-x-8">
-            {navItems.map((item) => (
-              <Link
-                key={item.label}
-                to={item.href}
-                className="text-sm font-medium text-foreground hover:text-primary transition-smooth relative group"
-              >
+            {navItems.map(item => <Link key={item.label} to={item.href} className="text-sm font-medium text-foreground hover:text-primary transition-smooth relative group">
                 {item.label}
                 <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-primary group-hover:w-full transition-smooth"></span>
-              </Link>
-            ))}
+              </Link>)}
           </nav>
 
           {/* Contact Button */}
           <div className="hidden lg:flex items-center space-x-4">
             <Button variant="outline" className="flex items-center space-x-2">
               <Phone className="w-4 h-4" />
-              <span>+971 4 824 8015</span>
+              <span>+96522251588</span>
             </Button>
           </div>
 
           {/* Mobile Menu Toggle */}
-          <Button
-            variant="ghost"
-            size="icon"
-            className="lg:hidden"
-            onClick={() => setIsMenuOpen(!isMenuOpen)}
-          >
+          <Button variant="ghost" size="icon" className="lg:hidden" onClick={() => setIsMenuOpen(!isMenuOpen)}>
             {isMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
           </Button>
         </div>
 
         {/* Mobile Navigation */}
-        {isMenuOpen && (
-          <div className="lg:hidden absolute top-full left-0 right-0 bg-background/95 backdrop-blur-sm border-b shadow-medium animate-fade-up">
+        {isMenuOpen && <div className="lg:hidden absolute top-full left-0 right-0 bg-background/95 backdrop-blur-sm border-b shadow-medium animate-fade-up">
             <nav className="container mx-auto px-4 py-4">
               <div className="flex flex-col space-y-4">
-                {navItems.map((item) => (
-                  <Link
-                    key={item.label}
-                    to={item.href}
-                    className="text-foreground hover:text-primary transition-smooth py-2"
-                    onClick={() => setIsMenuOpen(false)}
-                  >
+                {navItems.map(item => <Link key={item.label} to={item.href} className="text-foreground hover:text-primary transition-smooth py-2" onClick={() => setIsMenuOpen(false)}>
                     {item.label}
-                  </Link>
-                ))}
+                  </Link>)}
                 <Button className="flex items-center space-x-2 mt-4">
                   <Phone className="w-4 h-4" />
                   <span>+971 4 824 8015</span>
                 </Button>
               </div>
             </nav>
-          </div>
-        )}
+          </div>}
       </div>
-    </header>
-  );
+    </header>;
 };
-
 export default Header;
