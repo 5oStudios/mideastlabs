@@ -7,38 +7,38 @@ const Hero = () => {
     <section id="home" className="relative min-h-screen flex items-center justify-center overflow-hidden">
       {/* Advanced Multi-layered Background */}
       <div className="absolute inset-0 z-0">
-        {/* Primary Background with Parallax Effect */}
-        <div className="absolute inset-0 scale-110 transition-transform duration-1000">
+        {/* Primary Background - Laboratory Equipment without People */}
+        <div className="absolute inset-0">
           <img 
-            src="/assets/hero-lab.jpg" 
-            alt="Advanced laboratory testing facility" 
+            src="/assets/water-testing.jpg" 
+            alt="Advanced laboratory equipment and testing instruments" 
             className="w-full h-full object-cover"
           />
         </div>
         
         {/* Secondary Background Overlay */}
-        <div className="absolute inset-0 opacity-30">
+        <div className="absolute inset-0 opacity-20">
           <img 
-            src="/assets/scientist-1.jpg" 
-            alt="Scientific research" 
-            className="w-full h-full object-cover mix-blend-soft-light"
+            src="/assets/soil-testing.jpg" 
+            alt="Laboratory testing equipment" 
+            className="w-full h-full object-cover mix-blend-overlay"
           />
         </div>
 
-        {/* Sophisticated Gradient System */}
-        <div className="absolute inset-0 bg-gradient-to-br from-slate-900/98 via-primary-deep/95 to-primary/90"></div>
-        <div className="absolute inset-0 bg-gradient-to-t from-primary-deep/90 via-primary/20 to-transparent"></div>
-        <div className="absolute inset-0 bg-gradient-to-r from-transparent via-primary-glow/30 to-transparent"></div>
-        <div className="absolute inset-0 bg-radial-gradient from-primary-glow/20 via-transparent to-transparent"></div>
+        {/* Enhanced Contrast Gradient System */}
+        <div className="absolute inset-0 bg-gradient-to-br from-slate-900/95 via-slate-800/90 to-slate-900/95"></div>
+        <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-slate-900/50 to-slate-800/70"></div>
+        <div className="absolute inset-0 bg-gradient-to-r from-black/60 via-transparent to-black/60"></div>
         
-        {/* Dynamic Mesh Gradient */}
-        <div className="absolute inset-0 opacity-40">
-          <div className="absolute top-0 left-0 w-full h-full bg-gradient-to-br from-primary-glow/60 via-transparent to-primary-deep/60 animate-scale-breathe"></div>
-        </div>
+        {/* Text Readability Enhancement */}
+        <div className="absolute inset-0 bg-black/30"></div>
+        
+        {/* Subtle Color Accent */}
+        <div className="absolute inset-0 bg-gradient-to-br from-primary-deep/20 via-transparent to-primary/20"></div>
 
         {/* Shimmer Effect */}
-        <div className="absolute inset-0 opacity-20">
-          <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/30 to-transparent skew-x-12 animate-shimmer"></div>
+        <div className="absolute inset-0 opacity-10">
+          <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent skew-x-12 animate-shimmer"></div>
         </div>
       </div>
 
@@ -147,14 +147,14 @@ const Hero = () => {
       <div className="relative z-20 container mx-auto px-4 sm:px-6 lg:px-8 text-center">
         <div className="max-w-7xl mx-auto">
           
-          {/* Enhanced Animated Badge */}
+          {/* Enhanced Animated Badge with Better Contrast */}
           <div className="animate-fade-up mb-6 md:mb-8">
-            <div className="inline-flex items-center gap-2 px-4 py-2 md:px-6 md:py-3 bg-white/5 backdrop-blur-xl rounded-full border border-white/20 text-white/90 text-sm md:text-base font-medium shadow-2xl group hover:bg-white/10 transition-all duration-500 hover:scale-105">
+            <div className="inline-flex items-center gap-2 px-4 py-2 md:px-6 md:py-3 bg-black/60 backdrop-blur-xl rounded-full border-2 border-primary-glow/50 text-white text-sm md:text-base font-semibold shadow-2xl group hover:bg-black/70 transition-all duration-500 hover:scale-105">
               <Shield className="w-4 h-4 md:w-5 md:h-5 text-primary-glow animate-pulse-glow" />
-              <span className="bg-gradient-to-r from-white to-primary-glow bg-clip-text text-transparent font-semibold">
+              <span className="text-white drop-shadow-lg">
                 ISO 17025 Certified Laboratory
               </span>
-              <Activity className="w-4 h-4 md:w-5 md:h-5 text-success animate-pulse" />
+              <Activity className="w-4 h-4 md:w-5 md:h-5 text-green-400 animate-pulse" />
             </div>
           </div>
 
@@ -163,63 +163,63 @@ const Hero = () => {
             <h1 className="font-display font-black leading-none mb-4 md:mb-6">
               {/* Mobile: Stacked layout */}
               <div className="block sm:hidden">
-                <span className="block text-4xl bg-gradient-to-r from-white via-primary-glow to-white bg-clip-text text-transparent mb-2">
+                <span className="block text-4xl font-black text-white drop-shadow-2xl mb-2">
                   Precision
                 </span>
-                <span className="block text-4xl bg-gradient-to-r from-primary-glow via-white to-primary-glow bg-clip-text text-transparent mb-2">
+                <span className="block text-4xl font-black text-primary-glow drop-shadow-2xl mb-2">
                   Laboratory
                 </span>
-                <span className="block text-2xl font-semibold text-white/80">
+                <span className="block text-2xl font-bold text-white drop-shadow-lg">
                   Testing Solutions
                 </span>
               </div>
               
               {/* Tablet: Medium layout */}
               <div className="hidden sm:block md:hidden">
-                <span className="block text-5xl bg-gradient-to-r from-white via-primary-glow to-white bg-clip-text text-transparent mb-3">
+                <span className="block text-5xl font-black text-white drop-shadow-2xl mb-3">
                   Precision
                 </span>
-                <span className="block text-5xl bg-gradient-to-r from-primary-glow via-white to-primary-glow bg-clip-text text-transparent mb-3">
+                <span className="block text-5xl font-black text-primary-glow drop-shadow-2xl mb-3">
                   Laboratory
                 </span>
-                <span className="block text-3xl font-semibold text-white/80">
+                <span className="block text-3xl font-bold text-white drop-shadow-lg">
                   Testing Solutions
                 </span>
               </div>
               
               {/* Desktop: Large layout */}
               <div className="hidden md:block lg:hidden">
-                <span className="block text-6xl bg-gradient-to-r from-white via-primary-glow to-white bg-clip-text text-transparent mb-4">
+                <span className="block text-6xl font-black text-white drop-shadow-2xl mb-4">
                   Precision
                 </span>
-                <span className="block text-6xl bg-gradient-to-r from-primary-glow via-white to-primary-glow bg-clip-text text-transparent mb-4">
+                <span className="block text-6xl font-black text-primary-glow drop-shadow-2xl mb-4">
                   Laboratory
                 </span>
-                <span className="block text-4xl font-semibold text-white/80">
+                <span className="block text-4xl font-bold text-white drop-shadow-lg">
                   Testing Solutions
                 </span>
               </div>
               
               {/* Large Desktop: Extra large layout */}
               <div className="hidden lg:block">
-                <span className="block text-7xl xl:text-8xl bg-gradient-to-r from-white via-primary-glow to-white bg-clip-text text-transparent mb-4">
+                <span className="block text-7xl xl:text-8xl font-black text-white drop-shadow-2xl mb-4">
                   Precision
                 </span>
-                <span className="block text-7xl xl:text-8xl bg-gradient-to-r from-primary-glow via-white to-primary-glow bg-clip-text text-transparent mb-4 animate-pulse">
+                <span className="block text-7xl xl:text-8xl font-black text-primary-glow drop-shadow-2xl mb-4">
                   Laboratory
                 </span>
-                <span className="block text-4xl xl:text-5xl font-semibold text-white/80">
+                <span className="block text-4xl xl:text-5xl font-bold text-white drop-shadow-lg">
                   Testing Solutions
                 </span>
               </div>
             </h1>
           </div>
 
-          {/* Enhanced Subtitle */}
+          {/* Enhanced Subtitle with Better Contrast */}
           <div className="animate-fade-up mb-8 md:mb-12 lg:mb-16" style={{ animationDelay: '0.4s' }}>
-            <p className="text-base md:text-lg lg:text-xl xl:text-2xl text-white/90 max-w-5xl mx-auto leading-relaxed px-4">
+            <p className="text-base md:text-lg lg:text-xl xl:text-2xl text-white max-w-5xl mx-auto leading-relaxed px-4 drop-shadow-lg font-medium">
               Advanced analytical testing with cutting-edge technology and scientific precision. 
-              <span className="text-primary-glow font-bold bg-gradient-to-r from-primary-glow to-white bg-clip-text text-transparent"> TESTHUB</span> delivers 
+              <span className="text-primary-glow font-black drop-shadow-lg"> TESTHUB</span> delivers 
               reliable results for quality assurance, compliance, and innovation across all industries.
             </p>
           </div>
@@ -271,15 +271,15 @@ const Hero = () => {
                     className="group relative animate-fade-up"
                     style={{ animationDelay: `${1 + index * 0.15}s` }}
                   >
-                    <div className="text-center p-4 md:p-6 lg:p-8 bg-white/5 backdrop-blur-xl rounded-2xl md:rounded-3xl border border-white/20 hover:bg-white/10 transition-all duration-700 hover:scale-110 hover:-translate-y-2 shadow-xl hover:shadow-2xl cursor-pointer">
+                    <div className="text-center p-4 md:p-6 lg:p-8 bg-black/40 backdrop-blur-xl rounded-2xl md:rounded-3xl border-2 border-primary-glow/30 hover:bg-black/50 transition-all duration-700 hover:scale-110 hover:-translate-y-2 shadow-xl hover:shadow-2xl cursor-pointer">
                       <div className="relative mb-4">
-                        <IconComponent className="w-6 h-6 md:w-8 md:h-8 lg:w-10 lg:h-10 text-primary-glow mx-auto group-hover:scale-125 transition-all duration-500 animate-pulse-glow" />
+                        <IconComponent className="w-6 h-6 md:w-8 md:h-8 lg:w-10 lg:h-10 text-primary-glow mx-auto group-hover:scale-125 transition-all duration-500 animate-pulse-glow drop-shadow-lg" />
                         <div className="absolute inset-0 bg-primary-glow/20 blur-xl opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
                       </div>
-                      <div className={`text-2xl md:text-3xl lg:text-4xl font-black bg-gradient-to-r ${stat.color} bg-clip-text text-transparent mb-2 group-hover:scale-110 transition-transform duration-300`}>
+                      <div className={`text-2xl md:text-3xl lg:text-4xl font-black text-white drop-shadow-lg mb-2 group-hover:scale-110 transition-transform duration-300`}>
                         {stat.number}
                       </div>
-                      <div className="text-white/70 text-xs md:text-sm lg:text-base font-semibold group-hover:text-white transition-colors duration-300">
+                      <div className="text-white text-xs md:text-sm lg:text-base font-bold group-hover:text-primary-glow transition-colors duration-300 drop-shadow-md">
                         {stat.label}
                       </div>
                     </div>
