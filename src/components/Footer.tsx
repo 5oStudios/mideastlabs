@@ -31,6 +31,7 @@ const Footer = () => {
               src="/lovable-uploads/1ebeb099-7be5-468c-abea-c14172407db6.png" 
               alt="Middle East Environmental Laboratories Co. Logo"
               className="h-12 w-auto"
+              loading="lazy"
             />
             </div>
             

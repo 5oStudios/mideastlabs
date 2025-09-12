@@ -76,7 +76,7 @@ const GalleryPage = () => {
         {/* Background Image */}
         <div className="absolute inset-0 z-0">
           <img 
-            src="/src/assets/water-testing.jpg" 
+            src="/assets/water-testing.jpg" 
             alt="Water testing laboratory equipment"
             className="w-full h-full object-cover"
           />

@@ -83,7 +83,7 @@ const ContactPage = () => {
         {/* Background Image */}
         <div className="absolute inset-0 z-0">
           <img 
-            src="/src/assets/soil-testing.jpg" 
+            src="/assets/soil-testing.jpg" 
             alt="Soil analysis and testing laboratory"
             className="w-full h-full object-cover"
           />

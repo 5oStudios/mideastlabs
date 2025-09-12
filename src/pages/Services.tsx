@@ -120,7 +120,7 @@ const Services = () => {
         {/* Background Image */}
         <div className="absolute inset-0 z-0">
           <img 
-            src="/src/assets/food-testing.jpg" 
+            src="/assets/food-testing.jpg" 
             alt="Food testing laboratory"
             className="w-full h-full object-cover"
           />

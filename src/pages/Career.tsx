@@ -94,9 +94,10 @@ const Career = () => {
         {/* Background Image */}
         <div className="absolute inset-0 z-0">
           <img 
-            src="/src/assets/scientist-2.jpg" 
+            src="/assets/scientist-2.jpg" 
             alt="Scientists collaborating in laboratory"
             className="w-full h-full object-cover"
+            loading="eager"
           />
           <div className="absolute inset-0 bg-blue-600/40"></div>
         </div>

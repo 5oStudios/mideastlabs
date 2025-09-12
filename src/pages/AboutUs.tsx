@@ -15,9 +15,10 @@ const AboutUs = () => {
         {/* Background Image */}
         <div className="absolute inset-0 z-0">
           <img 
-            src="/src/assets/hero-lab.jpg" 
+            src="/assets/hero-lab.jpg" 
             alt="Modern laboratory facility"
             className="w-full h-full object-cover"
+            loading="eager"
           />
           <div className="absolute inset-0 bg-blue-600/40"></div>
         </div>

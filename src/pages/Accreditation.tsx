@@ -65,7 +65,7 @@ const Accreditation = () => {
         {/* Background Image */}
         <div className="absolute inset-0 z-0">
           <img 
-            src="/src/assets/scientist-1.jpg" 
+            src="/assets/scientist-1.jpg" 
             alt="Professional scientist working in laboratory"
             className="w-full h-full object-cover"
           />
