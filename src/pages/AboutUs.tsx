@@ -2,10 +2,14 @@ import ScrollAnimation from "@/components/ScrollAnimation";
 import { Card } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Target, Eye, Users, Award } from "lucide-react";
+import Header from "@/components/Header";
+import Footer from "@/components/Footer";
 
 const AboutUs = () => {
   return (
-    <div className="min-h-screen pt-20">
+    <>
+      <Header />
+      <div className="min-h-screen pt-20">
       {/* Hero Section */}
       <section className="relative py-20 bg-gradient-to-r from-primary to-primary-glow text-white overflow-hidden">
         <div className="absolute inset-0 bg-black/10"></div>
@@ -184,8 +188,10 @@ const AboutUs = () => {
             </div>
           </ScrollAnimation>
         </div>
-      </section>
-    </div>
+       </section>
+      </div>
+      <Footer />
+    </>
   );
 };
 

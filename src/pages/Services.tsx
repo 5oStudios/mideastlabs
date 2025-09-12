@@ -18,6 +18,8 @@ import {
   Utensils,
   FileText
 } from "lucide-react";
+import Header from "@/components/Header";
+import Footer from "@/components/Footer";
 
 const Services = () => {
   const services = [
@@ -110,7 +112,9 @@ const Services = () => {
   const categories = [...new Set(services.map(service => service.category))];
 
   return (
-    <div className="min-h-screen pt-20">
+    <>
+      <Header />
+      <div className="min-h-screen pt-20">
       {/* Hero Section */}
       <section className="relative py-20 bg-gradient-to-r from-primary to-primary-glow text-white overflow-hidden">
         <div className="absolute inset-0 bg-black/10"></div>
@@ -297,7 +301,9 @@ const Services = () => {
           </ScrollAnimation>
         </div>
       </section>
-    </div>
+      </div>
+      <Footer />
+    </>
   );
 };
 

@@ -10,6 +10,8 @@ import foodTesting from "@/assets/food-testing.jpg";
 import soilTesting from "@/assets/soil-testing.jpg";
 import scientist1 from "@/assets/scientist-1.jpg";
 import scientist2 from "@/assets/scientist-2.jpg";
+import Header from "@/components/Header";
+import Footer from "@/components/Footer";
 
 const GalleryPage = () => {
   const [selectedCategory, setSelectedCategory] = useState("All");
@@ -66,7 +68,9 @@ const GalleryPage = () => {
     : galleryItems.filter(item => item.category === selectedCategory);
 
   return (
-    <div className="min-h-screen pt-20">
+    <>
+      <Header />
+      <div className="min-h-screen pt-20">
       {/* Hero Section */}
       <section className="relative py-20 bg-gradient-to-r from-primary to-primary-glow text-white overflow-hidden">
         <div className="absolute inset-0 bg-black/10"></div>
@@ -264,7 +268,9 @@ const GalleryPage = () => {
           </ScrollAnimation>
         </div>
       </section>
-    </div>
+      </div>
+      <Footer />
+    </>
   );
 };
 

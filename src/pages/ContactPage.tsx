@@ -8,6 +8,8 @@ import { Textarea } from "@/components/ui/textarea";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { MapPin, Phone, Mail, Clock, MessageCircle, Send } from "lucide-react";
 import { useState } from "react";
+import Header from "@/components/Header";
+import Footer from "@/components/Footer";
 
 const ContactPage = () => {
   const [formData, setFormData] = useState({
@@ -73,7 +75,9 @@ const ContactPage = () => {
   };
 
   return (
-    <div className="min-h-screen pt-20">
+    <>
+      <Header />
+      <div className="min-h-screen pt-20">
       {/* Hero Section */}
       <section className="relative py-20 bg-gradient-to-r from-primary to-primary-glow text-white overflow-hidden">
         <div className="absolute inset-0 bg-black/10"></div>
@@ -344,7 +348,9 @@ const ContactPage = () => {
           </ScrollAnimation>
         </div>
       </section>
-    </div>
+      </div>
+      <Footer />
+    </>
   );
 };
 
