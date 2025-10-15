@@ -21,7 +21,7 @@ const Hero = () => {
       </div>
 
       {/* Advanced Floating Laboratory Elements */}
-      <div className="absolute inset-0 z-2">
+      <div className="absolute inset-0 z-2 bg-blue-900">
         {/* DNA Helix Animation */}
         <div className="absolute top-1/4 right-8 md:right-16 animate-pulse-slow">
           <div className="relative w-20 h-32 md:w-24 md:h-40">
