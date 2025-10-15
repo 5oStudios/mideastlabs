@@ -10,7 +10,6 @@ import { MapPin, Phone, Mail, Clock, MessageCircle, Send } from "lucide-react";
 import { useState } from "react";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
-
 const ContactPage = () => {
   const [formData, setFormData] = useState({
     name: "",
@@ -20,73 +19,37 @@ const ContactPage = () => {
     service: "",
     message: ""
   });
-
-  const contactInfo = [
-    {
-      title: "Location",
-      details: [
-        "W.H No. 7 Union Beverages Factory Building",
-        "Jebel Ali Industrial Area 2",
-        "Dubai, United Arab Emirates"
-      ],
-      icon: MapPin
-    },
-    {
-      title: "Phone Numbers",
-      details: [
-        "+96522251588",
-        "+96522251588"
-      ],
-      icon: Phone
-    },
-    {
-      title: "Email Address",
-      details: [
-        "info@testhublab.com",
-        "sales@testhublab.com"
-      ],
-      icon: Mail
-    },
-    {
-      title: "Working Hours",
-      details: [
-        "Sunday - Thursday: 8:00 AM - 6:00 PM",
-        "Friday: 8:00 AM - 12:00 PM",
-        "Saturday: Closed"
-      ],
-      icon: Clock
-    }
-  ];
-
-  const services = [
-    "Water & Wastewater Testing",
-    "Food Testing",
-    "Soil & Sludge Analysis", 
-    "Cosmetics Testing",
-    "Environmental Monitoring",
-    "Material Testing",
-    "Other"
-  ];
-
+  const contactInfo = [{
+    title: "Location",
+    details: ["W.H No. 7 Union Beverages Factory Building", "Jebel Ali Industrial Area 2", "Dubai, United Arab Emirates"],
+    icon: MapPin
+  }, {
+    title: "Phone Numbers",
+    details: ["+96522251588", "+96522251588"],
+    icon: Phone
+  }, {
+    title: "Email Address",
+    details: ["info@testhublab.com", "sales@testhublab.com"],
+    icon: Mail
+  }, {
+    title: "Working Hours",
+    details: ["Sunday - Thursday: 8:00 AM - 6:00 PM", "Friday: 8:00 AM - 12:00 PM", "Saturday: Closed"],
+    icon: Clock
+  }];
+  const services = ["Water & Wastewater Testing", "Food Testing", "Soil & Sludge Analysis", "Cosmetics Testing", "Environmental Monitoring", "Material Testing", "Other"];
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     console.log("Contact form submitted:", formData);
     // Handle form submission logic here
   };
-
-  return (
-    <>
+  return <>
       <Header />
       <div className="min-h-screen pt-20">
       {/* Hero Section */}
       <section className="relative py-20 text-white overflow-hidden">
         {/* Background Image */}
         <div className="absolute inset-0 z-0">
-          <img 
-            src="/assets/soil-testing.jpg" 
-            alt="Soil analysis and testing laboratory"
-            className="w-full h-full object-cover"
-          />
+          <img src="/assets/soil-testing.jpg" alt="Soil analysis and testing laboratory" className="w-full h-full object-cover" />
           <div className="absolute inset-0 bg-blue-600/40"></div>
         </div>
         <div className="container mx-auto px-4 lg:px-8 relative z-10">
@@ -125,8 +88,7 @@ const ContactPage = () => {
           <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8 mb-16">
             {contactInfo.map((info, index) => {
               const IconComponent = info.icon;
-              return (
-                <ScrollAnimation key={index} delay={0.1 * index}>
+              return <ScrollAnimation key={index} delay={0.1 * index}>
                   <Card className="p-6 text-center shadow-elegant hover:shadow-glow transition-all duration-500 group">
                     <div className="w-16 h-16 bg-gradient-to-br from-primary to-primary-glow rounded-full flex items-center justify-center mx-auto mb-4 group-hover:scale-110 transition-transform duration-300">
                       <IconComponent className="w-8 h-8 text-white" />
@@ -135,15 +97,12 @@ const ContactPage = () => {
                       {info.title}
                     </h3>
                     <div className="space-y-1">
-                      {info.details.map((detail, detailIndex) => (
-                        <p key={detailIndex} className="text-muted-foreground text-sm leading-relaxed">
+                      {info.details.map((detail, detailIndex) => <p key={detailIndex} className="text-muted-foreground text-sm leading-relaxed">
                           {detail}
-                        </p>
-                      ))}
+                        </p>)}
                     </div>
                   </Card>
-                </ScrollAnimation>
-              );
+                </ScrollAnimation>;
             })}
           </div>
         </div>
@@ -165,74 +124,60 @@ const ContactPage = () => {
                   <div className="grid md:grid-cols-2 gap-6">
                     <div className="space-y-2">
                       <Label htmlFor="name">Full Name *</Label>
-                      <Input 
-                        id="name"
-                        placeholder="Your full name"
-                        value={formData.name}
-                        onChange={(e) => setFormData({...formData, name: e.target.value})}
-                        required
-                      />
+                      <Input id="name" placeholder="Your full name" value={formData.name} onChange={e => setFormData({
+                        ...formData,
+                        name: e.target.value
+                      })} required />
                     </div>
                     <div className="space-y-2">
                       <Label htmlFor="email">Email Address *</Label>
-                      <Input 
-                        id="email"
-                        type="email"
-                        placeholder="your.email@example.com"
-                        value={formData.email}
-                        onChange={(e) => setFormData({...formData, email: e.target.value})}
-                        required
-                      />
+                      <Input id="email" type="email" placeholder="your.email@example.com" value={formData.email} onChange={e => setFormData({
+                        ...formData,
+                        email: e.target.value
+                      })} required />
                     </div>
                   </div>
 
                   <div className="grid md:grid-cols-2 gap-6">
                     <div className="space-y-2">
                       <Label htmlFor="phone">Phone Number</Label>
-                      <Input 
-                        id="phone"
-                        placeholder="+971 XX XXX XXXX"
-                        value={formData.phone}
-                        onChange={(e) => setFormData({...formData, phone: e.target.value})}
-                      />
+                      <Input id="phone" placeholder="+971 XX XXX XXXX" value={formData.phone} onChange={e => setFormData({
+                        ...formData,
+                        phone: e.target.value
+                      })} />
                     </div>
                     <div className="space-y-2">
                       <Label htmlFor="company">Company Name</Label>
-                      <Input 
-                        id="company"
-                        placeholder="Your company"
-                        value={formData.company}
-                        onChange={(e) => setFormData({...formData, company: e.target.value})}
-                      />
+                      <Input id="company" placeholder="Your company" value={formData.company} onChange={e => setFormData({
+                        ...formData,
+                        company: e.target.value
+                      })} />
                     </div>
                   </div>
 
                   <div className="space-y-2">
                     <Label htmlFor="service">Service of Interest</Label>
-                    <Select onValueChange={(value) => setFormData({...formData, service: value})}>
+                    <Select onValueChange={value => setFormData({
+                      ...formData,
+                      service: value
+                    })}>
                       <SelectTrigger>
                         <SelectValue placeholder="Select a service" />
                       </SelectTrigger>
                       <SelectContent>
-                        {services.map((service, index) => (
-                          <SelectItem key={index} value={service.toLowerCase().replace(/\s+/g, '-')}>
+                        {services.map((service, index) => <SelectItem key={index} value={service.toLowerCase().replace(/\s+/g, '-')}>
                             {service}
-                          </SelectItem>
-                        ))}
+                          </SelectItem>)}
                       </SelectContent>
                     </Select>
                   </div>
 
                   <div className="space-y-2">
                     <Label htmlFor="message">Message *</Label>
-                    <Textarea 
-                      id="message"
-                      placeholder="Tell us about your testing requirements..."
-                      rows={5}
-                      value={formData.message}
-                      onChange={(e) => setFormData({...formData, message: e.target.value})}
-                      required
-                    />
+                    <Textarea id="message" placeholder="Tell us about your testing requirements..." rows={5} value={formData.message} onChange={e => setFormData({
+                      ...formData,
+                      message: e.target.value
+                    })} required />
                   </div>
 
                   <Button type="submit" className="w-full">
@@ -306,17 +251,8 @@ const ContactPage = () => {
                 contact us directly via phone for immediate assistance.
               </p>
               <div className="flex flex-col sm:flex-row gap-4 justify-center">
-                <a
-                  href="tel:+96522251588"
-                  className="inline-flex items-center justify-center px-6 py-3 bg-primary text-white font-semibold rounded-lg hover:bg-primary-glow transition-colors duration-300"
-                >
-                  <Phone className="w-4 h-4 mr-2" />
-                  +96522251588
-                </a>
-                <a
-                  href="tel:+96522251588"
-                  className="inline-flex items-center justify-center px-6 py-3 border border-primary text-primary font-semibold rounded-lg hover:bg-primary hover:text-white transition-colors duration-300"
-                >
+                
+                <a href="tel:+96522251588" className="inline-flex items-center justify-center px-6 py-3 border border-primary text-primary font-semibold rounded-lg hover:bg-primary hover:text-white transition-colors duration-300">
                   <Phone className="w-4 h-4 mr-2" />
                   +96522251588
                 </a>
@@ -339,16 +275,10 @@ const ContactPage = () => {
                 discover how we can help achieve your quality objectives.
               </p>
               <div className="flex flex-col sm:flex-row gap-4 justify-center">
-                <a
-                  href="/services"
-                  className="inline-flex items-center justify-center px-8 py-3 bg-white text-primary font-semibold rounded-lg hover:bg-white/90 transition-colors duration-300"
-                >
+                <a href="/services" className="inline-flex items-center justify-center px-8 py-3 bg-white text-primary font-semibold rounded-lg hover:bg-white/90 transition-colors duration-300">
                   View Services
                 </a>
-                <a
-                  href="/about-us"
-                  className="inline-flex items-center justify-center px-8 py-3 border-2 border-white text-white font-semibold rounded-lg hover:bg-white hover:text-primary transition-colors duration-300"
-                >
+                <a href="/about-us" className="inline-flex items-center justify-center px-8 py-3 border-2 border-white text-white font-semibold rounded-lg hover:bg-white hover:text-primary transition-colors duration-300">
                   Learn More
                 </a>
               </div>
@@ -358,8 +288,6 @@ const ContactPage = () => {
       </section>
       </div>
       <Footer />
-    </>
-  );
+    </>;
 };
-
 export default ContactPage;
