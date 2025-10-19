@@ -12,9 +12,7 @@ const About = () => {
               <span className="text-primary font-medium">About Our Laboratory</span>
             </div>
             
-            <h2 className="font-display font-bold text-heading text-foreground mb-6">
-              TESTHUB LABORATORIES L.L.C
-            </h2>
+            <h2 className="font-display font-bold text-heading text-foreground mb-6">Middle East Environmental Laboratories W.L.L. </h2>
             
             <div className="space-y-6 text-muted-foreground leading-relaxed">
               <p>Middle East Environmental Laboratories W.L.L. delivers high-quality, reliable environmental testing services that support compliance, sustainability, and informed decision-making. With advanced equipment and a team of skilled experts, we help industries, government entities, and organizations monitor and manage their environmental impact. Our accurate analyses and customized reporting ensure clients meet local and international regulations while contributing to a cleaner, safer environment for future generations.</p>
