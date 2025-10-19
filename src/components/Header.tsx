@@ -1,11 +1,21 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Button } from "@/components/ui/button";
 import { Menu, X, Phone } from "lucide-react";
 import { Link, useLocation } from "react-router-dom";
 import logo from "@/assets/logo.gif";
 const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [isScrolled, setIsScrolled] = useState(false);
   const location = useLocation();
+
+  useEffect(() => {
+    const handleScroll = () => {
+      setIsScrolled(window.scrollY > 50);
+    };
+    
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
   const navItems = [{
     label: "Home",
     href: "/"
@@ -28,7 +38,11 @@ const Header = () => {
     label: "Contact Us",
     href: "/contact"
   }];
-  return <header className="fixed top-0 left-0 right-0 z-50 bg-white border-b border-border shadow-sm">
+  return <header className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
+    isScrolled 
+      ? 'bg-white/80 backdrop-blur-md border-b border-border/50 shadow-sm' 
+      : 'bg-white border-b border-border shadow-sm'
+  }`}>
       <div className="container mx-auto px-4 lg:px-8 relative z-10">
         <div className="flex items-center justify-between h-16 lg:h-20">
           {/* Logo */}
