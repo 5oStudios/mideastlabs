@@ -4,6 +4,15 @@ import { Badge } from "@/components/ui/badge";
 import { Award, Shield, CheckCircle, FileCheck } from "lucide-react";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
+import CertificateViewer from "@/components/CertificateViewer";
+import iso9001Cert from "@/assets/certificates/iso-9001.jpg";
+import iso14001Cert from "@/assets/certificates/iso-14001.jpg";
+import iso45001Cert from "@/assets/certificates/iso-45001.jpg";
+import tl765Page1 from "@/assets/certificates/tl-765-page-1.jpg";
+import tl765Page2 from "@/assets/certificates/tl-765-page-2.jpg";
+import tl765Page3 from "@/assets/certificates/tl-765-page-3.jpg";
+import tl765Page4 from "@/assets/certificates/tl-765-page-4.jpg";
+import tl765Page5 from "@/assets/certificates/tl-765-page-5.jpg";
 
 const Accreditation = () => {
   const certifications = [
@@ -135,27 +144,63 @@ const Accreditation = () => {
             ))}
           </div>
 
-          {/* Certificate Image Placeholder */}
-          <ScrollAnimation>
-            <Card className="p-8 text-center shadow-elegant">
-              <div className="w-full max-w-2xl mx-auto">
-                <div className="aspect-[3/4] bg-gradient-to-br from-secondary to-secondary/50 rounded-lg flex items-center justify-center mb-6">
-                  <div className="text-center">
-                    <FileCheck className="w-16 h-16 text-primary mx-auto mb-4" />
-                    <h3 className="text-xl font-semibold text-primary mb-2">
-                      Accreditation Certificate
-                    </h3>
-                    <p className="text-muted-foreground">
-                      ISO/IEC 17025:2017 Accreditation Certificate
-                    </p>
-                  </div>
-                </div>
-                <p className="text-sm text-muted-foreground">
-                  Our laboratory is fully accredited for testing and calibration activities
+          {/* Certificates Section */}
+          <div className="space-y-12">
+            <ScrollAnimation>
+              <div className="text-center mb-8">
+                <h3 className="text-2xl font-display font-bold text-primary mb-4">
+                  View Our Certificates
+                </h3>
+                <p className="text-muted-foreground">
+                  Browse through our official accreditation certificates and scope documents
                 </p>
               </div>
-            </Card>
-          </ScrollAnimation>
+            </ScrollAnimation>
+
+            {/* ISO 9001 Certificate */}
+            <ScrollAnimation delay={0.1}>
+              <CertificateViewer
+                title="ISO 9001:2015 - Quality Management System"
+                pages={[
+                  { image: iso9001Cert, title: "ISO 9001:2015 Certificate" }
+                ]}
+              />
+            </ScrollAnimation>
+
+            {/* ISO 14001 Certificate */}
+            <ScrollAnimation delay={0.2}>
+              <CertificateViewer
+                title="ISO 14001:2015 - Environmental Management System"
+                pages={[
+                  { image: iso14001Cert, title: "ISO 14001:2015 Certificate" }
+                ]}
+              />
+            </ScrollAnimation>
+
+            {/* ISO 45001 Certificate */}
+            <ScrollAnimation delay={0.3}>
+              <CertificateViewer
+                title="ISO 45001:2018 - Occupational Health and Safety Management"
+                pages={[
+                  { image: iso45001Cert, title: "ISO 45001:2018 Certificate" }
+                ]}
+              />
+            </ScrollAnimation>
+
+            {/* TL-765 IAS Certificate with Scope */}
+            <ScrollAnimation delay={0.4}>
+              <CertificateViewer
+                title="IAS Accreditation Certificate TL-765 - ISO/IEC 17025:2017 with Scope"
+                pages={[
+                  { image: tl765Page1, title: "IAS Certificate" },
+                  { image: tl765Page2, title: "Scope - Chemical & Environmental" },
+                  { image: tl765Page3, title: "Scope - Testing Methods" },
+                  { image: tl765Page4, title: "Scope - Food Safety" },
+                  { image: tl765Page5, title: "Scope - Additional Services" }
+                ]}
+              />
+            </ScrollAnimation>
+          </div>
         </div>
       </section>
 
