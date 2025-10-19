@@ -6,7 +6,7 @@ const Services = () => {
   const services = [
     {
       icon: Droplets,
-      title: "Water & Waste Water Testing",
+      title: "Water Analysis",
       description: "Testhub Laboratories LLC offers a comprehensive range of Microbiological and Chemical water testing solutions to support various regulatory...",
       image: "/assets/water-testing.jpg"
     },
