@@ -24,7 +24,7 @@ const Services = () => {
     },
     {
       icon: Clock,
-      title: "Shelf Life Analysis",
+      title: "Industrial Waste Characterization",
       description: "The shelf life of food products is an important feature for both manufacturers and consumers. The most important factor for shelf life evaluation...",
       image: null
     },
