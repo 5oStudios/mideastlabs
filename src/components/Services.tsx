@@ -24,7 +24,7 @@ const Services = () => {
     },
     {
       icon: Clock,
-      title: "Industrial Waste Characterization",
+      title: "Air Quality Testing",
       description: "The shelf life of food products is an important feature for both manufacturers and consumers. The most important factor for shelf life evaluation...",
       image: null
     },
