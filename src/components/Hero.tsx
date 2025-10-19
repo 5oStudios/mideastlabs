@@ -151,10 +151,10 @@ const Hero = () => {
               <div className="absolute inset-0 rounded-xl bg-white/20 opacity-0 group-hover:opacity-100 transition-opacity blur-xl"></div>
             </Link>
             
-            <Button size="lg" className="group relative bg-transparent border-2 border-blue-400/50 backdrop-blur-md text-white hover:bg-blue-500/20 hover:scale-105 transition-all duration-300 px-8 py-4 text-lg font-semibold rounded-xl h-auto">
+            <Link to="/services" className="group relative inline-flex items-center justify-center bg-transparent border-2 border-blue-400/50 backdrop-blur-md text-white hover:bg-blue-500/20 hover:scale-105 transition-all duration-300 px-8 py-4 text-lg font-semibold rounded-xl">
               <span className="relative z-10">Our Services</span>
               <div className="absolute inset-0 rounded-xl bg-gradient-to-r from-blue-600/20 to-blue-500/20 opacity-0 group-hover:opacity-100 transition-opacity"></div>
-            </Button>
+            </Link>
           </div>
 
           {/* Enhanced Stats with Modern Design */}
