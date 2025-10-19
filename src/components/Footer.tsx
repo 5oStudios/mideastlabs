@@ -1,5 +1,6 @@
 import { Button } from "@/components/ui/button";
 import { Mail, Phone, MapPin, FacebookIcon, TwitterIcon, LinkedinIcon, InstagramIcon } from "lucide-react";
+import logo from "@/assets/logo.gif";
 
 const Footer = () => {
   const quickLinks = [
@@ -28,7 +29,7 @@ const Footer = () => {
           <div className="space-y-6">
             <div className="flex items-center space-x-2">
             <img 
-              src="/lovable-uploads/1ebeb099-7be5-468c-abea-c14172407db6.png" 
+              src={logo} 
               alt="Middle East Environmental Laboratories Co. Logo"
               className="h-12 w-auto"
               loading="lazy"
