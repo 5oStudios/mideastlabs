@@ -30,7 +30,7 @@ const Services = () => {
     },
     {
       icon: Microscope,
-      title: "Microbial Environmental Monitoring",
+      title: "Air Quality Testing",
       description: "Environmental air pollution is of growing public concern, much importance being placed on clean air and the reduction of contaminants...",
       image: null
     },
