@@ -23,7 +23,7 @@ const Accreditation = () => {
       validUntil: "2025"
     },
     {
-      title: "ISO 9001:2015",
+      title: "ISO 9001",
       description: "Quality management systems - Requirements",
       status: "Certified",
       validUntil: "2025"
