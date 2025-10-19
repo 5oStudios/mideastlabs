@@ -1,18 +1,8 @@
 import { Card } from "@/components/ui/card";
 import { CheckCircle, Award, Users, Target } from "lucide-react";
-
 const About = () => {
-  const features = [
-    "Purpose-built testing facilities",
-    "Expert technical guidance",
-    "Comprehensive analytical services",
-    "Quality assurance protocols",
-    "Regulatory compliance support",
-    "Advanced testing equipment"
-  ];
-
-  return (
-    <section id="about" className="py-20 bg-gradient-to-b from-background to-secondary/50">
+  const features = ["Purpose-built testing facilities", "Expert technical guidance", "Comprehensive analytical services", "Quality assurance protocols", "Regulatory compliance support", "Advanced testing equipment"];
+  return <section id="about" className="py-20 bg-gradient-to-b from-background to-secondary/50">
       <div className="container mx-auto px-4 lg:px-8">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
           {/* Content */}
@@ -34,26 +24,17 @@ const About = () => {
                 to do it right, saving time, effort and money.
               </p>
               
-              <p>
-                Testhub has purpose-built facilities and the expertise to test the physical, chemical, 
-                mechanical and microbiological properties of materials, components and whole products. 
-                We offer a comprehensive range of analytical services tailored to your specific needs 
-                combined with the capacity to provide expert support and technical guidance for all our customers.
-              </p>
+              
             </div>
 
             {/* Features Grid */}
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 mt-8">
-              {features.map((feature, index) => (
-                <div 
-                  key={index} 
-                  className="flex items-center space-x-3 animate-fade-up"
-                  style={{ animationDelay: `${index * 0.1}s` }}
-                >
+              {features.map((feature, index) => <div key={index} className="flex items-center space-x-3 animate-fade-up" style={{
+              animationDelay: `${index * 0.1}s`
+            }}>
                   <CheckCircle className="w-5 h-5 text-accent flex-shrink-0" />
                   <span className="text-sm text-foreground">{feature}</span>
-                </div>
-              ))}
+                </div>)}
             </div>
           </div>
 
@@ -101,8 +82,6 @@ const About = () => {
           </div>
         </div>
       </div>
-    </section>
-  );
+    </section>;
 };
-
 export default About;
