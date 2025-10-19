@@ -25,7 +25,7 @@ const Index = () => {
     });
   };
   return <main className="min-h-screen">
-      <Header />
+      <Header className="bg-slate-50" />
       <Hero />
       <About />
       <Services />
