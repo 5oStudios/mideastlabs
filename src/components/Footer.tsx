@@ -28,14 +28,12 @@ const Footer = () => {
           {/* Company Info */}
           <div className="space-y-6">
             <div className="flex items-center space-x-2">
-            <div className="bg-white/10 backdrop-blur-sm p-4 rounded-lg inline-block">
               <img 
                 src={logo} 
                 alt="Middle East Environmental Laboratories Co. Logo"
                 className="h-20 w-auto"
                 loading="lazy"
               />
-            </div>
             </div>
             
             <p className="text-white/90 text-sm leading-relaxed">
