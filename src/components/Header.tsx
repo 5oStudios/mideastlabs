@@ -50,7 +50,7 @@ const Header = () => {
             <img 
               src={logo} 
               alt="Middle East Environmental Laboratories Co. Logo"
-              className="h-12 w-auto"
+              className="h-16 w-auto"
               loading="eager"
               fetchPriority="high"
             />
