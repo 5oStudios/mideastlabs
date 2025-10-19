@@ -2,114 +2,14 @@ import ScrollAnimation from "@/components/ScrollAnimation";
 import { Card } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
-import { 
-  Droplets, 
-  Leaf, 
-  Sparkles, 
-  Shirt, 
-  Clock, 
-  Droplet, 
-  Square, 
-  Brush, 
-  Activity,
-  Layers,
-  Shield,
-  Beaker,
-  Utensils,
-  FileText
-} from "lucide-react";
+import { ArrowRight, Beaker, Shield, Clock, Activity } from "lucide-react";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
+import { servicesData } from "@/data/servicesData";
+import { Link } from "react-router-dom";
 
 const Services = () => {
-  const services = [
-    {
-      title: "Water & Wastewater Testing",
-      description: "Comprehensive analysis of water quality parameters including chemical, microbiological, and physical testing",
-      icon: Droplets,
-      category: "Environmental"
-    },
-    {
-      title: "Soil & Sludge Analysis",
-      description: "Complete soil composition analysis, contamination assessment, and environmental monitoring",
-      icon: Leaf,
-      category: "Environmental"
-    },
-    {
-      title: "Cosmetics & Personal Care Products",
-      description: "Safety testing, stability studies, and regulatory compliance for cosmetic products",
-      icon: Sparkles,
-      category: "Consumer Products"
-    },
-    {
-      title: "Textile, Footwear & Leather Products",
-      description: "Quality testing for textile materials, footwear components, and leather products",
-      icon: Shirt,
-      category: "Materials"
-    },
-    {
-      title: "Shelf Life Analysis",
-      description: "Product stability testing and shelf life determination studies",
-      icon: Clock,
-      category: "Food & Nutrition"
-    },
-    {
-      title: "Cleaning Materials & Detergents",
-      description: "Performance testing and chemical analysis of cleaning products and detergents",
-      icon: Beaker,
-      category: "Consumer Products"
-    },
-    {
-      title: "Tiles, Marble & Natural Stone",
-      description: "Physical and chemical testing of construction materials and natural stones",
-      icon: Square,
-      category: "Construction"
-    },
-    {
-      title: "Paint Testing",
-      description: "Quality control testing for paints, coatings, and surface treatments",
-      icon: Brush,
-      category: "Materials"
-    },
-    {
-      title: "Water Efficiency Labelling (WELS)",
-      description: "Testing and certification for water efficiency rating systems",
-      icon: Activity,
-      category: "Certification"
-    },
-    {
-      title: "Geotextile & GeoMembranes",
-      description: "Testing of geosynthetic materials for civil engineering applications",
-      icon: Layers,
-      category: "Construction"
-    },
-    {
-      title: "Waterproofing & Bituminous Products",
-      description: "Performance testing of waterproofing membranes and bituminous materials",
-      icon: Shield,
-      category: "Construction"
-    },
-    {
-      title: "Glass-reinforced Plastic (GRP) Testing",
-      description: "Mechanical and chemical testing of composite materials and GRP products",
-      icon: Beaker,
-      category: "Materials"
-    },
-    {
-      title: "Food Testing - Microbiological & Chemical",
-      description: "Comprehensive food safety testing, nutritional analysis, and labeling verification",
-      icon: Utensils,
-      category: "Food & Nutrition"
-    },
-    {
-      title: "Tissues, Paper & Paper Products",
-      description: "Quality testing for paper products, tissues, and packaging materials",
-      icon: FileText,
-      category: "Materials"
-    }
-  ];
-
-  const categories = [...new Set(services.map(service => service.category))];
+  const categories = [...new Set(servicesData.map(service => service.category))];
 
   return (
     <>
@@ -176,38 +76,51 @@ const Services = () => {
 
           {/* Services Grid */}
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {services.map((service, index) => {
-              const IconComponent = service.icon;
-              return (
-                <ScrollAnimation key={index} delay={0.1 * (index % 6)}>
-                  <Card className="p-6 h-full shadow-elegant hover:shadow-glow transition-all duration-500 group">
-                    <div className="flex items-start space-x-4 mb-4">
-                      <div className="w-12 h-12 bg-gradient-to-br from-primary to-primary-glow rounded-lg flex items-center justify-center flex-shrink-0 group-hover:scale-110 transition-transform duration-300">
-                        <IconComponent className="w-6 h-6 text-white" />
-                      </div>
-                      <div>
-                        <Badge variant="secondary" className="mb-2 text-xs">
-                          {service.category}
-                        </Badge>
-                        <h3 className="text-lg font-semibold text-primary group-hover:text-primary-glow transition-colors duration-300">
-                          {service.title}
-                        </h3>
+            {servicesData.map((service, index) => (
+              <ScrollAnimation key={service.id} delay={0.1 * (index % 6)}>
+                <Link to={`/services/${service.id}`}>
+                  <Card className="group card-gradient shadow-elegant hover:shadow-glow transition-spring cursor-pointer overflow-hidden h-full">
+                    {/* Image Header */}
+                    <div className="relative h-48 bg-gradient-to-br from-primary/10 to-accent/10 flex items-center justify-center overflow-hidden">
+                      <img 
+                        src={service.image} 
+                        alt={service.title}
+                        className="w-full h-full object-cover group-hover:scale-110 transition-spring"
+                      />
+                      <div className="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent"></div>
+                      
+                      {/* Icon Overlay */}
+                      <div className="absolute top-4 left-4 bg-background/90 backdrop-blur-sm p-3 rounded-lg shadow-lg">
+                        <service.icon className="w-6 h-6 text-primary" />
                       </div>
                     </div>
-                    <p className="text-muted-foreground leading-relaxed mb-4">
-                      {service.description}
-                    </p>
-                    <Button 
-                      variant="outline" 
-                      size="sm" 
-                      className="w-full group-hover:bg-primary group-hover:text-white transition-colors duration-300"
-                    >
-                      Learn More
-                    </Button>
+
+                    {/* Content */}
+                    <div className="p-6">
+                      <div className="mb-2">
+                        <span className="text-xs font-medium text-accent uppercase tracking-wide">
+                          {service.category}
+                        </span>
+                      </div>
+                      <h3 className="font-semibold text-lg mb-3 group-hover:text-primary transition-smooth leading-tight">
+                        {service.title}
+                      </h3>
+                      <p className="text-muted-foreground text-sm leading-relaxed mb-4 line-clamp-3">
+                        {service.shortDescription}
+                      </p>
+                      <Button 
+                        variant="ghost" 
+                        size="sm" 
+                        className="text-primary hover:text-accent hover:bg-accent/10 p-0 h-auto group-hover:translate-x-1 transition-spring"
+                      >
+                        <span className="mr-2">Know More</span>
+                        <ArrowRight className="w-4 h-4" />
+                      </Button>
+                    </div>
                   </Card>
-                </ScrollAnimation>
-              );
-            })}
+                </Link>
+              </ScrollAnimation>
+            ))}
           </div>
         </div>
       </section>
