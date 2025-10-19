@@ -7,6 +7,7 @@ import Index from "./pages/Index";
 import NotFound from "./pages/NotFound";
 import AboutUs from "./pages/AboutUs";
 import Services from "./pages/Services";
+import ServiceDetail from "./pages/ServiceDetail";
 import Accreditation from "./pages/Accreditation";
 import GalleryPage from "./pages/GalleryPage";
 import Career from "./pages/Career";
@@ -24,6 +25,7 @@ const App = () => (
           <Route path="/" element={<Index />} />
           <Route path="/about-us" element={<AboutUs />} />
           <Route path="/services" element={<Services />} />
+          <Route path="/services/:serviceSlug" element={<ServiceDetail />} />
           <Route path="/accreditation" element={<Accreditation />} />
           <Route path="/gallery" element={<GalleryPage />} />
           <Route path="/career" element={<Career />} />
