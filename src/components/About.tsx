@@ -17,12 +17,7 @@ const About = () => {
             </h2>
             
             <div className="space-y-6 text-muted-foreground leading-relaxed">
-              <p>
-                The modern consumer marketplace demands products in terms of quality, performance, 
-                sustainability and value for money. Legislation requires products to be safe and 
-                adapted to the needs. To meet expectations and standards, TESTHUB provides services 
-                to do it right, saving time, effort and money.
-              </p>
+              <p>Middle East Environmental Laboratories W.L.L. delivers high-quality, reliable environmental testing services that support compliance, sustainability, and informed decision-making. With advanced equipment and a team of skilled experts, we help industries, government entities, and organizations monitor and manage their environmental impact. Our accurate analyses and customized reporting ensure clients meet local and international regulations while contributing to a cleaner, safer environment for future generations.</p>
               
               
             </div>
