@@ -18,7 +18,7 @@ const Services = () => {
     },
     {
       icon: TreePine,
-      title: "Soil & Sludge",
+      title: "Soil & Sediment Testing",
       description: "We provide analysis of priority pollutants and emerging substances in wastewater treatment sewage sludge...",
       image: "/assets/soil-testing.jpg"
     },
