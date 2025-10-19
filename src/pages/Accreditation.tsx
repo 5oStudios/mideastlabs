@@ -117,7 +117,7 @@ const Accreditation = () => {
           <div className="grid md:grid-cols-2 gap-8 mb-16">
             {certifications.map((cert, index) => (
               <ScrollAnimation key={index} delay={0.1 * index}>
-                <div className="p-8 shadow-elegant hover:shadow-glow transition-all duration-500 group bg-card rounded-lg border">
+                <Card className="p-8 shadow-elegant hover:shadow-glow transition-all duration-500 group">
                   <div className="flex items-start justify-between mb-4">
                     <div className="w-12 h-12 bg-gradient-to-br from-primary to-primary-glow rounded-lg flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
                       <FileCheck className="w-6 h-6 text-white" />
@@ -139,7 +139,7 @@ const Accreditation = () => {
                     <span className="text-muted-foreground">Valid Until:</span>
                     <span className="font-medium text-primary">{cert.validUntil}</span>
                   </div>
-                </div>
+                </Card>
               </ScrollAnimation>
             ))}
           </div>
