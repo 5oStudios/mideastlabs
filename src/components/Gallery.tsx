@@ -2,40 +2,52 @@ import { Card } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { ArrowRight, Camera, ChevronLeft, ChevronRight } from "lucide-react";
 import { useState } from "react";
+import labChemistSamples from "@/assets/lab-chemist-samples.jpg";
+import labEquipmentSetup from "@/assets/lab-equipment-setup.jpg";
+import labSampleVials from "@/assets/lab-sample-vials.jpg";
+import labTestingProcess from "@/assets/lab-testing-process.jpg";
+import labSampleAnalysis from "@/assets/lab-sample-analysis.jpg";
+import labAnalyticalInstrument from "@/assets/lab-analytical-instrument.jpg";
 
 const Gallery = () => {
   const [currentSlide, setCurrentSlide] = useState(0);
 
   const galleryImages = [
     { 
-      title: "Main Laboratory", 
-      description: "State-of-the-art analytical testing facility with advanced equipment",
-      category: "Laboratory"
+      title: "Chemical Analysis", 
+      description: "Expert chemist examining sample vials for precise chemical analysis",
+      category: "Laboratory",
+      image: labChemistSamples
     },
     { 
-      title: "Chemistry Lab", 
-      description: "Specialized chemical analysis and testing laboratory",
-      category: "Chemistry"
+      title: "Advanced Equipment", 
+      description: "State-of-the-art laboratory equipment setup for comprehensive testing",
+      category: "Equipment",
+      image: labEquipmentSetup
     },
     { 
-      title: "Microbiology Lab", 
-      description: "Advanced microbiology testing and research facility",
-      category: "Microbiology"
+      title: "Sample Collection", 
+      description: "Colorful chemical sample vials prepared for testing and analysis",
+      category: "Chemistry",
+      image: labSampleVials
     },
     { 
-      title: "Lab Equipment", 
-      description: "High-precision scientific instruments and testing equipment",
-      category: "Equipment"
+      title: "Testing Process", 
+      description: "Laboratory technician conducting hands-on chemical testing procedures",
+      category: "Laboratory",
+      image: labTestingProcess
     },
     { 
-      title: "Quality Control", 
-      description: "Quality assurance and control testing stations",
-      category: "Quality"
+      title: "Sample Analysis", 
+      description: "Precision sample vials prepared for detailed analytical testing",
+      category: "Quality",
+      image: labSampleAnalysis
     },
     { 
-      title: "Research Area", 
-      description: "Dedicated research and development laboratory space",
-      category: "Research"
+      title: "Analytical Instruments", 
+      description: "High-tech GC-MS analytical instrument for advanced chemical analysis",
+      category: "Equipment",
+      image: labAnalyticalInstrument
     }
   ];
 
@@ -70,19 +82,25 @@ const Gallery = () => {
         {/* Main Gallery Carousel */}
         <div className="relative mb-12">
           <Card className="overflow-hidden shadow-strong">
-            <div className="relative h-96 lg:h-[500px] bg-gradient-to-br from-primary/20 to-accent/20 flex items-center justify-center">
-              {/* Placeholder for main image */}
-              <div className="text-center animate-pulse-slow">
-                <Camera className="w-24 h-24 text-primary/60 mx-auto mb-4" />
-                <h3 className="text-2xl font-semibold text-foreground mb-2">
-                  {galleryImages[currentSlide].title}
-                </h3>
-                <p className="text-muted-foreground max-w-md">
-                  {galleryImages[currentSlide].description}
-                </p>
-                <span className="inline-block mt-4 px-3 py-1 bg-primary/10 text-primary text-sm rounded-full">
-                  {galleryImages[currentSlide].category}
-                </span>
+            <div className="relative h-96 lg:h-[500px] overflow-hidden">
+              <img 
+                src={galleryImages[currentSlide].image} 
+                alt={galleryImages[currentSlide].title}
+                className="w-full h-full object-cover"
+              />
+              {/* Image Overlay with Info */}
+              <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent flex items-end">
+                <div className="p-8 text-white">
+                  <span className="inline-block mb-3 px-3 py-1 bg-primary/90 text-white text-sm rounded-full">
+                    {galleryImages[currentSlide].category}
+                  </span>
+                  <h3 className="text-2xl lg:text-3xl font-semibold mb-2">
+                    {galleryImages[currentSlide].title}
+                  </h3>
+                  <p className="text-white/90 max-w-2xl">
+                    {galleryImages[currentSlide].description}
+                  </p>
+                </div>
               </div>
             </div>
 
@@ -129,11 +147,15 @@ const Gallery = () => {
               }`}
               onClick={() => setCurrentSlide(index)}
             >
-              <div className="relative h-24 bg-gradient-to-br from-primary/10 to-accent/10 flex items-center justify-center">
-                <Camera className={`w-8 h-8 transition-smooth ${
-                  index === currentSlide ? 'text-primary' : 'text-muted-foreground group-hover:text-primary'
-                }`} />
-                <div className="absolute inset-0 bg-black/0 group-hover:bg-black/10 transition-smooth"></div>
+              <div className="relative h-24 overflow-hidden">
+                <img 
+                  src={image.image} 
+                  alt={image.title}
+                  className="w-full h-full object-cover transition-transform group-hover:scale-110"
+                />
+                <div className={`absolute inset-0 transition-smooth ${
+                  index === currentSlide ? 'bg-primary/20' : 'bg-black/0 group-hover:bg-black/10'
+                }`}></div>
               </div>
               <div className="p-3">
                 <div className="text-xs font-medium text-foreground truncate">
