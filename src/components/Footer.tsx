@@ -1,6 +1,6 @@
 import { Button } from "@/components/ui/button";
 import { Mail, Phone, MapPin, FacebookIcon, TwitterIcon, LinkedinIcon, InstagramIcon } from "lucide-react";
-import logo from "@/assets/logo.gif";
+import logo from "@/assets/logo-footer.gif";
 
 const Footer = () => {
   const quickLinks = [
