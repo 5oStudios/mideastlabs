@@ -26,76 +26,40 @@ const PrivacyPolicy = () => {
           <div className="container mx-auto px-4 max-w-4xl">
             <ScrollArea className="h-auto">
               <div className="prose prose-lg max-w-none">
-                <h2 className="text-2xl font-bold text-foreground mb-4">1. Information We Collect</h2>
+                <h2 className="text-2xl font-bold text-foreground mb-4">Welcome to Middle East Environmental Laboratories W.L.L</h2>
                 <p className="text-muted-foreground mb-6">
-                  We collect information that you provide directly to us, including when you request our testing services, 
-                  submit samples, contact us, or sign up for our newsletter. This may include your name, email address, 
-                  phone number, company name, and other relevant details.
+                  These terms and conditions outline the rules and regulations for the use of Middle East Environmental 
+                  Laboratories W.L.L Website, located at Kuwait.
                 </p>
 
-                <h2 className="text-2xl font-bold text-foreground mb-4">2. How We Use Your Information</h2>
-                <p className="text-muted-foreground mb-4">We use the information we collect to:</p>
-                <ul className="list-disc pl-6 text-muted-foreground mb-6 space-y-2">
-                  <li>Provide, maintain, and improve our testing services</li>
-                  <li>Process and complete transactions</li>
-                  <li>Send you technical notices, updates, and support messages</li>
-                  <li>Respond to your comments, questions, and requests</li>
-                  <li>Communicate with you about products, services, and events</li>
-                  <li>Monitor and analyze trends, usage, and activities</li>
-                </ul>
-
-                <h2 className="text-2xl font-bold text-foreground mb-4">3. Information Sharing and Disclosure</h2>
                 <p className="text-muted-foreground mb-6">
-                  We do not share, sell, rent, or trade your personal information with third parties for their promotional purposes. 
-                  We may share your information only in the following circumstances: with your consent, to comply with laws, 
-                  to protect rights and safety, or in connection with a business transfer.
+                  By accessing this website we assume you accept these terms and conditions. Do not continue to use 
+                  mideastlabs.com if you do not agree to take all of the terms and conditions stated on this page.
                 </p>
 
-                <h2 className="text-2xl font-bold text-foreground mb-4">4. Data Security</h2>
                 <p className="text-muted-foreground mb-6">
-                  We take reasonable measures to help protect your personal information from loss, theft, misuse, 
-                  unauthorized access, disclosure, alteration, and destruction. However, no internet or electronic 
-                  storage system is completely secure.
+                  The following terminology applies to these Terms and Conditions, Privacy Statement and Disclaimer Notice 
+                  and all Agreements: "Client", "You" and "Your" refers to you, the person log on this website and compliant 
+                  to the Company's terms and conditions. "The Company", "Ourselves", "We", "Our" and "Us", refers to our Company. 
+                  "Party", "Parties", or "Us", refers to both the Client and ourselves. All terms refer to the offer, acceptance 
+                  and consideration of payment necessary to undertake the process of our assistance to the Client in the most 
+                  appropriate manner for the express purpose of meeting the Client's needs in respect of provision of the 
+                  Company's stated services, in accordance with and subject to, prevailing law of kuwait. Any use of the above 
+                  terminology or other words in the singular, plural, capitalization and/or he/she or they, are taken as 
+                  interchangeable and therefore as referring to same.
                 </p>
 
-                <h2 className="text-2xl font-bold text-foreground mb-4">5. Data Retention</h2>
+                <h2 className="text-2xl font-bold text-foreground mb-4">Cookies</h2>
                 <p className="text-muted-foreground mb-6">
-                  We retain your personal information for as long as necessary to fulfill the purposes outlined in this 
-                  privacy policy, unless a longer retention period is required or permitted by law.
+                  We employ the use of cookies. By accessing mideastlabs.com, you agreed to use cookies in agreement with the 
+                  Middle East Environmental Laboratories W.L.L Privacy Policy.
                 </p>
 
-                <h2 className="text-2xl font-bold text-foreground mb-4">6. Your Rights</h2>
-                <p className="text-muted-foreground mb-4">You have the right to:</p>
-                <ul className="list-disc pl-6 text-muted-foreground mb-6 space-y-2">
-                  <li>Access and receive a copy of your personal information</li>
-                  <li>Request correction of your personal information</li>
-                  <li>Request deletion of your personal information</li>
-                  <li>Object to processing of your personal information</li>
-                  <li>Request restriction of processing your personal information</li>
-                  <li>Withdraw consent at any time</li>
-                </ul>
-
-                <h2 className="text-2xl font-bold text-foreground mb-4">7. Cookies and Tracking Technologies</h2>
                 <p className="text-muted-foreground mb-6">
-                  We use cookies and similar tracking technologies to track activity on our website and hold certain information. 
-                  You can instruct your browser to refuse all cookies or to indicate when a cookie is being sent.
+                  Most interactive websites use cookies to let us retrieve the user's details for each visit. Cookies are used 
+                  by our website to enable the functionality of certain areas to make it easier for people visiting our website. 
+                  Some of our affiliate/advertising partners may also use cookies.
                 </p>
-
-                <h2 className="text-2xl font-bold text-foreground mb-4">8. Changes to This Privacy Policy</h2>
-                <p className="text-muted-foreground mb-6">
-                  We may update our Privacy Policy from time to time. We will notify you of any changes by posting the 
-                  new Privacy Policy on this page and updating the "Last updated" date.
-                </p>
-
-                <h2 className="text-2xl font-bold text-foreground mb-4">9. Contact Us</h2>
-                <p className="text-muted-foreground mb-2">
-                  If you have any questions about this Privacy Policy, please contact us:
-                </p>
-                <ul className="list-none text-muted-foreground space-y-2">
-                  <li>Email: info@mideastlabs.com</li>
-                  <li>Phone: +96522251588</li>
-                  <li>Address: Building 195, 1st Floor, West of Abu Fatira Al Herafia, P.O. Box 114, AL-Qusour, 47402, Kuwait</li>
-                </ul>
               </div>
             </ScrollArea>
           </div>
