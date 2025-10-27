@@ -15,7 +15,7 @@ import { useRef } from "react";
 
 const Services = () => {
   const plugin = useRef(
-    Autoplay({ delay: 6000, stopOnInteraction: true })
+    Autoplay({ delay: 3000, stopOnInteraction: false, stopOnMouseEnter: true })
   );
   return (
     <section id="services" className="py-20 surface-gradient">
