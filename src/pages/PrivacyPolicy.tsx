@@ -26,39 +26,152 @@ const PrivacyPolicy = () => {
           <div className="container mx-auto px-4 max-w-4xl">
             <ScrollArea className="h-auto">
               <div className="prose prose-lg max-w-none">
-                <h2 className="text-2xl font-bold text-foreground mb-4">Welcome to Middle East Environmental Laboratories W.L.L</h2>
                 <p className="text-muted-foreground mb-6">
-                  These terms and conditions outline the rules and regulations for the use of Middle East Environmental 
-                  Laboratories W.L.L Website, located at Kuwait.
+                  At Middle East Environmental Laboratories W.L.L, accessible from https://www.mideastlabs.com/, one of our 
+                  main priorities is the privacy of our visitors. This Privacy Policy document contains types of information 
+                  that is collected and recorded by Middle East Environmental Laboratories W.L.L and how we use it.
                 </p>
 
                 <p className="text-muted-foreground mb-6">
-                  By accessing this website we assume you accept these terms and conditions. Do not continue to use 
-                  mideastlabs.com if you do not agree to take all of the terms and conditions stated on this page.
+                  If you have additional questions or require more information about our Privacy Policy, do not hesitate to contact us.
                 </p>
 
                 <p className="text-muted-foreground mb-6">
-                  The following terminology applies to these Terms and Conditions, Privacy Statement and Disclaimer Notice 
-                  and all Agreements: "Client", "You" and "Your" refers to you, the person log on this website and compliant 
-                  to the Company's terms and conditions. "The Company", "Ourselves", "We", "Our" and "Us", refers to our Company. 
-                  "Party", "Parties", or "Us", refers to both the Client and ourselves. All terms refer to the offer, acceptance 
-                  and consideration of payment necessary to undertake the process of our assistance to the Client in the most 
-                  appropriate manner for the express purpose of meeting the Client's needs in respect of provision of the 
-                  Company's stated services, in accordance with and subject to, prevailing law of kuwait. Any use of the above 
-                  terminology or other words in the singular, plural, capitalization and/or he/she or they, are taken as 
-                  interchangeable and therefore as referring to same.
+                  This Privacy Policy applies only to our online activities and is valid for visitors to our website with regards 
+                  to the information that they shared and/or collect in Middle East Environmental Laboratories W.L.L. This policy 
+                  is not applicable to any information collected offline or via channels other than this website.
                 </p>
 
-                <h2 className="text-2xl font-bold text-foreground mb-4">Cookies</h2>
+                <h2 className="text-2xl font-bold text-foreground mb-4">Consent</h2>
                 <p className="text-muted-foreground mb-6">
-                  We employ the use of cookies. By accessing mideastlabs.com, you agreed to use cookies in agreement with the 
-                  Middle East Environmental Laboratories W.L.L Privacy Policy.
+                  By using our website, you hereby consent to our Privacy Policy and agree to its terms.
+                </p>
+
+                <h2 className="text-2xl font-bold text-foreground mb-4">Information we collect</h2>
+                <p className="text-muted-foreground mb-6">
+                  The personal information that you are asked to provide, and the reasons why you are asked to provide it, 
+                  will be made clear to you at the point we ask you to provide your personal information.
                 </p>
 
                 <p className="text-muted-foreground mb-6">
-                  Most interactive websites use cookies to let us retrieve the user's details for each visit. Cookies are used 
-                  by our website to enable the functionality of certain areas to make it easier for people visiting our website. 
-                  Some of our affiliate/advertising partners may also use cookies.
+                  If you contact us directly, we may receive additional information about you such as your name, email address, 
+                  phone number, the contents of the message and/or attachments you may send us, and any other information you 
+                  may choose to provide.
+                </p>
+
+                <p className="text-muted-foreground mb-6">
+                  When you register for an Account, we may ask for your contact information, including items such as name, 
+                  company name, address, email address, and telephone number.
+                </p>
+
+                <h2 className="text-2xl font-bold text-foreground mb-4">How we use your information</h2>
+                <p className="text-muted-foreground mb-4">We use the information we collect in various ways, including to:</p>
+                <ul className="list-disc pl-6 text-muted-foreground mb-6 space-y-2">
+                  <li>Provide, operate, and maintain our website</li>
+                  <li>Improve, personalize, and expand our website</li>
+                  <li>Understand and analyze how you use our website</li>
+                  <li>Develop new products, services, features, and functionality</li>
+                  <li>Communicate with you, either directly or through one of our partners, including for customer service, to provide you with updates and other information relating to the website, and for marketing and promotional purposes</li>
+                  <li>Send you emails</li>
+                  <li>Find and prevent fraud</li>
+                </ul>
+
+                <h2 className="text-2xl font-bold text-foreground mb-4">Log Files</h2>
+                <p className="text-muted-foreground mb-6">
+                  Middle East Environmental Laboratories W.L.L follows a standard procedure of using log files. These files 
+                  log visitors when they visit websites. All hosting companies do this and a part of hosting services' analytics. 
+                  The information collected by log files include internet protocol (IP) addresses, browser type, Internet Service 
+                  Provider (ISP), date and time stamp, referring/exit pages, and possibly the number of clicks. These are not 
+                  linked to any information that is personally identifiable. The purpose of the information is for analyzing trends, 
+                  administering the site, tracking users' movement on the website, and gathering demographic information.
+                </p>
+
+                <h2 className="text-2xl font-bold text-foreground mb-4">Advertising Partners Privacy Policies</h2>
+                <p className="text-muted-foreground mb-6">
+                  You may consult this list to find the Privacy Policy for each of the advertising partners of Middle East 
+                  Environmental Laboratories W.L.L.
+                </p>
+
+                <p className="text-muted-foreground mb-6">
+                  Third-party ad servers or ad networks uses technologies like cookies, JavaScript, or Web Beacons that are used 
+                  in their respective advertisements and links that appear on Middle East Environmental Laboratories W.L.L, which 
+                  are sent directly to users' browser. They automatically receive your IP address when this occurs. These technologies 
+                  are used to measure the effectiveness of their advertising campaigns and/or to personalize the advertising content 
+                  that you see on websites that you visit.
+                </p>
+
+                <p className="text-muted-foreground mb-6">
+                  Note that Middle East Environmental Laboratories W.L.L has no access to or control over these cookies that are 
+                  used by third-party advertisers.
+                </p>
+
+                <h2 className="text-2xl font-bold text-foreground mb-4">Third Party Privacy Policies</h2>
+                <p className="text-muted-foreground mb-6">
+                  Middle East Environmental Laboratories W.L.L Privacy Policy does not apply to other advertisers or websites. 
+                  Thus, we are advising you to consult the respective Privacy Policies of these third-party ad servers for more 
+                  detailed information. It may include their practices and instructions about how to opt-out of certain options.
+                </p>
+
+                <p className="text-muted-foreground mb-6">
+                  You can choose to disable cookies through your individual browser options. To know more detailed information 
+                  about cookie management with specific web browsers, it can be found at the browsers' respective websites.
+                </p>
+
+                <h2 className="text-2xl font-bold text-foreground mb-4">CCPA Privacy Rights (Do Not Sell My Personal Information)</h2>
+                <p className="text-muted-foreground mb-4">Under the CCPA, among other rights, California consumers have the right to:</p>
+                <ul className="list-disc pl-6 text-muted-foreground mb-6 space-y-2">
+                  <li>Request that a business that collects a consumer's personal data disclose the categories and specific pieces of personal data that a business has collected about consumers.</li>
+                  <li>Request that a business delete any personal data about the consumer that a business has collected.</li>
+                  <li>Request that a business that sells a consumer's personal data, not sell the consumer's personal data.</li>
+                </ul>
+
+                <p className="text-muted-foreground mb-6">
+                  If you make a request, we have one month to respond to you. If you would like to exercise any of these rights, 
+                  please contact us.
+                </p>
+
+                <h2 className="text-2xl font-bold text-foreground mb-4">GDPR Data Protection Rights</h2>
+                <p className="text-muted-foreground mb-4">
+                  We would like to make sure you are fully aware of all of your data protection rights. Every user is entitled 
+                  to the following:
+                </p>
+                <ul className="list-disc pl-6 text-muted-foreground mb-6 space-y-2">
+                  <li><strong>The right to access</strong> – You have the right to request copies of your personal data. We may charge you a small fee for this service.</li>
+                  <li><strong>The right to rectification</strong> – You have the right to request that we correct any information you believe is inaccurate. You also have the right to request that we complete the information you believe is incomplete.</li>
+                  <li><strong>The right to erasure</strong> – You have the right to request that we erase your personal data, under certain conditions.</li>
+                  <li><strong>The right to restrict processing</strong> – You have the right to request that we restrict the processing of your personal data, under certain conditions.</li>
+                  <li><strong>The right to object to processing</strong> – You have the right to object to our processing of your personal data, under certain conditions.</li>
+                  <li><strong>The right to data portability</strong> – You have the right to request that we transfer the data that we have collected to another organization, or directly to you, under certain conditions.</li>
+                </ul>
+
+                <p className="text-muted-foreground mb-6">
+                  If you make a request, we have one month to respond to you. If you would like to exercise any of these rights, 
+                  please contact us.
+                </p>
+
+                <h2 className="text-2xl font-bold text-foreground mb-4">Children's Information</h2>
+                <p className="text-muted-foreground mb-6">
+                  Another part of our priority is adding protection for children while using the internet. We encourage parents 
+                  and guardians to observe, participate in, and/or monitor and guide their online activity.
+                </p>
+
+                <p className="text-muted-foreground mb-6">
+                  Middle East Environmental Laboratories W.L.L does not knowingly collect any Personal Identifiable Information 
+                  from children under the age of 13. If you think that your child provided this kind of information on our website, 
+                  we strongly encourage you to contact us immediately and we will do our best efforts to promptly remove such 
+                  information from our records.
+                </p>
+
+                <h2 className="text-2xl font-bold text-foreground mb-4">Changes to This Privacy Policy</h2>
+                <p className="text-muted-foreground mb-6">
+                  We may update our Privacy Policy from time to time. Thus, we advise you to review this page periodically for 
+                  any changes. We will notify you of any changes by posting the new Privacy Policy on this page. These changes 
+                  are effective immediately, after they are posted on this page.
+                </p>
+
+                <h2 className="text-2xl font-bold text-foreground mb-4">Contact Us</h2>
+                <p className="text-muted-foreground mb-6">
+                  If you have any questions or suggestions about our Privacy Policy, do not hesitate to contact us.
                 </p>
               </div>
             </ScrollArea>
