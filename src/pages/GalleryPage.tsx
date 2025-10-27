@@ -15,6 +15,16 @@ import blueChemicalTest from "@/assets/gallery/blue-chemical-test.jpg";
 import touchscreenAnalysis from "@/assets/gallery/touchscreen-analysis.jpg";
 import sampleVialsTray from "@/assets/gallery/sample-vials-tray.jpg";
 import advancedGcmsSystem from "@/assets/gallery/advanced-gcms-system.jpg";
+import icapSpectrometer from "@/assets/gallery/icap-spectrometer.jpg";
+import discreteAnalyzer from "@/assets/gallery/discrete-analyzer.jpg";
+import labWorkstation from "@/assets/gallery/lab-workstation.jpg";
+import behrotestEquipment from "@/assets/gallery/behrotest-equipment.jpg";
+import hachAnalyzer from "@/assets/gallery/hach-analyzer.jpg";
+import microbiologicalInspection from "@/assets/gallery/microbiological-inspection.jpg";
+import acolyteDevice from "@/assets/gallery/acolyte-device.jpg";
+import incubatorCultures from "@/assets/gallery/incubator-cultures.jpg";
+import memmertIncubator from "@/assets/gallery/memmert-incubator.jpg";
+import nikonMicroscope from "@/assets/gallery/nikon-microscope.jpg";
 
 const GalleryPage = () => {
   const galleryImages = [
@@ -27,7 +37,17 @@ const GalleryPage = () => {
     blueChemicalTest,
     touchscreenAnalysis,
     sampleVialsTray,
-    advancedGcmsSystem
+    advancedGcmsSystem,
+    icapSpectrometer,
+    discreteAnalyzer,
+    labWorkstation,
+    behrotestEquipment,
+    hachAnalyzer,
+    microbiologicalInspection,
+    acolyteDevice,
+    incubatorCultures,
+    memmertIncubator,
+    nikonMicroscope
   ];
 
   return (
