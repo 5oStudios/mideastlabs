@@ -21,7 +21,7 @@ const ContactPage = () => {
   });
   const contactInfo = [{
     title: "Location",
-    details: ["Building 195, 1st Floor, West of Abu Fatira Al Herafia", "P.O. Box 114, AL-Qusour, 47402, Kuwait"],
+    details: ["W.H No. 7 Union Beverages Factory Building", "Jebel Ali Industrial Area 2", "Dubai, United Arab Emirates"],
     icon: MapPin
   }, {
     title: "Phone Numbers",
@@ -29,7 +29,7 @@ const ContactPage = () => {
     icon: Phone
   }, {
     title: "Email Address",
-    details: ["info@mideastlabs.com"],
+    details: ["info@testhublab.com", "sales@testhublab.com"],
     icon: Mail
   }, {
     title: "Working Hours",
@@ -197,11 +197,11 @@ const ContactPage = () => {
                     <div className="text-center">
                       <MapPin className="w-12 h-12 text-primary mx-auto mb-2" />
                       <p className="text-muted-foreground">Interactive Map</p>
-                      <p className="text-sm text-muted-foreground">AL-Qusour, Kuwait</p>
+                      <p className="text-sm text-muted-foreground">Jebel Ali Industrial Area 2, Dubai</p>
                     </div>
                   </div>
                   <p className="text-muted-foreground text-sm leading-relaxed">
-                    Our laboratory is conveniently located in West of Abu Fatira Al Herafia, Kuwait, 
+                    Our laboratory is conveniently located in Jebel Ali Industrial Area, 
                     providing easy access for sample drop-off and consultation meetings.
                   </p>
                 </Card>
@@ -241,24 +241,7 @@ const ContactPage = () => {
       {/* Emergency Contact */}
       <section className="py-20 bg-gradient-to-b from-secondary/30 to-background">
         <div className="container mx-auto px-4 lg:px-8">
-          <ScrollAnimation>
-            <Card className="p-8 max-w-4xl mx-auto text-center shadow-elegant">
-              <h2 className="text-2xl font-display font-bold text-primary mb-4">
-                Need Urgent Testing Services?
-              </h2>
-              <p className="text-muted-foreground mb-6 leading-relaxed">
-                For urgent testing requirements or emergency analytical services, 
-                contact us directly via phone for immediate assistance.
-              </p>
-              <div className="flex flex-col sm:flex-row gap-4 justify-center">
-                
-                <a href="tel:+96522251588" className="inline-flex items-center justify-center px-6 py-3 border border-primary text-primary font-semibold rounded-lg hover:bg-primary hover:text-white transition-colors duration-300">
-                  <Phone className="w-4 h-4 mr-2" />
-                  +96522251588
-                </a>
-              </div>
-            </Card>
-          </ScrollAnimation>
+          
         </div>
       </section>
 
