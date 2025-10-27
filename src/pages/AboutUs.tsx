@@ -73,9 +73,7 @@ Regional governments, private sector consulting, manufacturing and retailing org
                   <h3 className="text-2xl font-display font-bold text-primary">Our Mission</h3>
                 </div>
                 <p className="text-lg leading-relaxed text-muted-foreground">
-                  We aim at providing a combined goal of timely sample analysis and responsive 
-                  customer service in the most cost-effective manner. Our commitment is to deliver 
-                  accurate, reliable results that help our clients make informed decisions.
+                  The mission of Middle East Environmental Laboratories W.L.L. is to provide accurate, timely, and trusted environmental testing and analysis services that support sustainable development, regulatory compliance, and public health. We are committed to delivering scientific excellence through advanced technology and professional expertise, empowering our clients to make responsible environmental decisions and contribute to a cleaner, healthier future.
                 </p>
               </Card>
             </ScrollAnimation>
