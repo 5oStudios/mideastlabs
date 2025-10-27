@@ -1,5 +1,6 @@
 import { Button } from "@/components/ui/button";
 import { Mail, Phone, MapPin, FacebookIcon, TwitterIcon, LinkedinIcon, InstagramIcon } from "lucide-react";
+import { Link } from "react-router-dom";
 import logo from "@/assets/logo-footer.gif";
 
 const Footer = () => {
@@ -66,6 +67,10 @@ const Footer = () => {
                   <a 
                     href={link.href}
                     className="text-white/80 hover:text-white transition-smooth text-sm"
+                    onClick={(e) => {
+                      e.preventDefault();
+                      document.querySelector(link.href)?.scrollIntoView({ behavior: 'smooth' });
+                    }}
                   >
                     {link.label}
                   </a>
@@ -140,12 +145,12 @@ const Footer = () => {
             </div>
             
             <div className="flex space-x-6 text-sm">
-              <a href="/privacy-policy" className="text-white/80 hover:text-white transition-smooth">
+              <Link to="/privacy-policy" className="text-white/80 hover:text-white transition-smooth">
                 Privacy Policy
-              </a>
-              <a href="/terms-of-service" className="text-white/80 hover:text-white transition-smooth">
+              </Link>
+              <Link to="/terms-of-service" className="text-white/80 hover:text-white transition-smooth">
                 Terms of Service
-              </a>
+              </Link>
               <a href="#sitemap" className="text-white/80 hover:text-white transition-smooth">
                 Sitemap
               </a>
