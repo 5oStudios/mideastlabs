@@ -104,9 +104,9 @@ const Services = () => {
         {/* CTA */}
         <div className="text-center mt-16">
           <Link to="/services">
-            <Button size="lg" className="bg-primary hover:bg-primary-deep shadow-glow">
+            <Button size="lg" variant="outline" className="group">
               <span>View All Services</span>
-              <ArrowRight className="w-5 h-5 ml-2" />
+              <ArrowRight className="w-5 h-5 ml-2 group-hover:translate-x-1 transition-spring" />
             </Button>
           </Link>
         </div>
