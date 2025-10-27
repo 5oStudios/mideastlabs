@@ -4,22 +4,15 @@ import { Badge } from "@/components/ui/badge";
 import { Target, Eye, Users, Award } from "lucide-react";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
-
 const AboutUs = () => {
-  return (
-    <>
+  return <>
       <Header />
       <div className="min-h-screen pt-20">
       {/* Hero Section */}
       <section className="relative py-20 text-white overflow-hidden">
         {/* Background Image */}
         <div className="absolute inset-0 z-0">
-          <img 
-            src="/assets/hero-lab.jpg" 
-            alt="Modern laboratory facility"
-            className="w-full h-full object-cover"
-            loading="eager"
-          />
+          <img src="/assets/hero-lab.jpg" alt="Modern laboratory facility" className="w-full h-full object-cover" loading="eager" />
           <div className="absolute inset-0 bg-blue-600/40"></div>
         </div>
         <div className="container mx-auto px-4 lg:px-8 relative z-10">
@@ -53,20 +46,14 @@ const AboutUs = () => {
               </div>
               
               <Card className="p-8 md:p-12 shadow-elegant">
-                <p className="text-lg leading-relaxed text-muted-foreground mb-8">
-                  Middle East Environmental Laboratories Co., founded in 2022, is an independent 
-                  analytical service company providing testing and research services in chemical 
-                  sciences and microbiological testing. Our laboratory is strategically located 
-                  in Jabal Ali Industrial Area, Dubai, UAE.
+                <p className="text-lg leading-relaxed text-muted-foreground mb-8">Middle East Environmental Laboratories Co. W.L.L (MEL) is a specialized independent laboratory
+services company with the capability to support a wide range of investigation, compliance and assurance
+testing services. MEL laboratories are well designed, equipped with the latest instruments and certified by
+International agencies to provide the best quality testing services to a broad range of clients including;
+Regional governments, private sector consulting, manufacturing and retailing organizations.
                 </p>
                 
-                <p className="text-lg leading-relaxed text-muted-foreground mb-8">
-                  Our well-trained analytical professionals are capable of providing comprehensive 
-                  testing solutions and support for food, dietary, nutritional, environmental, 
-                  cosmetics, and personal care industries all over the world. We are staffed and 
-                  equipped to handle projects requiring tight analytical schedules with professional 
-                  and personal client service.
-                </p>
+                
               </Card>
             </div>
           </ScrollAnimation>
@@ -181,16 +168,10 @@ const AboutUs = () => {
                 discover how we can support your business objectives.
               </p>
               <div className="flex flex-col sm:flex-row gap-4 justify-center">
-                <a
-                  href="/contact"
-                  className="inline-flex items-center justify-center px-8 py-3 bg-white text-primary font-semibold rounded-lg hover:bg-white/90 transition-colors duration-300"
-                >
+                <a href="/contact" className="inline-flex items-center justify-center px-8 py-3 bg-white text-primary font-semibold rounded-lg hover:bg-white/90 transition-colors duration-300">
                   Get In Touch
                 </a>
-                <a
-                  href="/services"
-                  className="inline-flex items-center justify-center px-8 py-3 border-2 border-white text-white font-semibold rounded-lg hover:bg-white hover:text-primary transition-colors duration-300"
-                >
+                <a href="/services" className="inline-flex items-center justify-center px-8 py-3 border-2 border-white text-white font-semibold rounded-lg hover:bg-white hover:text-primary transition-colors duration-300">
                   View Services
                 </a>
               </div>
@@ -200,8 +181,6 @@ const AboutUs = () => {
        </section>
       </div>
       <Footer />
-    </>
-  );
+    </>;
 };
-
 export default AboutUs;
