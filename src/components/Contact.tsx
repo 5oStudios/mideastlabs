@@ -52,7 +52,7 @@ const Contact = () => {
                     </div>
                     <div>
                       <h4 className="font-semibold mb-2">Email Address</h4>
-                      <p className="text-muted-foreground">info@testhublab.com</p>
+                      <p className="text-muted-foreground">info@mideastlabs.com</p>
                       <p className="text-muted-foreground">Get detailed quotes and technical support</p>
                     </div>
                   </div>
@@ -65,8 +65,8 @@ const Contact = () => {
                     </div>
                     <div>
                       <h4 className="font-semibold mb-2">Laboratory Location</h4>
-                      <p className="text-muted-foreground">Dubai, United Arab Emirates</p>
-                      <p className="text-muted-foreground">State-of-the-art testing facility</p>
+                      <p className="text-muted-foreground">Building 195, 1st Floor, West of Abu Fatira Al Herafia</p>
+                      <p className="text-muted-foreground">P.O. Box 114, AL-Qusour, 47402, Kuwait</p>
                     </div>
                   </div>
                 </Card>

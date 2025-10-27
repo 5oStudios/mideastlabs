@@ -21,7 +21,7 @@ const ContactPage = () => {
   });
   const contactInfo = [{
     title: "Location",
-    details: ["W.H No. 7 Union Beverages Factory Building", "Jebel Ali Industrial Area 2", "Dubai, United Arab Emirates"],
+    details: ["Building 195, 1st Floor, West of Abu Fatira Al Herafia", "P.O. Box 114, AL-Qusour, 47402, Kuwait"],
     icon: MapPin
   }, {
     title: "Phone Numbers",
@@ -29,7 +29,7 @@ const ContactPage = () => {
     icon: Phone
   }, {
     title: "Email Address",
-    details: ["info@testhublab.com", "sales@testhublab.com"],
+    details: ["info@mideastlabs.com"],
     icon: Mail
   }, {
     title: "Working Hours",
@@ -197,11 +197,11 @@ const ContactPage = () => {
                     <div className="text-center">
                       <MapPin className="w-12 h-12 text-primary mx-auto mb-2" />
                       <p className="text-muted-foreground">Interactive Map</p>
-                      <p className="text-sm text-muted-foreground">Jebel Ali Industrial Area 2, Dubai</p>
+                      <p className="text-sm text-muted-foreground">AL-Qusour, Kuwait</p>
                     </div>
                   </div>
                   <p className="text-muted-foreground text-sm leading-relaxed">
-                    Our laboratory is conveniently located in Jebel Ali Industrial Area, 
+                    Our laboratory is conveniently located in West of Abu Fatira Al Herafia, Kuwait, 
                     providing easy access for sample drop-off and consultation meetings.
                   </p>
                 </Card>

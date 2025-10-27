@@ -95,7 +95,8 @@ const Footer = () => {
               <div className="flex items-start space-x-3">
                 <MapPin className="w-5 h-5 text-white/80 flex-shrink-0 mt-0.5" />
                 <div>
-                  <p className="text-white/90 text-sm">Dubai, United Arab Emirates</p>
+                  <p className="text-white/90 text-sm">Building 195, 1st Floor, West of Abu Fatira Al Herafia</p>
+                  <p className="text-white/90 text-sm">P.O. Box 114, AL-Qusour, 47402, Kuwait</p>
                 </div>
               </div>
               
@@ -109,7 +110,7 @@ const Footer = () => {
               <div className="flex items-center space-x-3">
                 <Mail className="w-5 h-5 text-white/80 flex-shrink-0" />
                 <div>
-                  <p className="text-white/90 text-sm">info@testhublab.com</p>
+                  <p className="text-white/90 text-sm">info@mideastlabs.com</p>
                 </div>
               </div>
             </div>
