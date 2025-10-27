@@ -141,27 +141,28 @@ const ContactPage = () => {
               </div>
               
               {/* Address Overlay Card */}
-              <div className="absolute bottom-4 left-4 right-4 md:bottom-8 md:left-8 md:right-auto md:max-w-md">
-                <Card className="p-4 md:p-6 shadow-glow bg-background/95 backdrop-blur-sm">
-                  <div className="flex items-start space-x-3 md:space-x-4">
-                    <div className="w-10 h-10 md:w-12 md:h-12 bg-gradient-to-br from-primary to-primary-glow rounded-full flex items-center justify-center flex-shrink-0">
-                      <MapPin className="w-5 h-5 md:w-6 md:h-6 text-white" />
+              <div className="absolute top-4 left-4 right-4 md:bottom-8 md:top-auto md:left-8 md:right-auto md:max-w-md">
+                <Card className="p-3 md:p-6 shadow-glow bg-background/95 backdrop-blur-sm">
+                  <div className="flex items-start space-x-2 md:space-x-4">
+                    <div className="w-8 h-8 md:w-12 md:h-12 bg-gradient-to-br from-primary to-primary-glow rounded-full flex items-center justify-center flex-shrink-0">
+                      <MapPin className="w-4 h-4 md:w-6 md:h-6 text-white" />
                     </div>
-                    <div>
-                      <h3 className="text-base md:text-lg font-semibold text-primary mb-1 md:mb-2">Visit Our Laboratory</h3>
-                      <p className="text-xs md:text-sm text-muted-foreground leading-relaxed">
+                    <div className="min-w-0 flex-1">
+                      <h3 className="text-sm md:text-lg font-semibold text-primary mb-1">Visit Our Laboratory</h3>
+                      <p className="text-xs md:text-sm text-muted-foreground leading-relaxed hidden md:block">
                         Building 195, 1st Floor, West of Abu Fatira Al Herafia
                       </p>
                       <p className="text-xs md:text-sm text-muted-foreground leading-relaxed">
-                        P.O. Box 114, AL-Qusour, 47402, Kuwait
+                        <span className="md:hidden">Building 195, Kuwait</span>
+                        <span className="hidden md:inline">P.O. Box 114, AL-Qusour, 47402, Kuwait</span>
                       </p>
                       <a 
                         href="https://maps.google.com/?q=Building+195+West+of+Abu+Fatira+Al+Herafia+Kuwait"
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="inline-block mt-2 md:mt-3 text-xs md:text-sm font-medium text-primary hover:text-primary-glow transition-colors"
+                        className="inline-block mt-1 md:mt-3 text-xs md:text-sm font-medium text-primary hover:text-primary-glow transition-colors"
                       >
-                        Get Directions →
+                        Directions →
                       </a>
                     </div>
                   </div>
