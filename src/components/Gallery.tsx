@@ -2,6 +2,7 @@ import { Card } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { ArrowRight, Camera, ChevronLeft, ChevronRight } from "lucide-react";
 import { useState } from "react";
+import { Link } from "react-router-dom";
 import labChemistSamples from "@/assets/lab-chemist-samples.jpg";
 import labEquipmentSetup from "@/assets/lab-equipment-setup.jpg";
 import labSampleVials from "@/assets/lab-sample-vials.jpg";
@@ -171,10 +172,12 @@ const Gallery = () => {
 
         {/* CTA */}
         <div className="text-center">
-          <Button size="lg" variant="outline" className="group">
-            <span>Explore More Images</span>
-            <ArrowRight className="w-5 h-5 ml-2 group-hover:translate-x-1 transition-spring" />
-          </Button>
+          <Link to="/gallery">
+            <Button size="lg" variant="outline" className="group">
+              <span>Explore More Images</span>
+              <ArrowRight className="w-5 h-5 ml-2 group-hover:translate-x-1 transition-spring" />
+            </Button>
+          </Link>
         </div>
       </div>
     </section>
