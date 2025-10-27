@@ -1,10 +1,8 @@
 import { Card } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Phone, Mail, MapPin, Clock, Send, MessageSquare } from "lucide-react";
-
 const Contact = () => {
-  return (
-    <section id="contact" className="py-20 bg-gradient-to-b from-background to-primary/5">
+  return <section id="contact" className="py-20 bg-gradient-to-b from-background to-primary/5">
       <div className="container mx-auto px-4 lg:px-8">
         {/* Header */}
         <div className="text-center max-w-3xl mx-auto mb-16">
@@ -13,17 +11,12 @@ const Contact = () => {
             <span className="text-accent font-medium">Get In Touch</span>
           </div>
           
-          <h2 className="font-display font-bold text-heading text-foreground mb-6">
-            Request a Free Consultation
-          </h2>
           
-          <p className="text-muted-foreground leading-relaxed">
-            Ready to discuss your testing requirements? Our experts are here to help you 
-            find the right analytical solutions for your needs.
-          </p>
+          
+          
         </div>
 
-        <div className="max-w-2xl mx-auto">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-start">
           {/* Contact Information */}
           <div className="space-y-8">
             <div>
@@ -52,7 +45,7 @@ const Contact = () => {
                     </div>
                     <div>
                       <h4 className="font-semibold mb-2">Email Address</h4>
-                      <p className="text-muted-foreground">info@mideastlabs.com</p>
+                      <p className="text-muted-foreground">info@testhublab.com</p>
                       <p className="text-muted-foreground">Get detailed quotes and technical support</p>
                     </div>
                   </div>
@@ -65,8 +58,8 @@ const Contact = () => {
                     </div>
                     <div>
                       <h4 className="font-semibold mb-2">Laboratory Location</h4>
-                      <p className="text-muted-foreground">Building 195, 1st Floor, West of Abu Fatira Al Herafia</p>
-                      <p className="text-muted-foreground">P.O. Box 114, AL-Qusour, 47402, Kuwait</p>
+                      <p className="text-muted-foreground">Dubai, United Arab Emirates</p>
+                      <p className="text-muted-foreground">State-of-the-art testing facility</p>
                     </div>
                   </div>
                 </Card>
@@ -100,10 +93,65 @@ const Contact = () => {
               </Button>
             </Card>
           </div>
+
+          {/* Contact Form */}
+          <Card className="p-8 card-gradient shadow-strong">
+            <h3 className="font-semibold text-xl mb-6 text-foreground">
+              Send us a Message
+            </h3>
+            
+            <form className="space-y-6">
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                <div>
+                  <label className="block text-sm font-medium text-foreground mb-2">
+                    First Name
+                  </label>
+                  <input type="text" className="w-full px-4 py-3 bg-background border border-border rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent transition-smooth" placeholder="John" />
+                </div>
+                <div>
+                  <label className="block text-sm font-medium text-foreground mb-2">
+                    Last Name
+                  </label>
+                  <input type="text" className="w-full px-4 py-3 bg-background border border-border rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent transition-smooth" placeholder="Doe" />
+                </div>
+              </div>
+
+              <div>
+                <label className="block text-sm font-medium text-foreground mb-2">
+                  Email Address
+                </label>
+                <input type="email" className="w-full px-4 py-3 bg-background border border-border rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent transition-smooth" placeholder="john@example.com" />
+              </div>
+
+              <div>
+                <label className="block text-sm font-medium text-foreground mb-2">
+                  Testing Service Required
+                </label>
+                <select className="w-full px-4 py-3 bg-background border border-border rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent transition-smooth">
+                  <option>Select a service...</option>
+                  <option>Water & Waste Water Testing</option>
+                  <option>Food Testing</option>
+                  <option>Soil & Sludge Analysis</option>
+                  <option>Cosmetics Testing</option>
+                  <option>Other</option>
+                </select>
+              </div>
+
+              <div>
+                <label className="block text-sm font-medium text-foreground mb-2">
+                  Message
+                </label>
+                <textarea rows={4} className="w-full px-4 py-3 bg-background border border-border rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent transition-smooth resize-none" placeholder="Please describe your testing requirements..."></textarea>
+              </div>
+
+              <Button type="submit" size="lg" className="w-full bg-primary hover:bg-primary-deep shadow-glow">
+                <Send className="w-5 h-5 mr-2" />
+                Send Message
+              </Button>
+            </form>
+          </Card>
         </div>
       </div>
-    </section>
-  );
+    </section>;
 };
-
 export default Contact;
