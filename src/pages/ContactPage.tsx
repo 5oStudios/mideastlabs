@@ -114,7 +114,7 @@ const ContactPage = () => {
           <ScrollAnimation>
             <div className="text-center mb-12">
               <h2 className="text-3xl md:text-4xl font-display font-bold text-primary mb-4">
-                Send Us a Message
+                Company Location
               </h2>
               <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
                 Fill out the form below and our team will get back to you within 24 hours.
