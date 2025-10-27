@@ -86,11 +86,8 @@ Regional governments, private sector consulting, manufacturing and retailing org
                   </div>
                   <h3 className="text-2xl font-display font-bold text-primary">Our Vision</h3>
                 </div>
-                <p className="text-lg leading-relaxed text-muted-foreground">
-                  Our commitment to innovation is ongoing, to developing and offering new services 
-                  to meet the challenges of various industrial sectors. It's our responsibility to 
-                  use our education and experience to provide the highest quality analytical data 
-                  that meets and exceeds the industry's highest standards of ethics and professional criteria.
+                <p className="text-lg leading-relaxed text-muted-foreground">To provide superior services in Laboratory needs that advance the well-being of our community and this can
+only be achieved through our quality and differentiation.
                 </p>
               </Card>
             </ScrollAnimation>
