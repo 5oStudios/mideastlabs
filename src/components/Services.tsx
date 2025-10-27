@@ -10,8 +10,13 @@ import {
 import { ArrowRight, TestTube } from "lucide-react";
 import { servicesData } from "@/data/servicesData";
 import { Link } from "react-router-dom";
+import Autoplay from "embla-carousel-autoplay";
+import { useRef } from "react";
 
 const Services = () => {
+  const plugin = useRef(
+    Autoplay({ delay: 6000, stopOnInteraction: true })
+  );
   return (
     <section id="services" className="py-20 surface-gradient">
       <div className="container mx-auto px-4 lg:px-8">
@@ -35,6 +40,7 @@ const Services = () => {
         {/* Services Carousel */}
         <div className="relative px-12">
           <Carousel
+            plugins={[plugin.current]}
             opts={{
               align: "start",
               loop: true,
