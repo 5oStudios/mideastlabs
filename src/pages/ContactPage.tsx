@@ -200,38 +200,10 @@ const ContactPage = () => {
                       <p className="text-sm text-muted-foreground">Jebel Ali Industrial Area 2, Dubai</p>
                     </div>
                   </div>
-                  <p className="text-muted-foreground text-sm leading-relaxed">
-                    Our laboratory is conveniently located in Jebel Ali Industrial Area, 
-                    providing easy access for sample drop-off and consultation meetings.
-                  </p>
+                  
                 </Card>
 
-                <Card className="p-8 shadow-elegant">
-                  <h3 className="text-xl font-semibold text-primary mb-4">Quick Response</h3>
-                  <div className="space-y-4">
-                    <div className="flex items-start space-x-3">
-                      <div className="w-2 h-2 bg-primary rounded-full mt-2"></div>
-                      <div>
-                        <p className="font-medium text-foreground">Email Response</p>
-                        <p className="text-sm text-muted-foreground">Within 2 hours during business hours</p>
-                      </div>
-                    </div>
-                    <div className="flex items-start space-x-3">
-                      <div className="w-2 h-2 bg-accent rounded-full mt-2"></div>
-                      <div>
-                        <p className="font-medium text-foreground">Phone Support</p>
-                        <p className="text-sm text-muted-foreground">Immediate response during office hours</p>
-                      </div>
-                    </div>
-                    <div className="flex items-start space-x-3">
-                      <div className="w-2 h-2 bg-primary-glow rounded-full mt-2"></div>
-                      <div>
-                        <p className="font-medium text-foreground">Quote Delivery</p>
-                        <p className="text-sm text-muted-foreground">Within 24 hours for standard services</p>
-                      </div>
-                    </div>
-                  </div>
-                </Card>
+                
               </div>
             </ScrollAnimation>
           </div>
