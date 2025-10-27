@@ -41,11 +41,22 @@ const Contact = () => {
   };
 
   return (
-    <section id="contact" className="py-20 bg-gradient-to-b from-background to-primary/5">
-      <div className="container mx-auto px-4 lg:px-8">
+    <section id="contact" className="relative py-20 overflow-hidden">
+      {/* Full Width Background Image */}
+      <div className="absolute inset-0 w-full h-full">
+        <img
+          src={contactLabImage}
+          alt="Laboratory Equipment Illustration"
+          className="w-full h-full object-cover"
+        />
+        <div className="absolute inset-0 bg-gradient-to-r from-background/95 via-background/80 to-background/50"></div>
+      </div>
+
+      {/* Content Overlay */}
+      <div className="relative container mx-auto px-4 lg:px-8">
         {/* Header */}
         <div className="text-center max-w-3xl mx-auto mb-16 animate-fade-in">
-          <div className="inline-flex items-center space-x-2 bg-accent/10 px-4 py-2 rounded-full mb-6">
+          <div className="inline-flex items-center space-x-2 bg-accent/10 px-4 py-2 rounded-full mb-6 backdrop-blur-sm">
             <MessageSquare className="w-4 h-4 text-accent" />
             <span className="text-accent font-medium">Get In Touch</span>
           </div>
@@ -59,10 +70,9 @@ const Contact = () => {
           </p>
         </div>
 
-        {/* Two Column Grid */}
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12">
-          {/* Contact Form */}
-          <div className="animate-fade-in">
+        {/* Contact Form - Centered Overlay */}
+        <div className="max-w-2xl mx-auto animate-fade-in">
+          <div className="card-gradient shadow-strong rounded-2xl p-8 lg:p-10 backdrop-blur-md bg-background/95 border border-border/50">
             <form onSubmit={handleSubmit(onSubmit)} className="space-y-6">
               <div className="space-y-2">
                 <Label htmlFor="name" className="text-foreground font-medium">
@@ -144,17 +154,6 @@ const Contact = () => {
                 )}
               </Button>
             </form>
-          </div>
-
-          {/* Lab Illustration */}
-          <div className="relative animate-fade-in">
-            <div className="relative rounded-2xl overflow-hidden shadow-strong h-full min-h-[500px]">
-              <img
-                src={contactLabImage}
-                alt="Laboratory Equipment Illustration"
-                className="w-full h-full object-cover"
-              />
-            </div>
           </div>
         </div>
       </div>
