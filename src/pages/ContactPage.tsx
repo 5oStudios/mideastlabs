@@ -21,15 +21,15 @@ const ContactPage = () => {
   });
   const contactInfo = [{
     title: "Location",
-    details: ["W.H No. 7 Union Beverages Factory Building", "Jebel Ali Industrial Area 2", "Dubai, United Arab Emirates"],
+    details: ["Building 195, 1st Floor, West of Abu Fatira Al Herafia", "P.O. Box 114, AL-Qusour, 47402, Kuwait"],
     icon: MapPin
   }, {
     title: "Phone Numbers",
-    details: ["+96522251588", "+96522251588"],
+    details: ["+96522251588"],
     icon: Phone
   }, {
     title: "Email Address",
-    details: ["info@testhublab.com", "sales@testhublab.com"],
+    details: ["info@mideastlabs.com"],
     icon: Mail
   }, {
     title: "Working Hours",
