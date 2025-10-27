@@ -21,40 +21,6 @@ const Career = () => {
     message: ""
   });
 
-  const jobOpenings = [
-    {
-      title: "Senior Analytical Chemist",
-      department: "Chemical Analysis",
-      type: "Full-time",
-      experience: "5+ years",
-      description: "Lead analytical testing procedures and method development for environmental samples",
-      requirements: ["PhD/MSc in Chemistry", "5+ years lab experience", "Knowledge of HPLC, GC-MS", "Leadership skills"]
-    },
-    {
-      title: "Microbiologist",
-      department: "Microbiology",
-      type: "Full-time", 
-      experience: "3+ years",
-      description: "Perform microbiological testing for food, water, and environmental samples",
-      requirements: ["BSc/MSc in Microbiology", "3+ years experience", "Knowledge of culture techniques", "Sterile technique expertise"]
-    },
-    {
-      title: "Laboratory Technician",
-      department: "General Laboratory",
-      type: "Full-time",
-      experience: "1-3 years",
-      description: "Support analytical operations and sample preparation activities",
-      requirements: ["Diploma/BSc in Science", "1-3 years experience", "Basic lab skills", "Attention to detail"]
-    },
-    {
-      title: "Quality Assurance Specialist",
-      department: "Quality Control",
-      type: "Full-time",
-      experience: "4+ years",
-      description: "Oversee quality management system and ensure compliance with standards",
-      requirements: ["BSc in relevant field", "QA/QC experience", "ISO 17025 knowledge", "Audit experience"]
-    }
-  ];
 
   const benefits = [
     {
@@ -157,53 +123,6 @@ const Career = () => {
         </div>
       </section>
 
-      {/* Current Openings */}
-      <section className="py-20">
-        <div className="container mx-auto px-4 lg:px-8">
-          <ScrollAnimation>
-            <div className="text-center mb-16">
-              <h2 className="text-3xl md:text-4xl font-display font-bold text-primary mb-6">
-                Current Job Openings
-              </h2>
-              <p className="text-lg text-muted-foreground max-w-3xl mx-auto">
-                Explore exciting career opportunities in our growing laboratory team.
-              </p>
-            </div>
-          </ScrollAnimation>
-
-          <div className="grid gap-8 max-w-4xl mx-auto">
-            {jobOpenings.map((job, index) => (
-              <ScrollAnimation key={index} delay={0.1 * index}>
-                <Card className="p-8 shadow-elegant hover:shadow-glow transition-all duration-500">
-                  <div className="flex flex-col lg:flex-row lg:items-start lg:justify-between mb-6">
-                    <div className="lg:flex-1">
-                      <div className="flex flex-wrap items-center gap-3 mb-3">
-                        <h3 className="text-xl font-semibold text-primary">{job.title}</h3>
-                        <Badge variant="secondary">{job.type}</Badge>
-                        <Badge variant="outline">{job.experience}</Badge>
-                      </div>
-                      <p className="text-muted-foreground mb-2">{job.department}</p>
-                      <p className="text-muted-foreground leading-relaxed">{job.description}</p>
-                    </div>
-                    <Button className="mt-4 lg:mt-0 lg:ml-6">
-                      Apply Now
-                    </Button>
-                  </div>
-                  
-                  <div>
-                    <h4 className="font-semibold text-primary mb-2">Requirements:</h4>
-                    <ul className="list-disc list-inside space-y-1 text-muted-foreground">
-                      {job.requirements.map((req, reqIndex) => (
-                        <li key={reqIndex} className="text-sm">{req}</li>
-                      ))}
-                    </ul>
-                  </div>
-                </Card>
-              </ScrollAnimation>
-            ))}
-          </div>
-        </div>
-      </section>
 
       {/* Application Form */}
       <section className="py-20 bg-gradient-to-b from-secondary/30 to-background">
