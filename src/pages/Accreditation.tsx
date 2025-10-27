@@ -98,52 +98,9 @@ const Accreditation = () => {
         </div>
       </section>
 
-      {/* Accreditation Overview */}
+      {/* Certificates Section */}
       <section className="py-20 bg-gradient-to-b from-background to-secondary/30">
         <div className="container mx-auto px-4 lg:px-8">
-          <ScrollAnimation>
-            <div className="text-center mb-16">
-              <h2 className="text-3xl md:text-4xl font-display font-bold text-primary mb-6">
-                Quality You Can Trust
-              </h2>
-              <p className="text-lg text-muted-foreground max-w-3xl mx-auto">
-                Our accreditations and certifications demonstrate our commitment to delivering 
-                accurate, reliable testing services that meet international standards.
-              </p>
-            </div>
-          </ScrollAnimation>
-
-          {/* Certification Cards */}
-          <div className="grid md:grid-cols-2 gap-8 mb-16">
-            {certifications.map((cert, index) => (
-              <ScrollAnimation key={index} delay={0.1 * index}>
-                <Card className="p-8 shadow-elegant hover:shadow-glow transition-all duration-500 group">
-                  <div className="flex items-start justify-between mb-4">
-                    <div className="w-12 h-12 bg-gradient-to-br from-primary to-primary-glow rounded-lg flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
-                      <FileCheck className="w-6 h-6 text-white" />
-                    </div>
-                    <Badge 
-                      variant={cert.status === 'Accredited' ? 'default' : 'secondary'}
-                      className="text-xs"
-                    >
-                      {cert.status}
-                    </Badge>
-                  </div>
-                  <h3 className="text-xl font-semibold text-primary mb-3 group-hover:text-primary-glow transition-colors duration-300">
-                    {cert.title}
-                  </h3>
-                  <p className="text-muted-foreground leading-relaxed mb-4">
-                    {cert.description}
-                  </p>
-                  <div className="flex items-center justify-between text-sm">
-                    <span className="text-muted-foreground">Valid Until:</span>
-                    <span className="font-medium text-primary">{cert.validUntil}</span>
-                  </div>
-                </Card>
-              </ScrollAnimation>
-            ))}
-          </div>
-
           {/* Certificates Section */}
           <div className="space-y-12">
             <ScrollAnimation>
