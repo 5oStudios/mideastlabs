@@ -130,11 +130,7 @@ const Hero = () => {
           <div className="animate-fade-up" style={{
           animationDelay: '0.4s'
         }}>
-            <p className="text-lg md:text-xl text-white/90 mb-10 max-w-3xl leading-relaxed backdrop-blur-sm">
-              The modern consumer marketplace demands products in terms of quality, performance, 
-              sustainability and value for money. <span className="text-cyan-300 font-semibold">TESTHUB</span> provides 
-              services to do it right, saving time, effort and money.
-            </p>
+            
           </div>
 
           {/* Enhanced Action Buttons */}
