@@ -111,29 +111,67 @@ const ContactPage = () => {
       {/* Contact Form */}
       <section className="py-20">
         <div className="container mx-auto px-4 lg:px-8">
-          <div className="grid lg:grid-cols-2 gap-12 max-w-6xl mx-auto">
-            {/* Form */}
-            
+          <ScrollAnimation>
+            <div className="text-center mb-12">
+              <h2 className="text-3xl md:text-4xl font-display font-bold text-primary mb-4">
+                Send Us a Message
+              </h2>
+              <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
+                Fill out the form below and our team will get back to you within 24 hours.
+              </p>
+            </div>
+          </ScrollAnimation>
+        </div>
+      </section>
 
-            {/* Map and Additional Info */}
-            <ScrollAnimation delay={0.2}>
-              <div className="space-y-8">
-                <Card className="p-8 shadow-elegant">
-                  <h3 className="text-xl font-semibold text-primary mb-4">Visit Our Laboratory</h3>
-                  <div className="aspect-video bg-gradient-to-br from-secondary to-secondary/50 rounded-lg flex items-center justify-center mb-4">
-                    <div className="text-center">
-                      <MapPin className="w-12 h-12 text-primary mx-auto mb-2" />
-                      <p className="text-muted-foreground">Interactive Map</p>
-                      <p className="text-sm text-muted-foreground">Jebel Ali Industrial Area 2, Dubai</p>
+      {/* Full Width Map Section */}
+      <section className="py-0 mb-20">
+        <div className="w-full">
+          <ScrollAnimation>
+            <div className="relative w-full">
+              <div className="aspect-[16/9] md:aspect-[21/9] w-full">
+                <iframe
+                  src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3482.5779!2d48.0!3d29.3!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMjnCsDE4JzAwLjAiTiA0OMKwMDAnMDAuMCJF!5e0!3m2!1sen!2skw!4v1635000000000!5m2!1sen!2skw&q=Building+195+West+of+Abu+Fatira+Al+Herafia+Kuwait"
+                  width="100%"
+                  height="100%"
+                  style={{ border: 0 }}
+                  allowFullScreen
+                  loading="lazy"
+                  referrerPolicy="no-referrer-when-downgrade"
+                  title="Middle East Environmental Laboratories Location"
+                  className="w-full h-full"
+                ></iframe>
+              </div>
+              
+              {/* Address Overlay Card */}
+              <div className="absolute bottom-8 left-4 right-4 md:left-8 md:right-auto md:max-w-md">
+                <Card className="p-6 shadow-glow bg-background/95 backdrop-blur-sm">
+                  <div className="flex items-start space-x-4">
+                    <div className="w-12 h-12 bg-gradient-to-br from-primary to-primary-glow rounded-full flex items-center justify-center flex-shrink-0">
+                      <MapPin className="w-6 h-6 text-white" />
+                    </div>
+                    <div>
+                      <h3 className="text-lg font-semibold text-primary mb-2">Visit Our Laboratory</h3>
+                      <p className="text-sm text-muted-foreground leading-relaxed">
+                        Building 195, 1st Floor, West of Abu Fatira Al Herafia
+                      </p>
+                      <p className="text-sm text-muted-foreground leading-relaxed">
+                        P.O. Box 114, AL-Qusour, 47402, Kuwait
+                      </p>
+                      <a 
+                        href="https://maps.google.com/?q=Building+195+West+of+Abu+Fatira+Al+Herafia+Kuwait"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="inline-block mt-3 text-sm font-medium text-primary hover:text-primary-glow transition-colors"
+                      >
+                        Get Directions →
+                      </a>
                     </div>
                   </div>
-                  
                 </Card>
-
-                
               </div>
-            </ScrollAnimation>
-          </div>
+            </div>
+          </ScrollAnimation>
         </div>
       </section>
 
