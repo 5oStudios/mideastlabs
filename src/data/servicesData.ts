@@ -186,46 +186,6 @@ export const servicesData: Service[] = [
     relatedServices: ["microbiological-testing", "food-agricultural-testing", "air-quality-testing"]
   },
   {
-    id: "chemicals-testing",
-    title: "Chemicals Testing",
-    category: "Chemical Analysis",
-    icon: TestTube,
-    image: chemicalsTestingImg,
-    shortDescription: "Precise chemical identification and assay percentage determination for industrial and research applications.",
-    fullDescription: "Our Chemicals Testing services provide accurate identification and quantification of chemical compounds for various industrial, research, and quality control applications. We offer comprehensive analysis to determine chemical composition, purity levels, and assay percentages. Our state-of-the-art analytical techniques and experienced chemists ensure reliable results for raw materials, finished products, and unknown substances. We support industries in quality assurance, product development, and regulatory compliance.",
-    subServices: [
-      "Chemical identification and characterization",
-      "Assay percentage (%) determination",
-      "Purity analysis",
-      "Impurity profiling",
-      "Raw material verification",
-      "Product quality testing",
-      "Unknown substance identification",
-      "Method development and validation"
-    ],
-    features: [
-      "Advanced analytical instrumentation",
-      "High precision and accuracy",
-      "Regulatory method compliance",
-      "Custom analysis available",
-      "Expert consultation"
-    ],
-    testingParameters: [
-      "Chemical composition",
-      "Assay percentage",
-      "Purity levels",
-      "Moisture content",
-      "pH determination",
-      "Specific gravity",
-      "Melting/boiling points",
-      "Functional group identification"
-    ],
-    certifications: ["ISO 17025", "GLP Compliant", "Pharmacopoeia Standards"],
-    turnaroundTime: "5-7 business days",
-    sampleRequirements: "Minimum 100g or 100ml with proper labeling and MSDS if available",
-    relatedServices: ["chemical-testing", "petroleum-fuel-testing", "industrial-waste-characterization"]
-  },
-  {
     id: "petroleum-fuel-testing",
     title: "Petroleum & Fuel Testing",
     category: "Energy & Petroleum",
