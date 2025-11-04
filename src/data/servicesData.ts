@@ -25,46 +25,6 @@ import consultationImg from "@/assets/consultation-support.jpg";
 
 export const servicesData: Service[] = [
   {
-    id: "air-quality-testing",
-    title: "Air Quality Testing",
-    category: "Environmental Testing",
-    icon: Wind,
-    image: airQualityImg,
-    shortDescription: "Comprehensive ambient air monitoring for indoor and outdoor environments with professional air filter sampling and analysis.",
-    fullDescription: "Our Air Quality Testing services provide comprehensive monitoring and analysis of air quality in both indoor and outdoor environments. We utilize state-of-the-art equipment and methodologies to ensure accurate and reliable results that meet international standards. Our expert team conducts thorough assessments to identify pollutants, allergens, and other airborne contaminants that may affect health and safety. We provide detailed reports with actionable recommendations to help you maintain optimal air quality in your facilities.",
-    subServices: [
-      "Ambient air monitoring (indoor/outdoor)",
-      "Air filter sampling and analysis",
-      "Particulate matter (PM2.5, PM10) measurement",
-      "Volatile Organic Compounds (VOCs) detection",
-      "Carbon monoxide and dioxide levels",
-      "Industrial emission monitoring",
-      "HVAC system air quality assessment",
-      "Workplace air quality audits"
-    ],
-    features: [
-      "ISO 17025 accredited testing",
-      "Real-time monitoring capabilities",
-      "Comprehensive analysis reports",
-      "Expert consultation included",
-      "Regulatory compliance support"
-    ],
-    testingParameters: [
-      "PM2.5 and PM10 particulate matter",
-      "Nitrogen dioxide (NO2)",
-      "Sulfur dioxide (SO2)",
-      "Carbon monoxide (CO)",
-      "Ozone (O3)",
-      "Volatile Organic Compounds (VOCs)",
-      "Temperature and humidity",
-      "Air flow and ventilation rates"
-    ],
-    certifications: ["ISO 17025", "EPA Approved", "OSHA Compliant"],
-    turnaroundTime: "3-5 business days",
-    sampleRequirements: "Contact our team for specific sampling protocols and equipment requirements",
-    relatedServices: ["environmental-monitoring", "outdoor-sampling", "microbiological-testing"]
-  },
-  {
     id: "water-analysis",
     title: "Water Analysis",
     category: "Environmental Testing",
@@ -467,46 +427,6 @@ export const servicesData: Service[] = [
     relatedServices: ["environmental-hygiene", "food-agricultural-testing", "water-analysis"]
   },
   {
-    id: "chemical-testing",
-    title: "Chemical Testing",
-    category: "Analytical Chemistry",
-    icon: Beaker,
-    image: chemicalTestingImg,
-    shortDescription: "Advanced inorganic and organic compound analysis using GC, ICP, HPLC, and other laboratory-grade methods.",
-    fullDescription: "Our Chemical Testing services utilize advanced analytical instrumentation including Gas Chromatography (GC), Inductively Coupled Plasma (ICP), and High-Performance Liquid Chromatography (HPLC) to analyze inorganic and organic compounds. We detect nutrients, metals, and pollutants in various environmental and industrial matrices. Our comprehensive chemical analysis supports environmental monitoring, quality control, research and development, and regulatory compliance across multiple industries.",
-    subServices: [
-      "Inorganic compound analysis",
-      "Organic compound identification",
-      "Heavy metals detection by ICP",
-      "Pesticide and herbicide analysis by GC",
-      "Pharmaceutical compounds by HPLC",
-      "Nutrient analysis (nitrogen, phosphorus)",
-      "Pollutant identification",
-      "Trace level analysis"
-    ],
-    features: [
-      "State-of-the-art instrumentation",
-      "Ultra-trace detection capabilities",
-      "Multi-component analysis",
-      "Method development services",
-      "Expert data interpretation"
-    ],
-    testingParameters: [
-      "Heavy metals (As, Cd, Cr, Cu, Pb, Hg, Ni, Zn)",
-      "Nutrients (N, P, K, ammonia, nitrate)",
-      "Volatile organics (VOCs)",
-      "Semi-volatile organics (SVOCs)",
-      "Pesticides and PCBs",
-      "PAHs and phenols",
-      "Organic acids",
-      "Solvents and residues"
-    ],
-    certifications: ["ISO 17025", "EPA Methods", "Standard Methods"],
-    turnaroundTime: "5-10 business days",
-    sampleRequirements: "Appropriate containers for sample type, proper preservation and storage",
-    relatedServices: ["chemicals-testing", "water-analysis", "soil-sediment-testing"]
-  },
-  {
     id: "physical-testing",
     title: "Physical Testing",
     category: "Physical Analysis",
@@ -626,46 +546,6 @@ export const servicesData: Service[] = [
     sampleRequirements: "Proper sampling by trained personnel, air samples with calibrated pumps, bulk samples in sealed containers",
     relatedServices: ["air-quality-testing", "environmental-hygiene", "outdoor-sampling"]
   },
-  {
-    id: "consultation-support",
-    title: "Consultation & Support",
-    category: "Professional Services",
-    icon: Users,
-    image: consultationImg,
-    shortDescription: "Expert technical guidance and regulatory support for all your laboratory and environmental compliance needs.",
-    fullDescription: "Our Consultation & Support services provide expert technical guidance and regulatory support to help you navigate complex testing requirements, compliance obligations, and quality assurance challenges. Our experienced team of scientists, engineers, and regulatory specialists work closely with you to understand your needs and provide customized solutions. Whether you need help with sampling strategies, result interpretation, compliance documentation, or method development, we are here to support your success.",
-    subServices: [
-      "Technical consultation for testing programs",
-      "Regulatory compliance guidance",
-      "Sampling strategy development",
-      "Data interpretation and reporting",
-      "Quality assurance program setup",
-      "Training for sampling personnel",
-      "Environmental management system support",
-      "Expert witness services"
-    ],
-    features: [
-      "Experienced consultants",
-      "Customized solutions",
-      "Regulatory expertise",
-      "Training programs",
-      "Ongoing support"
-    ],
-    testingParameters: [
-      "Project-specific consultation",
-      "Compliance requirements review",
-      "Method selection guidance",
-      "Quality control protocols",
-      "Documentation standards",
-      "Reporting formats",
-      "Regulatory updates",
-      "Best practices implementation"
-    ],
-    certifications: ["ISO 17025 Consultants", "Regulatory Experts", "Industry Specialists"],
-    turnaroundTime: "Consultation scheduled as needed",
-    sampleRequirements: "Not applicable - consultation service",
-    relatedServices: ["environmental-monitoring", "all-services"]
-  }
 ];
 
 // Helper function to get service by ID
