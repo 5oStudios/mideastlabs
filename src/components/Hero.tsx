@@ -161,34 +161,30 @@ const Hero = () => {
             icon: Phone,
             number: "24/7",
             label: "Support Available",
-            color: "from-cyan-400 to-teal-400"
+            color: "from-cyan-400 to-teal-400",
+            iconColor: "text-cyan-400"
           }, {
             icon: Beaker,
             number: "4000+",
             label: "Sample Test Monthly",
-            color: "from-blue-400 to-purple-400"
+            color: "from-blue-400 to-purple-400",
+            iconColor: "text-blue-400"
           }, {
             icon: CheckCircle,
             number: "Accredited",
             label: "ISO/IEC 17205",
-            color: "from-emerald-400 to-cyan-400"
+            color: "from-emerald-400 to-cyan-400",
+            iconColor: "text-emerald-400"
           }, {
             icon: Users,
             number: "Serving",
             label: "Chemical & Environmental",
-            color: "from-purple-400 to-pink-400"
+            color: "from-purple-400 to-pink-400",
+            iconColor: "text-purple-400"
           }].map((stat, index) => <div key={index} className="group relative">
                 <div className="text-center p-4 md:p-6 bg-white/10 backdrop-blur-md rounded-2xl border border-white/20 hover:bg-white/15 transition-all duration-300 hover:scale-105">
                   <div className="flex justify-center mb-3">
-                    <stat.icon className={`w-8 h-8 md:w-10 md:h-10 bg-gradient-to-r ${stat.color} text-transparent`} style={{
-                      filter: 'drop-shadow(0 0 8px currentColor)'
-                    }} strokeWidth={1.5} stroke="url(#gradient)" />
-                    <defs>
-                      <linearGradient id="gradient" x1="0%" y1="0%" x2="100%" y2="100%">
-                        <stop offset="0%" stopColor="#6ee7b7" />
-                        <stop offset="100%" stopColor="#22d3ee" />
-                      </linearGradient>
-                    </defs>
+                    <stat.icon className={`w-8 h-8 md:w-10 md:h-10 ${stat.iconColor} drop-shadow-lg`} strokeWidth={1.5} />
                   </div>
                   <div className={`text-xl md:text-2xl font-bold bg-gradient-to-r ${stat.color} bg-clip-text text-transparent mb-1`}>
                     {stat.number}
