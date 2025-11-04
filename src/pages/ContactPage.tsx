@@ -89,7 +89,7 @@ const ContactPage = () => {
             {contactInfo.map((info, index) => {
               const IconComponent = info.icon;
               return <ScrollAnimation key={index} delay={0.1 * index}>
-                  <Card className="p-6 text-center shadow-elegant hover:shadow-glow transition-all duration-500 group">
+                  <Card className="p-6 text-center shadow-elegant hover:shadow-glow transition-all duration-500 group h-full">
                     <div className="w-16 h-16 bg-gradient-to-br from-primary to-primary-glow rounded-full flex items-center justify-center mx-auto mb-4 group-hover:scale-110 transition-transform duration-300">
                       <IconComponent className="w-8 h-8 text-white" />
                     </div>
