@@ -36,7 +36,7 @@ const Header = () => {
     label: "Contact Us",
     href: "/contact"
   }];
-  return <header className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${isScrolled ? 'bg-white/80 backdrop-blur-md border-b border-border/50 shadow-sm' : 'bg-white border-b border-border shadow-sm'}`}>
+  return <header className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${isScrolled ? 'bg-white border-b border-border shadow-md' : 'bg-white border-b border-border shadow-sm'}`}>
       <div className="container mx-auto px-4 lg:px-8 relative z-10">
         <div className="flex items-center justify-between h-20 lg:h-24">
           {/* Logo */}
