@@ -44,16 +44,24 @@ const Header = () => {
       : 'bg-white border-b border-border shadow-sm'
   }`}>
       <div className="container mx-auto px-4 lg:px-8 relative z-10">
-        <div className="flex items-center justify-between h-16 lg:h-20">
+        <div className="flex items-center justify-between h-20 lg:h-24">
           {/* Logo */}
-          <div className="flex items-center space-x-2">
+          <div className="flex items-center space-x-3">
             <img 
               src={logo} 
               alt="Middle East Environmental Laboratories Co. Logo"
-              className="h-16 w-auto"
+              className="h-20 lg:h-24 w-auto"
               loading="eager"
               fetchPriority="high"
             />
+            <div className="flex flex-col">
+              <span className="text-sm lg:text-base font-semibold text-foreground leading-tight">
+                Middle East Environmental
+              </span>
+              <span className="text-sm lg:text-base font-semibold text-foreground leading-tight">
+                Laboratories W.L.L
+              </span>
+            </div>
           </div>
 
           {/* Desktop Navigation */}
@@ -64,7 +72,7 @@ const Header = () => {
                 <Link 
                   key={item.label} 
                   to={item.href} 
-                  className={`text-sm font-medium transition-smooth relative group ${
+                  className={`text-base font-medium transition-smooth relative group ${
                     isActive ? 'text-blue-600 hover:text-blue-800' : 'text-foreground hover:text-primary'
                   }`}
                 >
