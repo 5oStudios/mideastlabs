@@ -58,7 +58,7 @@ const Header = () => {
             const isActive = location.pathname === item.href;
             return <Link key={item.label} to={item.href} className={`text-base font-medium transition-smooth relative group ${isActive ? 'text-blue-600 hover:text-blue-800' : 'text-foreground hover:text-primary'}`}>
                   {item.label}
-                  <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-primary group-hover:w-full transition-smooth"></span>
+                  <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-primary group-hover:w-full transition-smooth text-blue-900"></span>
                 </Link>;
           })}
           </nav>
