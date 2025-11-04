@@ -5,12 +5,12 @@ import logo from "@/assets/logo-footer.gif";
 
 const Footer = () => {
   const quickLinks = [
-    { label: "About Us", href: "#about" },
-    { label: "Services", href: "#services" },
-    { label: "Accreditation", href: "#accreditation" },
-    { label: "Gallery", href: "#gallery" },
-    { label: "Career", href: "#career" },
-    { label: "Contact", href: "#contact" }
+    { label: "About Us", href: "/about-us" },
+    { label: "Services", href: "/services" },
+    { label: "Accreditation", href: "/accreditation" },
+    { label: "Gallery", href: "/gallery" },
+    { label: "Career", href: "/career" },
+    { label: "Contact", href: "/contact" }
   ];
 
   const services = [
@@ -64,16 +64,12 @@ const Footer = () => {
             <ul className="space-y-3">
               {quickLinks.map((link, index) => (
                 <li key={index}>
-                  <a 
-                    href={link.href}
+                  <Link 
+                    to={link.href}
                     className="text-white/80 hover:text-white transition-smooth text-sm"
-                    onClick={(e) => {
-                      e.preventDefault();
-                      document.querySelector(link.href)?.scrollIntoView({ behavior: 'smooth' });
-                    }}
                   >
                     {link.label}
-                  </a>
+                  </Link>
                 </li>
               ))}
             </ul>
@@ -85,9 +81,9 @@ const Footer = () => {
             <ul className="space-y-3">
               {services.map((service, index) => (
                 <li key={index}>
-                  <span className="text-white/80 text-sm">
+                  <Link to="/services" className="text-white/80 hover:text-white transition-smooth text-sm">
                     {service}
-                  </span>
+                  </Link>
                 </li>
               ))}
             </ul>
