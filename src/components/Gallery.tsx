@@ -159,10 +159,10 @@ const Gallery = () => {
                 }`}></div>
               </div>
               <div className="p-3">
-                <div className="text-xs font-medium text-foreground truncate">
+                <div className="text-sm font-bold text-foreground truncate">
                   {image.title}
                 </div>
-                <div className="text-xs text-muted-foreground mt-1">
+                <div className="text-sm text-muted-foreground mt-1">
                   {image.category}
                 </div>
               </div>
