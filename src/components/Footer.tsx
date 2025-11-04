@@ -37,11 +37,6 @@ const Footer = () => {
               />
             </div>
             
-            <p className="text-white/90 text-sm leading-relaxed">
-              Leading analytical testing laboratory providing comprehensive microbiological, 
-              chemical, and environmental testing services with state-of-the-art facilities.
-            </p>
-
             <div className="flex space-x-3">
               <Button size="icon" variant="ghost" className="text-white hover:bg-white/20">
                 <FacebookIcon className="w-5 h-5" />
