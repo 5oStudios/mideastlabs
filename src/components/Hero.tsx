@@ -1,5 +1,5 @@
 import { Button } from "@/components/ui/button";
-import { ArrowRight, Microscope, FlaskConical, Shield, Atom, Dna, TestTube, Beaker } from "lucide-react";
+import { ArrowRight, Microscope, FlaskConical, Shield, Atom, Dna, TestTube, Beaker, Phone, CheckCircle, Users } from "lucide-react";
 import { Link } from "react-router-dom";
 const Hero = () => {
   return <section id="home" className="relative min-h-screen flex items-center overflow-hidden bg-gradient-to-br from-slate-900 via-blue-900 to-indigo-900">
@@ -158,24 +158,39 @@ const Hero = () => {
           animationDelay: '0.8s'
         }}>
             {[{
-            number: "15+",
-            label: "Years Experience",
-            color: "from-emerald-400 to-cyan-400"
-          }, {
-            number: "50+",
-            label: "Testing Services",
-            color: "from-blue-400 to-purple-400"
-          }, {
-            number: "1000+",
-            label: "Satisfied Clients",
-            color: "from-purple-400 to-pink-400"
-          }, {
+            icon: Phone,
             number: "24/7",
             label: "Support Available",
             color: "from-cyan-400 to-teal-400"
+          }, {
+            icon: Beaker,
+            number: "4000+",
+            label: "Sample Test Monthly",
+            color: "from-blue-400 to-purple-400"
+          }, {
+            icon: CheckCircle,
+            number: "Accredited",
+            label: "ISO/IEC 17205",
+            color: "from-emerald-400 to-cyan-400"
+          }, {
+            icon: Users,
+            number: "Serving",
+            label: "Chemical & Environmental",
+            color: "from-purple-400 to-pink-400"
           }].map((stat, index) => <div key={index} className="group relative">
                 <div className="text-center p-4 md:p-6 bg-white/10 backdrop-blur-md rounded-2xl border border-white/20 hover:bg-white/15 transition-all duration-300 hover:scale-105">
-                  <div className={`text-2xl md:text-3xl font-bold bg-gradient-to-r ${stat.color} bg-clip-text text-transparent mb-2`}>
+                  <div className="flex justify-center mb-3">
+                    <stat.icon className={`w-8 h-8 md:w-10 md:h-10 bg-gradient-to-r ${stat.color} text-transparent`} style={{
+                      filter: 'drop-shadow(0 0 8px currentColor)'
+                    }} strokeWidth={1.5} stroke="url(#gradient)" />
+                    <defs>
+                      <linearGradient id="gradient" x1="0%" y1="0%" x2="100%" y2="100%">
+                        <stop offset="0%" stopColor="#6ee7b7" />
+                        <stop offset="100%" stopColor="#22d3ee" />
+                      </linearGradient>
+                    </defs>
+                  </div>
+                  <div className={`text-xl md:text-2xl font-bold bg-gradient-to-r ${stat.color} bg-clip-text text-transparent mb-1`}>
                     {stat.number}
                   </div>
                   <div className="text-white/80 text-xs md:text-sm font-medium">{stat.label}</div>
