@@ -32,7 +32,7 @@ const Footer = () => {
               <img 
                 src={logo} 
                 alt="Middle East Environmental Laboratories Co. Logo"
-                className="h-28 w-auto"
+                className="h-28 w-28 rounded-full object-cover"
                 loading="lazy"
               />
             </div>
