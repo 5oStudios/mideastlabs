@@ -12,7 +12,7 @@ const PrivacyPolicy = () => {
     <div className="min-h-screen flex flex-col bg-background">
       <Header />
       
-      <main className="flex-grow">
+      <main className="flex-grow pt-20">
         {/* Hero Section */}
         <section className="bg-gradient-to-r from-primary to-primary-deep text-white py-20">
           <div className="container mx-auto px-4">
