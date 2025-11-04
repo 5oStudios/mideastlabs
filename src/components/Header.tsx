@@ -67,7 +67,7 @@ const Header = () => {
           <div className="hidden lg:flex items-center space-x-4">
             <Button variant="outline" className="flex items-center space-x-2">
               <Phone className="w-4 h-4" />
-              <span>+96522251588</span>
+              <span className="font-bold">+965 22251577</span>
             </Button>
           </div>
 
@@ -89,7 +89,7 @@ const Header = () => {
             })}
                 <Button className="flex items-center space-x-2 mt-4">
                   <Phone className="w-4 h-4" />
-                  <span>+96522251588</span>
+                  <span className="font-bold">+965 22251577</span>
                 </Button>
               </div>
             </nav>

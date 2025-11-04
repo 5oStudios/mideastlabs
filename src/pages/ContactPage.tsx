@@ -25,7 +25,7 @@ const ContactPage = () => {
     icon: MapPin
   }, {
     title: "Phone Numbers",
-    details: ["+96522251588"],
+    details: ["+965 22251577"],
     icon: Phone
   }, {
     title: "Email Address",
