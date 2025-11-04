@@ -40,7 +40,7 @@ const Header = () => {
       <div className="container mx-auto px-4 lg:px-8 relative z-10">
         <div className="flex items-center justify-between h-20 lg:h-24">
           {/* Logo */}
-          <div className="flex items-center space-x-3">
+          <div className="flex items-center space-x-1.5">
             <img src={logo} alt="Middle East Environmental Laboratories Co. Logo" className="h-20 lg:h-24 w-auto" loading="eager" fetchPriority="high" />
             <div className="flex flex-col">
               <span className="text-sm lg:text-base font-semibold leading-tight text-blue-900">
