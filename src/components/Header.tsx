@@ -46,7 +46,7 @@ const Header = () => {
               <span className="text-sm lg:text-base font-semibold leading-tight text-blue-900">
                 Middle East Environmental
               </span>
-              <span className="text-sm lg:text-base font-semibold text-foreground leading-tight">
+              <span className="text-sm lg:text-base font-semibold leading-tight text-blue-900">
                 Laboratories W.L.L
               </span>
             </div>
