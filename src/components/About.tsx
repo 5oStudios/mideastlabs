@@ -49,8 +49,7 @@ const About = () => {
               </div>
               <h3 className="font-semibold text-lg mb-3">Our Vision</h3>
               <p className="text-muted-foreground text-sm leading-relaxed">
-                To be the leading analytical testing laboratory in the region, recognized for 
-                scientific excellence, innovation, and outstanding customer service.
+                To provide superior services in Laboratory needs that advance the well-being of our community and this can only be achieved through our quality and differentiation
               </p>
             </Card>
 
