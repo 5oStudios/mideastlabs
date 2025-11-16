@@ -7,23 +7,16 @@ import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import { servicesData } from "@/data/servicesData";
 import { Link } from "react-router-dom";
-
 const Services = () => {
   const categories = [...new Set(servicesData.map(service => service.category))];
-
-  return (
-    <>
+  return <>
       <Header />
       <div className="min-h-screen pt-20">
       {/* Hero Section */}
       <section className="relative py-20 text-white overflow-hidden">
         {/* Background Image */}
         <div className="absolute inset-0 z-0">
-          <img 
-            src="/assets/food-testing.jpg" 
-            alt="Food testing laboratory"
-            className="w-full h-full object-cover"
-          />
+          <img src="/assets/food-testing.jpg" alt="Food testing laboratory" className="w-full h-full object-cover" />
           <div className="absolute inset-0 bg-blue-600/40"></div>
         </div>
         <div className="container mx-auto px-4 lg:px-8 relative z-10">
@@ -62,31 +55,18 @@ const Services = () => {
           {/* Category Filters */}
           <ScrollAnimation delay={0.2}>
             <div className="flex flex-wrap justify-center gap-4 mb-12">
-              {categories.map((category, index) => (
-                <Badge 
-                  key={index}
-                  variant="outline" 
-                  className="text-sm py-2 px-4 cursor-pointer hover:bg-primary hover:text-white transition-colors"
-                >
-                  {category}
-                </Badge>
-              ))}
+              {categories.map((category, index) => {})}
             </div>
           </ScrollAnimation>
 
           {/* Services Grid */}
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {servicesData.map((service, index) => (
-              <ScrollAnimation key={service.id} delay={0.1 * (index % 6)}>
+            {servicesData.map((service, index) => <ScrollAnimation key={service.id} delay={0.1 * (index % 6)}>
                 <Link to={`/services/${service.id}`}>
                   <Card className="group card-gradient shadow-elegant hover:shadow-glow transition-spring cursor-pointer overflow-hidden h-full">
                     {/* Image Header */}
                     <div className="relative h-48 bg-gradient-to-br from-primary/10 to-accent/10 flex items-center justify-center overflow-hidden">
-                      <img 
-                        src={service.image} 
-                        alt={service.title}
-                        className="w-full h-full object-cover group-hover:scale-110 transition-spring"
-                      />
+                      <img src={service.image} alt={service.title} className="w-full h-full object-cover group-hover:scale-110 transition-spring" />
                       <div className="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent"></div>
                       
                       {/* Icon Overlay */}
@@ -108,19 +88,14 @@ const Services = () => {
                       <p className="text-muted-foreground text-sm leading-relaxed mb-4 line-clamp-3">
                         {service.shortDescription}
                       </p>
-                      <Button 
-                        variant="ghost" 
-                        size="sm" 
-                        className="text-primary hover:text-accent hover:bg-accent/10 p-0 h-auto group-hover:translate-x-1 transition-spring"
-                      >
+                      <Button variant="ghost" size="sm" className="text-primary hover:text-accent hover:bg-accent/10 p-0 h-auto group-hover:translate-x-1 transition-spring">
                         <span className="mr-2">Know More</span>
                         <ArrowRight className="w-4 h-4" />
                       </Button>
                     </div>
                   </Card>
                 </Link>
-              </ScrollAnimation>
-            ))}
+              </ScrollAnimation>)}
           </div>
         </div>
       </section>
@@ -205,16 +180,10 @@ const Services = () => {
                 solution for your analytical needs.
               </p>
               <div className="flex flex-col sm:flex-row gap-4 justify-center">
-                <a
-                  href="/contact"
-                  className="inline-flex items-center justify-center px-8 py-3 bg-white text-primary font-semibold rounded-lg hover:bg-white/90 transition-colors duration-300"
-                >
+                <a href="/contact" className="inline-flex items-center justify-center px-8 py-3 bg-white text-primary font-semibold rounded-lg hover:bg-white/90 transition-colors duration-300">
                   Request Quote
                 </a>
-                <a
-                  href="/about-us"
-                  className="inline-flex items-center justify-center px-8 py-3 border-2 border-white text-white font-semibold rounded-lg hover:bg-white hover:text-primary transition-colors duration-300"
-                >
+                <a href="/about-us" className="inline-flex items-center justify-center px-8 py-3 border-2 border-white text-white font-semibold rounded-lg hover:bg-white hover:text-primary transition-colors duration-300">
                   Learn About Us
                 </a>
               </div>
@@ -224,8 +193,6 @@ const Services = () => {
       </section>
       </div>
       <Footer />
-    </>
-  );
+    </>;
 };
-
 export default Services;
