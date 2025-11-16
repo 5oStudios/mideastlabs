@@ -41,12 +41,12 @@ const Header = () => {
         <div className="flex items-center justify-between h-20 lg:h-24">
           {/* Logo */}
           <div className="flex items-center space-x-1.5">
-            <img src={logo} alt="Middle East Environmental Laboratories Co. Logo" className="h-20 lg:h-24 w-auto" loading="eager" fetchPriority="high" />
+            <img src={logo} alt="Middle East Environmental Laboratories Co. Logo" className="h-28 lg:h-32 w-auto" loading="eager" fetchPriority="high" />
             <div className="flex flex-col">
-              <span className="text-sm lg:text-base font-semibold leading-tight text-blue-900">
+              <span className="text-sm lg:text-base font-bold leading-tight text-blue-900">
                 Middle East Environmental
               </span>
-              <span className="text-sm lg:text-base font-semibold leading-tight text-blue-900">
+              <span className="text-sm lg:text-base font-bold leading-tight text-blue-900">
                 Laboratories W.L.L
               </span>
             </div>
