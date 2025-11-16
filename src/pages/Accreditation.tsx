@@ -77,7 +77,7 @@ const Accreditation = () => {
           <img 
             src={heroImage} 
             alt="Accreditation and quality assurance"
-            className="w-full h-full object-cover object-center md:object-bottom"
+            className="w-full h-full object-cover"
           />
           <div className="absolute inset-0 bg-blue-600/40"></div>
         </div>

@@ -63,7 +63,7 @@ const Career = () => {
           <img 
             src={heroImage} 
             alt="Join our laboratory team"
-            className="w-full h-full object-cover object-center md:object-bottom"
+            className="w-full h-full object-cover"
             loading="eager"
           />
           <div className="absolute inset-0 bg-blue-600/40"></div>

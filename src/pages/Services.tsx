@@ -17,7 +17,7 @@ const Services = () => {
       <section className="relative py-20 text-white overflow-hidden">
         {/* Background Image */}
         <div className="absolute inset-0 z-0">
-          <img src={heroImage} alt="Testing services laboratory" className="w-full h-full object-cover object-center md:object-bottom" />
+          <img src={heroImage} alt="Testing services laboratory" className="w-full h-full object-cover" />
           <div className="absolute inset-0 bg-blue-600/40"></div>
         </div>
         <div className="container mx-auto px-4 lg:px-8 relative z-10">
