@@ -52,12 +52,7 @@ const Services = () => {
             </div>
           </ScrollAnimation>
 
-          {/* Category Filters */}
-          <ScrollAnimation delay={0.2}>
-            <div className="flex flex-wrap justify-center gap-4 mb-12">
-              {categories.map((category, index) => {})}
-            </div>
-          </ScrollAnimation>
+          {/* Category Filters - Coming Soon */}
 
           {/* Services Grid */}
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
