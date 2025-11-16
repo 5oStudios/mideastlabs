@@ -29,7 +29,7 @@ const Footer = () => {
           {/* Company Info */}
           <div className="space-y-6">
             <div className="flex items-center space-x-2">
-              <img src={logo} alt="Middle East Environmental Laboratories Co. Logo" className="h-28 w-28 rounded-full object-cover" loading="lazy" />
+              <img src={logo} alt="Middle East Environmental Laboratories Co. Logo" className="h-32 w-32 rounded-full object-contain" loading="lazy" />
             </div>
             
             
