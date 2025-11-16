@@ -39,8 +39,7 @@ const About = () => {
               </div>
               <h3 className="font-semibold text-lg mb-3">Our Mission</h3>
               <p className="text-muted-foreground text-sm leading-relaxed">
-                To provide accurate, reliable, and timely analytical testing services that exceed 
-                client expectations while maintaining the highest standards of quality and integrity.
+                The mission of Middle East Environmental Laboratories W.L.L. is to provide accurate, timely, and trusted environmental testing and analysis services    
               </p>
             </Card>
 
