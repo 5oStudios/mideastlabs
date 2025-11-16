@@ -5,6 +5,7 @@ import { Award, Shield, CheckCircle, FileCheck } from "lucide-react";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import CertificateViewer from "@/components/CertificateViewer";
+import heroImage from "@/assets/hero/accreditation-hero.jpg";
 import iso9001Cert from "@/assets/certificates/iso-9001.jpg";
 import iso14001Cert from "@/assets/certificates/iso-14001.jpg";
 import iso45001Cert from "@/assets/certificates/iso-45001.jpg";
@@ -74,8 +75,8 @@ const Accreditation = () => {
         {/* Background Image */}
         <div className="absolute inset-0 z-0">
           <img 
-            src="/assets/scientist-1.jpg" 
-            alt="Professional scientist working in laboratory"
+            src={heroImage} 
+            alt="Accreditation and quality assurance"
             className="w-full h-full object-cover"
           />
           <div className="absolute inset-0 bg-blue-600/40"></div>
