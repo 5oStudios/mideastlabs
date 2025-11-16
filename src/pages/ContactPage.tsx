@@ -10,6 +10,7 @@ import { MapPin, Phone, Mail, Clock, MessageCircle, Send } from "lucide-react";
 import { useState } from "react";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
+import heroImage from "@/assets/hero/contact-hero.jpg";
 const ContactPage = () => {
   const [formData, setFormData] = useState({
     name: "",
@@ -49,7 +50,7 @@ const ContactPage = () => {
       <section className="relative py-20 text-white overflow-hidden">
         {/* Background Image */}
         <div className="absolute inset-0 z-0">
-          <img src="/assets/soil-testing.jpg" alt="Soil analysis and testing laboratory" className="w-full h-full object-cover" />
+          <img src={heroImage} alt="Contact our laboratory" className="w-full h-full object-cover" />
           <div className="absolute inset-0 bg-blue-600/40"></div>
         </div>
         <div className="container mx-auto px-4 lg:px-8 relative z-10">

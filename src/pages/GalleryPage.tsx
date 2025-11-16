@@ -5,6 +5,7 @@ import { Dialog, DialogContent, DialogTrigger } from "@/components/ui/dialog";
 import { ZoomIn } from "lucide-react";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
+import heroImage from "@/assets/hero/gallery-hero.jpg";
 import microscopeAnalysis from "@/assets/gallery/microscope-analysis.jpg";
 import labEquipmentSoxhlet from "@/assets/gallery/lab-equipment-soxhlet.jpg";
 import colorfulSamples from "@/assets/gallery/colorful-samples.jpg";
@@ -58,8 +59,8 @@ const GalleryPage = () => {
       <section className="relative py-20 text-white overflow-hidden">
         <div className="absolute inset-0 z-0">
           <img 
-            src={microscopeAnalysis}
-            alt="Laboratory Analysis"
+            src={heroImage}
+            alt="Laboratory Gallery"
             className="w-full h-full object-cover"
           />
           <div className="absolute inset-0 bg-gradient-to-b from-black/60 via-black/40 to-black/60"></div>

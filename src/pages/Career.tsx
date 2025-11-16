@@ -10,6 +10,7 @@ import { Users, Briefcase, GraduationCap, TrendingUp, Upload } from "lucide-reac
 import { useState } from "react";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
+import heroImage from "@/assets/hero/career-hero.jpg";
 
 const Career = () => {
   const [formData, setFormData] = useState({
@@ -60,8 +61,8 @@ const Career = () => {
         {/* Background Image */}
         <div className="absolute inset-0 z-0">
           <img 
-            src="/assets/scientist-2.jpg" 
-            alt="Scientists collaborating in laboratory"
+            src={heroImage} 
+            alt="Join our laboratory team"
             className="w-full h-full object-cover"
             loading="eager"
           />
