@@ -65,7 +65,7 @@ const Header = () => {
 
           {/* Contact Button */}
           <div className="hidden lg:flex items-center space-x-4">
-            <Button variant="outline" className="flex items-center space-x-2">
+            <Button variant="outline" className="flex items-center space-x-2 bg-green-600 text-white hover:bg-green-700 border-green-600">
               <Phone className="w-4 h-4" />
               <span className="font-bold">+965 22251577</span>
             </Button>
@@ -87,7 +87,7 @@ const Header = () => {
                       {item.label}
                     </Link>;
             })}
-                <Button className="flex items-center space-x-2 mt-4">
+                <Button className="flex items-center space-x-2 mt-4 bg-green-600 hover:bg-green-700">
                   <Phone className="w-4 h-4" />
                   <span className="font-bold">+965 22251577</span>
                 </Button>
