@@ -61,7 +61,7 @@ const About = () => {
                   <div className="text-xs text-muted-foreground">Certified</div>
                 </div>
                 <div>
-                  <div className="text-2xl font-bold text-accent mb-1">99%</div>
+                  <div className="text-2xl font-bold text-accent mb-1">EPA</div>
                   <div className="text-xs text-muted-foreground">Accuracy</div>
                 </div>
                 <div>
