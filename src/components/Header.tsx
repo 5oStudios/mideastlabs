@@ -40,8 +40,8 @@ const Header = () => {
       <div className="container mx-auto px-4 lg:px-8 relative z-10">
         <div className="flex items-center justify-between h-20 lg:h-24">
           {/* Logo */}
-          <div className="flex items-center space-x-4">
-            <img src={logo} alt="Middle East Environmental Laboratories Co. Logo" className="h-28 lg:h-32 w-auto" loading="eager" fetchPriority="high" />
+          <div className="flex items-center space-x-2">
+            <img src={logo} alt="Middle East Environmental Laboratories Co. Logo" className="h-16 lg:h-20 w-auto" loading="eager" fetchPriority="high" />
             <div className="hidden md:flex flex-col justify-center">
               <span className="text-sm lg:text-base font-bold leading-tight text-blue-900">
                 Middle East Environmental
