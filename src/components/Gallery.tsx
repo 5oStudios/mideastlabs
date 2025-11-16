@@ -54,7 +54,7 @@ const Gallery = () => {
         <div className="text-center max-w-3xl mx-auto mb-16">
           <div className="inline-flex items-center space-x-2 bg-accent/10 px-4 py-2 rounded-full mb-6">
             <Camera className="w-4 h-4 text-accent" />
-            <span className="text-accent font-semibold">Our Facilities</span>
+            <span className="text-accent font-semibold text-lg">Our Facilities</span>
           </div>
           
           <h2 className="font-display font-bold text-heading text-foreground mb-6">
