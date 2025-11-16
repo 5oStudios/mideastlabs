@@ -9,7 +9,7 @@ const About = () => {
           <div className="animate-slide-in">
             <div className="inline-flex items-center space-x-2 bg-primary/10 px-4 py-2 rounded-full mb-6">
               <Award className="w-4 h-4 text-primary" />
-              <span className="text-primary font-semibold">About Our Laboratory</span>
+              <span className="text-primary font-semibold text-lg">About Our Laboratory</span>
             </div>
             
             <h2 className="font-display font-bold text-heading text-foreground mb-6">Middle East Environmental Laboratories W.L.L. </h2>
