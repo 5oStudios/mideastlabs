@@ -504,8 +504,88 @@ export const servicesData: Service[] = [
     certifications: ["ISO 17025", "OSHA Approved", "EPA Accredited", "PLM Certified"],
     turnaroundTime: "3-5 business days (urgent service available)",
     sampleRequirements: "Proper sampling by trained personnel, air samples with calibrated pumps, bulk samples in sealed containers",
-    relatedServices: ["air-quality-testing", "environmental-hygiene", "outdoor-sampling"]
+    relatedServices: ["chemical-testing", "environmental-hygiene", "outdoor-sampling"]
   },
+  {
+    id: "air-quality-testing",
+    title: "Air Quality Testing",
+    category: "Environmental Testing",
+    icon: Wind,
+    image: airQualityImg,
+    shortDescription: "Comprehensive air quality monitoring and analysis for indoor and outdoor environments to ensure compliance with health and safety standards.",
+    fullDescription: "Our Air Quality Testing services provide thorough monitoring and analysis of air pollutants and contaminants in both indoor and outdoor environments. We assess ambient air quality, workplace air conditions, emissions from industrial sources, and indoor air quality in buildings. Our laboratory utilizes advanced instrumentation to measure particulate matter, volatile organic compounds (VOCs), gases, and other airborne pollutants. We help organizations maintain compliance with environmental regulations and protect occupational health.",
+    subServices: [
+      "Ambient air quality monitoring",
+      "Indoor air quality assessment",
+      "Industrial emissions testing",
+      "Workplace exposure monitoring",
+      "Particulate matter analysis (PM2.5, PM10)",
+      "VOC detection and quantification",
+      "Gas monitoring (CO, CO2, NOx, SOx)",
+      "Stack emissions testing"
+    ],
+    features: [
+      "Real-time monitoring capabilities",
+      "Comprehensive pollutant analysis",
+      "Regulatory compliance reporting",
+      "Expert interpretation of results",
+      "Field and laboratory testing"
+    ],
+    testingParameters: [
+      "Particulate matter (PM2.5, PM10)",
+      "Volatile organic compounds (VOCs)",
+      "Carbon monoxide (CO)",
+      "Carbon dioxide (CO2)",
+      "Nitrogen oxides (NOx)",
+      "Sulfur dioxide (SO2)",
+      "Ozone (O3)",
+      "Benzene and other aromatics"
+    ],
+    certifications: ["ISO 17025", "EPA Approved", "OSHA Compliant"],
+    turnaroundTime: "5-7 business days",
+    sampleRequirements: "Air samples collected using calibrated pumps and appropriate media, field parameters documented",
+    relatedServices: ["environmental-monitoring", "asbestos-testing", "outdoor-sampling"]
+  },
+  {
+    id: "chemical-testing",
+    title: "Chemical Testing",
+    category: "Laboratory Analysis",
+    icon: Beaker,
+    image: chemicalTestingImg,
+    shortDescription: "Advanced chemical analysis and characterization for various matrices including water, soil, materials, and industrial samples.",
+    fullDescription: "Our Chemical Testing services provide comprehensive analytical chemistry solutions for diverse sample types and applications. We perform qualitative and quantitative analysis of organic and inorganic compounds, trace element detection, chemical composition determination, and contamination screening. Our state-of-the-art laboratory is equipped with advanced instrumentation including GC-MS, ICP-MS, HPLC, and spectrophotometers. We support industries ranging from environmental compliance to product quality control and research applications.",
+    subServices: [
+      "Organic compound analysis (GC-MS, HPLC)",
+      "Inorganic element analysis (ICP-MS, AAS)",
+      "Heavy metals testing",
+      "Pesticide and herbicide residue analysis",
+      "Petroleum hydrocarbons testing",
+      "Chemical composition determination",
+      "Trace element detection",
+      "Contamination screening"
+    ],
+    features: [
+      "Advanced analytical instrumentation",
+      "Trace-level detection capabilities",
+      "Multi-matrix compatibility",
+      "Method validation and QA/QC",
+      "Expert analytical chemists"
+    ],
+    testingParameters: [
+      "Heavy metals (lead, mercury, cadmium, arsenic)",
+      "Organic pollutants",
+      "Pesticides and herbicides",
+      "Petroleum hydrocarbons (TPH)",
+      "PCBs and dioxins",
+      "Chemical oxygen demand (COD)",
+      "Total organic carbon (TOC)",
+      "Elemental composition"
+    ],
+    certifications: ["ISO 17025", "GLP Certified", "Accredited Methods"],
+    turnaroundTime: "5-10 business days depending on analysis",
+    sampleRequirements: "Samples in appropriate containers, properly preserved based on analysis type, minimum quantities vary by test",
+    relatedServices: ["water-analysis", "soil-sediment-testing", "physical-testing"]
+  }
 ];
 
 // Helper function to get service by ID
