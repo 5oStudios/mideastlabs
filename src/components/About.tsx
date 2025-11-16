@@ -62,7 +62,7 @@ const About = () => {
                 </div>
                 <div>
                   <div className="text-2xl font-bold text-accent mb-1">EPA</div>
-                  <div className="text-xs text-muted-foreground">Accuracy</div>
+                  <div className="text-xs text-muted-foreground">Approved</div>
                 </div>
                 <div>
                   <div className="text-2xl font-bold text-primary mb-1">48hr</div>
