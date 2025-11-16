@@ -61,7 +61,7 @@ const GalleryPage = () => {
           <img 
             src={heroImage}
             alt="Laboratory Gallery"
-            className="w-full h-full object-cover"
+            className="w-full h-full object-contain object-center"
           />
           <div className="absolute inset-0 bg-gradient-to-b from-black/60 via-black/40 to-black/60"></div>
         </div>
