@@ -42,7 +42,7 @@ const Header = () => {
           {/* Logo */}
           <div className="flex items-center space-x-0.5">
             <img src={logo} alt="Middle East Environmental Laboratories Co. Logo" className="h-28 lg:h-32 w-auto" loading="eager" fetchPriority="high" />
-            <div className="flex flex-col justify-center">
+            <div className="hidden md:flex flex-col justify-center">
               <span className="text-sm lg:text-base font-bold leading-tight text-blue-900">
                 Middle East Environmental
               </span>
