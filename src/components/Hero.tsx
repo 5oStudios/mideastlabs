@@ -1,20 +1,8 @@
 import { ArrowRight, Phone, Beaker, CheckCircle, Users } from "lucide-react";
 import { Link } from "react-router-dom";
-import useEmblaCarousel from "embla-carousel-react";
-import Autoplay from "embla-carousel-autoplay";
 import teamLab from "@/assets/team-lab.jpg";
-import labChemist from "@/assets/lab-chemist-samples.jpg";
-import labEquipment from "@/assets/lab-equipment-setup.jpg";
-import labAnalysis from "@/assets/lab-sample-analysis.jpg";
-import labTesting from "@/assets/lab-testing-process.jpg";
+
 const Hero = () => {
-  const [emblaRef] = useEmblaCarousel({
-    loop: true
-  }, [Autoplay({
-    delay: 3000,
-    stopOnInteraction: false
-  })]);
-  const carouselImages = [teamLab, labChemist, labEquipment, labAnalysis, labTesting];
   return <section id="home" className="relative min-h-screen flex items-center overflow-hidden bg-gradient-to-br from-slate-900 via-blue-900 to-indigo-900 pt-32 lg:pt-40 pb-20 lg:pb-32">
       {/* Background with Enhanced Overlay */}
       <div className="absolute inset-0 z-0">
@@ -116,13 +104,7 @@ const Hero = () => {
           animationDelay: '0.6s'
         }}>
             <div className="relative overflow-hidden w-full h-full">
-              <div className="embla h-full" ref={emblaRef}>
-                <div className="embla__container flex h-full">
-                  {carouselImages.map((image, index) => <div key={index} className="embla__slide flex-[0_0_100%] min-w-0 h-full">
-                      <img src={image} alt={`Laboratory facility ${index + 1}`} className="w-full h-full min-h-[400px] object-contain" />
-                    </div>)}
-                </div>
-              </div>
+              <img src={teamLab} alt="Laboratory facility" className="w-full h-full min-h-[400px] object-cover" />
               {/* Overlay gradient for better blend */}
               <div className="absolute inset-0 bg-gradient-to-t from-blue-900/30 to-transparent pointer-events-none"></div>
             </div>
