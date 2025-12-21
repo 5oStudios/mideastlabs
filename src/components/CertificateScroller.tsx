@@ -1,6 +1,6 @@
-import { useState, useRef } from "react";
+import { useState } from "react";
 import { Dialog, DialogContent } from "@/components/ui/dialog";
-import { X, ChevronLeft, ChevronRight } from "lucide-react";
+import { X } from "lucide-react";
 
 // Import all certificate images
 import cert1 from "@/assets/certificates/cert-1.png";
@@ -28,22 +28,9 @@ const certificates = [
 const CertificateScroller = () => {
   const [selectedCert, setSelectedCert] = useState<{ image: string; title: string } | null>(null);
   const [isPaused, setIsPaused] = useState(false);
-  const scrollerRef = useRef<HTMLDivElement>(null);
 
   // Duplicate certificates for seamless loop
   const duplicatedCerts = [...certificates, ...certificates];
-
-  const scrollLeft = () => {
-    if (scrollerRef.current) {
-      scrollerRef.current.scrollBy({ left: -300, behavior: "smooth" });
-    }
-  };
-
-  const scrollRight = () => {
-    if (scrollerRef.current) {
-      scrollerRef.current.scrollBy({ left: 300, behavior: "smooth" });
-    }
-  };
 
   return (
     <>
@@ -54,35 +41,14 @@ const CertificateScroller = () => {
         {/* Right fade gradient */}
         <div className="absolute right-0 top-0 bottom-0 w-24 md:w-40 bg-gradient-to-l from-background to-transparent z-10 pointer-events-none" />
 
-        {/* Left Arrow */}
-        <button
-          onClick={scrollLeft}
-          className="absolute left-2 md:left-4 top-1/2 -translate-y-1/2 z-20 p-2 md:p-3 rounded-full bg-primary/90 hover:bg-primary text-primary-foreground shadow-lg transition-all duration-300 hover:scale-110"
-          aria-label="Scroll left"
-        >
-          <ChevronLeft className="w-5 h-5 md:w-6 md:h-6" />
-        </button>
-
-        {/* Right Arrow */}
-        <button
-          onClick={scrollRight}
-          className="absolute right-2 md:right-4 top-1/2 -translate-y-1/2 z-20 p-2 md:p-3 rounded-full bg-primary/90 hover:bg-primary text-primary-foreground shadow-lg transition-all duration-300 hover:scale-110"
-          aria-label="Scroll right"
-        >
-          <ChevronRight className="w-5 h-5 md:w-6 md:h-6" />
-        </button>
-
         {/* Scrolling container */}
         <div
-          ref={scrollerRef}
-          className="flex w-max gap-6 md:gap-8 overflow-x-auto scrollbar-hide"
+          className="flex w-max gap-6 md:gap-8"
           onMouseEnter={() => setIsPaused(true)}
           onMouseLeave={() => setIsPaused(false)}
           style={{
             animation: `scroll 40s linear infinite`,
             animationPlayState: isPaused ? "paused" : "running",
-            scrollbarWidth: "none",
-            msOverflowStyle: "none",
           }}
         >
           {duplicatedCerts.map((cert, index) => (
@@ -134,9 +100,6 @@ const CertificateScroller = () => {
           100% {
             transform: translateX(-50%);
           }
-        }
-        .scrollbar-hide::-webkit-scrollbar {
-          display: none;
         }
       `}</style>
     </>
