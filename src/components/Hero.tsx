@@ -103,7 +103,7 @@ const Hero = () => {
           animationDelay: '0.6s'
         }}>
             <div className="relative overflow-hidden w-full h-full">
-              <img src={teamLab} alt="Laboratory facility" className="w-full h-full min-h-[400px] object-cover rounded-lg" />
+              <img src={teamLab} alt="Laboratory facility" className="w-full h-full min-h-[400px] object-contain md:object-cover rounded-lg" />
               {/* Overlay gradient for better blend */}
               <div className="absolute inset-0 bg-gradient-to-t from-blue-900/30 to-transparent pointer-events-none"></div>
             </div>
