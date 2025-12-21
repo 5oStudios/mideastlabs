@@ -56,6 +56,9 @@ const Header = () => {
     label: "Accreditation",
     href: "/accreditation"
   }, {
+    label: "Company Profile",
+    href: "/company-profile"
+  }, {
     label: "Career",
     href: "/career"
   }, {

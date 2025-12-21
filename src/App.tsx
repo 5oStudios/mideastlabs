@@ -12,6 +12,7 @@ import Accreditation from "./pages/Accreditation";
 import GalleryPage from "./pages/GalleryPage";
 import Career from "./pages/Career";
 import ContactPage from "./pages/ContactPage";
+import CompanyProfile from "./pages/CompanyProfile";
 import PrivacyPolicy from "./pages/PrivacyPolicy";
 import TermsOfService from "./pages/TermsOfService";
 
@@ -30,6 +31,7 @@ const App = () => (
           <Route path="/services/:serviceSlug" element={<ServiceDetail />} />
           <Route path="/accreditation" element={<Accreditation />} />
           <Route path="/gallery" element={<GalleryPage />} />
+          <Route path="/company-profile" element={<CompanyProfile />} />
           <Route path="/career" element={<Career />} />
           <Route path="/contact" element={<ContactPage />} />
           <Route path="/privacy-policy" element={<PrivacyPolicy />} />
