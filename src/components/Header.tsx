@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import { Button } from "@/components/ui/button";
 import { Menu, X, Phone, ChevronDown } from "lucide-react";
 import { Link, useLocation } from "react-router-dom";
@@ -16,6 +16,7 @@ const Header = () => {
   const [isAboutOpen, setIsAboutOpen] = useState(false);
   const [isMobileAboutOpen, setIsMobileAboutOpen] = useState(false);
   const location = useLocation();
+  const closeTimeoutRef = useRef<NodeJS.Timeout | null>(null);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -24,6 +25,20 @@ const Header = () => {
     window.addEventListener('scroll', handleScroll);
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
+
+  const handleMouseEnter = () => {
+    if (closeTimeoutRef.current) {
+      clearTimeout(closeTimeoutRef.current);
+      closeTimeoutRef.current = null;
+    }
+    setIsAboutOpen(true);
+  };
+
+  const handleMouseLeave = () => {
+    closeTimeoutRef.current = setTimeout(() => {
+      setIsAboutOpen(false);
+    }, 150);
+  };
 
   const navItems: NavItem[] = [{
     label: "Home",
@@ -73,31 +88,39 @@ const Header = () => {
                 <div 
                   key={item.label} 
                   className="relative"
-                  onMouseEnter={() => setIsAboutOpen(true)}
-                  onMouseLeave={() => setIsAboutOpen(false)}
+                  onMouseEnter={handleMouseEnter}
+                  onMouseLeave={handleMouseLeave}
                 >
-                  <button className={`text-base font-medium transition-smooth relative group flex items-center gap-1 ${isActive ? 'text-blue-600 hover:text-blue-800' : 'text-foreground hover:text-primary'}`}>
+                  <button className={`text-base font-medium transition-smooth relative group flex items-center gap-1 py-2 ${isActive ? 'text-blue-600 hover:text-blue-800' : 'text-foreground hover:text-primary'}`}>
                     {item.label}
                     <ChevronDown className={`w-4 h-4 transition-transform ${isAboutOpen ? 'rotate-180' : ''}`} />
                   </button>
                   {isAboutOpen && (
-                    <div className="absolute top-full left-0 mt-2 bg-white border border-border rounded-lg shadow-lg py-2 min-w-[160px] z-50">
-                      <Link
-                        to={item.href}
-                        className="block px-4 py-2 text-sm text-foreground hover:bg-muted hover:text-primary transition-colors"
-                      >
-                        About Us
-                      </Link>
-                      {item.subItems.map(subItem => (
-                        <Link
-                          key={subItem.label}
-                          to={subItem.href}
-                          className={`block px-4 py-2 text-sm hover:bg-muted transition-colors ${location.pathname === subItem.href ? 'text-blue-600' : 'text-foreground hover:text-primary'}`}
-                        >
-                          {subItem.label}
-                        </Link>
-                      ))}
-                    </div>
+                    <>
+                      {/* Invisible bridge to prevent gap issues */}
+                      <div className="absolute top-full left-0 right-0 h-2" />
+                      <div className="absolute top-full left-0 pt-2 z-50">
+                        <div className="bg-white border border-border rounded-lg shadow-lg py-2 min-w-[160px]">
+                          <Link
+                            to={item.href}
+                            onClick={() => setIsAboutOpen(false)}
+                            className="block px-4 py-2 text-sm text-foreground hover:bg-muted hover:text-primary transition-colors"
+                          >
+                            About Us
+                          </Link>
+                          {item.subItems.map(subItem => (
+                            <Link
+                              key={subItem.label}
+                              to={subItem.href}
+                              onClick={() => setIsAboutOpen(false)}
+                              className={`block px-4 py-2 text-sm hover:bg-muted transition-colors ${location.pathname === subItem.href ? 'text-blue-600' : 'text-foreground hover:text-primary'}`}
+                            >
+                              {subItem.label}
+                            </Link>
+                          ))}
+                        </div>
+                      </div>
+                    </>
                   )}
                 </div>
               );
