@@ -109,12 +109,12 @@ const ContactPage = () => {
         </div>
       </section>
 
-      {/* Contact Form */}
-      <section className="py-20">
+      {/* Company Location Heading */}
+      <section className="py-4 md:py-12">
         <div className="container mx-auto px-4 lg:px-8">
           <ScrollAnimation>
-            <div className="text-center mb-12">
-              <h2 className="text-3xl md:text-4xl font-display font-bold text-primary mb-4">
+            <div className="text-center mb-4 md:mb-8">
+              <h2 className="text-3xl md:text-4xl font-display font-bold text-primary">
                 Company Location
               </h2>
             </div>
@@ -123,11 +123,11 @@ const ContactPage = () => {
       </section>
 
       {/* Full Width Map Section */}
-      <section className="py-0 mb-20">
+      <section className="pb-12 md:pb-20">
         <div className="w-full">
           <ScrollAnimation>
             <div className="relative w-full">
-              <div className="aspect-[16/9] md:aspect-[21/9] w-full">
+              <div className="aspect-[3/4] md:aspect-[21/9] w-full">
                 <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3482.8220955191327!2d48.0510782!3d29.199364199999998!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3fcfa04550d25ded%3A0x8514275ef9b403ce!2zTWlkZGxlIEVhc3QgRW52aXJvbm1lbnRhbCBMYWJvcmF0b3JpZXMg2YXYrtiq2KjYsdin2Kog2KfZhNi02LHZgiDYp9mE2KPZiNiz2Lcg2KfZhNio2YrYptmK2Kk!5e0!3m2!1sen!2skw!4v1766315758961!5m2!1sen!2skw" width="100%" height="100%" style={{
                   border: 0
                 }} allowFullScreen loading="lazy" referrerPolicy="no-referrer-when-downgrade" title="Middle East Environmental Laboratories Location" className="w-full h-full"></iframe>
