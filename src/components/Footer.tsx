@@ -105,9 +105,7 @@ const Footer = () => {
               <Link to="/terms-of-service" className="text-white/80 hover:text-white transition-smooth">
                 Terms of Service
               </Link>
-              <a href="#sitemap" className="text-white/80 hover:text-white transition-smooth">
-                Sitemap
-              </a>
+              
             </div>
           </div>
         </div>
