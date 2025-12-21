@@ -127,7 +127,7 @@ const ContactPage = () => {
         <div className="w-full">
           <ScrollAnimation>
             <div className="relative w-full">
-              <div className="aspect-[16/9] md:aspect-[21/9] w-full">
+              <div className="aspect-[3/4] md:aspect-[21/9] w-full">
                 <iframe
                   src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3482.8220955191327!2d48.0510782!3d29.199364199999998!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3fcfa04550d25ded%3A0x8514275ef9b403ce!2zTWlkZGxlIEVhc3QgRW52aXJvbm1lbnRhbCBMYWJvcmF0b3JpZXMg2YXYrtiq2KjYsdin2Kog2KfZhNi02LHZgiDYp9mE2KPZiNiz2Lcg2KfZhNio2YrYptmK2Kk!5e0!3m2!1sen!2skw!4v1766315758961!5m2!1sen!2skw"
                   width="100%"
