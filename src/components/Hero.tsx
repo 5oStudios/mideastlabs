@@ -31,11 +31,11 @@ const Hero = () => {
       </div>
 
       {/* Main Content Container */}
-      <div className="relative z-10 container mx-auto px-4 lg:px-8 w-full">
-        <div className="grid lg:grid-cols-2 gap-8 lg:gap-12 items-center">
+      <div className="relative z-10 w-full">
+        <div className="grid lg:grid-cols-2 gap-8 lg:gap-0 items-center">
           
           {/* Left Column - Content */}
-          <div className="space-y-8">
+          <div className="space-y-8 px-4 lg:pl-8 lg:pr-12">
             {/* Main Heading */}
             <div className="animate-fade-up">
               <h1 className="font-display font-bold text-4xl md:text-5xl lg:text-6xl text-white mb-6 leading-tight">
