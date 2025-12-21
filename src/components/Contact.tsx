@@ -1,59 +1,9 @@
-import { Button } from "@/components/ui/button";
-import { Input } from "@/components/ui/input";
-import { Textarea } from "@/components/ui/textarea";
-import { Label } from "@/components/ui/label";
-import { MessageSquare, Send } from "lucide-react";
-import { useForm } from "react-hook-form";
-import { zodResolver } from "@hookform/resolvers/zod";
-import { z } from "zod";
-import { toast } from "sonner";
+import { MessageSquare } from "lucide-react";
 import contactLabImage from "@/assets/contact-lab-illustration.jpg";
-const contactSchema = z.object({
-  name: z.string().trim().min(1, {
-    message: "Name is required"
-  }).max(100, {
-    message: "Name must be less than 100 characters"
-  }),
-  email: z.string().trim().email({
-    message: "Invalid email address"
-  }).max(255, {
-    message: "Email must be less than 255 characters"
-  }),
-  phone: z.string().trim().min(1, {
-    message: "Phone number is required"
-  }).max(20, {
-    message: "Phone must be less than 20 characters"
-  }),
-  message: z.string().trim().min(1, {
-    message: "Message is required"
-  }).max(1000, {
-    message: "Message must be less than 1000 characters"
-  })
-});
-type ContactFormData = z.infer<typeof contactSchema>;
+
 const Contact = () => {
-  const {
-    register,
-    handleSubmit,
-    reset,
-    formState: {
-      errors,
-      isSubmitting
-    }
-  } = useForm<ContactFormData>({
-    resolver: zodResolver(contactSchema)
-  });
-  const onSubmit = async (data: ContactFormData) => {
-    try {
-      // Simulate form submission
-      await new Promise(resolve => setTimeout(resolve, 1000));
-      toast.success("Message sent successfully! We'll get back to you soon.");
-      reset();
-    } catch (error) {
-      toast.error("Failed to send message. Please try again.");
-    }
-  };
-  return <section id="contact" className="relative py-20 overflow-hidden">
+  return (
+    <section id="contact" className="relative py-20 overflow-hidden">
       {/* Full Width Background Image */}
       <div className="absolute inset-0 w-full h-full">
         <img src={contactLabImage} alt="Laboratory Equipment Illustration" className="w-full h-full object-cover" />
@@ -78,52 +28,26 @@ const Contact = () => {
           </p>
         </div>
 
-        {/* Contact Form - Centered Overlay */}
+        {/* Google Form Embed */}
         <div className="max-w-2xl mx-auto animate-fade-in">
-          <div className="card-gradient shadow-strong rounded-2xl p-8 lg:p-10 backdrop-blur-md bg-background/95 border border-border/50">
-            <form onSubmit={handleSubmit(onSubmit)} className="space-y-6">
-              <div className="space-y-2">
-                <Label htmlFor="name" className="text-foreground font-medium">
-                  Full Name *
-                </Label>
-                <Input id="name" type="text" placeholder="Enter your full name" {...register("name")} className={errors.name ? "border-destructive" : ""} />
-                {errors.name && <p className="text-sm text-destructive">{errors.name.message}</p>}
-              </div>
-
-              <div className="space-y-2">
-                <Label htmlFor="email" className="text-foreground font-medium">
-                  Email Address *
-                </Label>
-                <Input id="email" type="email" placeholder="your.email@example.com" {...register("email")} className={errors.email ? "border-destructive" : ""} />
-                {errors.email && <p className="text-sm text-destructive">{errors.email.message}</p>}
-              </div>
-
-              <div className="space-y-2">
-                <Label htmlFor="phone" className="text-foreground font-medium">
-                  Phone Number *
-                </Label>
-                <Input id="phone" type="tel" placeholder="+965 XXXX XXXX" {...register("phone")} className={errors.phone ? "border-destructive" : ""} />
-                {errors.phone && <p className="text-sm text-destructive">{errors.phone.message}</p>}
-              </div>
-
-              <div className="space-y-2">
-                <Label htmlFor="message" className="text-foreground font-medium">
-                  Message *
-                </Label>
-                <Textarea id="message" placeholder="Tell us about your testing requirements..." rows={6} {...register("message")} className={errors.message ? "border-destructive" : ""} />
-                {errors.message && <p className="text-sm text-destructive">{errors.message.message}</p>}
-              </div>
-
-              <Button type="submit" size="lg" disabled={isSubmitting} className="w-full bg-primary hover:bg-primary-deep shadow-glow">
-                {isSubmitting ? "Sending..." : <>
-                    <Send className="w-5 h-5 mr-2" />
-                    Send Message
-                  </>}
-              </Button>
-            </form>
+          <div className="rounded-2xl overflow-hidden backdrop-blur-md bg-background/95 border border-border/50 shadow-strong">
+            <iframe 
+              src="https://docs.google.com/forms/d/e/1FAIpQLSc-HdGfOxeE4xU9120s-5Xl-EvZojE7DlGY8UToiv0CiOuQAQ/viewform?embedded=true" 
+              width="100%" 
+              height="959" 
+              frameBorder="0" 
+              marginHeight={0} 
+              marginWidth={0}
+              className="w-full"
+              title="Contact Form"
+            >
+              Loading…
+            </iframe>
           </div>
         </div>
       </div>
-    </section>;
+    </section>
+  );
 };
+
 export default Contact;
