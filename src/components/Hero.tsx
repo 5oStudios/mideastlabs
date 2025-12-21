@@ -129,16 +129,16 @@ const Hero = () => {
           </div>
 
           {/* Right Column - Image Carousel */}
-          <div className="animate-fade-up lg:animate-fade-in" style={{ animationDelay: '0.6s' }}>
-            <div className="relative overflow-hidden rounded-3xl border-4 border-white/20 shadow-2xl">
-              <div className="embla" ref={emblaRef}>
-                <div className="embla__container flex">
+          <div className="animate-fade-up lg:animate-fade-in h-full flex" style={{ animationDelay: '0.6s' }}>
+            <div className="relative overflow-hidden rounded-3xl border-4 border-white/20 shadow-2xl w-full h-full">
+              <div className="embla h-full" ref={emblaRef}>
+                <div className="embla__container flex h-full">
                   {carouselImages.map((image, index) => (
-                    <div key={index} className="embla__slide flex-[0_0_100%] min-w-0">
+                    <div key={index} className="embla__slide flex-[0_0_100%] min-w-0 h-full">
                       <img 
                         src={image} 
                         alt={`Laboratory facility ${index + 1}`}
-                        className="w-full h-[400px] lg:h-[600px] object-cover"
+                        className="w-full h-full min-h-[400px] object-cover"
                       />
                     </div>
                   ))}
