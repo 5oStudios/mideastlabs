@@ -95,7 +95,7 @@ const Footer = () => {
         <div className="pt-8 border-t border-white/20">
           <div className="flex flex-col md:flex-row justify-between items-center space-y-4 md:space-y-0">
             <div className="text-white/80 text-sm">
-              © 2025 Middle East Environmental Laboratories Co. All rights reserved.
+              © 2026 Middle East Environmental Laboratories Co. All rights reserved.
             </div>
             
             <div className="flex space-x-6 text-sm">
