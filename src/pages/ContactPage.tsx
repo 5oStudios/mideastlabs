@@ -158,7 +158,7 @@ const ContactPage = () => {
                         <span className="hidden md:inline">P.O. Box 114, AL-Qusour, 47402, Kuwait</span>
                       </p>
                       <a 
-                        href="https://maps.google.com/?q=Building+195+West+of+Abu+Fatira+Al+Herafia+Kuwait"
+                        href="https://www.google.com/maps/dir/?api=1&destination=Middle+East+Environmental+Laboratories,+Kuwait"
                         target="_blank"
                         rel="noopener noreferrer"
                         className="inline-block mt-1 md:mt-3 text-xs md:text-sm font-medium text-primary hover:text-primary-glow transition-colors"
