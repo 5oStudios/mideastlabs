@@ -99,7 +99,7 @@ const Hero = () => {
           </div>
 
           {/* Right Column - Image Carousel */}
-          <div className="animate-fade-up lg:animate-fade-in h-full flex mr-4" style={{
+          <div className="animate-fade-up lg:animate-fade-in h-full flex ml-4 md:ml-0 mr-4" style={{
           animationDelay: '0.6s'
         }}>
             <div className="relative overflow-hidden w-full md:h-full rounded-lg">
