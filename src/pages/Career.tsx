@@ -11,7 +11,6 @@ import { useState } from "react";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import heroImage from "@/assets/hero/career-hero.jpg";
-
 const Career = () => {
   const [formData, setFormData] = useState({
     name: "",
@@ -21,51 +20,36 @@ const Career = () => {
     experience: "",
     message: ""
   });
-
-
-  const benefits = [
-    {
-      title: "Professional Growth",
-      description: "Continuous learning opportunities and career advancement",
-      icon: TrendingUp
-    },
-    {
-      title: "Modern Facilities",
-      description: "Work with state-of-the-art equipment and technology",
-      icon: Briefcase
-    },
-    {
-      title: "Training Programs",
-      description: "Regular training and skill development programs",
-      icon: GraduationCap
-    },
-    {
-      title: "Team Environment",
-      description: "Collaborative and supportive work culture",
-      icon: Users
-    }
-  ];
-
+  const benefits = [{
+    title: "Professional Growth",
+    description: "Continuous learning opportunities and career advancement",
+    icon: TrendingUp
+  }, {
+    title: "Modern Facilities",
+    description: "Work with state-of-the-art equipment and technology",
+    icon: Briefcase
+  }, {
+    title: "Training Programs",
+    description: "Regular training and skill development programs",
+    icon: GraduationCap
+  }, {
+    title: "Team Environment",
+    description: "Collaborative and supportive work culture",
+    icon: Users
+  }];
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     console.log("Form submitted:", formData);
     // Handle form submission logic here
   };
-
-  return (
-    <>
+  return <>
       <Header />
       <div className="min-h-screen pt-20">
       {/* Hero Section */}
       <section className="relative py-20 text-white overflow-hidden">
         {/* Background Image */}
         <div className="absolute inset-0 z-0">
-          <img 
-            src={heroImage} 
-            alt="Join our laboratory team"
-            className="w-full h-full object-cover"
-            loading="eager"
-          />
+          <img src={heroImage} alt="Join our laboratory team" className="w-full h-full object-cover" loading="eager" />
           <div className="absolute inset-0 bg-blue-600/40"></div>
         </div>
         <div className="container mx-auto px-4 lg:px-8 relative z-10">
@@ -104,8 +88,7 @@ const Career = () => {
           <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8 mb-16">
             {benefits.map((benefit, index) => {
               const IconComponent = benefit.icon;
-              return (
-                <ScrollAnimation key={index} delay={0.1 * index}>
+              return <ScrollAnimation key={index} delay={0.1 * index}>
                   <Card className="p-6 text-center shadow-elegant hover:shadow-glow transition-all duration-500 group">
                     <div className="w-16 h-16 bg-gradient-to-br from-primary to-primary-glow rounded-full flex items-center justify-center mx-auto mb-4 group-hover:scale-110 transition-transform duration-300">
                       <IconComponent className="w-8 h-8 text-white" />
@@ -117,8 +100,7 @@ const Career = () => {
                       {benefit.description}
                     </p>
                   </Card>
-                </ScrollAnimation>
-              );
+                </ScrollAnimation>;
             })}
           </div>
         </div>
@@ -127,117 +109,7 @@ const Career = () => {
 
       {/* Application Form */}
       <section className="py-20 bg-gradient-to-b from-secondary/30 to-background">
-        <div className="container mx-auto px-4 lg:px-8">
-          <ScrollAnimation>
-            <div className="text-center mb-16">
-              <h2 className="text-3xl md:text-4xl font-display font-bold text-primary mb-6">
-                Apply for a Position
-              </h2>
-              <p className="text-lg text-muted-foreground max-w-3xl mx-auto">
-                Submit your application and join our team of analytical professionals.
-              </p>
-            </div>
-          </ScrollAnimation>
-
-          <ScrollAnimation delay={0.2}>
-            <Card className="p-8 max-w-2xl mx-auto shadow-elegant">
-              <form onSubmit={handleSubmit} className="space-y-6">
-                <div className="grid md:grid-cols-2 gap-6">
-                  <div className="space-y-2">
-                    <Label htmlFor="name">Full Name</Label>
-                    <Input 
-                      id="name"
-                      placeholder="Your full name"
-                      value={formData.name}
-                      onChange={(e) => setFormData({...formData, name: e.target.value})}
-                      required
-                    />
-                  </div>
-                  <div className="space-y-2">
-                    <Label htmlFor="email">Email Address</Label>
-                    <Input 
-                      id="email"
-                      type="email"
-                      placeholder="your.email@example.com"
-                      value={formData.email}
-                      onChange={(e) => setFormData({...formData, email: e.target.value})}
-                      required
-                    />
-                  </div>
-                </div>
-
-                <div className="grid md:grid-cols-2 gap-6">
-                  <div className="space-y-2">
-                    <Label htmlFor="phone">Phone Number</Label>
-                    <Input 
-                      id="phone"
-                      placeholder="+971 XX XXX XXXX"
-                      value={formData.phone}
-                      onChange={(e) => setFormData({...formData, phone: e.target.value})}
-                      required
-                    />
-                  </div>
-                  <div className="space-y-2">
-                    <Label htmlFor="position">Position Applied For</Label>
-                    <Select onValueChange={(value) => setFormData({...formData, position: value})}>
-                      <SelectTrigger>
-                        <SelectValue placeholder="Select a position" />
-                      </SelectTrigger>
-                      <SelectContent>
-                        <SelectItem value="senior-chemist">Senior Analytical Chemist</SelectItem>
-                        <SelectItem value="microbiologist">Microbiologist</SelectItem>
-                        <SelectItem value="lab-technician">Laboratory Technician</SelectItem>
-                        <SelectItem value="qa-specialist">Quality Assurance Specialist</SelectItem>
-                        <SelectItem value="other">Other</SelectItem>
-                      </SelectContent>
-                    </Select>
-                  </div>
-                </div>
-
-                <div className="space-y-2">
-                  <Label htmlFor="experience">Years of Experience</Label>
-                  <Select onValueChange={(value) => setFormData({...formData, experience: value})}>
-                    <SelectTrigger>
-                      <SelectValue placeholder="Select experience level" />
-                    </SelectTrigger>
-                    <SelectContent>
-                      <SelectItem value="0-1">0-1 years</SelectItem>
-                      <SelectItem value="2-3">2-3 years</SelectItem>
-                      <SelectItem value="4-5">4-5 years</SelectItem>
-                      <SelectItem value="6-10">6-10 years</SelectItem>
-                      <SelectItem value="10+">10+ years</SelectItem>
-                    </SelectContent>
-                  </Select>
-                </div>
-
-                <div className="space-y-2">
-                  <Label htmlFor="message">Cover Letter / Additional Information</Label>
-                  <Textarea 
-                    id="message"
-                    placeholder="Tell us about your experience and why you want to join our team..."
-                    rows={5}
-                    value={formData.message}
-                    onChange={(e) => setFormData({...formData, message: e.target.value})}
-                  />
-                </div>
-
-                <div className="space-y-2">
-                  <Label>Resume/CV</Label>
-                  <div className="border-2 border-dashed border-border rounded-lg p-6 text-center hover:border-primary transition-colors cursor-pointer">
-                    <Upload className="w-8 h-8 text-muted-foreground mx-auto mb-2" />
-                    <p className="text-muted-foreground text-sm">
-                      Click to upload or drag and drop your resume (PDF, DOC, DOCX)
-                    </p>
-                  </div>
-                </div>
-
-                <Button type="submit" className="w-full">
-                  Submit Application
-                </Button>
-              </form>
-            </Card>
-          </ScrollAnimation>
-        </div>
+        
       </section>
 
       {/* Call to Action */}
@@ -253,16 +125,10 @@ const Career = () => {
                 environmental protection. We're always looking for talented individuals.
               </p>
               <div className="flex flex-col sm:flex-row gap-4 justify-center">
-                <a
-                  href="/contact"
-                  className="inline-flex items-center justify-center px-8 py-3 bg-white text-primary font-semibold rounded-lg hover:bg-white/90 transition-colors duration-300"
-                >
+                <a href="/contact" className="inline-flex items-center justify-center px-8 py-3 bg-white text-primary font-semibold rounded-lg hover:bg-white/90 transition-colors duration-300">
                   Contact HR
                 </a>
-                <a
-                  href="/about-us"
-                  className="inline-flex items-center justify-center px-8 py-3 border-2 border-white text-white font-semibold rounded-lg hover:bg-white hover:text-primary transition-colors duration-300"
-                >
+                <a href="/about-us" className="inline-flex items-center justify-center px-8 py-3 border-2 border-white text-white font-semibold rounded-lg hover:bg-white hover:text-primary transition-colors duration-300">
                   Learn More
                 </a>
               </div>
@@ -272,8 +138,6 @@ const Career = () => {
       </section>
       </div>
       <Footer />
-    </>
-  );
+    </>;
 };
-
 export default Career;
