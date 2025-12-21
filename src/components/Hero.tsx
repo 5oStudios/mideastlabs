@@ -1,7 +1,6 @@
 import { ArrowRight, Phone, Beaker, CheckCircle, Users } from "lucide-react";
 import { Link } from "react-router-dom";
 import teamLab from "@/assets/team-lab.jpg";
-
 const Hero = () => {
   return <section id="home" className="relative min-h-screen flex items-center overflow-hidden bg-gradient-to-br from-slate-900 via-blue-900 to-indigo-900 pt-32 lg:pt-40 pb-20 lg:pb-32">
       {/* Background with Enhanced Overlay */}
@@ -104,7 +103,7 @@ const Hero = () => {
           animationDelay: '0.6s'
         }}>
             <div className="relative overflow-hidden w-full h-full">
-              <img src={teamLab} alt="Laboratory facility" className="w-full h-full min-h-[400px] object-cover" />
+              <img src={teamLab} alt="Laboratory facility" className="w-full h-full min-h-[400px] object-cover rounded-md" />
               {/* Overlay gradient for better blend */}
               <div className="absolute inset-0 bg-gradient-to-t from-blue-900/30 to-transparent pointer-events-none"></div>
             </div>
