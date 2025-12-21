@@ -7,23 +7,15 @@ import labChemist from "@/assets/lab-chemist-samples.jpg";
 import labEquipment from "@/assets/lab-equipment-setup.jpg";
 import labAnalysis from "@/assets/lab-sample-analysis.jpg";
 import labTesting from "@/assets/lab-testing-process.jpg";
-
 const Hero = () => {
-  const [emblaRef] = useEmblaCarousel(
-    { loop: true },
-    [Autoplay({ delay: 3000, stopOnInteraction: false })]
-  );
-
-  const carouselImages = [
-    teamLab,
-    labChemist,
-    labEquipment,
-    labAnalysis,
-    labTesting
-  ];
-
-  return (
-    <section id="home" className="relative min-h-screen flex items-center overflow-hidden bg-gradient-to-br from-slate-900 via-blue-900 to-indigo-900 pt-32 lg:pt-40 pb-20 lg:pb-32">
+  const [emblaRef] = useEmblaCarousel({
+    loop: true
+  }, [Autoplay({
+    delay: 3000,
+    stopOnInteraction: false
+  })]);
+  const carouselImages = [teamLab, labChemist, labEquipment, labAnalysis, labTesting];
+  return <section id="home" className="relative min-h-screen flex items-center overflow-hidden bg-gradient-to-br from-slate-900 via-blue-900 to-indigo-900 pt-32 lg:pt-40 pb-20 lg:pb-32">
       {/* Background with Enhanced Overlay */}
       <div className="absolute inset-0 z-0">
         <div className="absolute inset-0 bg-gradient-to-br from-blue-900/90 via-blue-800/80 to-blue-900/70"></div>
@@ -54,11 +46,10 @@ const Hero = () => {
             </div>
 
             {/* Action Buttons */}
-            <div className="animate-fade-up flex flex-col sm:flex-row gap-4" style={{ animationDelay: '0.2s' }}>
-              <Link 
-                to="/about-us" 
-                className="group relative inline-flex items-center justify-center px-8 py-4 text-lg font-semibold rounded-xl overflow-hidden transition-all duration-300 hover:scale-105"
-              >
+            <div className="animate-fade-up flex flex-col sm:flex-row gap-4" style={{
+            animationDelay: '0.2s'
+          }}>
+              <Link to="/about-us" className="group relative inline-flex items-center justify-center px-8 py-4 text-lg font-semibold rounded-xl overflow-hidden transition-all duration-300 hover:scale-105">
                 <div className="absolute inset-0 bg-gradient-to-r from-blue-600 to-blue-500 opacity-100 group-hover:opacity-90 transition-opacity"></div>
                 <div className="absolute inset-0 bg-gradient-to-r from-blue-700 to-blue-600 opacity-0 group-hover:opacity-100 transition-opacity"></div>
                 <span className="relative text-white flex items-center space-x-2">
@@ -68,10 +59,7 @@ const Hero = () => {
                 <div className="absolute inset-0 rounded-xl bg-white/20 opacity-0 group-hover:opacity-100 transition-opacity blur-xl"></div>
               </Link>
               
-              <Link 
-                to="/services" 
-                className="group relative inline-flex items-center justify-center bg-transparent border-2 border-blue-400/50 backdrop-blur-md text-white hover:bg-blue-500/20 hover:scale-105 transition-all duration-300 px-8 py-4 text-lg font-semibold rounded-xl"
-              >
+              <Link to="/services" className="group relative inline-flex items-center justify-center bg-transparent border-2 border-blue-400/50 backdrop-blur-md text-white hover:bg-blue-500/20 hover:scale-105 transition-all duration-300 px-8 py-4 text-lg font-semibold rounded-xl">
                 <span className="flex items-center space-x-2">
                   <span>Our Services</span>
                   <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
@@ -81,38 +69,34 @@ const Hero = () => {
             </div>
 
             {/* Stats Widgets */}
-            <div className="grid grid-cols-2 gap-4 animate-fade-up" style={{ animationDelay: '0.4s' }}>
-              {[
-                {
-                  icon: Phone,
-                  number: "24/7",
-                  label: "Support Available",
-                  color: "from-cyan-400 to-teal-400",
-                  iconColor: "text-cyan-400"
-                },
-                {
-                  icon: Beaker,
-                  number: "4000+",
-                  label: "Sample Test Monthly",
-                  color: "from-blue-400 to-purple-400",
-                  iconColor: "text-blue-400"
-                },
-                {
-                  icon: CheckCircle,
-                  number: "Accredited",
-                  label: "ISO/IEC 17205",
-                  color: "from-emerald-400 to-cyan-400",
-                  iconColor: "text-emerald-400"
-                },
-                {
-                  icon: Users,
-                  number: "Serving",
-                  label: "Chemical & Environmental",
-                  color: "from-purple-400 to-pink-400",
-                  iconColor: "text-purple-400"
-                }
-              ].map((stat, index) => (
-                <div key={index} className="group relative">
+            <div className="grid grid-cols-2 gap-4 animate-fade-up" style={{
+            animationDelay: '0.4s'
+          }}>
+              {[{
+              icon: Phone,
+              number: "24/7",
+              label: "Support Available",
+              color: "from-cyan-400 to-teal-400",
+              iconColor: "text-cyan-400"
+            }, {
+              icon: Beaker,
+              number: "4000+",
+              label: "Sample Test Monthly",
+              color: "from-blue-400 to-purple-400",
+              iconColor: "text-blue-400"
+            }, {
+              icon: CheckCircle,
+              number: "Accredited",
+              label: "ISO/IEC 17205",
+              color: "from-emerald-400 to-cyan-400",
+              iconColor: "text-emerald-400"
+            }, {
+              icon: Users,
+              number: "Serving",
+              label: "Chemical & Environmental",
+              color: "from-purple-400 to-pink-400",
+              iconColor: "text-purple-400"
+            }].map((stat, index) => <div key={index} className="group relative">
                   <div className="text-center p-4 bg-white/10 backdrop-blur-md rounded-2xl border border-white/20 hover:bg-white/15 transition-all duration-300 hover:scale-105">
                     <div className="flex justify-center mb-2">
                       <stat.icon className={`w-6 h-6 md:w-8 md:h-8 ${stat.iconColor} drop-shadow-lg`} strokeWidth={1.5} />
@@ -123,25 +107,20 @@ const Hero = () => {
                     <div className="text-white/80 text-xs md:text-sm font-medium">{stat.label}</div>
                   </div>
                   <div className={`absolute inset-0 rounded-2xl bg-gradient-to-r ${stat.color} opacity-0 group-hover:opacity-20 transition-opacity blur-xl`}></div>
-                </div>
-              ))}
+                </div>)}
             </div>
           </div>
 
           {/* Right Column - Image Carousel */}
-          <div className="animate-fade-up lg:animate-fade-in h-full flex" style={{ animationDelay: '0.6s' }}>
+          <div className="animate-fade-up lg:animate-fade-in h-full flex" style={{
+          animationDelay: '0.6s'
+        }}>
             <div className="relative overflow-hidden rounded-3xl border-4 border-white/20 shadow-2xl w-full h-full">
               <div className="embla h-full" ref={emblaRef}>
                 <div className="embla__container flex h-full">
-                  {carouselImages.map((image, index) => (
-                    <div key={index} className="embla__slide flex-[0_0_100%] min-w-0 h-full">
-                      <img 
-                        src={image} 
-                        alt={`Laboratory facility ${index + 1}`}
-                        className="w-full h-full min-h-[400px] object-cover"
-                      />
-                    </div>
-                  ))}
+                  {carouselImages.map((image, index) => <div key={index} className="embla__slide flex-[0_0_100%] min-w-0 h-full">
+                      <img src={image} alt={`Laboratory facility ${index + 1}`} className="w-full h-full min-h-[400px] object-contain" />
+                    </div>)}
                 </div>
               </div>
               {/* Overlay gradient for better blend */}
@@ -161,8 +140,6 @@ const Hero = () => {
           <div className="absolute inset-0 rounded-full bg-cyan-400/20 blur-lg animate-pulse"></div>
         </div>
       </div>
-    </section>
-  );
+    </section>;
 };
-
 export default Hero;
