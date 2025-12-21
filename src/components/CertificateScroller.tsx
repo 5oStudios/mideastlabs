@@ -43,7 +43,7 @@ const CertificateScroller = () => {
 
         {/* Scrolling container */}
         <div
-          className="flex gap-6 md:gap-8"
+          className="flex w-max gap-6 md:gap-8"
           onMouseEnter={() => setIsPaused(true)}
           onMouseLeave={() => setIsPaused(false)}
           style={{
