@@ -68,14 +68,14 @@ const Header = () => {
           {/* Logo */}
           <div className="flex items-center space-x-2">
             <img src={logo} alt="Middle East Environmental Laboratories Co. Logo" className="h-16 lg:h-20 w-auto" loading="eager" fetchPriority="high" />
-            <div className="hidden md:flex flex-col justify-center">
+            <Link to="/" className="hidden md:flex flex-col justify-center hover:opacity-80 transition-opacity">
               <span className="text-sm lg:text-base font-bold leading-tight text-blue-900">
                 Middle East Environmental
               </span>
               <span className="text-sm lg:text-base font-bold leading-tight text-blue-900">
                 Laboratories W.L.L
               </span>
-            </div>
+            </Link>
           </div>
 
           {/* Desktop Navigation */}
