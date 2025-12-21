@@ -115,7 +115,7 @@ const Hero = () => {
           <div className="animate-fade-up lg:animate-fade-in h-full flex" style={{
           animationDelay: '0.6s'
         }}>
-            <div className="relative overflow-hidden rounded-3xl border-4 border-white/20 shadow-2xl w-full h-full">
+            <div className="relative overflow-hidden w-full h-full">
               <div className="embla h-full" ref={emblaRef}>
                 <div className="embla__container flex h-full">
                   {carouselImages.map((image, index) => <div key={index} className="embla__slide flex-[0_0_100%] min-w-0 h-full">
