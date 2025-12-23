@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
@@ -6,9 +6,10 @@ import { Label } from '@/components/ui/label';
 import { Textarea } from '@/components/ui/textarea';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
 import { useToast } from '@/hooks/use-toast';
-import { Phone, Mail, MapPin, Clock, Save, Globe } from 'lucide-react';
+import { Phone, Mail, MapPin, Clock, Save, Globe, Loader2 } from 'lucide-react';
+import { useContactSettings, useUpdateContactSettings } from '@/hooks/useContactSettings';
 
-interface ContactSettings {
+interface ContactFormState {
   phone: string;
   email: string;
   address_en: string;
@@ -23,36 +24,85 @@ interface ContactSettings {
 }
 
 const ContactSettingsPage = () => {
-  const [settings, setSettings] = useState<ContactSettings>({
-    phone: '+966 11 234 5678',
-    email: 'info@testhub.com.sa',
-    address_en: 'Riyadh, Kingdom of Saudi Arabia, Industrial Area, Building 123',
-    address_ar: 'الرياض، المملكة العربية السعودية، المنطقة الصناعية، مبنى 123',
-    map_embed_url: 'https://www.google.com/maps/embed?pb=!1m18!1m12...',
-    working_hours_weekdays_en: 'Sunday - Thursday: 8:00 AM - 5:00 PM',
-    working_hours_weekdays_ar: 'الأحد - الخميس: 8:00 صباحاً - 5:00 مساءً',
-    working_hours_friday_en: 'Friday: Closed',
-    working_hours_friday_ar: 'الجمعة: مغلق',
-    working_hours_saturday_en: 'Saturday: 9:00 AM - 1:00 PM',
-    working_hours_saturday_ar: 'السبت: 9:00 صباحاً - 1:00 ظهراً',
-  });
-  const [isLoading, setIsLoading] = useState(false);
+  const { data: settings, isLoading } = useContactSettings();
+  const updateSettings = useUpdateContactSettings();
   const { toast } = useToast();
+  
+  const [formState, setFormState] = useState<ContactFormState>({
+    phone: '',
+    email: '',
+    address_en: '',
+    address_ar: '',
+    map_embed_url: '',
+    working_hours_weekdays_en: '',
+    working_hours_weekdays_ar: '',
+    working_hours_friday_en: '',
+    working_hours_friday_ar: '',
+    working_hours_saturday_en: '',
+    working_hours_saturday_ar: '',
+  });
 
-  const handleChange = (field: keyof ContactSettings, value: string) => {
-    setSettings(prev => ({ ...prev, [field]: value }));
+  // Populate form when data loads
+  useEffect(() => {
+    if (settings) {
+      setFormState({
+        phone: settings.phone || '',
+        email: settings.email || '',
+        address_en: settings.address_en || '',
+        address_ar: settings.address_ar || '',
+        map_embed_url: settings.map_embed_url || '',
+        working_hours_weekdays_en: settings.working_hours_weekdays_en || '',
+        working_hours_weekdays_ar: settings.working_hours_weekdays_ar || '',
+        working_hours_friday_en: settings.working_hours_friday_en || '',
+        working_hours_friday_ar: settings.working_hours_friday_ar || '',
+        working_hours_saturday_en: settings.working_hours_saturday_en || '',
+        working_hours_saturday_ar: settings.working_hours_saturday_ar || '',
+      });
+    }
+  }, [settings]);
+
+  const handleChange = (field: keyof ContactFormState, value: string) => {
+    setFormState(prev => ({ ...prev, [field]: value }));
   };
 
   const handleSave = async () => {
-    setIsLoading(true);
-    // Mock save - will be replaced with Supabase
-    await new Promise(resolve => setTimeout(resolve, 500));
-    toast({
-      title: "Settings saved",
-      description: "Contact settings have been updated successfully.",
-    });
-    setIsLoading(false);
+    try {
+      await updateSettings.mutateAsync({
+        id: settings?.id || null,
+        updates: {
+          phone: formState.phone || null,
+          email: formState.email || null,
+          address_en: formState.address_en || null,
+          address_ar: formState.address_ar || null,
+          map_embed_url: formState.map_embed_url || null,
+          working_hours_weekdays_en: formState.working_hours_weekdays_en || null,
+          working_hours_weekdays_ar: formState.working_hours_weekdays_ar || null,
+          working_hours_friday_en: formState.working_hours_friday_en || null,
+          working_hours_friday_ar: formState.working_hours_friday_ar || null,
+          working_hours_saturday_en: formState.working_hours_saturday_en || null,
+          working_hours_saturday_ar: formState.working_hours_saturday_ar || null,
+        },
+      });
+      toast({
+        title: "Settings saved",
+        description: "Contact settings have been updated successfully.",
+      });
+    } catch (error) {
+      toast({
+        title: "Error",
+        description: "Failed to save contact settings.",
+        variant: "destructive",
+      });
+    }
   };
+
+  if (isLoading) {
+    return (
+      <div className="flex items-center justify-center h-64">
+        <Loader2 className="w-8 h-8 animate-spin text-primary" />
+      </div>
+    );
+  }
 
   return (
     <div className="space-y-6">
@@ -62,9 +112,13 @@ const ContactSettingsPage = () => {
           <h1 className="text-3xl font-bold text-foreground">Contact Settings</h1>
           <p className="text-muted-foreground mt-1">Manage contact information and working hours</p>
         </div>
-        <Button onClick={handleSave} disabled={isLoading}>
-          <Save className="h-4 w-4 mr-2" />
-          {isLoading ? 'Saving...' : 'Save All Changes'}
+        <Button onClick={handleSave} disabled={updateSettings.isPending}>
+          {updateSettings.isPending ? (
+            <Loader2 className="h-4 w-4 mr-2 animate-spin" />
+          ) : (
+            <Save className="h-4 w-4 mr-2" />
+          )}
+          {updateSettings.isPending ? 'Saving...' : 'Save All Changes'}
         </Button>
       </div>
 
@@ -90,9 +144,9 @@ const ContactSettingsPage = () => {
                   <Label htmlFor="phone">Phone Number</Label>
                   <Input
                     id="phone"
-                    value={settings.phone}
+                    value={formState.phone}
                     onChange={(e) => handleChange('phone', e.target.value)}
-                    placeholder="+966 11 234 5678"
+                    placeholder="+965 22251577"
                   />
                 </div>
                 <div className="space-y-2">
@@ -100,9 +154,9 @@ const ContactSettingsPage = () => {
                   <Input
                     id="email"
                     type="email"
-                    value={settings.email}
+                    value={formState.email}
                     onChange={(e) => handleChange('email', e.target.value)}
-                    placeholder="info@testhub.com.sa"
+                    placeholder="info@mideastlabs.com"
                   />
                 </div>
               </div>
@@ -122,7 +176,7 @@ const ContactSettingsPage = () => {
                 <Label htmlFor="address_en">Address (English)</Label>
                 <Textarea
                   id="address_en"
-                  value={settings.address_en}
+                  value={formState.address_en}
                   onChange={(e) => handleChange('address_en', e.target.value)}
                   placeholder="Enter full address in English"
                   rows={2}
@@ -133,7 +187,7 @@ const ContactSettingsPage = () => {
                 <Textarea
                   id="address_ar"
                   dir="rtl"
-                  value={settings.address_ar}
+                  value={formState.address_ar}
                   onChange={(e) => handleChange('address_ar', e.target.value)}
                   placeholder="أدخل العنوان الكامل بالعربية"
                   rows={2}
@@ -159,7 +213,7 @@ const ContactSettingsPage = () => {
                 <div className="space-y-2">
                   <Label>Weekdays (English)</Label>
                   <Input
-                    value={settings.working_hours_weekdays_en}
+                    value={formState.working_hours_weekdays_en}
                     onChange={(e) => handleChange('working_hours_weekdays_en', e.target.value)}
                     placeholder="Sunday - Thursday: 8:00 AM - 5:00 PM"
                   />
@@ -168,7 +222,7 @@ const ContactSettingsPage = () => {
                   <Label>أيام الأسبوع (العربية)</Label>
                   <Input
                     dir="rtl"
-                    value={settings.working_hours_weekdays_ar}
+                    value={formState.working_hours_weekdays_ar}
                     onChange={(e) => handleChange('working_hours_weekdays_ar', e.target.value)}
                     placeholder="الأحد - الخميس: 8:00 صباحاً - 5:00 مساءً"
                   />
@@ -180,7 +234,7 @@ const ContactSettingsPage = () => {
                 <div className="space-y-2">
                   <Label>Friday (English)</Label>
                   <Input
-                    value={settings.working_hours_friday_en}
+                    value={formState.working_hours_friday_en}
                     onChange={(e) => handleChange('working_hours_friday_en', e.target.value)}
                     placeholder="Friday: Closed"
                   />
@@ -189,7 +243,7 @@ const ContactSettingsPage = () => {
                   <Label>الجمعة (العربية)</Label>
                   <Input
                     dir="rtl"
-                    value={settings.working_hours_friday_ar}
+                    value={formState.working_hours_friday_ar}
                     onChange={(e) => handleChange('working_hours_friday_ar', e.target.value)}
                     placeholder="الجمعة: مغلق"
                   />
@@ -201,7 +255,7 @@ const ContactSettingsPage = () => {
                 <div className="space-y-2">
                   <Label>Saturday (English)</Label>
                   <Input
-                    value={settings.working_hours_saturday_en}
+                    value={formState.working_hours_saturday_en}
                     onChange={(e) => handleChange('working_hours_saturday_en', e.target.value)}
                     placeholder="Saturday: 9:00 AM - 1:00 PM"
                   />
@@ -210,7 +264,7 @@ const ContactSettingsPage = () => {
                   <Label>السبت (العربية)</Label>
                   <Input
                     dir="rtl"
-                    value={settings.working_hours_saturday_ar}
+                    value={formState.working_hours_saturday_ar}
                     onChange={(e) => handleChange('working_hours_saturday_ar', e.target.value)}
                     placeholder="السبت: 9:00 صباحاً - 1:00 ظهراً"
                   />
@@ -237,7 +291,7 @@ const ContactSettingsPage = () => {
                 <Label htmlFor="map_url">Map Embed URL</Label>
                 <Textarea
                   id="map_url"
-                  value={settings.map_embed_url}
+                  value={formState.map_embed_url}
                   onChange={(e) => handleChange('map_embed_url', e.target.value)}
                   placeholder="https://www.google.com/maps/embed?pb=..."
                   rows={3}
@@ -251,9 +305,9 @@ const ContactSettingsPage = () => {
               <div className="space-y-2">
                 <Label>Preview</Label>
                 <div className="w-full h-64 bg-muted rounded-lg overflow-hidden">
-                  {settings.map_embed_url ? (
+                  {formState.map_embed_url ? (
                     <iframe
-                      src={settings.map_embed_url}
+                      src={formState.map_embed_url}
                       width="100%"
                       height="100%"
                       style={{ border: 0 }}
