@@ -215,15 +215,15 @@ const HeroBannersPage = () => {
 
       {/* Add/Edit Dialog */}
       <Dialog open={isDialogOpen} onOpenChange={setIsDialogOpen}>
-        <DialogContent className="max-w-2xl max-h-[90vh] overflow-y-auto">
+        <DialogContent className="max-w-md">
           <DialogHeader>
             <DialogTitle>{editingBanner ? 'Edit Banner' : 'Add New Banner'}</DialogTitle>
             <DialogDescription>
-              Fill in the details for the hero banner. Both English and Arabic content is required.
+              Upload an image for the hero banner.
             </DialogDescription>
           </DialogHeader>
           
-          <div className="space-y-6 py-4">
+          <div className="space-y-4 py-4">
             {/* Image Upload */}
             <div className="space-y-2">
               <Label>Banner Image</Label>
@@ -244,81 +244,6 @@ const HeroBannersPage = () => {
                   </label>
                 </Button>
               </div>
-            </div>
-
-            {/* English Content */}
-            <div className="space-y-4">
-              <h3 className="font-medium text-foreground">English Content</h3>
-              <div className="grid grid-cols-1 gap-4">
-                <div className="space-y-2">
-                  <Label htmlFor="title_en">Title</Label>
-                  <Input
-                    id="title_en"
-                    value={formData.title_en || ''}
-                    onChange={(e) => setFormData({ ...formData, title_en: e.target.value })}
-                    placeholder="Enter English title"
-                  />
-                </div>
-                <div className="space-y-2">
-                  <Label htmlFor="subtitle_en">Subtitle</Label>
-                  <Input
-                    id="subtitle_en"
-                    value={formData.subtitle_en || ''}
-                    onChange={(e) => setFormData({ ...formData, subtitle_en: e.target.value })}
-                    placeholder="Enter English subtitle"
-                  />
-                </div>
-              </div>
-            </div>
-
-            {/* Arabic Content */}
-            <div className="space-y-4">
-              <h3 className="font-medium text-foreground">Arabic Content</h3>
-              <div className="grid grid-cols-1 gap-4">
-                <div className="space-y-2">
-                  <Label htmlFor="title_ar">Title (العنوان)</Label>
-                  <Input
-                    id="title_ar"
-                    dir="rtl"
-                    value={formData.title_ar || ''}
-                    onChange={(e) => setFormData({ ...formData, title_ar: e.target.value })}
-                    placeholder="أدخل العنوان بالعربية"
-                  />
-                </div>
-                <div className="space-y-2">
-                  <Label htmlFor="subtitle_ar">Subtitle (العنوان الفرعي)</Label>
-                  <Input
-                    id="subtitle_ar"
-                    dir="rtl"
-                    value={formData.subtitle_ar || ''}
-                    onChange={(e) => setFormData({ ...formData, subtitle_ar: e.target.value })}
-                    placeholder="أدخل العنوان الفرعي بالعربية"
-                  />
-                </div>
-              </div>
-            </div>
-
-            {/* CTA Link */}
-            <div className="space-y-2">
-              <Label htmlFor="cta_link">Call-to-Action Link</Label>
-              <Input
-                id="cta_link"
-                value={formData.cta_link || ''}
-                onChange={(e) => setFormData({ ...formData, cta_link: e.target.value })}
-                placeholder="/services or https://..."
-              />
-            </div>
-
-            {/* Active Status */}
-            <div className="flex items-center justify-between">
-              <div>
-                <Label>Active Status</Label>
-                <p className="text-sm text-muted-foreground">Enable to show this banner</p>
-              </div>
-              <Switch
-                checked={formData.is_active ?? true}
-                onCheckedChange={(checked) => setFormData({ ...formData, is_active: checked })}
-              />
             </div>
           </div>
 
