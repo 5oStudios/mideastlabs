@@ -64,8 +64,9 @@ export default {
         },
       },
       fontFamily: {
-        sans: ['Inter', 'system-ui', 'sans-serif'],
-        display: ['Poppins', 'Inter', 'system-ui', 'sans-serif'],
+        sans: ['Inter', 'Cairo', 'system-ui', 'sans-serif'],
+        display: ['Poppins', 'Cairo', 'system-ui', 'sans-serif'],
+        arabic: ['Cairo', 'system-ui', 'sans-serif'],
       },
       fontSize: {
         'display': ['4rem', { lineHeight: '1.1', letterSpacing: '-0.02em' }],

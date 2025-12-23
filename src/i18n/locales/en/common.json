@@ -1,0 +1,147 @@
+{
+  "nav": {
+    "home": "Home",
+    "aboutUs": "About Us",
+    "services": "Services",
+    "accreditation": "Accreditation",
+    "companyProfile": "Company Profile",
+    "career": "Career",
+    "contactUs": "Contact Us",
+    "gallery": "Gallery"
+  },
+  "hero": {
+    "title1": "Analytical Testing",
+    "title2": "Laboratory",
+    "description": "Delivering precise analytical testing services with cutting-edge technology and certified expertise for environmental and chemical analysis.",
+    "aboutUs": "About Us",
+    "ourServices": "Our Services",
+    "stats": {
+      "support": "24/7",
+      "supportLabel": "Support Available",
+      "samples": "4000+",
+      "samplesLabel": "Sample Test Monthly",
+      "accredited": "Accredited",
+      "accreditedLabel": "ISO/IEC 17205",
+      "serving": "Serving",
+      "servingLabel": "Chemical & Environmental"
+    }
+  },
+  "about": {
+    "badge": "About Our Laboratory",
+    "title": "Middle East Environmental Laboratories W.L.L.",
+    "description": "Middle East Environmental Laboratories W.L.L. delivers high-quality, reliable environmental testing services that support compliance, sustainability, and informed decision-making. With advanced equipment and a team of skilled experts, we help industries, government entities, and organizations monitor and manage their environmental impact. Our accurate analyses and customized reporting ensure clients meet local and international regulations while contributing to a cleaner, safer environment for future generations.",
+    "features": {
+      "facilities": "Purpose-built testing facilities",
+      "guidance": "Expert technical guidance",
+      "services": "Comprehensive analytical services",
+      "quality": "Quality assurance protocols",
+      "compliance": "Regulatory compliance support",
+      "equipment": "Advanced testing equipment"
+    },
+    "mission": {
+      "title": "Our Mission",
+      "description": "The mission of Middle East Environmental Laboratories W.L.L. is to provide accurate, timely, and trusted environmental testing and analysis services"
+    },
+    "vision": {
+      "title": "Our Vision",
+      "description": "To provide superior services in Laboratory needs that advance the well-being of our community and this can only be achieved through our quality and differentiation"
+    },
+    "stats": {
+      "iso": "ISO",
+      "isoCertified": "Certified",
+      "epa": "EPA",
+      "epaApproved": "Approved",
+      "turnaround": "48hr",
+      "turnaroundLabel": "Turnaround"
+    }
+  },
+  "services": {
+    "badge": "Our Services",
+    "title": "Comprehensive Laboratory Testing Services",
+    "description": "We offer a comprehensive range of analytical services tailored to your specific needs, combined with the capacity to provide expert support and technical guidance.",
+    "knowMore": "Know More",
+    "viewAll": "View All Services",
+    "categories": {
+      "environmental": "Environmental Testing",
+      "waste": "Waste Management",
+      "health": "Health & Safety",
+      "energy": "Energy & Petroleum",
+      "conditioning": "Condition Monitoring",
+      "food": "Food Safety",
+      "environmental_services": "Environmental Services",
+      "microbiology": "Microbiology",
+      "chemistry": "Chemistry",
+      "physical": "Physical Testing",
+      "sampling": "Sampling Services",
+      "hazardous": "Hazardous Materials",
+      "support": "Technical Support"
+    }
+  },
+  "contact": {
+    "badge": "Get In Touch",
+    "title": "Contact Us Today",
+    "description": "Reach out to our team of experts for comprehensive laboratory testing services",
+    "form": {
+      "name": "Full Name",
+      "namePlaceholder": "Enter your full name",
+      "email": "Email Address",
+      "emailPlaceholder": "your.email@example.com",
+      "phone": "Phone Number",
+      "phonePlaceholder": "+965 XXXX XXXX",
+      "message": "Message",
+      "messagePlaceholder": "Tell us about your testing requirements...",
+      "submit": "Send Message",
+      "sending": "Sending...",
+      "success": "Message sent successfully! We'll get back to you soon.",
+      "error": "Failed to send message. Please try again."
+    }
+  },
+  "footer": {
+    "quickLinks": "Quick Links",
+    "ourServices": "Our Services",
+    "contactInfo": "Contact Info",
+    "copyright": "© 2026 Middle East Environmental Laboratories Co. All rights reserved.",
+    "privacyPolicy": "Privacy Policy",
+    "termsOfService": "Terms of Service",
+    "services": {
+      "water": "Water & Wastewater Testing",
+      "food": "Food Testing",
+      "soil": "Soil & Sludge Analysis",
+      "cosmetics": "Cosmetics Testing",
+      "environmental": "Environmental Monitoring",
+      "material": "Material Testing"
+    }
+  },
+  "contactPage": {
+    "heroTitle": "Get in Touch",
+    "heroDescription": "We're here to help with all your laboratory testing needs. Reach out to our team of experts today.",
+    "location": {
+      "title": "Our Location",
+      "address1": "Building 195, 1st Floor, West of Abu Fatira Al Herafia",
+      "address2": "P.O. Box 114, AL-Qusour, 47402, Kuwait"
+    },
+    "phone": {
+      "title": "Phone",
+      "number": "+965 22251577"
+    },
+    "email": {
+      "title": "Email",
+      "address": "info@mideastlabs.com"
+    },
+    "hours": {
+      "title": "Working Hours",
+      "weekdays": "Sunday - Thursday: 7:00 AM - 5:00 PM",
+      "weekend": "Friday - Saturday: Closed"
+    },
+    "cta": {
+      "title": "Ready to Get Started?",
+      "description": "Contact us today to learn more about our comprehensive laboratory testing services and how we can help meet your analytical needs.",
+      "viewServices": "View Services",
+      "learnMore": "Learn More"
+    }
+  },
+  "common": {
+    "required": "required",
+    "loading": "Loading..."
+  }
+}

@@ -137,6 +137,114 @@
   html {
     scroll-behavior: smooth;
   }
+
+  /* RTL Support */
+  html.rtl {
+    direction: rtl;
+  }
+
+  html.rtl body {
+    font-family: 'Cairo', 'Inter', system-ui, sans-serif;
+  }
+
+  /* RTL-aware spacing utilities */
+  html.rtl .space-x-2 > :not([hidden]) ~ :not([hidden]) {
+    --tw-space-x-reverse: 1;
+  }
+
+  html.rtl .space-x-3 > :not([hidden]) ~ :not([hidden]) {
+    --tw-space-x-reverse: 1;
+  }
+
+  html.rtl .space-x-4 > :not([hidden]) ~ :not([hidden]) {
+    --tw-space-x-reverse: 1;
+  }
+
+  html.rtl .space-x-6 > :not([hidden]) ~ :not([hidden]) {
+    --tw-space-x-reverse: 1;
+  }
+
+  html.rtl .space-x-8 > :not([hidden]) ~ :not([hidden]) {
+    --tw-space-x-reverse: 1;
+  }
+
+  /* RTL margin adjustments */
+  html.rtl .ml-2 {
+    margin-left: 0;
+    margin-right: 0.5rem;
+  }
+
+  html.rtl .mr-2 {
+    margin-right: 0;
+    margin-left: 0.5rem;
+  }
+
+  html.rtl .ml-4 {
+    margin-left: 0;
+    margin-right: 1rem;
+  }
+
+  html.rtl .mr-4 {
+    margin-right: 0;
+    margin-left: 1rem;
+  }
+
+  /* RTL text alignment */
+  html.rtl .text-left {
+    text-align: right;
+  }
+
+  html.rtl .text-right {
+    text-align: left;
+  }
+
+  /* RTL flex direction for specific layouts */
+  html.rtl .rtl\:flex-row-reverse {
+    flex-direction: row-reverse;
+  }
+
+  /* RTL-aware absolute positioning */
+  html.rtl .left-0 {
+    left: auto;
+    right: 0;
+  }
+
+  html.rtl .right-0 {
+    right: auto;
+    left: 0;
+  }
+
+  html.rtl .left-4 {
+    left: auto;
+    right: 1rem;
+  }
+
+  html.rtl .right-4 {
+    right: auto;
+    left: 1rem;
+  }
+
+  /* RTL border radius adjustments */
+  html.rtl .border-l-2 {
+    border-left-width: 0;
+    border-right-width: 2px;
+  }
+
+  /* RTL padding adjustments */
+  html.rtl .pl-4 {
+    padding-left: 0;
+    padding-right: 1rem;
+  }
+
+  html.rtl .pr-4 {
+    padding-right: 0;
+    padding-left: 1rem;
+  }
+
+  /* RTL translate adjustments */
+  html.rtl .group-hover\:translate-x-1:hover {
+    transform: translateX(-0.25rem);
+  }
 }
 
 @layer components {
