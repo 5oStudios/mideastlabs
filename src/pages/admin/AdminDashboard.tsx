@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
@@ -10,15 +10,17 @@ import {
   Building2,
   Phone,
   ArrowRight,
-  TrendingUp
+  TrendingUp,
+  Loader2
 } from 'lucide-react';
+import { supabase } from '@/integrations/supabase/client';
 
-const stats = [
-  { title: 'Hero Banners', count: 4, icon: Image, href: '/admin/hero-banners', color: 'bg-blue-500' },
-  { title: 'Services', count: 12, icon: Layers, href: '/admin/services', color: 'bg-green-500' },
-  { title: 'Gallery Images', count: 20, icon: Images, href: '/admin/gallery', color: 'bg-purple-500' },
-  { title: 'Certificates', count: 9, icon: Award, href: '/admin/accreditations', color: 'bg-orange-500' },
-];
+interface StatsData {
+  heroBanners: number;
+  services: number;
+  galleryImages: number;
+  certificates: number;
+}
 
 const quickActions = [
   { title: 'Add Hero Banner', description: 'Add a new carousel banner', href: '/admin/hero-banners', icon: Image },
@@ -28,6 +30,42 @@ const quickActions = [
 ];
 
 const AdminDashboard = () => {
+  const [stats, setStats] = useState<StatsData | null>(null);
+  const [isLoading, setIsLoading] = useState(true);
+
+  useEffect(() => {
+    const fetchStats = async () => {
+      try {
+        const [bannersRes, servicesRes, galleryRes, certificatesRes] = await Promise.all([
+          supabase.from('hero_banners').select('id', { count: 'exact', head: true }),
+          supabase.from('services').select('id', { count: 'exact', head: true }),
+          supabase.from('gallery_images').select('id', { count: 'exact', head: true }),
+          supabase.from('certificates').select('id', { count: 'exact', head: true }),
+        ]);
+
+        setStats({
+          heroBanners: bannersRes.count || 0,
+          services: servicesRes.count || 0,
+          galleryImages: galleryRes.count || 0,
+          certificates: certificatesRes.count || 0,
+        });
+      } catch (error) {
+        console.error('Failed to fetch stats:', error);
+      } finally {
+        setIsLoading(false);
+      }
+    };
+
+    fetchStats();
+  }, []);
+
+  const statsConfig = [
+    { title: 'Hero Banners', count: stats?.heroBanners ?? 0, icon: Image, href: '/admin/hero-banners', color: 'bg-blue-500' },
+    { title: 'Services', count: stats?.services ?? 0, icon: Layers, href: '/admin/services', color: 'bg-green-500' },
+    { title: 'Gallery Images', count: stats?.galleryImages ?? 0, icon: Images, href: '/admin/gallery', color: 'bg-purple-500' },
+    { title: 'Certificates', count: stats?.certificates ?? 0, icon: Award, href: '/admin/accreditations', color: 'bg-orange-500' },
+  ];
+
   return (
     <div className="space-y-8">
       {/* Header */}
@@ -38,14 +76,18 @@ const AdminDashboard = () => {
 
       {/* Stats Grid */}
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-        {stats.map((stat) => (
+        {statsConfig.map((stat) => (
           <Link key={stat.title} to={stat.href}>
             <Card className="hover:shadow-md transition-shadow cursor-pointer">
               <CardContent className="p-6">
                 <div className="flex items-center justify-between">
                   <div>
                     <p className="text-sm font-medium text-muted-foreground">{stat.title}</p>
-                    <p className="text-3xl font-bold text-foreground mt-1">{stat.count}</p>
+                    {isLoading ? (
+                      <Loader2 className="h-8 w-8 animate-spin text-muted-foreground mt-2" />
+                    ) : (
+                      <p className="text-3xl font-bold text-foreground mt-1">{stat.count}</p>
+                    )}
                   </div>
                   <div className={`w-12 h-12 rounded-lg ${stat.color} flex items-center justify-center`}>
                     <stat.icon className="h-6 w-6 text-white" />
