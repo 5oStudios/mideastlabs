@@ -54,10 +54,10 @@ const Hero = () => {
 
       {/* Main Content Container */}
       <div className="relative z-10 w-full">
-        <div className={`grid lg:grid-cols-2 gap-8 lg:gap-0 items-center ${isRTL ? 'lg:grid-flow-dense' : ''}`}>
+        <div className={`grid lg:grid-cols-2 gap-8 lg:gap-0 items-center ${isRTL ? 'direction-rtl' : ''}`} dir={isRTL ? 'rtl' : 'ltr'}>
           
-          {/* Left Column - Content */}
-          <div className={`space-y-8 px-4 ${isRTL ? 'lg:pr-8 lg:pl-12 lg:col-start-2' : 'lg:pl-8 lg:pr-12'}`}>
+          {/* Left Column - Content (Right in RTL) */}
+          <div className={`space-y-8 px-4 ${isRTL ? 'lg:pl-8 lg:pr-12 text-right' : 'lg:pl-8 lg:pr-12'}`}>
             {/* Main Heading */}
             <div className="animate-fade-up">
               <h1 className="font-display font-bold text-4xl md:text-5xl lg:text-6xl text-white mb-6 leading-tight">
@@ -118,8 +118,8 @@ const Hero = () => {
             </div>
           </div>
 
-          {/* Right Column - Image */}
-          <div className={`animate-fade-up lg:animate-fade-in h-full flex ${isRTL ? 'ml-4 lg:col-start-1' : 'ml-4 md:ml-0'} mr-4`} style={{
+          {/* Right Column - Image (Left in RTL) */}
+          <div className={`animate-fade-up lg:animate-fade-in h-full flex mx-4 ${isRTL ? 'order-first lg:order-none' : ''}`} style={{
             animationDelay: '0.6s'
           }}>
             <div className="relative overflow-hidden w-full md:h-full rounded-lg">
