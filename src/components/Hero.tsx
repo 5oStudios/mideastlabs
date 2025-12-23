@@ -57,10 +57,10 @@ const Hero = () => {
         <div className={`grid lg:grid-cols-2 gap-8 lg:gap-0 items-center ${isRTL ? 'direction-rtl' : ''}`} dir={isRTL ? 'rtl' : 'ltr'}>
           
           {/* Left Column - Content (Right in RTL) */}
-          <div className={`space-y-8 px-4 ${isRTL ? 'lg:pl-8 lg:pr-12 flex flex-col items-end' : 'lg:pl-8 lg:pr-12'}`}>
+          <div className={`space-y-8 px-4 ${isRTL ? 'lg:pl-8 lg:pr-12' : 'lg:pl-8 lg:pr-12'}`}>
             {/* Main Heading */}
-            <div className={`animate-fade-up w-full ${isRTL ? 'text-right' : 'text-left'}`}>
-              <h1 className={`font-display font-bold text-4xl md:text-5xl lg:text-6xl text-white mb-6 leading-tight ${isRTL ? 'text-right' : ''}`}>
+            <div className={`animate-fade-up ${isRTL ? 'text-right' : 'text-left'}`}>
+              <h1 className="font-display font-bold text-4xl md:text-5xl lg:text-6xl text-white mb-6 leading-tight">
                 <span className="bg-gradient-to-r from-white via-blue-100 to-cyan-200 bg-clip-text text-transparent">
                   {t("hero.title1")}
                 </span>
@@ -69,13 +69,13 @@ const Hero = () => {
                   {t("hero.title2")}
                 </span>
               </h1>
-              <p className={`text-lg md:text-xl text-blue-100/90 leading-relaxed max-w-2xl ${isRTL ? 'text-right ml-auto' : ''}`}>
+              <p className={`text-lg md:text-xl text-blue-100/90 leading-relaxed max-w-2xl ${isRTL ? 'ml-auto' : ''}`}>
                 {t("hero.description")}
               </p>
             </div>
 
             {/* Action Buttons */}
-            <div className={`animate-fade-up flex flex-col sm:flex-row gap-4 w-full ${isRTL ? 'sm:justify-end' : 'sm:justify-start'}`} style={{
+            <div className={`animate-fade-up flex flex-col sm:flex-row gap-4 ${isRTL ? 'justify-end' : 'justify-start'}`} style={{
               animationDelay: '0.2s'
             }}>
               <Link to="/about-us" className="group relative inline-flex items-center justify-center px-8 py-4 text-lg font-semibold rounded-xl overflow-hidden transition-all duration-300 hover:scale-105">
