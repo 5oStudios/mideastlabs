@@ -75,7 +75,7 @@ const Hero = () => {
             </div>
 
             {/* Action Buttons */}
-            <div className={`animate-fade-up flex flex-col sm:flex-row gap-4 ${isRTL ? 'justify-end' : 'justify-start'}`} style={{
+            <div className={`animate-fade-up flex flex-col sm:flex-row gap-4 ${isRTL ? 'sm:flex-row-reverse justify-end' : 'justify-start'}`} style={{
               animationDelay: '0.2s'
             }}>
               <Link to="/about-us" className="group relative inline-flex items-center justify-center px-8 py-4 text-lg font-semibold rounded-xl overflow-hidden transition-all duration-300 hover:scale-105">
