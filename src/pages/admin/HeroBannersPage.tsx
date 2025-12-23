@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef } from 'react';
+import React, { useState, useRef } from 'react';
 import { Card, CardContent } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
@@ -22,103 +22,115 @@ import {
 } from '@/components/ui/table';
 import { useToast } from '@/hooks/use-toast';
 import { Plus, Pencil, Trash2, GripVertical, Image, Loader2, X } from 'lucide-react';
-import { supabase } from '@/integrations/supabase/client';
+import { 
+  useHeroBanners, 
+  useCreateHeroBanner, 
+  useUpdateHeroBanner, 
+  useDeleteHeroBanner,
+  uploadHeroBannerImage,
+  deleteHeroBannerImage
+} from '@/hooks/useHeroBanners';
 import type { Tables } from '@/integrations/supabase/types';
 
 type HeroBanner = Tables<'hero_banners'>;
 
+interface BannerFormState {
+  title_en: string;
+  title_ar: string;
+  subtitle_en: string;
+  subtitle_ar: string;
+  cta_text_en: string;
+  cta_text_ar: string;
+  cta_link: string;
+}
+
 const HeroBannersPage = () => {
-  const [banners, setBanners] = useState<HeroBanner[]>([]);
-  const [isLoading, setIsLoading] = useState(true);
+  const { data: banners = [], isLoading } = useHeroBanners();
+  const createBanner = useCreateHeroBanner();
+  const updateBanner = useUpdateHeroBanner();
+  const deleteBanner = useDeleteHeroBanner();
+  
   const [isDialogOpen, setIsDialogOpen] = useState(false);
   const [editingBanner, setEditingBanner] = useState<HeroBanner | null>(null);
   const [selectedFile, setSelectedFile] = useState<File | null>(null);
   const [previewUrl, setPreviewUrl] = useState<string | null>(null);
   const [isUploading, setIsUploading] = useState(false);
+  const [formState, setFormState] = useState<BannerFormState>({
+    title_en: '',
+    title_ar: '',
+    subtitle_en: '',
+    subtitle_ar: '',
+    cta_text_en: '',
+    cta_text_ar: '',
+    cta_link: '',
+  });
   const fileInputRef = useRef<HTMLInputElement>(null);
   const { toast } = useToast();
 
-  // Fetch banners from Supabase
-  const fetchBanners = async () => {
-    setIsLoading(true);
-    const { data, error } = await supabase
-      .from('hero_banners')
-      .select('*')
-      .order('display_order', { ascending: true });
-
-    if (error) {
-      toast({
-        title: "Error",
-        description: "Failed to fetch banners",
-        variant: "destructive",
-      });
-    } else {
-      setBanners(data || []);
-    }
-    setIsLoading(false);
+  const resetForm = () => {
+    setFormState({
+      title_en: '',
+      title_ar: '',
+      subtitle_en: '',
+      subtitle_ar: '',
+      cta_text_en: '',
+      cta_text_ar: '',
+      cta_link: '',
+    });
+    setSelectedFile(null);
+    setPreviewUrl(null);
   };
-
-  useEffect(() => {
-    fetchBanners();
-  }, []);
 
   const handleAdd = () => {
     setEditingBanner(null);
-    setSelectedFile(null);
-    setPreviewUrl(null);
+    resetForm();
     setIsDialogOpen(true);
   };
 
   const handleEdit = (banner: HeroBanner) => {
     setEditingBanner(banner);
+    setFormState({
+      title_en: banner.title_en || '',
+      title_ar: banner.title_ar || '',
+      subtitle_en: banner.subtitle_en || '',
+      subtitle_ar: banner.subtitle_ar || '',
+      cta_text_en: banner.cta_text_en || '',
+      cta_text_ar: banner.cta_text_ar || '',
+      cta_link: banner.cta_link || '',
+    });
     setSelectedFile(null);
     setPreviewUrl(banner.image_url);
     setIsDialogOpen(true);
   };
 
   const handleDelete = async (id: string, imageUrl: string) => {
-    // Delete the image from storage if it's in our bucket
-    if (imageUrl.includes('uploads')) {
-      const path = imageUrl.split('/uploads/')[1];
-      if (path) {
-        await supabase.storage.from('uploads').remove([path]);
-      }
-    }
-
-    const { error } = await supabase
-      .from('hero_banners')
-      .delete()
-      .eq('id', id);
-
-    if (error) {
+    try {
+      await deleteBanner.mutateAsync({ id, imageUrl });
+      toast({
+        title: "Banner deleted",
+        description: "The banner has been removed successfully.",
+      });
+    } catch (error) {
       toast({
         title: "Error",
         description: "Failed to delete banner",
         variant: "destructive",
       });
-    } else {
-      toast({
-        title: "Banner deleted",
-        description: "The banner has been removed successfully.",
-      });
-      fetchBanners();
     }
   };
 
   const handleToggleActive = async (id: string, currentStatus: boolean) => {
-    const { error } = await supabase
-      .from('hero_banners')
-      .update({ is_active: !currentStatus })
-      .eq('id', id);
-
-    if (error) {
+    try {
+      await updateBanner.mutateAsync({
+        id,
+        updates: { is_active: !currentStatus },
+      });
+    } catch (error) {
       toast({
         title: "Error",
         description: "Failed to update banner status",
         variant: "destructive",
       });
-    } else {
-      fetchBanners();
     }
   };
 
@@ -130,30 +142,6 @@ const HeroBannersPage = () => {
     }
   };
 
-  const uploadImage = async (file: File): Promise<string | null> => {
-    const fileExt = file.name.split('.').pop();
-    const fileName = `hero-banners/${Date.now()}.${fileExt}`;
-
-    const { error: uploadError } = await supabase.storage
-      .from('uploads')
-      .upload(fileName, file);
-
-    if (uploadError) {
-      toast({
-        title: "Upload Error",
-        description: uploadError.message,
-        variant: "destructive",
-      });
-      return null;
-    }
-
-    const { data: urlData } = supabase.storage
-      .from('uploads')
-      .getPublicUrl(fileName);
-
-    return urlData.publicUrl;
-  };
-
   const handleSave = async () => {
     setIsUploading(true);
 
@@ -162,30 +150,29 @@ const HeroBannersPage = () => {
 
       // Upload new image if selected
       if (selectedFile) {
-        const uploadedUrl = await uploadImage(selectedFile);
-        if (!uploadedUrl) {
-          setIsUploading(false);
-          return;
-        }
-        imageUrl = uploadedUrl;
+        imageUrl = await uploadHeroBannerImage(selectedFile);
 
-        // Delete old image if editing and had a previous image in our bucket
-        if (editingBanner?.image_url?.includes('uploads')) {
-          const oldPath = editingBanner.image_url.split('/uploads/')[1];
-          if (oldPath) {
-            await supabase.storage.from('uploads').remove([oldPath]);
-          }
+        // Delete old image if editing and had a previous image
+        if (editingBanner?.image_url) {
+          await deleteHeroBannerImage(editingBanner.image_url);
         }
       }
 
       if (editingBanner) {
         // Update existing banner
-        const { error } = await supabase
-          .from('hero_banners')
-          .update({ image_url: imageUrl })
-          .eq('id', editingBanner.id);
-
-        if (error) throw error;
+        await updateBanner.mutateAsync({
+          id: editingBanner.id,
+          updates: {
+            image_url: imageUrl,
+            title_en: formState.title_en || null,
+            title_ar: formState.title_ar || null,
+            subtitle_en: formState.subtitle_en || null,
+            subtitle_ar: formState.subtitle_ar || null,
+            cta_text_en: formState.cta_text_en || null,
+            cta_text_ar: formState.cta_text_ar || null,
+            cta_link: formState.cta_link || null,
+          },
+        });
 
         toast({
           title: "Banner updated",
@@ -207,15 +194,18 @@ const HeroBannersPage = () => {
           ? Math.max(...banners.map(b => b.display_order || 0)) 
           : 0;
 
-        const { error } = await supabase
-          .from('hero_banners')
-          .insert({
-            image_url: imageUrl,
-            display_order: maxOrder + 1,
-            is_active: true,
-          });
-
-        if (error) throw error;
+        await createBanner.mutateAsync({
+          image_url: imageUrl,
+          display_order: maxOrder + 1,
+          is_active: true,
+          title_en: formState.title_en || null,
+          title_ar: formState.title_ar || null,
+          subtitle_en: formState.subtitle_en || null,
+          subtitle_ar: formState.subtitle_ar || null,
+          cta_text_en: formState.cta_text_en || null,
+          cta_text_ar: formState.cta_text_ar || null,
+          cta_link: formState.cta_link || null,
+        });
 
         toast({
           title: "Banner added",
@@ -224,7 +214,7 @@ const HeroBannersPage = () => {
       }
 
       setIsDialogOpen(false);
-      fetchBanners();
+      resetForm();
     } catch (error: any) {
       toast({
         title: "Error",
@@ -276,6 +266,7 @@ const HeroBannersPage = () => {
                 <TableRow>
                   <TableHead className="w-12"></TableHead>
                   <TableHead>Image</TableHead>
+                  <TableHead>Title (EN)</TableHead>
                   <TableHead className="w-24">Status</TableHead>
                   <TableHead className="w-32 text-right">Actions</TableHead>
                 </TableRow>
@@ -300,6 +291,11 @@ const HeroBannersPage = () => {
                           </div>
                         )}
                       </div>
+                    </TableCell>
+                    <TableCell>
+                      <span className="text-sm text-muted-foreground">
+                        {banner.title_en || 'No title'}
+                      </span>
                     </TableCell>
                     <TableCell>
                       <Switch
@@ -335,18 +331,18 @@ const HeroBannersPage = () => {
 
       {/* Add/Edit Dialog */}
       <Dialog open={isDialogOpen} onOpenChange={setIsDialogOpen}>
-        <DialogContent className="max-w-md">
+        <DialogContent className="max-w-2xl max-h-[90vh] overflow-y-auto">
           <DialogHeader>
             <DialogTitle>{editingBanner ? 'Edit Banner' : 'Add New Banner'}</DialogTitle>
             <DialogDescription>
-              Upload an image for the hero banner.
+              Upload an image and configure the banner details.
             </DialogDescription>
           </DialogHeader>
           
-          <div className="space-y-4 py-4">
+          <div className="space-y-6 py-4">
             {/* Image Upload */}
             <div className="space-y-2">
-              <Label>Banner Image</Label>
+              <Label>Banner Image *</Label>
               {previewUrl ? (
                 <div className="relative rounded-lg overflow-hidden">
                   <img
@@ -393,6 +389,85 @@ const HeroBannersPage = () => {
                   Change Image
                 </Button>
               )}
+            </div>
+
+            {/* Title Fields */}
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+              <div className="space-y-2">
+                <Label htmlFor="title_en">Title (English)</Label>
+                <Input
+                  id="title_en"
+                  value={formState.title_en}
+                  onChange={(e) => setFormState(prev => ({ ...prev, title_en: e.target.value }))}
+                  placeholder="Banner title in English"
+                />
+              </div>
+              <div className="space-y-2">
+                <Label htmlFor="title_ar">Title (العربية)</Label>
+                <Input
+                  id="title_ar"
+                  dir="rtl"
+                  value={formState.title_ar}
+                  onChange={(e) => setFormState(prev => ({ ...prev, title_ar: e.target.value }))}
+                  placeholder="عنوان البانر بالعربية"
+                />
+              </div>
+            </div>
+
+            {/* Subtitle Fields */}
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+              <div className="space-y-2">
+                <Label htmlFor="subtitle_en">Subtitle (English)</Label>
+                <Input
+                  id="subtitle_en"
+                  value={formState.subtitle_en}
+                  onChange={(e) => setFormState(prev => ({ ...prev, subtitle_en: e.target.value }))}
+                  placeholder="Banner subtitle in English"
+                />
+              </div>
+              <div className="space-y-2">
+                <Label htmlFor="subtitle_ar">Subtitle (العربية)</Label>
+                <Input
+                  id="subtitle_ar"
+                  dir="rtl"
+                  value={formState.subtitle_ar}
+                  onChange={(e) => setFormState(prev => ({ ...prev, subtitle_ar: e.target.value }))}
+                  placeholder="العنوان الفرعي بالعربية"
+                />
+              </div>
+            </div>
+
+            {/* CTA Fields */}
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+              <div className="space-y-2">
+                <Label htmlFor="cta_text_en">Button Text (English)</Label>
+                <Input
+                  id="cta_text_en"
+                  value={formState.cta_text_en}
+                  onChange={(e) => setFormState(prev => ({ ...prev, cta_text_en: e.target.value }))}
+                  placeholder="e.g., Learn More"
+                />
+              </div>
+              <div className="space-y-2">
+                <Label htmlFor="cta_text_ar">Button Text (العربية)</Label>
+                <Input
+                  id="cta_text_ar"
+                  dir="rtl"
+                  value={formState.cta_text_ar}
+                  onChange={(e) => setFormState(prev => ({ ...prev, cta_text_ar: e.target.value }))}
+                  placeholder="مثال: اعرف المزيد"
+                />
+              </div>
+            </div>
+
+            <div className="space-y-2">
+              <Label htmlFor="cta_link">Button Link</Label>
+              <Input
+                id="cta_link"
+                value={formState.cta_link}
+                onChange={(e) => setFormState(prev => ({ ...prev, cta_link: e.target.value }))}
+                placeholder="/services or https://example.com"
+              />
             </div>
           </div>
 
