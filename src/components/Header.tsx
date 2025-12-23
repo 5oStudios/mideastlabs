@@ -88,7 +88,7 @@ const Header = () => {
           </div>
 
           {/* Desktop Navigation */}
-          <nav className={`hidden lg:flex items-center ${isRTL ? 'space-x-reverse space-x-8' : 'space-x-8'}`}>
+          <nav className={`hidden lg:flex items-center whitespace-nowrap ${isRTL ? 'space-x-reverse space-x-6' : 'space-x-6'}`}>
             {navItems.map(item => {
               const isActive = location.pathname === item.href || item.subItems?.some(sub => location.pathname === sub.href);
               
@@ -100,7 +100,7 @@ const Header = () => {
                     onMouseEnter={handleMouseEnter}
                     onMouseLeave={handleMouseLeave}
                   >
-                    <button className={`text-base font-medium transition-smooth relative group flex items-center gap-1 py-2 ${isActive ? 'text-blue-600 hover:text-blue-800' : 'text-foreground hover:text-primary'}`}>
+                    <button className={`text-base font-medium transition-smooth relative group flex items-center gap-1 py-2 whitespace-nowrap ${isActive ? 'text-blue-600 hover:text-blue-800' : 'text-foreground hover:text-primary'}`}>
                       {t(item.labelKey)}
                       <ChevronDown className={`w-4 h-4 transition-transform ${isAboutOpen ? 'rotate-180' : ''}`} />
                     </button>
@@ -135,7 +135,7 @@ const Header = () => {
               }
               
               return (
-                <Link key={item.labelKey} to={item.href} className={`text-base font-medium transition-smooth relative group ${isActive ? 'text-blue-600 hover:text-blue-800' : 'text-foreground hover:text-primary'}`}>
+                <Link key={item.labelKey} to={item.href} className={`text-base font-medium transition-smooth relative group whitespace-nowrap ${isActive ? 'text-blue-600 hover:text-blue-800' : 'text-foreground hover:text-primary'}`}>
                   {t(item.labelKey)}
                   <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-primary group-hover:w-full transition-smooth text-blue-900"></span>
                 </Link>
