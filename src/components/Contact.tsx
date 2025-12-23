@@ -1,3 +1,4 @@
+import { useTranslation } from "react-i18next";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
@@ -8,6 +9,7 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { z } from "zod";
 import { toast } from "sonner";
 import contactLabImage from "@/assets/contact-lab-illustration.jpg";
+
 const contactSchema = z.object({
   name: z.string().trim().min(1, {
     message: "Name is required"
@@ -30,8 +32,13 @@ const contactSchema = z.object({
     message: "Message must be less than 1000 characters"
   })
 });
+
 type ContactFormData = z.infer<typeof contactSchema>;
+
 const Contact = () => {
+  const { t, i18n } = useTranslation();
+  const isRTL = i18n.language === 'ar';
+
   const {
     register,
     handleSubmit,
@@ -43,6 +50,7 @@ const Contact = () => {
   } = useForm<ContactFormData>({
     resolver: zodResolver(contactSchema)
   });
+
   const onSubmit = async (data: ContactFormData) => {
     try {
       const response = await fetch("https://formspree.io/f/xbdryqrz", {
@@ -54,37 +62,39 @@ const Contact = () => {
       });
 
       if (response.ok) {
-        toast.success("Message sent successfully! We'll get back to you soon.");
+        toast.success(t("contact.form.success"));
         reset();
       } else {
         throw new Error("Form submission failed");
       }
     } catch (error) {
-      toast.error("Failed to send message. Please try again.");
+      toast.error(t("contact.form.error"));
     }
   };
-  return <section id="contact" className="relative py-20 overflow-hidden">
+
+  return (
+    <section id="contact" className="relative py-20 overflow-hidden">
       {/* Full Width Background Image */}
       <div className="absolute inset-0 w-full h-full">
         <img src={contactLabImage} alt="Laboratory Equipment Illustration" className="w-full h-full object-cover" />
-        <div className="absolute inset-0 bg-gradient-to-r from-background/95 via-background/80 to-background/50"></div>
+        <div className={`absolute inset-0 ${isRTL ? 'bg-gradient-to-l' : 'bg-gradient-to-r'} from-background/95 via-background/80 to-background/50`}></div>
       </div>
 
       {/* Content Overlay */}
       <div className="relative container mx-auto px-4 lg:px-8">
         {/* Header */}
         <div className="text-center max-w-3xl mx-auto mb-16 animate-fade-in">
-          <div className="inline-flex items-center space-x-2 bg-accent/10 px-4 py-2 rounded-full mb-6 backdrop-blur-sm">
+          <div className={`inline-flex items-center ${isRTL ? 'space-x-reverse space-x-2' : 'space-x-2'} bg-accent/10 px-4 py-2 rounded-full mb-6 backdrop-blur-sm`}>
             <MessageSquare className="w-4 h-4 text-accent" />
-            <span className="text-accent text-lg font-semibold">Get In Touch</span>
+            <span className="text-accent text-lg font-semibold">{t("contact.badge")}</span>
           </div>
           
           <h2 className="text-4xl md:text-5xl font-bold text-foreground mb-6">
-            Contact Us Today
+            {t("contact.title")}
           </h2>
           
           <p className="text-lg text-muted-foreground">
-            Reach out to our team of experts for comprehensive laboratory testing services
+            {t("contact.description")}
           </p>
         </div>
 
@@ -94,46 +104,50 @@ const Contact = () => {
             <form onSubmit={handleSubmit(onSubmit)} className="space-y-6">
               <div className="space-y-2">
                 <Label htmlFor="name" className="text-foreground font-medium">
-                  Full Name *
+                  {t("contact.form.name")} *
                 </Label>
-                <Input id="name" type="text" placeholder="Enter your full name" {...register("name")} className={errors.name ? "border-destructive" : ""} />
+                <Input id="name" type="text" placeholder={t("contact.form.namePlaceholder")} {...register("name")} className={errors.name ? "border-destructive" : ""} dir={isRTL ? "rtl" : "ltr"} />
                 {errors.name && <p className="text-sm text-destructive">{errors.name.message}</p>}
               </div>
 
               <div className="space-y-2">
                 <Label htmlFor="email" className="text-foreground font-medium">
-                  Email Address *
+                  {t("contact.form.email")} *
                 </Label>
-                <Input id="email" type="email" placeholder="your.email@example.com" {...register("email")} className={errors.email ? "border-destructive" : ""} />
+                <Input id="email" type="email" placeholder={t("contact.form.emailPlaceholder")} {...register("email")} className={errors.email ? "border-destructive" : ""} dir="ltr" />
                 {errors.email && <p className="text-sm text-destructive">{errors.email.message}</p>}
               </div>
 
               <div className="space-y-2">
                 <Label htmlFor="phone" className="text-foreground font-medium">
-                  Phone Number *
+                  {t("contact.form.phone")} *
                 </Label>
-                <Input id="phone" type="tel" placeholder="+965 XXXX XXXX" {...register("phone")} className={errors.phone ? "border-destructive" : ""} />
+                <Input id="phone" type="tel" placeholder={t("contact.form.phonePlaceholder")} {...register("phone")} className={errors.phone ? "border-destructive" : ""} dir="ltr" />
                 {errors.phone && <p className="text-sm text-destructive">{errors.phone.message}</p>}
               </div>
 
               <div className="space-y-2">
                 <Label htmlFor="message" className="text-foreground font-medium">
-                  Message *
+                  {t("contact.form.message")} *
                 </Label>
-                <Textarea id="message" placeholder="Tell us about your testing requirements..." rows={6} {...register("message")} className={errors.message ? "border-destructive" : ""} />
+                <Textarea id="message" placeholder={t("contact.form.messagePlaceholder")} rows={6} {...register("message")} className={errors.message ? "border-destructive" : ""} dir={isRTL ? "rtl" : "ltr"} />
                 {errors.message && <p className="text-sm text-destructive">{errors.message.message}</p>}
               </div>
 
-              <Button type="submit" size="lg" disabled={isSubmitting} className="w-full bg-primary hover:bg-primary-deep shadow-glow">
-                {isSubmitting ? "Sending..." : <>
-                    <Send className="w-5 h-5 mr-2" />
-                    Send Message
-                  </>}
+              <Button type="submit" size="lg" disabled={isSubmitting} className={`w-full bg-primary hover:bg-primary-deep shadow-glow flex items-center justify-center ${isRTL ? 'flex-row-reverse' : ''}`}>
+                {isSubmitting ? t("contact.form.sending") : (
+                  <>
+                    <Send className={`w-5 h-5 ${isRTL ? 'ml-2' : 'mr-2'}`} />
+                    {t("contact.form.submit")}
+                  </>
+                )}
               </Button>
             </form>
           </div>
         </div>
       </div>
-    </section>;
+    </section>
+  );
 };
+
 export default Contact;
