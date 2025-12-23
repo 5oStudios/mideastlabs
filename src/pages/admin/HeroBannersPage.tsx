@@ -26,11 +26,6 @@ import { Plus, Pencil, Trash2, GripVertical, Image } from 'lucide-react';
 interface HeroBanner {
   id: string;
   image_url: string;
-  title_en: string;
-  title_ar: string;
-  subtitle_en: string;
-  subtitle_ar: string;
-  cta_link: string;
   order: number;
   is_active: boolean;
 }
@@ -40,22 +35,12 @@ const mockBanners: HeroBanner[] = [
   {
     id: '1',
     image_url: '/assets/hero-lab.jpg',
-    title_en: 'Welcome to TestHub Laboratory',
-    title_ar: 'مرحباً بكم في مختبر تست هب',
-    subtitle_en: 'Leading environmental testing services',
-    subtitle_ar: 'خدمات الاختبارات البيئية الرائدة',
-    cta_link: '/services',
     order: 1,
     is_active: true,
   },
   {
     id: '2',
     image_url: '/assets/water-testing.jpg',
-    title_en: 'Water Quality Testing',
-    title_ar: 'اختبار جودة المياه',
-    subtitle_en: 'Comprehensive water analysis',
-    subtitle_ar: 'تحليل شامل للمياه',
-    cta_link: '/services/water-testing',
     order: 2,
     is_active: true,
   },
@@ -71,11 +56,6 @@ const HeroBannersPage = () => {
   const handleAdd = () => {
     setEditingBanner(null);
     setFormData({
-      title_en: '',
-      title_ar: '',
-      subtitle_en: '',
-      subtitle_ar: '',
-      cta_link: '',
       is_active: true,
     });
     setIsDialogOpen(true);
@@ -114,11 +94,6 @@ const HeroBannersPage = () => {
       const newBanner: HeroBanner = {
         id: Date.now().toString(),
         image_url: formData.image_url || '',
-        title_en: formData.title_en || '',
-        title_ar: formData.title_ar || '',
-        subtitle_en: formData.subtitle_en || '',
-        subtitle_ar: formData.subtitle_ar || '',
-        cta_link: formData.cta_link || '',
         order: banners.length + 1,
         is_active: formData.is_active ?? true,
       };
@@ -152,9 +127,7 @@ const HeroBannersPage = () => {
             <TableHeader>
               <TableRow>
                 <TableHead className="w-12"></TableHead>
-                <TableHead className="w-20">Image</TableHead>
-                <TableHead>Title (EN)</TableHead>
-                <TableHead>Title (AR)</TableHead>
+                <TableHead>Image</TableHead>
                 <TableHead className="w-24">Status</TableHead>
                 <TableHead className="w-32 text-right">Actions</TableHead>
               </TableRow>
@@ -166,22 +139,20 @@ const HeroBannersPage = () => {
                     <GripVertical className="h-4 w-4 text-muted-foreground cursor-grab" />
                   </TableCell>
                   <TableCell>
-                    <div className="w-16 h-10 bg-muted rounded overflow-hidden">
+                    <div className="w-32 h-20 bg-muted rounded overflow-hidden">
                       {banner.image_url ? (
                         <img
                           src={banner.image_url}
-                          alt={banner.title_en}
+                          alt="Banner"
                           className="w-full h-full object-cover"
                         />
                       ) : (
                         <div className="w-full h-full flex items-center justify-center">
-                          <Image className="h-4 w-4 text-muted-foreground" />
+                          <Image className="h-6 w-6 text-muted-foreground" />
                         </div>
                       )}
                     </div>
                   </TableCell>
-                  <TableCell className="font-medium">{banner.title_en}</TableCell>
-                  <TableCell dir="rtl">{banner.title_ar}</TableCell>
                   <TableCell>
                     <Switch
                       checked={banner.is_active}
