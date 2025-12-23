@@ -6,14 +6,16 @@ import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { useToast } from '@/hooks/use-toast';
-import { Eye, EyeOff, Lock, Mail } from 'lucide-react';
+import { Eye, EyeOff, Lock, Mail, AlertCircle } from 'lucide-react';
+import { Alert, AlertDescription } from '@/components/ui/alert';
 
 const AdminLogin = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [showPassword, setShowPassword] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
-  const { login, isAuthenticated } = useAdminAuth();
+  const [error, setError] = useState<string | null>(null);
+  const { login, isAuthenticated, isLoading: authLoading } = useAdminAuth();
   const navigate = useNavigate();
   const location = useLocation();
   const { toast } = useToast();
@@ -22,40 +24,54 @@ const AdminLogin = () => {
 
   // Redirect if already authenticated
   React.useEffect(() => {
-    if (isAuthenticated) {
+    if (!authLoading && isAuthenticated) {
       navigate(from, { replace: true });
     }
-  }, [isAuthenticated, navigate, from]);
+  }, [isAuthenticated, authLoading, navigate, from]);
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setIsLoading(true);
+    setError(null);
+
+    // Basic validation
+    if (!email || !password) {
+      setError('Please enter both email and password');
+      setIsLoading(false);
+      return;
+    }
+
+    if (!email.includes('@')) {
+      setError('Please enter a valid email address');
+      setIsLoading(false);
+      return;
+    }
 
     try {
-      const success = await login(email, password);
-      if (success) {
+      const result = await login(email, password);
+      if (result.success) {
         toast({
           title: "Welcome back!",
           description: "You have successfully logged in.",
         });
         navigate(from, { replace: true });
       } else {
-        toast({
-          title: "Login failed",
-          description: "Invalid email or password. Try admin@testhub.com / admin123",
-          variant: "destructive",
-        });
+        setError(result.error || 'Invalid email or password');
       }
-    } catch (error) {
-      toast({
-        title: "Error",
-        description: "An error occurred during login.",
-        variant: "destructive",
-      });
+    } catch (err) {
+      setError('An unexpected error occurred. Please try again.');
     } finally {
       setIsLoading(false);
     }
   };
+
+  if (authLoading) {
+    return (
+      <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-background to-secondary/50">
+        <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-primary"></div>
+      </div>
+    );
+  }
 
   return (
     <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-background to-secondary/50 p-4">
@@ -70,6 +86,13 @@ const AdminLogin = () => {
           </CardDescription>
         </CardHeader>
         <CardContent>
+          {error && (
+            <Alert variant="destructive" className="mb-4">
+              <AlertCircle className="h-4 w-4" />
+              <AlertDescription>{error}</AlertDescription>
+            </Alert>
+          )}
+          
           <form onSubmit={handleSubmit} className="space-y-4">
             <div className="space-y-2">
               <Label htmlFor="email">Email</Label>
@@ -78,11 +101,12 @@ const AdminLogin = () => {
                 <Input
                   id="email"
                   type="email"
-                  placeholder="admin@testhub.com"
+                  placeholder="admin@example.com"
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
                   className="pl-10"
                   required
+                  autoComplete="email"
                 />
               </div>
             </div>
@@ -98,6 +122,7 @@ const AdminLogin = () => {
                   onChange={(e) => setPassword(e.target.value)}
                   className="pl-10 pr-10"
                   required
+                  autoComplete="current-password"
                 />
                 <Button
                   type="button"
@@ -118,11 +143,11 @@ const AdminLogin = () => {
               {isLoading ? 'Signing in...' : 'Sign In'}
             </Button>
           </form>
+          
           <div className="mt-6 p-4 bg-muted/50 rounded-lg">
             <p className="text-sm text-muted-foreground text-center">
-              <strong>Demo credentials:</strong><br />
-              Email: admin@testhub.com<br />
-              Password: admin123
+              <strong>Admin Access Required</strong><br />
+              Only users with admin privileges can access this dashboard.
             </p>
           </div>
         </CardContent>
