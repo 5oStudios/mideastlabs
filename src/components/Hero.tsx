@@ -2,14 +2,36 @@ import { useTranslation } from "react-i18next";
 import { ArrowRight, Phone, Beaker, CheckCircle, Users } from "lucide-react";
 import { Link } from "react-router-dom";
 import { useState, useEffect } from "react";
-import { useHeroBanners } from "@/hooks/useHeroBanners";
+import { supabase } from "@/integrations/supabase/client";
+import type { Tables } from "@/integrations/supabase/types";
 import teamLab from "@/assets/team-lab.jpg";
+
+type HeroBanner = Tables<'hero_banners'>;
 
 const Hero = () => {
   const { t, i18n } = useTranslation();
   const isRTL = i18n.dir(i18n.resolvedLanguage || i18n.language) === 'rtl';
-  const { data: banners = [], isLoading } = useHeroBanners(true);
+  const [banners, setBanners] = useState<HeroBanner[]>([]);
   const [currentIndex, setCurrentIndex] = useState(0);
+  const [isLoading, setIsLoading] = useState(true);
+
+  // Fetch banners from Supabase
+  useEffect(() => {
+    const fetchBanners = async () => {
+      const { data, error } = await supabase
+        .from('hero_banners')
+        .select('*')
+        .eq('is_active', true)
+        .order('display_order', { ascending: true });
+
+      if (!error && data && data.length > 0) {
+        setBanners(data);
+      }
+      setIsLoading(false);
+    };
+
+    fetchBanners();
+  }, []);
 
   // Auto-rotate banners
   useEffect(() => {
