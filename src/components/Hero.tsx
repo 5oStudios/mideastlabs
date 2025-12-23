@@ -5,7 +5,7 @@ import teamLab from "@/assets/team-lab.jpg";
 
 const Hero = () => {
   const { t, i18n } = useTranslation();
-  const isRTL = i18n.language === 'ar';
+  const isRTL = i18n.dir(i18n.resolvedLanguage || i18n.language) === 'rtl';
 
   const stats = [
     {
@@ -57,7 +57,7 @@ const Hero = () => {
         <div className={`grid lg:grid-cols-2 gap-8 lg:gap-0 items-center ${isRTL ? 'direction-rtl' : ''}`} dir={isRTL ? 'rtl' : 'ltr'}>
           
           {/* Left Column - Content (Right in RTL) */}
-          <div className={`space-y-8 px-4 ${isRTL ? 'lg:pl-8 lg:pr-12' : 'lg:pl-8 lg:pr-12'}`}>
+          <div className={`space-y-8 px-4 lg:pl-8 lg:pr-12 ${isRTL ? 'text-right' : 'text-left'}`}>
             {/* Main Heading */}
             <div className={`animate-fade-up ${isRTL ? 'text-right' : 'text-left'}`}>
               <h1 className="font-display font-bold text-4xl md:text-5xl lg:text-6xl text-white mb-6 leading-tight">
