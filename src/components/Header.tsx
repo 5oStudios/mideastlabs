@@ -71,9 +71,9 @@ const Header = () => {
   }];
 
   return (
-    <header className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${isScrolled ? 'bg-white border-b border-border shadow-md' : 'bg-white border-b border-border shadow-sm'}`}>
-      <div className={`container mx-auto ${isRTL ? 'pr-0 pl-4 lg:pr-2 lg:pl-8' : 'pl-0 pr-4 lg:pl-2 lg:pr-8'} relative z-10`}>
-        <div className={`flex items-center justify-between h-20 lg:h-24 ${isRTL ? 'flex-row-reverse' : ''}`}>
+    <header className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 w-full ${isScrolled ? 'bg-white border-b border-border shadow-md' : 'bg-white border-b border-border shadow-sm'}`} dir={isRTL ? 'rtl' : 'ltr'}>
+      <div className="container mx-auto px-4 lg:px-8 relative z-10">
+        <div className="flex items-center justify-between h-20 lg:h-24">
           {/* Logo */}
           <div className={`flex items-center ${isRTL ? 'space-x-reverse space-x-2' : 'space-x-2'}`}>
             <img src={logo} alt="Middle East Environmental Laboratories Co. Logo" className="h-16 lg:h-20 w-auto" loading="eager" fetchPriority="high" />
