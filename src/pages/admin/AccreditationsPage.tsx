@@ -246,15 +246,23 @@ const AccreditationsPage = () => {
     );
   }
 
+  const MAX_CERTIFICATES = 15;
+  const isAtLimit = (certificates?.length || 0) >= MAX_CERTIFICATES;
+
   return (
     <div className="space-y-6">
       {/* Header */}
       <div className="flex items-center justify-between">
         <div>
           <h1 className="text-3xl font-bold text-foreground">Accreditations</h1>
-          <p className="text-muted-foreground mt-1">Manage accreditation certificates and logos</p>
+          <p className="text-muted-foreground mt-1">
+            Manage accreditation certificates and logos
+            <span className={`ml-2 font-medium ${isAtLimit ? 'text-destructive' : 'text-primary'}`}>
+              ({certificates?.length || 0}/{MAX_CERTIFICATES})
+            </span>
+          </p>
         </div>
-        <Button onClick={handleAdd}>
+        <Button onClick={handleAdd} disabled={isAtLimit}>
           <Plus className="h-4 w-4 mr-2" />
           Add Certificate
         </Button>
