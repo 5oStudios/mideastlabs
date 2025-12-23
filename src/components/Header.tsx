@@ -5,6 +5,7 @@ import { Menu, X, Phone, ChevronDown } from "lucide-react";
 import { Link, useLocation } from "react-router-dom";
 import logo from "@/assets/logo.gif";
 import LanguageSwitcher from "./LanguageSwitcher";
+import { useContactSettings } from "@/hooks/useContactSettings";
 
 interface NavItem {
   labelKey: string;
@@ -21,6 +22,9 @@ const Header = () => {
   const location = useLocation();
   const closeTimeoutRef = useRef<NodeJS.Timeout | null>(null);
   const isRTL = i18n.language === 'ar';
+  const { data: contactSettings } = useContactSettings();
+
+  const phone = contactSettings?.phone || '+965 22251577';
 
   useEffect(() => {
     const handleScroll = () => {
@@ -148,7 +152,7 @@ const Header = () => {
             <LanguageSwitcher />
             <Button variant="outline" className={`flex items-center ${isRTL ? 'space-x-reverse space-x-2' : 'space-x-2'} bg-green-600 text-white hover:bg-green-700 border-green-600`}>
               <Phone className="w-4 h-4" />
-              <span className="font-bold">+965 22251577</span>
+              <span className="font-bold" dir="ltr">{phone}</span>
             </Button>
           </div>
 
@@ -214,7 +218,7 @@ const Header = () => {
                 })}
                 <Button className={`flex items-center ${isRTL ? 'space-x-reverse space-x-2' : 'space-x-2'} mt-4 bg-green-600 hover:bg-green-700`}>
                   <Phone className="w-4 h-4" />
-                  <span className="font-bold">+965 22251577</span>
+                  <span className="font-bold" dir="ltr">{phone}</span>
                 </Button>
               </div>
             </nav>
