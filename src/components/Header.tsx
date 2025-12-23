@@ -75,9 +75,9 @@ const Header = () => {
       <div className="container mx-auto px-4 lg:px-8 relative z-10">
         <div className="flex items-center justify-between h-20 lg:h-24">
           {/* Logo */}
-          <div className={`flex items-center ${isRTL ? 'space-x-reverse space-x-2' : 'space-x-2'}`}>
+          <div className="flex items-center gap-2">
             <img src={logo} alt="Middle East Environmental Laboratories Co. Logo" className="h-16 lg:h-20 w-auto" loading="eager" fetchPriority="high" />
-            <Link to="/" className={`hidden md:flex flex-col justify-center hover:opacity-80 transition-opacity ${isRTL ? 'text-right' : ''}`}>
+            <Link to="/" className={`hidden md:flex flex-col justify-center hover:opacity-80 transition-opacity ${isRTL ? 'text-right' : 'text-left'}`}>
               <span className="text-sm lg:text-base font-bold leading-tight text-blue-900">
                 {isRTL ? 'مختبرات الشرق الأوسط' : 'Middle East Environmental'}
               </span>
