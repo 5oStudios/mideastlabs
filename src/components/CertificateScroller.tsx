@@ -1,33 +1,31 @@
 import { useState } from "react";
 import { Dialog, DialogContent } from "@/components/ui/dialog";
-import { X } from "lucide-react";
-
-// Import all certificate images
-import cert1 from "@/assets/certificates/cert-1.png";
-import cert2 from "@/assets/certificates/cert-2.png";
-import cert3 from "@/assets/certificates/cert-3.png";
-import cert4 from "@/assets/certificates/cert-4.png";
-import cert5 from "@/assets/certificates/cert-5.png";
-import cert6 from "@/assets/certificates/cert-6.png";
-import cert7 from "@/assets/certificates/cert-7.png";
-import cert8 from "@/assets/certificates/cert-8.png";
-import cert9 from "@/assets/certificates/cert-9.png";
-
-const certificates = [
-  { image: cert1, title: "EPA Soil Testing" },
-  { image: cert2, title: "EPA Chemical Testing" },
-  { image: cert3, title: "EPA Biological Testing" },
-  { image: cert4, title: "EPA Air Testing" },
-  { image: cert5, title: "EPA Water Testing" },
-  { image: cert6, title: "ISO 9001 TIS" },
-  { image: cert7, title: "ISO 14001 TIS" },
-  { image: cert8, title: "ISO 45001 TIS" },
-  { image: cert9, title: "IAS Accreditation" },
-];
+import { X, Award, Loader2 } from "lucide-react";
+import { useCertificates } from "@/hooks/useCertificates";
+import { useTranslation } from "react-i18next";
 
 const CertificateScroller = () => {
-  const [selectedCert, setSelectedCert] = useState<{ image: string; title: string } | null>(null);
+  const [selectedCert, setSelectedCert] = useState<{ image_url: string; title: string } | null>(null);
   const [isPaused, setIsPaused] = useState(false);
+  const { data: certificates, isLoading, error } = useCertificates();
+  const { i18n } = useTranslation();
+
+  if (isLoading) {
+    return (
+      <div className="flex items-center justify-center py-20">
+        <Loader2 className="w-8 h-8 animate-spin text-primary" />
+      </div>
+    );
+  }
+
+  if (error || !certificates || certificates.length === 0) {
+    return (
+      <div className="flex flex-col items-center justify-center py-20 text-muted-foreground">
+        <Award className="w-12 h-12 mb-4" />
+        <p>No certificates available</p>
+      </div>
+    );
+  }
 
   // Duplicate certificates for seamless loop
   const duplicatedCerts = [...certificates, ...certificates];
@@ -51,22 +49,25 @@ const CertificateScroller = () => {
             animationPlayState: isPaused ? "paused" : "running",
           }}
         >
-          {duplicatedCerts.map((cert, index) => (
-            <div
-              key={index}
-              onClick={() => setSelectedCert(cert)}
-              className="flex-shrink-0 cursor-pointer group"
-            >
-              <div className="relative bg-white rounded-xl shadow-elegant overflow-hidden transition-all duration-300 group-hover:shadow-glow group-hover:scale-[1.02]">
-                <img
-                  src={cert.image}
-                  alt={cert.title}
-                  className="h-[280px] md:h-[350px] w-auto object-contain p-2"
-                />
-                <div className="absolute inset-0 bg-primary/0 group-hover:bg-primary/5 transition-colors duration-300" />
+          {duplicatedCerts.map((cert, index) => {
+            const title = i18n.language === 'ar' && cert.title_ar ? cert.title_ar : cert.title_en;
+            return (
+              <div
+                key={`${cert.id}-${index}`}
+                onClick={() => setSelectedCert({ image_url: cert.image_url, title })}
+                className="flex-shrink-0 cursor-pointer group"
+              >
+                <div className="relative bg-white rounded-xl shadow-elegant overflow-hidden transition-all duration-300 group-hover:shadow-glow group-hover:scale-[1.02]">
+                  <img
+                    src={cert.image_url}
+                    alt={title}
+                    className="h-[280px] md:h-[350px] w-auto object-contain p-2"
+                  />
+                  <div className="absolute inset-0 bg-primary/0 group-hover:bg-primary/5 transition-colors duration-300" />
+                </div>
               </div>
-            </div>
-          ))}
+            );
+          })}
         </div>
       </div>
 
@@ -82,7 +83,7 @@ const CertificateScroller = () => {
           {selectedCert && (
             <div className="w-full h-full flex items-center justify-center p-4">
               <img
-                src={selectedCert.image}
+                src={selectedCert.image_url}
                 alt={selectedCert.title}
                 className="max-w-full max-h-[85vh] object-contain"
               />
