@@ -71,8 +71,8 @@ const Footer = () => {
               <div className={`flex items-start ${isRTL ? 'space-x-reverse space-x-3' : 'space-x-3'}`}>
                 <MapPin className="w-5 h-5 text-white/80 flex-shrink-0 mt-0.5" />
                 <div>
-                  <p className="text-white/90 text-sm">{t("contactPage.location.address1")}</p>
-                  <p className="text-white/90 text-sm">{t("contactPage.location.address2")}</p>
+                  <p className="text-white/90 text-sm">{t("contact.info.location.address1")}</p>
+                  <p className="text-white/90 text-sm">{t("contact.info.location.address2")}</p>
                 </div>
               </div>
               
