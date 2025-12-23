@@ -8,6 +8,7 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/com
 import { useToast } from '@/hooks/use-toast';
 import { Eye, EyeOff, Lock, Mail, AlertCircle } from 'lucide-react';
 import { Alert, AlertDescription } from '@/components/ui/alert';
+import adminLogo from '@/assets/admin-logo.gif';
 
 const AdminLogin = () => {
   const [email, setEmail] = useState('');
@@ -77,8 +78,8 @@ const AdminLogin = () => {
     <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-background to-secondary/50 p-4">
       <Card className="w-full max-w-md shadow-elegant">
         <CardHeader className="text-center">
-          <div className="mx-auto w-16 h-16 bg-primary/10 rounded-full flex items-center justify-center mb-4">
-            <Lock className="w-8 h-8 text-primary" />
+          <div className="mx-auto mb-4">
+            <img src={adminLogo} alt="Admin Logo" className="h-24 w-auto mx-auto" />
           </div>
           <CardTitle className="text-2xl font-bold">Admin Login</CardTitle>
           <CardDescription>

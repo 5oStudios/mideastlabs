@@ -17,6 +17,7 @@ import {
   User
 } from 'lucide-react';
 import { cn } from '@/lib/utils';
+import adminLogo from '@/assets/admin-logo.gif';
 
 interface AdminLayoutProps {
   children: React.ReactNode;
@@ -79,15 +80,19 @@ const AdminLayout: React.FC<AdminLayoutProps> = ({ children }) => {
       >
         {/* Sidebar Header */}
         <div className="h-16 flex items-center justify-between px-4 border-b border-border">
-          {sidebarOpen && (
-            <Link to="/admin" className="font-bold text-lg text-primary">
-              TestHub Admin
+          {sidebarOpen ? (
+            <Link to="/admin" className="flex items-center">
+              <img src={adminLogo} alt="Admin" className="h-10 w-auto" />
+            </Link>
+          ) : (
+            <Link to="/admin" className="flex items-center justify-center w-full">
+              <img src={adminLogo} alt="Admin" className="h-8 w-auto" />
             </Link>
           )}
           <Button
             variant="ghost"
             size="icon"
-            className="hidden lg:flex"
+            className={cn("hidden lg:flex", !sidebarOpen && "absolute right-1")}
             onClick={() => setSidebarOpen(!sidebarOpen)}
           >
             <ChevronLeft className={cn("h-5 w-5 transition-transform", !sidebarOpen && "rotate-180")} />
