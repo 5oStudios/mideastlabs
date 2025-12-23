@@ -3,13 +3,18 @@ import { useTranslation } from "react-i18next";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import { Button } from "@/components/ui/button";
-import { ArrowLeft, BookOpen } from "lucide-react";
+import { ArrowLeft, BookOpen, Loader2 } from "lucide-react";
 import companyProfileCover from "@/assets/company-profile-cover.jpg";
+import { useCompanySettings } from "@/hooks/useCompanySettings";
 
 const CompanyProfile = () => {
   const [showPdf, setShowPdf] = useState(false);
   const { t, i18n } = useTranslation();
   const isRTL = i18n.language === 'ar';
+  const { data: settings, isLoading } = useCompanySettings();
+
+  // Fallback URL if no settings or no URL configured
+  const pdfUrl = settings?.profile_pdf_url || "https://drive.google.com/file/d/1o7Qdknj1X-r4ft1gH2XpWf4hmXXMnU4b/preview";
 
   return (
     <>
@@ -28,7 +33,11 @@ const CompanyProfile = () => {
 
         <section className="py-12 bg-gray-50">
           <div className="container mx-auto px-4">
-            {!showPdf ? (
+            {isLoading ? (
+              <div className="flex justify-center py-12">
+                <Loader2 className="w-8 h-8 animate-spin text-primary" />
+              </div>
+            ) : !showPdf ? (
               <div className="relative max-w-4xl mx-auto rounded-2xl overflow-hidden shadow-2xl">
                 <div className="aspect-[3/4] md:aspect-[4/5] lg:aspect-[3/4] relative">
                   <img src={companyProfileCover} alt="Company Profile Cover" className="w-full h-full object-cover" />
@@ -55,7 +64,7 @@ const CompanyProfile = () => {
                   {t("companyProfilePage.backToCover")}
                 </Button>
                 <div className="rounded-xl overflow-hidden shadow-2xl bg-white">
-                  <iframe src="https://drive.google.com/file/d/1o7Qdknj1X-r4ft1gH2XpWf4hmXXMnU4b/preview" className="w-full h-[80vh] border-0" title="Company Profile PDF" allow="autoplay" />
+                  <iframe src={pdfUrl} className="w-full h-[80vh] border-0" title="Company Profile PDF" allow="autoplay" />
                 </div>
               </div>
             )}

@@ -13,15 +13,9 @@ export const useContactSettings = () => {
         .from('contact_settings')
         .select('*')
         .limit(1)
-        .single();
+        .maybeSingle();
       
-      if (error) {
-        // If no record exists, return null
-        if (error.code === 'PGRST116') {
-          return null;
-        }
-        throw error;
-      }
+      if (error) throw error;
       return data as ContactSettings;
     },
   });
