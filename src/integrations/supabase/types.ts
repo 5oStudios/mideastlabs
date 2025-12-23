@@ -14,16 +14,330 @@ export type Database = {
   }
   public: {
     Tables: {
-      [_ in never]: never
+      certificates: {
+        Row: {
+          created_at: string | null
+          display_order: number | null
+          id: string
+          image_url: string
+          is_active: boolean | null
+          title_ar: string | null
+          title_en: string
+          updated_at: string | null
+        }
+        Insert: {
+          created_at?: string | null
+          display_order?: number | null
+          id?: string
+          image_url: string
+          is_active?: boolean | null
+          title_ar?: string | null
+          title_en: string
+          updated_at?: string | null
+        }
+        Update: {
+          created_at?: string | null
+          display_order?: number | null
+          id?: string
+          image_url?: string
+          is_active?: boolean | null
+          title_ar?: string | null
+          title_en?: string
+          updated_at?: string | null
+        }
+        Relationships: []
+      }
+      company_settings: {
+        Row: {
+          id: string
+          profile_pdf_url: string | null
+          updated_at: string | null
+        }
+        Insert: {
+          id?: string
+          profile_pdf_url?: string | null
+          updated_at?: string | null
+        }
+        Update: {
+          id?: string
+          profile_pdf_url?: string | null
+          updated_at?: string | null
+        }
+        Relationships: []
+      }
+      contact_settings: {
+        Row: {
+          address_ar: string | null
+          address_en: string | null
+          email: string | null
+          id: string
+          map_embed_url: string | null
+          phone: string | null
+          updated_at: string | null
+          working_hours_friday_ar: string | null
+          working_hours_friday_en: string | null
+          working_hours_saturday_ar: string | null
+          working_hours_saturday_en: string | null
+          working_hours_weekdays_ar: string | null
+          working_hours_weekdays_en: string | null
+        }
+        Insert: {
+          address_ar?: string | null
+          address_en?: string | null
+          email?: string | null
+          id?: string
+          map_embed_url?: string | null
+          phone?: string | null
+          updated_at?: string | null
+          working_hours_friday_ar?: string | null
+          working_hours_friday_en?: string | null
+          working_hours_saturday_ar?: string | null
+          working_hours_saturday_en?: string | null
+          working_hours_weekdays_ar?: string | null
+          working_hours_weekdays_en?: string | null
+        }
+        Update: {
+          address_ar?: string | null
+          address_en?: string | null
+          email?: string | null
+          id?: string
+          map_embed_url?: string | null
+          phone?: string | null
+          updated_at?: string | null
+          working_hours_friday_ar?: string | null
+          working_hours_friday_en?: string | null
+          working_hours_saturday_ar?: string | null
+          working_hours_saturday_en?: string | null
+          working_hours_weekdays_ar?: string | null
+          working_hours_weekdays_en?: string | null
+        }
+        Relationships: []
+      }
+      gallery_images: {
+        Row: {
+          category_ar: string | null
+          category_en: string | null
+          created_at: string | null
+          display_order: number | null
+          id: string
+          image_url: string
+          is_active: boolean | null
+          show_on_homepage: boolean | null
+          subtitle_ar: string | null
+          subtitle_en: string | null
+          title_ar: string | null
+          title_en: string | null
+          updated_at: string | null
+        }
+        Insert: {
+          category_ar?: string | null
+          category_en?: string | null
+          created_at?: string | null
+          display_order?: number | null
+          id?: string
+          image_url: string
+          is_active?: boolean | null
+          show_on_homepage?: boolean | null
+          subtitle_ar?: string | null
+          subtitle_en?: string | null
+          title_ar?: string | null
+          title_en?: string | null
+          updated_at?: string | null
+        }
+        Update: {
+          category_ar?: string | null
+          category_en?: string | null
+          created_at?: string | null
+          display_order?: number | null
+          id?: string
+          image_url?: string
+          is_active?: boolean | null
+          show_on_homepage?: boolean | null
+          subtitle_ar?: string | null
+          subtitle_en?: string | null
+          title_ar?: string | null
+          title_en?: string | null
+          updated_at?: string | null
+        }
+        Relationships: []
+      }
+      hero_banners: {
+        Row: {
+          created_at: string | null
+          cta_link: string | null
+          cta_text_ar: string | null
+          cta_text_en: string | null
+          display_order: number | null
+          id: string
+          image_url: string
+          is_active: boolean | null
+          subtitle_ar: string | null
+          subtitle_en: string | null
+          title_ar: string | null
+          title_en: string | null
+          updated_at: string | null
+        }
+        Insert: {
+          created_at?: string | null
+          cta_link?: string | null
+          cta_text_ar?: string | null
+          cta_text_en?: string | null
+          display_order?: number | null
+          id?: string
+          image_url: string
+          is_active?: boolean | null
+          subtitle_ar?: string | null
+          subtitle_en?: string | null
+          title_ar?: string | null
+          title_en?: string | null
+          updated_at?: string | null
+        }
+        Update: {
+          created_at?: string | null
+          cta_link?: string | null
+          cta_text_ar?: string | null
+          cta_text_en?: string | null
+          display_order?: number | null
+          id?: string
+          image_url?: string
+          is_active?: boolean | null
+          subtitle_ar?: string | null
+          subtitle_en?: string | null
+          title_ar?: string | null
+          title_en?: string | null
+          updated_at?: string | null
+        }
+        Relationships: []
+      }
+      services: {
+        Row: {
+          category_ar: string | null
+          category_en: string
+          certifications: string[] | null
+          created_at: string | null
+          display_order: number | null
+          features_ar: string[] | null
+          features_en: string[] | null
+          full_description_ar: string | null
+          full_description_en: string | null
+          icon_name: string
+          id: string
+          image_url: string | null
+          is_active: boolean | null
+          related_service_slugs: string[] | null
+          sample_requirements_ar: string | null
+          sample_requirements_en: string | null
+          short_description_ar: string | null
+          short_description_en: string | null
+          slug: string
+          sub_services_ar: string[] | null
+          sub_services_en: string[] | null
+          testing_parameters_ar: string[] | null
+          testing_parameters_en: string[] | null
+          title_ar: string | null
+          title_en: string
+          turnaround_time_ar: string | null
+          turnaround_time_en: string | null
+          updated_at: string | null
+        }
+        Insert: {
+          category_ar?: string | null
+          category_en: string
+          certifications?: string[] | null
+          created_at?: string | null
+          display_order?: number | null
+          features_ar?: string[] | null
+          features_en?: string[] | null
+          full_description_ar?: string | null
+          full_description_en?: string | null
+          icon_name: string
+          id?: string
+          image_url?: string | null
+          is_active?: boolean | null
+          related_service_slugs?: string[] | null
+          sample_requirements_ar?: string | null
+          sample_requirements_en?: string | null
+          short_description_ar?: string | null
+          short_description_en?: string | null
+          slug: string
+          sub_services_ar?: string[] | null
+          sub_services_en?: string[] | null
+          testing_parameters_ar?: string[] | null
+          testing_parameters_en?: string[] | null
+          title_ar?: string | null
+          title_en: string
+          turnaround_time_ar?: string | null
+          turnaround_time_en?: string | null
+          updated_at?: string | null
+        }
+        Update: {
+          category_ar?: string | null
+          category_en?: string
+          certifications?: string[] | null
+          created_at?: string | null
+          display_order?: number | null
+          features_ar?: string[] | null
+          features_en?: string[] | null
+          full_description_ar?: string | null
+          full_description_en?: string | null
+          icon_name?: string
+          id?: string
+          image_url?: string | null
+          is_active?: boolean | null
+          related_service_slugs?: string[] | null
+          sample_requirements_ar?: string | null
+          sample_requirements_en?: string | null
+          short_description_ar?: string | null
+          short_description_en?: string | null
+          slug?: string
+          sub_services_ar?: string[] | null
+          sub_services_en?: string[] | null
+          testing_parameters_ar?: string[] | null
+          testing_parameters_en?: string[] | null
+          title_ar?: string | null
+          title_en?: string
+          turnaround_time_ar?: string | null
+          turnaround_time_en?: string | null
+          updated_at?: string | null
+        }
+        Relationships: []
+      }
+      user_roles: {
+        Row: {
+          created_at: string | null
+          id: string
+          role: Database["public"]["Enums"]["app_role"]
+          user_id: string
+        }
+        Insert: {
+          created_at?: string | null
+          id?: string
+          role: Database["public"]["Enums"]["app_role"]
+          user_id: string
+        }
+        Update: {
+          created_at?: string | null
+          id?: string
+          role?: Database["public"]["Enums"]["app_role"]
+          user_id?: string
+        }
+        Relationships: []
+      }
     }
     Views: {
       [_ in never]: never
     }
     Functions: {
-      [_ in never]: never
+      has_role: {
+        Args: {
+          _role: Database["public"]["Enums"]["app_role"]
+          _user_id: string
+        }
+        Returns: boolean
+      }
     }
     Enums: {
-      [_ in never]: never
+      app_role: "admin" | "moderator" | "user"
     }
     CompositeTypes: {
       [_ in never]: never
@@ -150,6 +464,8 @@ export type CompositeTypes<
 
 export const Constants = {
   public: {
-    Enums: {},
+    Enums: {
+      app_role: ["admin", "moderator", "user"],
+    },
   },
 } as const
