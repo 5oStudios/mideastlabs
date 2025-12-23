@@ -2,10 +2,12 @@ import { useTranslation } from "react-i18next";
 import { Mail, Phone, MapPin } from "lucide-react";
 import { Link } from "react-router-dom";
 import logo from "@/assets/logo-footer.gif";
+import { useContactSettings } from "@/hooks/useContactSettings";
 
 const Footer = () => {
   const { t, i18n } = useTranslation();
   const isRTL = i18n.language === 'ar';
+  const { data: contactSettings } = useContactSettings();
 
   const quickLinks = [
     { labelKey: "nav.aboutUs", href: "/about-us" },
@@ -24,6 +26,12 @@ const Footer = () => {
     { labelKey: "footer.services.environmental", href: "/services" },
     { labelKey: "footer.services.material", href: "/services" }
   ];
+
+  const phone = contactSettings?.phone || '+965 22251577';
+  const email = contactSettings?.email || 'info@mideastlabs.com';
+  const address = isRTL 
+    ? contactSettings?.address_ar || t("contact.info.location.address1")
+    : contactSettings?.address_en || t("contact.info.location.address1");
 
   return (
     <footer className="bg-gradient-to-b from-primary-deep to-primary text-white">
@@ -71,22 +79,21 @@ const Footer = () => {
               <div className={`flex items-start ${isRTL ? 'space-x-reverse space-x-3' : 'space-x-3'}`}>
                 <MapPin className="w-5 h-5 text-white/80 flex-shrink-0 mt-0.5" />
                 <div>
-                  <p className="text-white/90 text-sm">{t("contact.info.location.address1")}</p>
-                  <p className="text-white/90 text-sm">{t("contact.info.location.address2")}</p>
+                  <p className="text-white/90 text-sm">{address}</p>
                 </div>
               </div>
               
               <div className={`flex items-center ${isRTL ? 'space-x-reverse space-x-3' : 'space-x-3'}`}>
                 <Phone className="w-5 h-5 text-white/80 flex-shrink-0" />
                 <div>
-                  <p className="text-white/90 text-sm" dir="ltr">+965 22251577</p>
+                  <p className="text-white/90 text-sm" dir="ltr">{phone}</p>
                 </div>
               </div>
               
               <div className={`flex items-center ${isRTL ? 'space-x-reverse space-x-3' : 'space-x-3'}`}>
                 <Mail className="w-5 h-5 text-white/80 flex-shrink-0" />
                 <div>
-                  <p className="text-white/90 text-sm">info@mideastlabs.com</p>
+                  <p className="text-white/90 text-sm">{email}</p>
                 </div>
               </div>
             </div>
