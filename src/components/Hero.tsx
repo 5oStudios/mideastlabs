@@ -1,11 +1,48 @@
 import { useTranslation } from "react-i18next";
 import { ArrowRight, Phone, Beaker, CheckCircle, Users } from "lucide-react";
 import { Link } from "react-router-dom";
+import { useState, useEffect } from "react";
+import { supabase } from "@/integrations/supabase/client";
+import type { Tables } from "@/integrations/supabase/types";
 import teamLab from "@/assets/team-lab.jpg";
+
+type HeroBanner = Tables<'hero_banners'>;
 
 const Hero = () => {
   const { t, i18n } = useTranslation();
   const isRTL = i18n.dir(i18n.resolvedLanguage || i18n.language) === 'rtl';
+  const [banners, setBanners] = useState<HeroBanner[]>([]);
+  const [currentIndex, setCurrentIndex] = useState(0);
+  const [isLoading, setIsLoading] = useState(true);
+
+  // Fetch banners from Supabase
+  useEffect(() => {
+    const fetchBanners = async () => {
+      const { data, error } = await supabase
+        .from('hero_banners')
+        .select('*')
+        .eq('is_active', true)
+        .order('display_order', { ascending: true });
+
+      if (!error && data && data.length > 0) {
+        setBanners(data);
+      }
+      setIsLoading(false);
+    };
+
+    fetchBanners();
+  }, []);
+
+  // Auto-rotate banners
+  useEffect(() => {
+    if (banners.length <= 1) return;
+
+    const interval = setInterval(() => {
+      setCurrentIndex((prev) => (prev + 1) % banners.length);
+    }, 5000);
+
+    return () => clearInterval(interval);
+  }, [banners.length]);
 
   const stats = [
     {
@@ -37,6 +74,9 @@ const Hero = () => {
       iconColor: "text-purple-400"
     }
   ];
+
+  // Determine which image to show
+  const currentImage = banners.length > 0 ? banners[currentIndex]?.image_url : teamLab;
 
   return (
     <section id="home" className="relative min-h-screen flex items-center overflow-hidden bg-gradient-to-br from-slate-900 via-blue-900 to-indigo-900 pt-32 lg:pt-40 pb-20 lg:pb-32">
@@ -118,12 +158,44 @@ const Hero = () => {
             </div>
           </div>
 
-          {/* Right Column - Image (Left in RTL) */}
+          {/* Right Column - Image Carousel (Left in RTL) */}
           <div className={`animate-fade-up lg:animate-fade-in h-full flex mx-4 ${isRTL ? 'order-first lg:order-none' : ''}`} style={{
             animationDelay: '0.6s'
           }}>
             <div className="relative overflow-hidden w-full md:h-full rounded-lg">
-              <img src={teamLab} alt="Laboratory facility" className="w-full h-auto object-contain md:h-full md:min-h-[400px] md:object-cover rounded-xl" />
+              {/* Banner Images */}
+              <div className="relative w-full h-auto md:h-full md:min-h-[400px]">
+                {isLoading ? (
+                  <div className="w-full h-full min-h-[300px] md:min-h-[400px] bg-blue-800/50 animate-pulse rounded-xl" />
+                ) : (
+                  <>
+                    <img 
+                      key={currentIndex}
+                      src={currentImage} 
+                      alt="Laboratory facility" 
+                      className="w-full h-auto object-contain md:h-full md:min-h-[400px] md:object-cover rounded-xl transition-opacity duration-500"
+                    />
+                    
+                    {/* Carousel Indicators */}
+                    {banners.length > 1 && (
+                      <div className="absolute bottom-4 left-1/2 transform -translate-x-1/2 flex gap-2">
+                        {banners.map((_, index) => (
+                          <button
+                            key={index}
+                            onClick={() => setCurrentIndex(index)}
+                            className={`w-2 h-2 rounded-full transition-all duration-300 ${
+                              index === currentIndex 
+                                ? 'bg-white w-6' 
+                                : 'bg-white/50 hover:bg-white/70'
+                            }`}
+                            aria-label={`Go to slide ${index + 1}`}
+                          />
+                        ))}
+                      </div>
+                    )}
+                  </>
+                )}
+              </div>
               <div className="absolute inset-0 rounded-lg bg-gradient-to-t from-blue-900/30 to-transparent pointer-events-none"></div>
             </div>
           </div>
