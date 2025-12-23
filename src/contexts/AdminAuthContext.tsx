@@ -1,17 +1,15 @@
 import React, { createContext, useContext, useState, useEffect } from 'react';
-
-interface AdminUser {
-  id: string;
-  email: string;
-  name: string;
-}
+import { supabase } from '@/integrations/supabase/client';
+import { User, Session } from '@supabase/supabase-js';
 
 interface AdminAuthContextType {
-  user: AdminUser | null;
+  user: User | null;
+  session: Session | null;
   isAuthenticated: boolean;
+  isAdmin: boolean;
   isLoading: boolean;
-  login: (email: string, password: string) => Promise<boolean>;
-  logout: () => void;
+  login: (email: string, password: string) => Promise<{ success: boolean; error?: string }>;
+  logout: () => Promise<void>;
 }
 
 const AdminAuthContext = createContext<AdminAuthContextType | undefined>(undefined);
@@ -25,42 +23,112 @@ export const useAdminAuth = () => {
 };
 
 export const AdminAuthProvider: React.FC<{ children: React.ReactNode }> = ({ children }) => {
-  const [user, setUser] = useState<AdminUser | null>(null);
+  const [user, setUser] = useState<User | null>(null);
+  const [session, setSession] = useState<Session | null>(null);
+  const [isAdmin, setIsAdmin] = useState(false);
   const [isLoading, setIsLoading] = useState(true);
 
-  useEffect(() => {
-    // Check for existing session (mock - will be replaced with real auth)
-    const savedUser = localStorage.getItem('admin_user');
-    if (savedUser) {
-      setUser(JSON.parse(savedUser));
+  // Check if user has admin role
+  const checkAdminRole = async (userId: string): Promise<boolean> => {
+    try {
+      const { data, error } = await supabase.rpc('has_role', {
+        _user_id: userId,
+        _role: 'admin'
+      });
+      
+      if (error) {
+        console.error('Error checking admin role:', error);
+        return false;
+      }
+      
+      return data === true;
+    } catch (error) {
+      console.error('Error checking admin role:', error);
+      return false;
     }
-    setIsLoading(false);
-  }, []);
-
-  const login = async (email: string, password: string): Promise<boolean> => {
-    // Mock login - will be replaced with real Supabase auth
-    if (email === 'admin@testhub.com' && password === 'admin123') {
-      const mockUser: AdminUser = {
-        id: '1',
-        email: 'admin@testhub.com',
-        name: 'Admin User'
-      };
-      setUser(mockUser);
-      localStorage.setItem('admin_user', JSON.stringify(mockUser));
-      return true;
-    }
-    return false;
   };
 
-  const logout = () => {
+  useEffect(() => {
+    // Set up auth state listener FIRST
+    const { data: { subscription } } = supabase.auth.onAuthStateChange(
+      (event, session) => {
+        setSession(session);
+        setUser(session?.user ?? null);
+        
+        // Defer admin role check with setTimeout to avoid deadlock
+        if (session?.user) {
+          setTimeout(() => {
+            checkAdminRole(session.user.id).then(setIsAdmin);
+          }, 0);
+        } else {
+          setIsAdmin(false);
+        }
+      }
+    );
+
+    // THEN check for existing session
+    supabase.auth.getSession().then(({ data: { session } }) => {
+      setSession(session);
+      setUser(session?.user ?? null);
+      
+      if (session?.user) {
+        checkAdminRole(session.user.id).then((isAdminUser) => {
+          setIsAdmin(isAdminUser);
+          setIsLoading(false);
+        });
+      } else {
+        setIsLoading(false);
+      }
+    });
+
+    return () => subscription.unsubscribe();
+  }, []);
+
+  const login = async (email: string, password: string): Promise<{ success: boolean; error?: string }> => {
+    try {
+      const { data, error } = await supabase.auth.signInWithPassword({
+        email,
+        password,
+      });
+
+      if (error) {
+        return { success: false, error: error.message };
+      }
+
+      if (data.user) {
+        // Check if user has admin role
+        const hasAdminRole = await checkAdminRole(data.user.id);
+        
+        if (!hasAdminRole) {
+          // Sign out if not admin
+          await supabase.auth.signOut();
+          return { success: false, error: 'You do not have admin access. Contact your administrator.' };
+        }
+        
+        setIsAdmin(true);
+        return { success: true };
+      }
+
+      return { success: false, error: 'Login failed' };
+    } catch (error) {
+      console.error('Login error:', error);
+      return { success: false, error: 'An unexpected error occurred' };
+    }
+  };
+
+  const logout = async () => {
+    await supabase.auth.signOut();
     setUser(null);
-    localStorage.removeItem('admin_user');
+    setSession(null);
+    setIsAdmin(false);
   };
 
   return (
     <AdminAuthContext.Provider value={{
       user,
-      isAuthenticated: !!user,
+      session,
+      isAuthenticated: !!user && isAdmin,
+      isAdmin,
       isLoading,
       login,
       logout
