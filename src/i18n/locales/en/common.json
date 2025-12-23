@@ -29,7 +29,7 @@
   "about": {
     "badge": "About Our Laboratory",
     "title": "Middle East Environmental Laboratories W.L.L.",
-    "description": "Middle East Environmental Laboratories W.L.L. delivers high-quality, reliable environmental testing services that support compliance, sustainability, and informed decision-making. With advanced equipment and a team of skilled experts, we help industries, government entities, and organizations monitor and manage their environmental impact. Our accurate analyses and customized reporting ensure clients meet local and international regulations while contributing to a cleaner, safer environment for future generations.",
+    "description": "Middle East Environmental Laboratories W.L.L. delivers high-quality, reliable environmental testing services that support compliance, sustainability, and informed decision-making.",
     "features": {
       "facilities": "Purpose-built testing facilities",
       "guidance": "Expert technical guidance",
@@ -77,39 +77,39 @@
       "support": "Technical Support"
     }
   },
-  "contact": {
-    "badge": "Get In Touch",
-    "title": "Contact Us Today",
-    "description": "Reach out to our team of experts for comprehensive laboratory testing services",
-    "form": {
-      "name": "Full Name",
-      "namePlaceholder": "Enter your full name",
-      "email": "Email Address",
-      "emailPlaceholder": "your.email@example.com",
-      "phone": "Phone Number",
-      "phonePlaceholder": "+965 XXXX XXXX",
-      "message": "Message",
-      "messagePlaceholder": "Tell us about your testing requirements...",
-      "submit": "Send Message",
-      "sending": "Sending...",
-      "success": "Message sent successfully! We'll get back to you soon.",
-      "error": "Failed to send message. Please try again."
-    }
-  },
-  "footer": {
-    "quickLinks": "Quick Links",
-    "ourServices": "Our Services",
-    "contactInfo": "Contact Info",
-    "copyright": "© 2026 Middle East Environmental Laboratories Co. All rights reserved.",
-    "privacyPolicy": "Privacy Policy",
-    "termsOfService": "Terms of Service",
-    "services": {
-      "water": "Water & Wastewater Testing",
-      "food": "Food Testing",
-      "soil": "Soil & Sludge Analysis",
-      "cosmetics": "Cosmetics Testing",
-      "environmental": "Environmental Monitoring",
-      "material": "Material Testing"
+  "servicesPage": {
+    "badge": "Testing Services",
+    "title": "Our Testing Services",
+    "heroDescription": "Comprehensive analytical testing solutions across multiple industries with state-of-the-art equipment and expert analysis.",
+    "completeSolutions": {
+      "title": "Complete Testing Solutions",
+      "description": "Our laboratory offers a comprehensive range of analytical testing services designed to meet the diverse needs of various industries and regulatory requirements."
+    },
+    "whyChoose": {
+      "title": "Why Choose Our Testing Services",
+      "description": "Our commitment to excellence and precision ensures that you receive accurate, reliable results.",
+      "equipment": {
+        "title": "State-of-the-Art Equipment",
+        "description": "Latest analytical instruments and testing technologies"
+      },
+      "quality": {
+        "title": "Certified Quality",
+        "description": "Accredited laboratory with international quality standards"
+      },
+      "turnaround": {
+        "title": "Fast Turnaround",
+        "description": "Quick and efficient testing with reliable delivery times"
+      },
+      "analysis": {
+        "title": "Expert Analysis",
+        "description": "Professional interpretation and detailed reporting"
+      }
+    },
+    "cta": {
+      "title": "Need Testing Services?",
+      "description": "Contact us today to discuss your testing requirements.",
+      "requestQuote": "Request Quote",
+      "learnAboutUs": "Learn About Us"
     }
   },
   "accreditation": {
@@ -160,13 +160,13 @@
     },
     "commitment": {
       "title": "Our Commitment to Quality",
-      "paragraph1": "Middle East Environmental Laboratories Co. is committed to maintaining the highest standards of quality in all our testing services. Our accreditation to ISO/IEC 17025:2017 demonstrates our technical competence and quality management system effectiveness.",
-      "paragraph2": "We undergo regular external audits and proficiency testing to ensure our continued compliance with international standards. Our quality management system covers all aspects of our operations, from sample handling to result reporting.",
-      "paragraph3": "This commitment to quality ensures that our clients receive accurate, reliable results that are recognized and accepted by regulatory bodies and certification organizations worldwide."
+      "paragraph1": "Middle East Environmental Laboratories Co. is committed to maintaining the highest standards of quality in all our testing services.",
+      "paragraph2": "We undergo regular external audits and proficiency testing to ensure our continued compliance with international standards.",
+      "paragraph3": "This commitment to quality ensures that our clients receive accurate, reliable results that are recognized worldwide."
     },
     "cta": {
       "title": "Trust Our Accredited Services",
-      "description": "Choose our accredited laboratory for reliable, internationally recognized testing results that meet the highest quality standards.",
+      "description": "Choose our accredited laboratory for reliable, internationally recognized testing results.",
       "getQuote": "Get Testing Quote",
       "viewServices": "View Services"
     }
@@ -202,7 +202,7 @@
     },
     "cta": {
       "title": "Start Your Career Journey",
-      "description": "Join us in making a positive impact through analytical excellence and environmental protection. We're always looking for talented individuals.",
+      "description": "Join us in making a positive impact through analytical excellence and environmental protection.",
       "contactHR": "Contact HR",
       "learnMore": "Learn More"
     }
@@ -219,7 +219,7 @@
     },
     "infoSection": {
       "title": "Get In Touch With Us",
-      "description": "Contact our team through any of the following channels. We're here to help with your analytical testing needs."
+      "description": "Contact our team through any of the following channels."
     },
     "info": {
       "location": {
@@ -246,7 +246,7 @@
     },
     "cta": {
       "title": "Ready to Get Started?",
-      "description": "Contact us today to discuss your analytical testing requirements and discover how we can help achieve your quality objectives.",
+      "description": "Contact us today to discuss your analytical testing requirements.",
       "viewServices": "View Services",
       "learnMore": "Learn More"
     },
@@ -261,8 +261,22 @@
       "messagePlaceholder": "Tell us about your testing requirements...",
       "submit": "Send Message",
       "sending": "Sending...",
-      "success": "Message sent successfully! We'll get back to you soon.",
+      "success": "Message sent successfully!",
       "error": "Failed to send message. Please try again."
+    }
+  },
+  "companyProfilePage": {
+    "title": "Company Profile",
+    "heroDescription": "Discover our journey, capabilities, and commitment to environmental excellence",
+    "companyName": "Middle East Environmental Laboratories",
+    "browseProfile": "Browse the Profile",
+    "backToCover": "Back to Cover"
+  },
+  "gallery": {
+    "hero": {
+      "badge": "Laboratory Gallery",
+      "title": "Our Laboratory Gallery",
+      "description": "Explore our state-of-the-art laboratory facilities and advanced testing equipment."
     }
   },
   "serviceDetail": {

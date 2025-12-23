@@ -53,13 +53,13 @@ const GalleryPage = () => {
             <ScrollAnimation>
               <div className="max-w-4xl mx-auto text-center">
                 <Badge className="mb-6 bg-white/20 text-white hover:bg-white/30 border-white/30">
-                  {t("galleryPage.badge")}
+                  {t("gallery.hero.badge")}
                 </Badge>
                 <h1 className="text-4xl md:text-6xl font-display font-bold mb-6">
-                  {t("galleryPage.title")}
+                  {t("gallery.hero.title")}
                 </h1>
                 <p className="text-xl text-white/90 leading-relaxed">
-                  {t("galleryPage.heroDescription")}
+                  {t("gallery.hero.description")}
                 </p>
               </div>
             </ScrollAnimation>
