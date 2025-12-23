@@ -4,7 +4,7 @@ import { CheckCircle, Award, Users, Target } from "lucide-react";
 
 const About = () => {
   const { t, i18n } = useTranslation();
-  const isRTL = i18n.language === 'ar';
+  const isRTL = i18n.dir(i18n.resolvedLanguage || i18n.language) === 'rtl';
 
   const features = [
     t("about.features.facilities"),
@@ -18,9 +18,9 @@ const About = () => {
   return (
     <section id="about" className="py-20 bg-gradient-to-b from-background to-secondary/50">
       <div className="container mx-auto px-4 lg:px-8">
-        <div className={`grid grid-cols-1 lg:grid-cols-2 gap-12 items-center ${isRTL ? 'lg:grid-flow-dense' : ''}`}>
+        <div className={`grid grid-cols-1 lg:grid-cols-2 gap-12 items-center`} dir={isRTL ? 'rtl' : 'ltr'}>
           {/* Content */}
-          <div className={`animate-slide-in ${isRTL ? 'lg:col-start-2' : ''}`}>
+          <div className={`animate-slide-in ${isRTL ? 'text-right' : 'text-left'}`}>
             <div className={`inline-flex items-center ${isRTL ? 'space-x-reverse space-x-2' : 'space-x-2'} bg-primary/10 px-4 py-2 rounded-full mb-6`}>
               <Award className="w-4 h-4 text-primary" />
               <span className="text-primary font-semibold text-lg">{t("about.badge")}</span>
@@ -46,7 +46,7 @@ const About = () => {
           </div>
 
           {/* Cards */}
-          <div className={`grid grid-cols-1 sm:grid-cols-2 gap-6 ${isRTL ? 'lg:col-start-1' : ''}`}>
+          <div className={`grid grid-cols-1 sm:grid-cols-2 gap-6 ${isRTL ? 'text-right' : 'text-left'}`}>
             <Card className="p-6 card-gradient shadow-elegant hover:shadow-glow transition-spring group">
               <div className="w-12 h-12 bg-primary/20 rounded-lg flex items-center justify-center mb-4 group-hover:scale-110 transition-spring">
                 <Target className="w-6 h-6 text-primary" />
