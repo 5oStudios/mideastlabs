@@ -189,13 +189,13 @@
     margin-left: 1rem;
   }
 
-  /* RTL text alignment */
+  /* RTL text alignment (do not invert Tailwind utilities) */
   html.rtl .text-left {
-    text-align: right;
+    text-align: left;
   }
 
   html.rtl .text-right {
-    text-align: left;
+    text-align: right;
   }
 
   /* RTL flex direction for specific layouts */
