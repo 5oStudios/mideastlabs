@@ -69,7 +69,7 @@ const Hero = () => {
                   {t("hero.title2")}
                 </span>
               </h1>
-              <p className={`text-lg md:text-xl text-blue-100/90 leading-relaxed max-w-2xl ${isRTL ? 'ml-auto' : ''}`}>
+              <p className={`text-lg md:text-xl text-blue-100/90 leading-relaxed max-w-2xl ${isRTL ? 'ml-auto text-right' : ''}`}>
                 {t("hero.description")}
               </p>
             </div>
