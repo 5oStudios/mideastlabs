@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 import { useState, useEffect } from "react";
 import { supabase } from "@/integrations/supabase/client";
 import type { Tables } from "@/integrations/supabase/types";
-import teamLab from "@/assets/team-lab.jpg";
+
 
 type HeroBanner = Tables<'hero_banners'>;
 
@@ -75,8 +75,8 @@ const Hero = () => {
     }
   ];
 
-  // Determine which image to show
-  const currentImage = banners.length > 0 ? banners[currentIndex]?.image_url : teamLab;
+  // Determine which image to show - only show if there are active banners
+  const currentImage = banners.length > 0 ? banners[currentIndex]?.image_url : null;
 
   return (
     <section id="home" className="relative min-h-screen flex items-center overflow-hidden bg-gradient-to-br from-slate-900 via-blue-900 to-indigo-900 pt-32 lg:pt-40 pb-20 lg:pb-32">
@@ -167,7 +167,7 @@ const Hero = () => {
               <div className="relative w-full h-auto md:h-full md:min-h-[400px]">
                 {isLoading ? (
                   <div className="w-full h-full min-h-[300px] md:min-h-[400px] bg-blue-800/50 animate-pulse rounded-xl" />
-                ) : (
+                ) : currentImage ? (
                   <>
                     <img 
                       key={currentIndex}
@@ -194,7 +194,7 @@ const Hero = () => {
                       </div>
                     )}
                   </>
-                )}
+                ) : null}
               </div>
               <div className="absolute inset-0 rounded-lg bg-gradient-to-t from-blue-900/30 to-transparent pointer-events-none"></div>
             </div>
