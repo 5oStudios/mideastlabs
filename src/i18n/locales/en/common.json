@@ -265,6 +265,43 @@
       "error": "Failed to send message. Please try again."
     }
   },
+  "aboutPage": {
+    "badge": "About Our Laboratory",
+    "title": "About Us",
+    "heroDescription": "Learn more about our commitment to providing accurate, reliable, and timely environmental testing and analysis services.",
+    "companyName": "Middle East Environmental Laboratories W.L.L.",
+    "companyDescription": "Middle East Environmental Laboratories W.L.L. delivers high-quality, reliable environmental testing services that support compliance, sustainability, and informed decision-making. Our laboratory is equipped with state-of-the-art instruments and staffed by experienced professionals dedicated to excellence.",
+    "mission": {
+      "title": "Our Mission",
+      "description": "The mission of Middle East Environmental Laboratories W.L.L. is to provide accurate, timely, and trusted environmental testing and analysis services that help our clients make informed decisions and maintain regulatory compliance."
+    },
+    "vision": {
+      "title": "Our Vision",
+      "description": "To provide superior services in Laboratory needs that advance the well-being of our community and this can only be achieved through our quality and differentiation."
+    },
+    "whyChooseUs": {
+      "title": "Why Choose Us",
+      "description": "Our commitment to excellence and precision ensures that you receive accurate, reliable results every time.",
+      "qualityAssurance": {
+        "title": "Quality Assurance",
+        "description": "Rigorous quality control processes ensure accurate and reliable test results you can trust."
+      },
+      "expertTeam": {
+        "title": "Expert Team",
+        "description": "Our team of experienced scientists and technicians bring expertise and dedication to every project."
+      },
+      "fastTurnaround": {
+        "title": "Fast Turnaround",
+        "description": "Quick and efficient testing with reliable delivery times to meet your deadlines."
+      }
+    },
+    "cta": {
+      "title": "Ready to Get Started?",
+      "description": "Contact us today to discuss your analytical testing requirements and discover how we can support your success.",
+      "getInTouch": "Get In Touch",
+      "viewServices": "View Services"
+    }
+  },
   "companyProfilePage": {
     "title": "Company Profile",
     "heroDescription": "Discover our journey, capabilities, and commitment to environmental excellence",
