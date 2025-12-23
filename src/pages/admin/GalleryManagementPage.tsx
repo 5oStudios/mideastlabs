@@ -259,15 +259,23 @@ const GalleryManagementPage = () => {
     }
   };
 
+  const MAX_IMAGES = 25;
+  const isAtLimit = images.length >= MAX_IMAGES;
+
   return (
     <div className="space-y-6">
       {/* Header */}
       <div className="flex items-center justify-between">
         <div>
           <h1 className="text-3xl font-bold text-foreground">Gallery</h1>
-          <p className="text-muted-foreground mt-1">Manage gallery images with titles and categories</p>
+          <p className="text-muted-foreground mt-1">
+            Manage gallery images with titles and categories
+            <span className={`ml-2 font-medium ${isAtLimit ? 'text-destructive' : 'text-primary'}`}>
+              ({images.length}/{MAX_IMAGES})
+            </span>
+          </p>
         </div>
-        <Button onClick={handleAdd}>
+        <Button onClick={handleAdd} disabled={isAtLimit}>
           <Plus className="h-4 w-4 mr-2" />
           Add Image
         </Button>

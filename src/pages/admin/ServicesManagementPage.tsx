@@ -272,15 +272,23 @@ const ServicesManagementPage = () => {
     }
   };
 
+  const MAX_SERVICES = 20;
+  const isAtLimit = services.length >= MAX_SERVICES;
+
   return (
     <div className="space-y-6">
       {/* Header */}
       <div className="flex items-center justify-between">
         <div>
           <h1 className="text-3xl font-bold text-foreground">Services</h1>
-          <p className="text-muted-foreground mt-1">Manage your company services</p>
+          <p className="text-muted-foreground mt-1">
+            Manage your company services
+            <span className={`ml-2 font-medium ${isAtLimit ? 'text-destructive' : 'text-primary'}`}>
+              ({services.length}/{MAX_SERVICES})
+            </span>
+          </p>
         </div>
-        <Button onClick={handleAdd}>
+        <Button onClick={handleAdd} disabled={isAtLimit}>
           <Plus className="h-4 w-4 mr-2" />
           Add Service
         </Button>

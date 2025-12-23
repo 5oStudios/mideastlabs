@@ -244,15 +244,23 @@ const HeroBannersPage = () => {
     }
   };
 
+  const MAX_BANNERS = 5;
+  const isAtLimit = banners.length >= MAX_BANNERS;
+
   return (
     <div className="space-y-6">
       {/* Header */}
       <div className="flex items-center justify-between">
         <div>
           <h1 className="text-3xl font-bold text-foreground">Hero Banners</h1>
-          <p className="text-muted-foreground mt-1">Manage carousel banners on the homepage</p>
+          <p className="text-muted-foreground mt-1">
+            Manage carousel banners on the homepage
+            <span className={`ml-2 font-medium ${isAtLimit ? 'text-destructive' : 'text-primary'}`}>
+              ({banners.length}/{MAX_BANNERS})
+            </span>
+          </p>
         </div>
-        <Button onClick={handleAdd}>
+        <Button onClick={handleAdd} disabled={isAtLimit}>
           <Plus className="h-4 w-4 mr-2" />
           Add Banner
         </Button>
