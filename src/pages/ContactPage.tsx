@@ -1,45 +1,87 @@
 import ScrollAnimation from "@/components/ScrollAnimation";
 import { Card } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
-import { MapPin, Phone, Mail, Clock } from "lucide-react";
+import { MapPin, Phone, Mail, Clock, Loader2 } from "lucide-react";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import heroImage from "@/assets/hero/contact-hero.jpg";
 import { useTranslation } from "react-i18next";
+import { useContactSettings } from "@/hooks/useContactSettings";
 
 const ContactPage = () => {
   const { t, i18n } = useTranslation();
   const isRTL = i18n.language === 'ar';
+  const { data: settings, isLoading } = useContactSettings();
 
-  const contactInfo = [
-    {
-      title: t('contact.info.location.title'),
-      details: [
-        t('contact.info.location.address1'),
-        t('contact.info.location.address2')
-      ],
-      icon: MapPin
-    },
-    {
-      title: t('contact.info.phone.title'),
-      details: ["+965 22251577"],
-      icon: Phone
-    },
-    {
-      title: t('contact.info.email.title'),
-      details: ["info@mideastlabs.com"],
-      icon: Mail
-    },
-    {
-      title: t('contact.info.hours.title'),
-      details: [
-        t('contact.info.hours.weekdays'),
-        t('contact.info.hours.friday'),
-        t('contact.info.hours.saturday')
-      ],
-      icon: Clock
+  const getContactInfo = () => {
+    if (!settings) {
+      // Fallback to translation keys if no settings
+      return [
+        {
+          title: t('contact.info.location.title'),
+          details: [
+            t('contact.info.location.address1'),
+            t('contact.info.location.address2')
+          ],
+          icon: MapPin
+        },
+        {
+          title: t('contact.info.phone.title'),
+          details: ["+965 22251577"],
+          icon: Phone
+        },
+        {
+          title: t('contact.info.email.title'),
+          details: ["info@mideastlabs.com"],
+          icon: Mail
+        },
+        {
+          title: t('contact.info.hours.title'),
+          details: [
+            t('contact.info.hours.weekdays'),
+            t('contact.info.hours.friday'),
+            t('contact.info.hours.saturday')
+          ],
+          icon: Clock
+        }
+      ];
     }
-  ];
+
+    const address = isRTL ? settings.address_ar : settings.address_en;
+    const weekdays = isRTL ? settings.working_hours_weekdays_ar : settings.working_hours_weekdays_en;
+    const friday = isRTL ? settings.working_hours_friday_ar : settings.working_hours_friday_en;
+    const saturday = isRTL ? settings.working_hours_saturday_ar : settings.working_hours_saturday_en;
+
+    return [
+      {
+        title: t('contact.info.location.title'),
+        details: address ? [address] : [t('contact.info.location.address1')],
+        icon: MapPin
+      },
+      {
+        title: t('contact.info.phone.title'),
+        details: settings.phone ? [settings.phone] : ["+965 22251577"],
+        icon: Phone
+      },
+      {
+        title: t('contact.info.email.title'),
+        details: settings.email ? [settings.email] : ["info@mideastlabs.com"],
+        icon: Mail
+      },
+      {
+        title: t('contact.info.hours.title'),
+        details: [
+          weekdays || t('contact.info.hours.weekdays'),
+          friday || t('contact.info.hours.friday'),
+          saturday || t('contact.info.hours.saturday')
+        ].filter(Boolean),
+        icon: Clock
+      }
+    ];
+  };
+
+  const contactInfo = getContactInfo();
+  const mapUrl = settings?.map_embed_url || "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3482.8220955191327!2d48.0510782!3d29.199364199999998!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3fcfa04550d25ded%3A0x8514275ef9b403ce!2zTWlkZGxlIEVhc3QgRW52aXJvbm1lbnRhbCBMYWJvcmF0b3JpZXMg2YXYrtiq2KjYsdin2Kog2KfZhNi02LHZgiDYp9mE2KPZiNiz2Lcg2KfZhNio2YrYptmK2Kk!5e0!3m2!1sen!2skw!4v1766315758961!5m2!1sen!2skw";
 
   return (
     <>
@@ -87,30 +129,36 @@ const ContactPage = () => {
               </div>
             </ScrollAnimation>
 
-            <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8 mb-16">
-              {contactInfo.map((info, index) => {
-                const IconComponent = info.icon;
-                return (
-                  <ScrollAnimation key={index} delay={0.1 * index}>
-                    <Card className="p-6 text-center shadow-elegant hover:shadow-glow transition-all duration-500 group h-full">
-                      <div className="w-16 h-16 bg-gradient-to-br from-primary to-primary-glow rounded-full flex items-center justify-center mx-auto mb-4 group-hover:scale-110 transition-transform duration-300">
-                        <IconComponent className="w-8 h-8 text-white" />
-                      </div>
-                      <h3 className="text-lg font-semibold text-primary mb-3 group-hover:text-primary-glow transition-colors duration-300">
-                        {info.title}
-                      </h3>
-                      <div className="space-y-1">
-                        {info.details.map((detail, detailIndex) => (
-                          <p key={detailIndex} className="text-muted-foreground text-sm leading-relaxed">
-                            {detail}
-                          </p>
-                        ))}
-                      </div>
-                    </Card>
-                  </ScrollAnimation>
-                );
-              })}
-            </div>
+            {isLoading ? (
+              <div className="flex justify-center py-12">
+                <Loader2 className="w-8 h-8 animate-spin text-primary" />
+              </div>
+            ) : (
+              <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8 mb-16">
+                {contactInfo.map((info, index) => {
+                  const IconComponent = info.icon;
+                  return (
+                    <ScrollAnimation key={index} delay={0.1 * index}>
+                      <Card className="p-6 text-center shadow-elegant hover:shadow-glow transition-all duration-500 group h-full">
+                        <div className="w-16 h-16 bg-gradient-to-br from-primary to-primary-glow rounded-full flex items-center justify-center mx-auto mb-4 group-hover:scale-110 transition-transform duration-300">
+                          <IconComponent className="w-8 h-8 text-white" />
+                        </div>
+                        <h3 className="text-lg font-semibold text-primary mb-3 group-hover:text-primary-glow transition-colors duration-300">
+                          {info.title}
+                        </h3>
+                        <div className="space-y-1">
+                          {info.details.map((detail, detailIndex) => (
+                            <p key={detailIndex} className="text-muted-foreground text-sm leading-relaxed">
+                              {detail}
+                            </p>
+                          ))}
+                        </div>
+                      </Card>
+                    </ScrollAnimation>
+                  );
+                })}
+              </div>
+            )}
           </div>
         </section>
 
@@ -134,7 +182,7 @@ const ContactPage = () => {
               <div className="relative w-full">
                 <div className="aspect-[3/4] md:aspect-[21/9] w-full">
                   <iframe 
-                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3482.8220955191327!2d48.0510782!3d29.199364199999998!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3fcfa04550d25ded%3A0x8514275ef9b403ce!2zTWlkZGxlIEVhc3QgRW52aXJvbm1lbnRhbCBMYWJvcmF0b3JpZXMg2YXYrtiq2KjYsdin2Kog2KfZhNi02LHZgiDYp9mE2KPZiNiz2Lcg2KfZhNio2YrYptmK2Kk!5e0!3m2!1sen!2skw!4v1766315758961!5m2!1sen!2skw" 
+                    src={mapUrl} 
                     width="100%" 
                     height="100%" 
                     style={{ border: 0 }} 
