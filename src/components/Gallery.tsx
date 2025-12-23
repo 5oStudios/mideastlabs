@@ -1,59 +1,52 @@
 import { Card } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
-import { ArrowRight, Camera, ChevronLeft, ChevronRight } from "lucide-react";
+import { ArrowRight, Camera, ChevronLeft, ChevronRight, Loader2 } from "lucide-react";
 import { useState } from "react";
 import { Link } from "react-router-dom";
 import { useTranslation } from "react-i18next";
-import labChemistSamples from "@/assets/lab-chemist-samples.jpg";
-import labEquipmentSetup from "@/assets/lab-equipment-setup.jpg";
-import labSampleVials from "@/assets/lab-sample-vials.jpg";
-import labTestingProcess from "@/assets/lab-testing-process.jpg";
-import labSampleAnalysis from "@/assets/lab-sample-analysis.jpg";
-import labAnalyticalInstrument from "@/assets/lab-analytical-instrument.jpg";
+import { useGalleryImages } from "@/hooks/useGallery";
+
 const Gallery = () => {
   const { t, i18n } = useTranslation();
   const isRTL = i18n.language === 'ar';
   const [currentSlide, setCurrentSlide] = useState(0);
-  
-  const galleryImages = [{
-    title: t('gallery.images.chemical.title'),
-    description: t('gallery.images.chemical.description'),
-    category: t('gallery.images.chemical.category'),
-    image: labChemistSamples
-  }, {
-    title: t('gallery.images.equipment.title'),
-    description: t('gallery.images.equipment.description'),
-    category: t('gallery.images.equipment.category'),
-    image: labEquipmentSetup
-  }, {
-    title: t('gallery.images.samples.title'),
-    description: t('gallery.images.samples.description'),
-    category: t('gallery.images.samples.category'),
-    image: labSampleVials
-  }, {
-    title: t('gallery.images.testing.title'),
-    description: t('gallery.images.testing.description'),
-    category: t('gallery.images.testing.category'),
-    image: labTestingProcess
-  }, {
-    title: t('gallery.images.analysis.title'),
-    description: t('gallery.images.analysis.description'),
-    category: t('gallery.images.analysis.category'),
-    image: labSampleAnalysis
-  }, {
-    title: t('gallery.images.instruments.title'),
-    description: t('gallery.images.instruments.description'),
-    category: t('gallery.images.instruments.category'),
-    image: labAnalyticalInstrument
-  }];
+  const { images, isLoading } = useGalleryImages(true);
 
   const nextSlide = () => {
-    setCurrentSlide(prev => (prev + 1) % galleryImages.length);
+    if (images.length === 0) return;
+    setCurrentSlide(prev => (prev + 1) % images.length);
   };
+
   const prevSlide = () => {
-    setCurrentSlide(prev => (prev - 1 + galleryImages.length) % galleryImages.length);
+    if (images.length === 0) return;
+    setCurrentSlide(prev => (prev - 1 + images.length) % images.length);
   };
-  return <section id="gallery" className="py-20 bg-gradient-to-b from-secondary/50 to-background">
+
+  const getLocalizedContent = (image: typeof images[0]) => ({
+    title: isRTL && image.title_ar ? image.title_ar : image.title_en || '',
+    subtitle: isRTL && image.subtitle_ar ? image.subtitle_ar : image.subtitle_en || '',
+    category: isRTL && image.category_ar ? image.category_ar : image.category_en || '',
+  });
+
+  if (isLoading) {
+    return (
+      <section id="gallery" className="py-20 bg-gradient-to-b from-secondary/50 to-background">
+        <div className="container mx-auto px-4 lg:px-8 flex items-center justify-center py-20">
+          <Loader2 className="h-8 w-8 animate-spin text-primary" />
+        </div>
+      </section>
+    );
+  }
+
+  if (images.length === 0) {
+    return null;
+  }
+
+  const currentImage = images[currentSlide];
+  const currentContent = getLocalizedContent(currentImage);
+
+  return (
+    <section id="gallery" className="py-20 bg-gradient-to-b from-secondary/50 to-background">
       <div className="container mx-auto px-4 lg:px-8">
         {/* Header */}
         <div className={`text-center max-w-3xl mx-auto mb-16 ${isRTL ? 'rtl' : ''}`} dir={isRTL ? 'rtl' : 'ltr'}>
@@ -75,54 +68,101 @@ const Gallery = () => {
         <div className="relative mb-12">
           <Card className="overflow-hidden shadow-strong">
             <div className="relative h-96 lg:h-[500px] overflow-hidden">
-              <img src={galleryImages[currentSlide].image} alt={galleryImages[currentSlide].title} className="w-full h-full object-cover" />
+              <img 
+                src={currentImage.image_url} 
+                alt={currentContent.title} 
+                className="w-full h-full object-cover" 
+              />
               {/* Image Overlay with Info */}
               <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent flex items-end">
                 <div className="p-8 text-white">
-                  <span className="inline-block mb-3 px-3 py-1 bg-primary/90 text-white text-sm rounded-full">
-                    {galleryImages[currentSlide].category}
-                  </span>
-                  <h3 className="text-2xl lg:text-3xl font-semibold mb-2">
-                    {galleryImages[currentSlide].title}
-                  </h3>
-                  <p className="text-white/90 max-w-2xl">
-                    {galleryImages[currentSlide].description}
-                  </p>
+                  {currentContent.category && (
+                    <span className="inline-block mb-3 px-3 py-1 bg-primary/90 text-white text-sm rounded-full">
+                      {currentContent.category}
+                    </span>
+                  )}
+                  {currentContent.title && (
+                    <h3 className="text-2xl lg:text-3xl font-semibold mb-2">
+                      {currentContent.title}
+                    </h3>
+                  )}
+                  {currentContent.subtitle && (
+                    <p className="text-white/90 max-w-2xl">
+                      {currentContent.subtitle}
+                    </p>
+                  )}
                 </div>
               </div>
             </div>
 
             {/* Navigation Arrows */}
-            <Button variant="ghost" size="icon" className="absolute left-4 top-1/2 transform -translate-y-1/2 bg-white/90 hover:bg-white shadow-medium" onClick={prevSlide}>
-              <ChevronLeft className="w-6 h-6" />
-            </Button>
-            <Button variant="ghost" size="icon" className="absolute right-4 top-1/2 transform -translate-y-1/2 bg-white/90 hover:bg-white shadow-medium" onClick={nextSlide}>
-              <ChevronRight className="w-6 h-6" />
-            </Button>
+            {images.length > 1 && (
+              <>
+                <Button 
+                  variant="ghost" 
+                  size="icon" 
+                  className="absolute left-4 top-1/2 transform -translate-y-1/2 bg-white/90 hover:bg-white shadow-medium" 
+                  onClick={prevSlide}
+                >
+                  <ChevronLeft className="w-6 h-6" />
+                </Button>
+                <Button 
+                  variant="ghost" 
+                  size="icon" 
+                  className="absolute right-4 top-1/2 transform -translate-y-1/2 bg-white/90 hover:bg-white shadow-medium" 
+                  onClick={nextSlide}
+                >
+                  <ChevronRight className="w-6 h-6" />
+                </Button>
+              </>
+            )}
 
             {/* Slide Indicators */}
-            <div className="absolute bottom-4 left-1/2 transform -translate-x-1/2 flex space-x-2">
-              {galleryImages.map((_, index) => <button key={index} className={`w-3 h-3 rounded-full transition-smooth ${index === currentSlide ? 'bg-white' : 'bg-white/50'}`} onClick={() => setCurrentSlide(index)} />)}
-            </div>
+            {images.length > 1 && (
+              <div className="absolute bottom-4 left-1/2 transform -translate-x-1/2 flex space-x-2">
+                {images.map((_, index) => (
+                  <button 
+                    key={index} 
+                    className={`w-3 h-3 rounded-full transition-smooth ${index === currentSlide ? 'bg-white' : 'bg-white/50'}`} 
+                    onClick={() => setCurrentSlide(index)} 
+                  />
+                ))}
+              </div>
+            )}
           </Card>
         </div>
 
         {/* Thumbnail Grid */}
         <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-4 mb-12">
-          {galleryImages.map((image, index) => <Card key={index} className={`group cursor-pointer overflow-hidden transition-spring ${index === currentSlide ? 'ring-2 ring-primary shadow-glow' : 'shadow-elegant hover:shadow-medium'}`} onClick={() => setCurrentSlide(index)}>
-              <div className="relative h-24 overflow-hidden">
-                <img src={image.image} alt={image.title} className="w-full h-full object-cover transition-transform group-hover:scale-110" />
-                <div className={`absolute inset-0 transition-smooth ${index === currentSlide ? 'bg-primary/20' : 'bg-black/0 group-hover:bg-black/10'}`}></div>
-              </div>
-              <div className="p-3">
-                <div className="text-base font-bold text-foreground truncate">
-                  {image.title}
+          {images.map((image, index) => {
+            const content = getLocalizedContent(image);
+            return (
+              <Card 
+                key={image.id} 
+                className={`group cursor-pointer overflow-hidden transition-spring ${index === currentSlide ? 'ring-2 ring-primary shadow-glow' : 'shadow-elegant hover:shadow-medium'}`} 
+                onClick={() => setCurrentSlide(index)}
+              >
+                <div className="relative h-24 overflow-hidden">
+                  <img 
+                    src={image.image_url} 
+                    alt={content.title} 
+                    className="w-full h-full object-cover transition-transform group-hover:scale-110" 
+                  />
+                  <div className={`absolute inset-0 transition-smooth ${index === currentSlide ? 'bg-primary/20' : 'bg-black/0 group-hover:bg-black/10'}`}></div>
                 </div>
-                <div className="text-base text-muted-foreground mt-1">
-                  {image.category}
+                <div className="p-3">
+                  <div className="text-base font-bold text-foreground truncate">
+                    {content.title || 'Untitled'}
+                  </div>
+                  {content.category && (
+                    <div className="text-base text-muted-foreground mt-1">
+                      {content.category}
+                    </div>
+                  )}
                 </div>
-              </div>
-            </Card>)}
+              </Card>
+            );
+          })}
         </div>
 
         {/* CTA */}
@@ -135,6 +175,8 @@ const Gallery = () => {
           </Link>
         </div>
       </div>
-    </section>;
+    </section>
+  );
 };
+
 export default Gallery;
