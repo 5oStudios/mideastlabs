@@ -3,6 +3,7 @@ import { Button } from "@/components/ui/button";
 import { ArrowRight, Camera, ChevronLeft, ChevronRight } from "lucide-react";
 import { useState } from "react";
 import { Link } from "react-router-dom";
+import { useTranslation } from "react-i18next";
 import labChemistSamples from "@/assets/lab-chemist-samples.jpg";
 import labEquipmentSetup from "@/assets/lab-equipment-setup.jpg";
 import labSampleVials from "@/assets/lab-sample-vials.jpg";
@@ -10,38 +11,42 @@ import labTestingProcess from "@/assets/lab-testing-process.jpg";
 import labSampleAnalysis from "@/assets/lab-sample-analysis.jpg";
 import labAnalyticalInstrument from "@/assets/lab-analytical-instrument.jpg";
 const Gallery = () => {
+  const { t, i18n } = useTranslation();
+  const isRTL = i18n.language === 'ar';
   const [currentSlide, setCurrentSlide] = useState(0);
+  
   const galleryImages = [{
-    title: "Chemical Analysis",
-    description: "Expert chemist examining sample vials for precise chemical analysis",
-    category: "Laboratory",
+    title: t('gallery.images.chemical.title'),
+    description: t('gallery.images.chemical.description'),
+    category: t('gallery.images.chemical.category'),
     image: labChemistSamples
   }, {
-    title: "Advanced Equipment",
-    description: "State-of-the-art laboratory equipment setup for comprehensive testing",
-    category: "Equipment",
+    title: t('gallery.images.equipment.title'),
+    description: t('gallery.images.equipment.description'),
+    category: t('gallery.images.equipment.category'),
     image: labEquipmentSetup
   }, {
-    title: "Sample Collection",
-    description: "Colorful chemical sample vials prepared for testing and analysis",
-    category: "Chemistry",
+    title: t('gallery.images.samples.title'),
+    description: t('gallery.images.samples.description'),
+    category: t('gallery.images.samples.category'),
     image: labSampleVials
   }, {
-    title: "Testing Process",
-    description: "Laboratory technician conducting hands-on chemical testing procedures",
-    category: "Laboratory",
+    title: t('gallery.images.testing.title'),
+    description: t('gallery.images.testing.description'),
+    category: t('gallery.images.testing.category'),
     image: labTestingProcess
   }, {
-    title: "Sample Analysis",
-    description: "Precision sample vials prepared for detailed analytical testing",
-    category: "Quality",
+    title: t('gallery.images.analysis.title'),
+    description: t('gallery.images.analysis.description'),
+    category: t('gallery.images.analysis.category'),
     image: labSampleAnalysis
   }, {
-    title: "Analytical Instruments",
-    description: "High-tech GC-MS analytical instrument for advanced chemical analysis",
-    category: "Equipment",
+    title: t('gallery.images.instruments.title'),
+    description: t('gallery.images.instruments.description'),
+    category: t('gallery.images.instruments.category'),
     image: labAnalyticalInstrument
   }];
+
   const nextSlide = () => {
     setCurrentSlide(prev => (prev + 1) % galleryImages.length);
   };
@@ -51,19 +56,18 @@ const Gallery = () => {
   return <section id="gallery" className="py-20 bg-gradient-to-b from-secondary/50 to-background">
       <div className="container mx-auto px-4 lg:px-8">
         {/* Header */}
-        <div className="text-center max-w-3xl mx-auto mb-16">
-          <div className="inline-flex items-center space-x-2 bg-accent/10 px-4 py-2 rounded-full mb-6">
+        <div className={`text-center max-w-3xl mx-auto mb-16 ${isRTL ? 'rtl' : ''}`} dir={isRTL ? 'rtl' : 'ltr'}>
+          <div className={`inline-flex items-center ${isRTL ? 'space-x-reverse space-x-2' : 'space-x-2'} bg-accent/10 px-4 py-2 rounded-full mb-6`}>
             <Camera className="w-4 h-4 text-accent" />
-            <span className="text-accent font-semibold text-lg">Our Facilities</span>
+            <span className="text-accent font-semibold text-lg">{t('gallery.badge')}</span>
           </div>
           
           <h2 className="font-display font-bold text-heading text-foreground mb-6">
-            Gallery
+            {t('gallery.title')}
           </h2>
           
           <p className="text-muted-foreground leading-relaxed">
-            Take a virtual tour of our state-of-the-art laboratory facilities and 
-            advanced testing equipment that ensure accurate and reliable results.
+            {t('gallery.description')}
           </p>
         </div>
 
@@ -125,8 +129,8 @@ const Gallery = () => {
         <div className="text-center">
           <Link to="/gallery">
             <Button size="lg" variant="outline" className="group">
-              <span>Explore More Images</span>
-              <ArrowRight className="w-5 h-5 ml-2 group-hover:translate-x-1 transition-spring" />
+              <span>{t('gallery.cta')}</span>
+              <ArrowRight className={`w-5 h-5 ${isRTL ? 'mr-2 group-hover:-translate-x-1 rotate-180' : 'ml-2 group-hover:translate-x-1'} transition-spring`} />
             </Button>
           </Link>
         </div>

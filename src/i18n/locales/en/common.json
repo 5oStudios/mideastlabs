@@ -273,10 +273,46 @@
     "backToCover": "Back to Cover"
   },
   "gallery": {
+    "badge": "Our Facilities",
+    "title": "Gallery",
+    "description": "Take a virtual tour of our state-of-the-art laboratory facilities and advanced testing equipment that ensure accurate and reliable results.",
+    "cta": "Explore More Images",
     "hero": {
       "badge": "Laboratory Gallery",
       "title": "Our Laboratory Gallery",
       "description": "Explore our state-of-the-art laboratory facilities and advanced testing equipment."
+    },
+    "images": {
+      "chemical": {
+        "title": "Chemical Analysis",
+        "description": "Expert chemist examining sample vials for precise chemical analysis",
+        "category": "Laboratory"
+      },
+      "equipment": {
+        "title": "Advanced Equipment",
+        "description": "State-of-the-art laboratory equipment setup for comprehensive testing",
+        "category": "Equipment"
+      },
+      "samples": {
+        "title": "Sample Collection",
+        "description": "Colorful chemical sample vials prepared for testing and analysis",
+        "category": "Chemistry"
+      },
+      "testing": {
+        "title": "Testing Process",
+        "description": "Laboratory technician conducting hands-on chemical testing procedures",
+        "category": "Laboratory"
+      },
+      "analysis": {
+        "title": "Sample Analysis",
+        "description": "Precision sample vials prepared for detailed analytical testing",
+        "category": "Quality"
+      },
+      "instruments": {
+        "title": "Analytical Instruments",
+        "description": "High-tech GC-MS analytical instrument for advanced chemical analysis",
+        "category": "Equipment"
+      }
     }
   },
   "serviceDetail": {
