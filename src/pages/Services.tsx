@@ -3,16 +3,17 @@ import ScrollAnimation from "@/components/ScrollAnimation";
 import { Card } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
-import { ArrowRight, Beaker, Shield, Clock, Activity } from "lucide-react";
+import { ArrowRight, Beaker, Shield, Clock, Activity, Loader2 } from "lucide-react";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
-import { servicesData } from "@/data/servicesData";
 import { Link } from "react-router-dom";
 import heroImage from "@/assets/hero/services-hero.jpg";
+import { useServices, getIconByName } from "@/hooks/useServices";
 
 const Services = () => {
   const { t, i18n } = useTranslation();
   const isRTL = i18n.language === 'ar';
+  const { services, isLoading } = useServices();
 
   return (
     <>
@@ -56,40 +57,61 @@ const Services = () => {
             </ScrollAnimation>
 
             {/* Services Grid */}
-            <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-              {servicesData.map((service, index) => (
-                <ScrollAnimation key={service.id} delay={0.1 * (index % 6)}>
-                  <Link to={`/services/${service.id}`}>
-                    <Card className="group card-gradient shadow-elegant hover:shadow-glow transition-spring cursor-pointer overflow-hidden h-full">
-                      <div className="relative h-48 bg-gradient-to-br from-primary/10 to-accent/10 flex items-center justify-center overflow-hidden">
-                        <img src={service.image} alt={isRTL && service.titleAr ? service.titleAr : service.title} className="w-full h-full object-cover group-hover:scale-110 transition-spring" />
-                        <div className="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent"></div>
-                        <div className={`absolute top-4 ${isRTL ? 'right-4' : 'left-4'} bg-background/90 backdrop-blur-sm p-3 rounded-lg shadow-lg`}>
-                          <service.icon className="w-6 h-6 text-primary" />
-                        </div>
-                      </div>
-                      <div className="p-6">
-                        <div className="mb-2">
-                          <span className="text-xs font-medium text-accent uppercase tracking-wide">
-                            {isRTL && service.categoryAr ? service.categoryAr : service.category}
-                          </span>
-                        </div>
-                        <h3 className="font-semibold text-lg mb-3 group-hover:text-primary transition-smooth leading-tight">
-                          {isRTL && service.titleAr ? service.titleAr : service.title}
-                        </h3>
-                        <p className="text-muted-foreground text-sm leading-relaxed mb-4 line-clamp-3">
-                          {isRTL && service.shortDescriptionAr ? service.shortDescriptionAr : service.shortDescription}
-                        </p>
-                        <Button variant="ghost" size="sm" className={`text-primary hover:text-accent hover:bg-accent/10 p-0 h-auto group-hover:translate-x-1 transition-spring ${isRTL ? 'flex-row-reverse' : ''}`}>
-                          <span className={isRTL ? 'ml-2' : 'mr-2'}>{t("services.knowMore")}</span>
-                          <ArrowRight className={`w-4 h-4 ${isRTL ? 'rotate-180' : ''}`} />
-                        </Button>
-                      </div>
-                    </Card>
-                  </Link>
-                </ScrollAnimation>
-              ))}
-            </div>
+            {isLoading ? (
+              <div className="flex items-center justify-center py-20">
+                <Loader2 className="h-8 w-8 animate-spin text-primary" />
+              </div>
+            ) : services.length === 0 ? (
+              <div className="text-center py-20 text-muted-foreground">
+                No services available.
+              </div>
+            ) : (
+              <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                {services.map((service, index) => {
+                  const ServiceIcon = getIconByName(service.icon_name);
+                  const title = isRTL && service.title_ar ? service.title_ar : service.title_en;
+                  const category = isRTL && service.category_ar ? service.category_ar : service.category_en;
+                  const shortDescription = isRTL && service.short_description_ar ? service.short_description_ar : service.short_description_en;
+
+                  return (
+                    <ScrollAnimation key={service.id} delay={0.1 * (index % 6)}>
+                      <Link to={`/services/${service.slug}`}>
+                        <Card className="group card-gradient shadow-elegant hover:shadow-glow transition-spring cursor-pointer overflow-hidden h-full">
+                          <div className="relative h-48 bg-gradient-to-br from-primary/10 to-accent/10 flex items-center justify-center overflow-hidden">
+                            {service.image_url ? (
+                              <img src={service.image_url} alt={title} className="w-full h-full object-cover group-hover:scale-110 transition-spring" />
+                            ) : (
+                              <ServiceIcon className="w-16 h-16 text-primary/50" />
+                            )}
+                            <div className="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent"></div>
+                            <div className={`absolute top-4 ${isRTL ? 'right-4' : 'left-4'} bg-background/90 backdrop-blur-sm p-3 rounded-lg shadow-lg`}>
+                              <ServiceIcon className="w-6 h-6 text-primary" />
+                            </div>
+                          </div>
+                          <div className="p-6">
+                            <div className="mb-2">
+                              <span className="text-xs font-medium text-accent uppercase tracking-wide">
+                                {category}
+                              </span>
+                            </div>
+                            <h3 className="font-semibold text-lg mb-3 group-hover:text-primary transition-smooth leading-tight">
+                              {title}
+                            </h3>
+                            <p className="text-muted-foreground text-sm leading-relaxed mb-4 line-clamp-3">
+                              {shortDescription}
+                            </p>
+                            <Button variant="ghost" size="sm" className={`text-primary hover:text-accent hover:bg-accent/10 p-0 h-auto group-hover:translate-x-1 transition-spring ${isRTL ? 'flex-row-reverse' : ''}`}>
+                              <span className={isRTL ? 'ml-2' : 'mr-2'}>{t("services.knowMore")}</span>
+                              <ArrowRight className={`w-4 h-4 ${isRTL ? 'rotate-180' : ''}`} />
+                            </Button>
+                          </div>
+                        </Card>
+                      </Link>
+                    </ScrollAnimation>
+                  );
+                })}
+              </div>
+            )}
           </div>
         </section>
 

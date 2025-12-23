@@ -1,5 +1,4 @@
 import { useParams, Link, Navigate } from "react-router-dom";
-import { getServiceById, getRelatedServices } from "@/data/servicesData";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import { Button } from "@/components/ui/button";
@@ -7,7 +6,7 @@ import { Card } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { 
   ArrowLeft, ArrowRight, Clock, FileText, Award, CheckCircle2, 
-  TestTube, Mail, Phone
+  TestTube, Mail, Phone, Loader2
 } from "lucide-react";
 import ScrollAnimation from "@/components/ScrollAnimation";
 import {
@@ -19,31 +18,45 @@ import {
   BreadcrumbSeparator,
 } from "@/components/ui/breadcrumb";
 import { useTranslation } from "react-i18next";
+import { useServiceBySlug, useRelatedServices, getIconByName } from "@/hooks/useServices";
 
 const ServiceDetail = () => {
   const { serviceSlug } = useParams<{ serviceSlug: string }>();
   const { t, i18n } = useTranslation();
   const isRTL = i18n.language === 'ar';
   
-  const service = serviceSlug ? getServiceById(serviceSlug) : undefined;
-  const relatedServices = serviceSlug ? getRelatedServices(serviceSlug) : [];
+  const { service, isLoading, error } = useServiceBySlug(serviceSlug);
+  const { relatedServices, isLoading: loadingRelated } = useRelatedServices(service?.related_service_slugs || null);
 
-  if (!service) {
+  if (isLoading) {
+    return (
+      <main className="min-h-screen">
+        <Header />
+        <div className="flex items-center justify-center py-40">
+          <Loader2 className="h-8 w-8 animate-spin text-primary" />
+        </div>
+        <Footer />
+      </main>
+    );
+  }
+
+  if (!service || error) {
     return <Navigate to="/404" replace />;
   }
 
-  const ServiceIcon = service.icon;
+  const ServiceIcon = getIconByName(service.icon_name);
 
   // Get localized content
-  const title = isRTL && service.titleAr ? service.titleAr : service.title;
-  const category = isRTL && service.categoryAr ? service.categoryAr : service.category;
-  const shortDescription = isRTL && service.shortDescriptionAr ? service.shortDescriptionAr : service.shortDescription;
-  const fullDescription = isRTL && service.fullDescriptionAr ? service.fullDescriptionAr : service.fullDescription;
-  const subServices = isRTL && service.subServicesAr ? service.subServicesAr : service.subServices;
-  const features = isRTL && service.featuresAr ? service.featuresAr : service.features;
-  const testingParameters = isRTL && service.testingParametersAr ? service.testingParametersAr : service.testingParameters;
-  const turnaroundTime = isRTL && service.turnaroundTimeAr ? service.turnaroundTimeAr : service.turnaroundTime;
-  const sampleRequirements = isRTL && service.sampleRequirementsAr ? service.sampleRequirementsAr : service.sampleRequirements;
+  const title = isRTL && service.title_ar ? service.title_ar : service.title_en;
+  const category = isRTL && service.category_ar ? service.category_ar : service.category_en;
+  const shortDescription = isRTL && service.short_description_ar ? service.short_description_ar : service.short_description_en;
+  const fullDescription = isRTL && service.full_description_ar ? service.full_description_ar : service.full_description_en;
+  const subServices = isRTL && service.sub_services_ar ? service.sub_services_ar : service.sub_services_en || [];
+  const features = isRTL && service.features_ar ? service.features_ar : service.features_en || [];
+  const testingParameters = isRTL && service.testing_parameters_ar ? service.testing_parameters_ar : service.testing_parameters_en || [];
+  const turnaroundTime = isRTL && service.turnaround_time_ar ? service.turnaround_time_ar : service.turnaround_time_en;
+  const sampleRequirements = isRTL && service.sample_requirements_ar ? service.sample_requirements_ar : service.sample_requirements_en;
+  const certifications = service.certifications || [];
 
   return (
     <main className={`min-h-screen ${isRTL ? 'rtl' : 'ltr'}`} dir={isRTL ? 'rtl' : 'ltr'}>
@@ -51,11 +64,15 @@ const ServiceDetail = () => {
       
       {/* Hero Section with Image */}
       <section className="relative h-[400px] overflow-hidden">
-        <img 
-          src={service.image} 
-          alt={title}
-          className="w-full h-full object-cover"
-        />
+        {service.image_url ? (
+          <img 
+            src={service.image_url} 
+            alt={title}
+            className="w-full h-full object-cover"
+          />
+        ) : (
+          <div className="w-full h-full bg-gradient-to-r from-primary to-primary-glow" />
+        )}
         <div className="absolute inset-0 bg-gradient-to-r from-primary/90 to-primary/70"></div>
         
         <div className="absolute inset-0 container mx-auto px-4 lg:px-8 flex flex-col justify-center">
@@ -122,21 +139,25 @@ const ServiceDetail = () => {
                 </div>
 
                 <div className="flex flex-col gap-4 min-w-[200px]">
-                  <div className={`flex items-center gap-3 text-sm ${isRTL ? 'flex-row-reverse' : ''}`}>
-                    <Clock className="w-5 h-5 text-primary flex-shrink-0" />
-                    <div className={isRTL ? 'text-right' : ''}>
-                      <div className="font-medium text-foreground">{t('serviceDetail.overview.turnaround')}</div>
-                      <div className="text-muted-foreground">{turnaroundTime}</div>
+                  {turnaroundTime && (
+                    <div className={`flex items-center gap-3 text-sm ${isRTL ? 'flex-row-reverse' : ''}`}>
+                      <Clock className="w-5 h-5 text-primary flex-shrink-0" />
+                      <div className={isRTL ? 'text-right' : ''}>
+                        <div className="font-medium text-foreground">{t('serviceDetail.overview.turnaround')}</div>
+                        <div className="text-muted-foreground">{turnaroundTime}</div>
+                      </div>
                     </div>
-                  </div>
+                  )}
                   
-                  <div className={`flex items-center gap-3 text-sm ${isRTL ? 'flex-row-reverse' : ''}`}>
-                    <Award className="w-5 h-5 text-primary flex-shrink-0" />
-                    <div className={isRTL ? 'text-right' : ''}>
-                      <div className="font-medium text-foreground">{t('serviceDetail.overview.certifications')}</div>
-                      <div className="text-muted-foreground">{service.certifications.length}+ {t('serviceDetail.overview.standards')}</div>
+                  {certifications.length > 0 && (
+                    <div className={`flex items-center gap-3 text-sm ${isRTL ? 'flex-row-reverse' : ''}`}>
+                      <Award className="w-5 h-5 text-primary flex-shrink-0" />
+                      <div className={isRTL ? 'text-right' : ''}>
+                        <div className="font-medium text-foreground">{t('serviceDetail.overview.certifications')}</div>
+                        <div className="text-muted-foreground">{certifications.length}+ {t('serviceDetail.overview.standards')}</div>
+                      </div>
                     </div>
-                  </div>
+                  )}
                 </div>
               </div>
             </Card>
@@ -145,109 +166,123 @@ const ServiceDetail = () => {
       </section>
 
       {/* Sub-Services Grid */}
-      <section className="py-16 surface-gradient">
-        <div className="container mx-auto px-4 lg:px-8">
-          <ScrollAnimation>
-            <div className="text-center mb-12">
-              <h2 className="font-display font-bold text-3xl mb-4">{t('serviceDetail.subServices.title')}</h2>
-              <p className="text-muted-foreground max-w-2xl mx-auto">
-                {t('serviceDetail.subServices.description')}
-              </p>
-            </div>
-          </ScrollAnimation>
+      {subServices.length > 0 && (
+        <section className="py-16 surface-gradient">
+          <div className="container mx-auto px-4 lg:px-8">
+            <ScrollAnimation>
+              <div className="text-center mb-12">
+                <h2 className="font-display font-bold text-3xl mb-4">{t('serviceDetail.subServices.title')}</h2>
+                <p className="text-muted-foreground max-w-2xl mx-auto">
+                  {t('serviceDetail.subServices.description')}
+                </p>
+              </div>
+            </ScrollAnimation>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-            {subServices.map((subService, index) => (
-              <ScrollAnimation key={index} delay={index * 50}>
-                <Card className="card-gradient shadow-sm hover:shadow-elegant transition-spring p-6">
-                  <div className={`flex items-start gap-4 ${isRTL ? 'flex-row-reverse' : ''}`}>
-                    <CheckCircle2 className="w-6 h-6 text-accent flex-shrink-0 mt-1" />
-                    <p className={`text-foreground leading-relaxed ${isRTL ? 'text-right' : ''}`}>{subService}</p>
-                  </div>
-                </Card>
-              </ScrollAnimation>
-            ))}
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+              {subServices.map((subService, index) => (
+                <ScrollAnimation key={index} delay={index * 50}>
+                  <Card className="card-gradient shadow-sm hover:shadow-elegant transition-spring p-6">
+                    <div className={`flex items-start gap-4 ${isRTL ? 'flex-row-reverse' : ''}`}>
+                      <CheckCircle2 className="w-6 h-6 text-accent flex-shrink-0 mt-1" />
+                      <p className={`text-foreground leading-relaxed ${isRTL ? 'text-right' : ''}`}>{subService}</p>
+                    </div>
+                  </Card>
+                </ScrollAnimation>
+              ))}
+            </div>
           </div>
-        </div>
-      </section>
+        </section>
+      )}
 
       {/* Testing Parameters */}
-      <section className="py-16 bg-surface">
-        <div className="container mx-auto px-4 lg:px-8">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
-            <ScrollAnimation>
-              <div>
-                <h2 className="font-display font-bold text-3xl mb-6">{t('serviceDetail.parameters.title')}</h2>
-                <p className="text-muted-foreground mb-8 leading-relaxed">
-                  {t('serviceDetail.parameters.description')}
-                </p>
-                
-                <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                  {testingParameters.map((parameter, index) => (
-                    <div key={index} className={`flex items-center gap-3 ${isRTL ? 'flex-row-reverse' : ''}`}>
-                      <TestTube className="w-4 h-4 text-primary flex-shrink-0" />
-                      <span className={`text-sm text-foreground ${isRTL ? 'text-right' : ''}`}>{parameter}</span>
-                    </div>
-                  ))}
-                </div>
-              </div>
-            </ScrollAnimation>
-
-            <ScrollAnimation delay={200}>
-              <div>
-                <h2 className="font-display font-bold text-3xl mb-6">{t('serviceDetail.features.title')}</h2>
-                <div className="space-y-6">
-                  {features.map((feature, index) => (
-                    <Card key={index} className="card-gradient shadow-sm p-6">
-                      <div className={`flex items-center gap-4 ${isRTL ? 'flex-row-reverse' : ''}`}>
-                        <div className="bg-primary/10 p-3 rounded-lg">
-                          <CheckCircle2 className="w-6 h-6 text-primary" />
+      {(testingParameters.length > 0 || features.length > 0) && (
+        <section className="py-16 bg-surface">
+          <div className="container mx-auto px-4 lg:px-8">
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
+              {testingParameters.length > 0 && (
+                <ScrollAnimation>
+                  <div>
+                    <h2 className="font-display font-bold text-3xl mb-6">{t('serviceDetail.parameters.title')}</h2>
+                    <p className="text-muted-foreground mb-8 leading-relaxed">
+                      {t('serviceDetail.parameters.description')}
+                    </p>
+                    
+                    <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                      {testingParameters.map((parameter, index) => (
+                        <div key={index} className={`flex items-center gap-3 ${isRTL ? 'flex-row-reverse' : ''}`}>
+                          <TestTube className="w-4 h-4 text-primary flex-shrink-0" />
+                          <span className={`text-sm text-foreground ${isRTL ? 'text-right' : ''}`}>{parameter}</span>
                         </div>
-                        <p className={`font-medium text-foreground ${isRTL ? 'text-right' : ''}`}>{feature}</p>
-                      </div>
-                    </Card>
-                  ))}
-                </div>
-              </div>
-            </ScrollAnimation>
+                      ))}
+                    </div>
+                  </div>
+                </ScrollAnimation>
+              )}
+
+              {features.length > 0 && (
+                <ScrollAnimation delay={200}>
+                  <div>
+                    <h2 className="font-display font-bold text-3xl mb-6">{t('serviceDetail.features.title')}</h2>
+                    <div className="space-y-6">
+                      {features.map((feature, index) => (
+                        <Card key={index} className="card-gradient shadow-sm p-6">
+                          <div className={`flex items-center gap-4 ${isRTL ? 'flex-row-reverse' : ''}`}>
+                            <div className="bg-primary/10 p-3 rounded-lg">
+                              <CheckCircle2 className="w-6 h-6 text-primary" />
+                            </div>
+                            <p className={`font-medium text-foreground ${isRTL ? 'text-right' : ''}`}>{feature}</p>
+                          </div>
+                        </Card>
+                      ))}
+                    </div>
+                  </div>
+                </ScrollAnimation>
+              )}
+            </div>
           </div>
-        </div>
-      </section>
+        </section>
+      )}
 
       {/* Certifications & Requirements */}
-      <section className="py-16 surface-gradient">
-        <div className="container mx-auto px-4 lg:px-8">
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-            <ScrollAnimation>
-              <Card className="card-gradient shadow-elegant p-8">
-                <div className={`flex items-center gap-4 mb-6 ${isRTL ? 'flex-row-reverse' : ''}`}>
-                  <Award className="w-8 h-8 text-primary" />
-                  <h3 className="font-display font-bold text-2xl">{t('serviceDetail.certifications.title')}</h3>
-                </div>
-                <div className="flex flex-wrap gap-3">
-                  {service.certifications.map((cert, index) => (
-                    <Badge key={index} variant="outline" className="text-base px-4 py-2">
-                      {cert}
-                    </Badge>
-                  ))}
-                </div>
-              </Card>
-            </ScrollAnimation>
+      {(certifications.length > 0 || sampleRequirements) && (
+        <section className="py-16 surface-gradient">
+          <div className="container mx-auto px-4 lg:px-8">
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+              {certifications.length > 0 && (
+                <ScrollAnimation>
+                  <Card className="card-gradient shadow-elegant p-8">
+                    <div className={`flex items-center gap-4 mb-6 ${isRTL ? 'flex-row-reverse' : ''}`}>
+                      <Award className="w-8 h-8 text-primary" />
+                      <h3 className="font-display font-bold text-2xl">{t('serviceDetail.certifications.title')}</h3>
+                    </div>
+                    <div className="flex flex-wrap gap-3">
+                      {certifications.map((cert, index) => (
+                        <Badge key={index} variant="outline" className="text-base px-4 py-2">
+                          {cert}
+                        </Badge>
+                      ))}
+                    </div>
+                  </Card>
+                </ScrollAnimation>
+              )}
 
-            <ScrollAnimation delay={100}>
-              <Card className="card-gradient shadow-elegant p-8">
-                <div className={`flex items-center gap-4 mb-6 ${isRTL ? 'flex-row-reverse' : ''}`}>
-                  <FileText className="w-8 h-8 text-primary" />
-                  <h3 className="font-display font-bold text-2xl">{t('serviceDetail.requirements.title')}</h3>
-                </div>
-                <p className={`text-muted-foreground leading-relaxed ${isRTL ? 'text-right' : ''}`}>
-                  {sampleRequirements}
-                </p>
-              </Card>
-            </ScrollAnimation>
+              {sampleRequirements && (
+                <ScrollAnimation delay={100}>
+                  <Card className="card-gradient shadow-elegant p-8">
+                    <div className={`flex items-center gap-4 mb-6 ${isRTL ? 'flex-row-reverse' : ''}`}>
+                      <FileText className="w-8 h-8 text-primary" />
+                      <h3 className="font-display font-bold text-2xl">{t('serviceDetail.requirements.title')}</h3>
+                    </div>
+                    <p className={`text-muted-foreground leading-relaxed ${isRTL ? 'text-right' : ''}`}>
+                      {sampleRequirements}
+                    </p>
+                  </Card>
+                </ScrollAnimation>
+              )}
+            </div>
           </div>
-        </div>
-      </section>
+        </section>
+      )}
 
       {/* Related Services */}
       {relatedServices.length > 0 && (
@@ -264,21 +299,27 @@ const ServiceDetail = () => {
 
             <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
               {relatedServices.map((relatedService, index) => {
-                const RelatedIcon = relatedService.icon;
-                const relatedTitle = isRTL && relatedService.titleAr ? relatedService.titleAr : relatedService.title;
-                const relatedCategory = isRTL && relatedService.categoryAr ? relatedService.categoryAr : relatedService.category;
-                const relatedShortDesc = isRTL && relatedService.shortDescriptionAr ? relatedService.shortDescriptionAr : relatedService.shortDescription;
+                const RelatedIcon = getIconByName(relatedService.icon_name);
+                const relatedTitle = isRTL && relatedService.title_ar ? relatedService.title_ar : relatedService.title_en;
+                const relatedCategory = isRTL && relatedService.category_ar ? relatedService.category_ar : relatedService.category_en;
+                const relatedShortDesc = isRTL && relatedService.short_description_ar ? relatedService.short_description_ar : relatedService.short_description_en;
                 
                 return (
                   <ScrollAnimation key={relatedService.id} delay={index * 100}>
-                    <Link to={`/services/${relatedService.id}`}>
+                    <Link to={`/services/${relatedService.slug}`}>
                       <Card className="group card-gradient shadow-elegant hover:shadow-glow transition-spring cursor-pointer overflow-hidden h-full">
                         <div className="relative h-48 overflow-hidden">
-                          <img 
-                            src={relatedService.image} 
-                            alt={relatedTitle}
-                            className="w-full h-full object-cover group-hover:scale-110 transition-spring"
-                          />
+                          {relatedService.image_url ? (
+                            <img 
+                              src={relatedService.image_url} 
+                              alt={relatedTitle}
+                              className="w-full h-full object-cover group-hover:scale-110 transition-spring"
+                            />
+                          ) : (
+                            <div className="w-full h-full bg-gradient-to-br from-primary/20 to-accent/20 flex items-center justify-center">
+                              <RelatedIcon className="w-12 h-12 text-primary/50" />
+                            </div>
+                          )}
                           <div className="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent"></div>
                           <div className={`absolute top-4 ${isRTL ? 'right-4' : 'left-4'} bg-background/90 backdrop-blur-sm p-3 rounded-lg`}>
                             <RelatedIcon className="w-6 h-6 text-primary" />
