@@ -60,7 +60,7 @@ const Hero = () => {
           <div className={`space-y-8 px-4 lg:pl-8 lg:pr-12 ${isRTL ? 'text-right' : 'text-left'}`}>
             {/* Main Heading */}
             <div className={`animate-fade-up ${isRTL ? 'text-right' : 'text-left'}`}>
-              <h1 className="font-display font-bold text-4xl md:text-5xl lg:text-6xl text-white mb-6 leading-tight">
+              <h1 className={`font-display font-bold text-4xl md:text-5xl lg:text-6xl text-white mb-6 leading-tight ${isRTL ? 'text-right' : 'text-left'}`}>
                 <span className="bg-gradient-to-r from-white via-blue-100 to-cyan-200 bg-clip-text text-transparent">
                   {t("hero.title1")}
                 </span>
