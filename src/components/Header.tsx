@@ -76,7 +76,7 @@ const Header = () => {
     href: "/contact"
   }];
   return <header className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 w-full ${isScrolled ? "bg-white border-b border-border shadow-md" : "bg-white border-b border-border shadow-sm"}`} dir={isRTL ? "rtl" : "ltr"}>
-      <div className="container mx-auto px-4 lg:px-8 relative z-10">
+      <div className="w-full px-4 lg:px-8 relative z-10">
         <div className="flex items-center justify-between h-20 lg:h-24">
           {/* Logo */}
           <div className="flex items-center gap-2 me-10">
@@ -122,7 +122,7 @@ const Header = () => {
           </nav>
 
           {/* Contact Button & Language Switcher */}
-          <div className={`hidden lg:flex items-center gap-4 ${isRTL ? "me-8" : "ms-auto"}`}>
+          <div className="hidden lg:flex items-center gap-4">
             <Button variant="outline" className={`flex items-center ${isRTL ? "space-x-reverse space-x-2" : "space-x-2"} bg-green-600 text-white hover:bg-green-700 border-green-600`}>
               <Phone className="w-4 h-4" />
               <span className="font-bold" dir="ltr">
