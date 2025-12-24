@@ -123,8 +123,8 @@ const Header = () => {
 
           {/* Contact Button & Language Switcher */}
           <div className="hidden lg:flex items-center gap-4">
-            <Button variant="outline" className={`flex items-center ${isRTL ? "space-x-reverse space-x-2" : "space-x-2"} bg-green-600 text-white hover:bg-green-700 border-green-600`}>
-              <Phone className="w-4 h-4" />
+            <Button variant="outline" className={`group flex items-center ${isRTL ? "space-x-reverse space-x-2" : "space-x-2"} bg-green-600 text-white hover:bg-green-700 border-green-600 transition-all duration-300 hover:animate-glow-pulse`}>
+              <Phone className="w-4 h-4 group-hover:animate-phone-ring" />
               <span className="font-bold" dir="ltr">
                 {phone}
               </span>
