@@ -17,7 +17,7 @@ const LanguageSwitcher = () => {
       variant="outline"
       size="sm"
       onClick={toggleLanguage}
-      className="flex items-center gap-2 font-medium border-primary/30 hover:bg-primary/10 hover:border-primary"
+      className="flex items-center gap-2 font-medium border-primary/30 hover:bg-primary hover:text-white hover:border-primary"
     >
       <Languages className="w-4 h-4" />
       <span>{isArabic ? 'EN' : 'عربي'}</span>
