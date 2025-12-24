@@ -83,7 +83,7 @@ const Header = () => {
             <img src={logo} alt="Middle East Environmental Laboratories Co. Logo" className="h-16 lg:h-20 w-auto" loading="eager" fetchPriority="high" />
             <Link to="/" className={`hidden md:flex flex-col justify-center hover:opacity-80 transition-opacity ${isRTL ? "text-right" : "text-left"}`}>
               <span className="text-sm font-bold leading-tight text-blue-900 lg:text-sm">
-                {isRTL ? "مختبرات الشرق الأوسط البيئية" : "Middle East Environmental"}
+                {isRTL ? "مختبرات الشرق الأوسط البيئية" : "Middle East Environmental W.L.L"}
               </span>
               
             </Link>
