@@ -122,14 +122,14 @@ const Header = () => {
           </nav>
 
           {/* Contact Button & Language Switcher */}
-          <div className={`hidden lg:flex items-center ${isRTL ? "space-x-reverse space-x-4" : "space-x-4"}`}>
-            <LanguageSwitcher />
+          <div className={`hidden lg:flex items-center gap-4 ${isRTL ? "me-8" : "ms-auto"}`}>
             <Button variant="outline" className={`flex items-center ${isRTL ? "space-x-reverse space-x-2" : "space-x-2"} bg-green-600 text-white hover:bg-green-700 border-green-600`}>
               <Phone className="w-4 h-4" />
               <span className="font-bold" dir="ltr">
                 {phone}
               </span>
             </Button>
+            <LanguageSwitcher />
           </div>
 
           {/* Mobile Menu Toggle */}
