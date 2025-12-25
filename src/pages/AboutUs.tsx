@@ -5,11 +5,14 @@ import { Badge } from "@/components/ui/badge";
 import { Target, Eye, Users, Award } from "lucide-react";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
-import heroImage from "@/assets/hero/about-us-hero.jpg";
+import { usePageHeroImage } from "@/hooks/usePageHeroImages";
+import fallbackHeroImage from "@/assets/hero/about-us-hero.jpg";
 
 const AboutUs = () => {
   const { t, i18n } = useTranslation();
   const isRTL = i18n.language === 'ar';
+  const { data: heroData } = usePageHeroImage('about-us');
+  const heroImage = heroData?.image_url || fallbackHeroImage;
 
   return (
     <>
