@@ -34,15 +34,25 @@ const CertificateScroller = () => {
     <>
       <div className="relative overflow-hidden py-8" dir="ltr">
         {/* Left fade gradient */}
-        <div 
-          className="absolute left-0 top-0 bottom-0 w-24 md:w-40 z-10 pointer-events-none" 
-          style={{ background: 'linear-gradient(to right, hsl(var(--background)), transparent)' }}
+        <div
+          className="absolute top-0 bottom-0 w-24 md:w-40 z-10 pointer-events-none"
+          style={{
+            left: 0,
+            right: "auto",
+            background:
+              "linear-gradient(90deg, hsl(var(--background)) 0%, transparent 100%)",
+          }}
         />
-        
+
         {/* Right fade gradient */}
-        <div 
-          className="absolute right-0 top-0 bottom-0 w-24 md:w-40 z-10 pointer-events-none" 
-          style={{ background: 'linear-gradient(to left, hsl(var(--background)), transparent)' }}
+        <div
+          className="absolute top-0 bottom-0 w-24 md:w-40 z-10 pointer-events-none"
+          style={{
+            right: 0,
+            left: "auto",
+            background:
+              "linear-gradient(270deg, hsl(var(--background)) 0%, transparent 100%)",
+          }}
         />
 
         {/* Scrolling container */}
