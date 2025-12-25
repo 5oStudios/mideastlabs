@@ -6,13 +6,16 @@ import { Dialog, DialogContent, DialogTrigger } from "@/components/ui/dialog";
 import { ZoomIn, Loader2, ImageIcon } from "lucide-react";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
-import heroImage from "@/assets/hero/gallery-hero.jpg";
+import { usePageHeroImage } from "@/hooks/usePageHeroImages";
+import fallbackHeroImage from "@/assets/hero/gallery-hero.jpg";
 import { useGalleryImages } from "@/hooks/useGallery";
 
 const GalleryPage = () => {
   const { t, i18n } = useTranslation();
   const isRTL = i18n.language === 'ar';
   const { images, isLoading } = useGalleryImages();
+  const { data: heroData } = usePageHeroImage('gallery');
+  const heroImage = heroData?.image_url || fallbackHeroImage;
 
   return (
     <>

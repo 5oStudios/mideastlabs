@@ -14,7 +14,8 @@ import {
   Menu,
   X,
   ChevronLeft,
-  User
+  User,
+  FileImage
 } from 'lucide-react';
 import { cn } from '@/lib/utils';
 import adminLogo from '@/assets/admin-logo.gif';
@@ -26,6 +27,7 @@ interface AdminLayoutProps {
 const navItems = [
   { title: 'Dashboard', href: '/admin', icon: LayoutDashboard },
   { title: 'Hero Banners', href: '/admin/hero-banners', icon: Image },
+  { title: 'Pages Hero Images', href: '/admin/pages-hero', icon: FileImage },
   { title: 'Services', href: '/admin/services', icon: Layers },
   { title: 'Gallery', href: '/admin/gallery', icon: Images },
   { title: 'Accreditations', href: '/admin/accreditations', icon: Award },

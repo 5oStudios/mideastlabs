@@ -209,6 +209,36 @@ export type Database = {
         }
         Relationships: []
       }
+      page_hero_images: {
+        Row: {
+          created_at: string | null
+          id: string
+          image_url: string
+          page_name_ar: string | null
+          page_name_en: string
+          page_slug: string
+          updated_at: string | null
+        }
+        Insert: {
+          created_at?: string | null
+          id?: string
+          image_url: string
+          page_name_ar?: string | null
+          page_name_en: string
+          page_slug: string
+          updated_at?: string | null
+        }
+        Update: {
+          created_at?: string | null
+          id?: string
+          image_url?: string
+          page_name_ar?: string | null
+          page_name_en?: string
+          page_slug?: string
+          updated_at?: string | null
+        }
+        Relationships: []
+      }
       services: {
         Row: {
           category_ar: string | null

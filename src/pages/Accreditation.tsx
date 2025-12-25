@@ -5,12 +5,15 @@ import { Award, Shield, CheckCircle, FileCheck } from "lucide-react";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import CertificateScroller from "@/components/CertificateScroller";
-import heroImage from "@/assets/hero/accreditation-hero.jpg";
+import { usePageHeroImage } from "@/hooks/usePageHeroImages";
+import fallbackHeroImage from "@/assets/hero/accreditation-hero.jpg";
 import { useTranslation } from "react-i18next";
 
 const Accreditation = () => {
   const { t, i18n } = useTranslation();
   const isRTL = i18n.language === 'ar';
+  const { data: heroData } = usePageHeroImage('accreditation');
+  const heroImage = heroData?.image_url || fallbackHeroImage;
 
   const certifications = [
     {

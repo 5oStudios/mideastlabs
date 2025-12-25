@@ -4,7 +4,8 @@ import { Badge } from "@/components/ui/badge";
 import { MapPin, Phone, Mail, Clock, Loader2 } from "lucide-react";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
-import heroImage from "@/assets/hero/contact-hero.jpg";
+import { usePageHeroImage } from "@/hooks/usePageHeroImages";
+import fallbackHeroImage from "@/assets/hero/contact-hero.jpg";
 import { useTranslation } from "react-i18next";
 import { useContactSettings } from "@/hooks/useContactSettings";
 
@@ -12,6 +13,8 @@ const ContactPage = () => {
   const { t, i18n } = useTranslation();
   const isRTL = i18n.language === 'ar';
   const { data: settings, isLoading } = useContactSettings();
+  const { data: heroData } = usePageHeroImage('contact');
+  const heroImage = heroData?.image_url || fallbackHeroImage;
 
   const getContactInfo = () => {
     if (!settings) {

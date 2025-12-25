@@ -7,13 +7,16 @@ import { ArrowRight, Beaker, Shield, Clock, Activity, Loader2 } from "lucide-rea
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import { Link } from "react-router-dom";
-import heroImage from "@/assets/hero/services-hero.jpg";
+import { usePageHeroImage } from "@/hooks/usePageHeroImages";
+import fallbackHeroImage from "@/assets/hero/services-hero.jpg";
 import { useServices, getIconByName } from "@/hooks/useServices";
 
 const Services = () => {
   const { t, i18n } = useTranslation();
   const isRTL = i18n.language === 'ar';
   const { services, isLoading } = useServices();
+  const { data: heroData } = usePageHeroImage('services');
+  const heroImage = heroData?.image_url || fallbackHeroImage;
 
   return (
     <>

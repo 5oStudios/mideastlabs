@@ -4,12 +4,15 @@ import { Badge } from "@/components/ui/badge";
 import { Users, Briefcase, GraduationCap, TrendingUp } from "lucide-react";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
-import heroImage from "@/assets/hero/career-hero.jpg";
+import { usePageHeroImage } from "@/hooks/usePageHeroImages";
+import fallbackHeroImage from "@/assets/hero/career-hero.jpg";
 import { useTranslation } from "react-i18next";
 
 const Career = () => {
   const { t, i18n } = useTranslation();
   const isRTL = i18n.language === 'ar';
+  const { data: heroData } = usePageHeroImage('career');
+  const heroImage = heroData?.image_url || fallbackHeroImage;
 
   const benefits = [
     {

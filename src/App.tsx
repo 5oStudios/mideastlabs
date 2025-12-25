@@ -28,6 +28,7 @@ import GalleryManagementPage from "./pages/admin/GalleryManagementPage";
 import AccreditationsPage from "./pages/admin/AccreditationsPage";
 import CompanyProfilePage from "./pages/admin/CompanyProfilePage";
 import ContactSettingsPage from "./pages/admin/ContactSettingsPage";
+import PagesHeroImagesPage from "./pages/admin/PagesHeroImagesPage";
 
 const queryClient = new QueryClient();
 
@@ -64,6 +65,7 @@ const App = () => (
                   <Routes>
                     <Route path="/" element={<AdminDashboard />} />
                     <Route path="/hero-banners" element={<HeroBannersPage />} />
+                    <Route path="/pages-hero" element={<PagesHeroImagesPage />} />
                     <Route path="/services" element={<ServicesManagementPage />} />
                     <Route path="/gallery" element={<GalleryManagementPage />} />
                     <Route path="/accreditations" element={<AccreditationsPage />} />
