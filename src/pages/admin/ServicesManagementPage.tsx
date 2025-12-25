@@ -5,6 +5,7 @@ import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
 import { Textarea } from '@/components/ui/textarea';
 import { Switch } from '@/components/ui/switch';
+import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
 import {
   Dialog,
   DialogContent,
@@ -26,6 +27,7 @@ import { Plus, Pencil, Trash2, Layers, Loader2, X } from 'lucide-react';
 import { supabase } from '@/integrations/supabase/client';
 import type { Tables } from '@/integrations/supabase/types';
 import { getIconByName } from '@/hooks/useServices';
+import ArrayInput from '@/components/admin/ArrayInput';
 
 type Service = Tables<'services'>;
 
@@ -73,6 +75,20 @@ const ServicesManagementPage = () => {
       category_ar: '',
       short_description_en: '',
       short_description_ar: '',
+      full_description_en: '',
+      full_description_ar: '',
+      sub_services_en: [],
+      sub_services_ar: [],
+      features_en: [],
+      features_ar: [],
+      testing_parameters_en: [],
+      testing_parameters_ar: [],
+      turnaround_time_en: '',
+      turnaround_time_ar: '',
+      sample_requirements_en: '',
+      sample_requirements_ar: '',
+      certifications: [],
+      related_service_slugs: [],
       icon_name: 'Beaker',
       is_active: true,
     });
@@ -83,7 +99,17 @@ const ServicesManagementPage = () => {
 
   const handleEdit = (service: Service) => {
     setEditingService(service);
-    setFormData(service);
+    setFormData({
+      ...service,
+      sub_services_en: service.sub_services_en || [],
+      sub_services_ar: service.sub_services_ar || [],
+      features_en: service.features_en || [],
+      features_ar: service.features_ar || [],
+      testing_parameters_en: service.testing_parameters_en || [],
+      testing_parameters_ar: service.testing_parameters_ar || [],
+      certifications: service.certifications || [],
+      related_service_slugs: service.related_service_slugs || [],
+    });
     setSelectedFile(null);
     setPreviewUrl(service.image_url);
     setIsDialogOpen(true);
@@ -201,19 +227,35 @@ const ServicesManagementPage = () => {
         }
       }
 
+      const serviceData = {
+        title_en: formData.title_en,
+        title_ar: formData.title_ar,
+        category_en: formData.category_en,
+        category_ar: formData.category_ar,
+        short_description_en: formData.short_description_en,
+        short_description_ar: formData.short_description_ar,
+        full_description_en: formData.full_description_en,
+        full_description_ar: formData.full_description_ar,
+        sub_services_en: formData.sub_services_en?.filter(s => s.trim()) || [],
+        sub_services_ar: formData.sub_services_ar?.filter(s => s.trim()) || [],
+        features_en: formData.features_en?.filter(s => s.trim()) || [],
+        features_ar: formData.features_ar?.filter(s => s.trim()) || [],
+        testing_parameters_en: formData.testing_parameters_en?.filter(s => s.trim()) || [],
+        testing_parameters_ar: formData.testing_parameters_ar?.filter(s => s.trim()) || [],
+        turnaround_time_en: formData.turnaround_time_en,
+        turnaround_time_ar: formData.turnaround_time_ar,
+        sample_requirements_en: formData.sample_requirements_en,
+        sample_requirements_ar: formData.sample_requirements_ar,
+        certifications: formData.certifications?.filter(s => s.trim()) || [],
+        related_service_slugs: formData.related_service_slugs?.filter(s => s.trim()) || [],
+        icon_name: formData.icon_name || 'Beaker',
+        image_url: imageUrl,
+      };
+
       if (editingService) {
         const { error } = await supabase
           .from('services')
-          .update({
-            title_en: formData.title_en,
-            title_ar: formData.title_ar,
-            category_en: formData.category_en,
-            category_ar: formData.category_ar,
-            short_description_en: formData.short_description_en,
-            short_description_ar: formData.short_description_ar,
-            icon_name: formData.icon_name || 'Beaker',
-            image_url: imageUrl,
-          })
+          .update(serviceData)
           .eq('id', editingService.id);
 
         if (error) throw error;
@@ -230,15 +272,8 @@ const ServicesManagementPage = () => {
         const { error } = await supabase
           .from('services')
           .insert({
+            ...serviceData,
             slug: generateSlug(formData.title_en || ''),
-            title_en: formData.title_en!,
-            title_ar: formData.title_ar,
-            category_en: formData.category_en!,
-            category_ar: formData.category_ar,
-            short_description_en: formData.short_description_en,
-            short_description_ar: formData.short_description_ar,
-            icon_name: formData.icon_name || 'Beaker',
-            image_url: imageUrl,
             display_order: maxOrder + 1,
             is_active: true,
           });
@@ -274,6 +309,9 @@ const ServicesManagementPage = () => {
 
   const MAX_SERVICES = 20;
   const isAtLimit = services.length >= MAX_SERVICES;
+
+  // Get available services for related services selection (exclude current)
+  const availableRelatedServices = services.filter(s => s.id !== editingService?.id);
 
   return (
     <div className="space-y-6">
@@ -376,69 +414,104 @@ const ServicesManagementPage = () => {
 
       {/* Add/Edit Dialog */}
       <Dialog open={isDialogOpen} onOpenChange={setIsDialogOpen}>
-        <DialogContent className="max-w-2xl max-h-[90vh] overflow-y-auto">
+        <DialogContent className="max-w-4xl max-h-[90vh] overflow-y-auto">
           <DialogHeader>
             <DialogTitle>{editingService ? 'Edit Service' : 'Add New Service'}</DialogTitle>
             <DialogDescription>
-              Fill in the service details. Both English and Arabic content is required.
+              Fill in all service details. Use the tabs to manage English and Arabic content.
             </DialogDescription>
           </DialogHeader>
           
-          <div className="space-y-6 py-4">
-            {/* Image Upload */}
-            <div className="space-y-2">
-              <Label>Service Image</Label>
-              {previewUrl ? (
-                <div className="relative rounded-lg overflow-hidden">
-                  <img
-                    src={previewUrl}
-                    alt="Preview"
-                    className="w-full h-48 object-cover"
-                  />
-                  <Button
-                    variant="destructive"
-                    size="icon"
-                    className="absolute top-2 right-2"
-                    onClick={clearSelectedFile}
-                  >
-                    <X className="h-4 w-4" />
-                  </Button>
-                </div>
-              ) : (
-                <div 
-                  className="border-2 border-dashed border-border rounded-lg p-8 text-center cursor-pointer hover:border-primary/50 transition-colors"
-                  onClick={() => fileInputRef.current?.click()}
-                >
-                  <Layers className="h-10 w-10 mx-auto text-muted-foreground mb-2" />
-                  <p className="text-sm text-muted-foreground mb-2">
-                    Click to upload or drag and drop
-                  </p>
-                  <Button variant="outline" type="button">
-                    Choose Image
-                  </Button>
-                </div>
-              )}
-              <Input
-                ref={fileInputRef}
-                type="file"
-                accept="image/*"
-                className="hidden"
-                onChange={handleFileChange}
-              />
-              {previewUrl && (
-                <Button 
-                  variant="outline" 
-                  className="w-full"
-                  onClick={() => fileInputRef.current?.click()}
-                >
-                  Change Image
-                </Button>
-              )}
-            </div>
+          <Tabs defaultValue="basic" className="w-full">
+            <TabsList className="grid w-full grid-cols-4">
+              <TabsTrigger value="basic">Basic Info</TabsTrigger>
+              <TabsTrigger value="english">English</TabsTrigger>
+              <TabsTrigger value="arabic">العربية</TabsTrigger>
+              <TabsTrigger value="additional">Additional</TabsTrigger>
+            </TabsList>
 
-            {/* English Content */}
-            <div className="space-y-4">
-              <h3 className="font-medium text-foreground">English Content</h3>
+            {/* Basic Info Tab */}
+            <TabsContent value="basic" className="space-y-4 mt-4">
+              {/* Image Upload */}
+              <div className="space-y-2">
+                <Label>Service Image</Label>
+                {previewUrl ? (
+                  <div className="relative rounded-lg overflow-hidden">
+                    <img
+                      src={previewUrl}
+                      alt="Preview"
+                      className="w-full h-48 object-cover"
+                    />
+                    <Button
+                      variant="destructive"
+                      size="icon"
+                      className="absolute top-2 right-2"
+                      onClick={clearSelectedFile}
+                    >
+                      <X className="h-4 w-4" />
+                    </Button>
+                  </div>
+                ) : (
+                  <div 
+                    className="border-2 border-dashed border-border rounded-lg p-8 text-center cursor-pointer hover:border-primary/50 transition-colors"
+                    onClick={() => fileInputRef.current?.click()}
+                  >
+                    <Layers className="h-10 w-10 mx-auto text-muted-foreground mb-2" />
+                    <p className="text-sm text-muted-foreground mb-2">
+                      Click to upload or drag and drop
+                    </p>
+                    <Button variant="outline" type="button">
+                      Choose Image
+                    </Button>
+                  </div>
+                )}
+                <Input
+                  ref={fileInputRef}
+                  type="file"
+                  accept="image/*"
+                  className="hidden"
+                  onChange={handleFileChange}
+                />
+                {previewUrl && (
+                  <Button 
+                    variant="outline" 
+                    className="w-full"
+                    onClick={() => fileInputRef.current?.click()}
+                  >
+                    Change Image
+                  </Button>
+                )}
+              </div>
+
+              {/* Icon Name */}
+              <div className="space-y-2">
+                <Label htmlFor="icon_name">Icon Name</Label>
+                <Input
+                  id="icon_name"
+                  value={formData.icon_name || 'Beaker'}
+                  onChange={(e) => setFormData({ ...formData, icon_name: e.target.value })}
+                  placeholder="e.g., Wind, Droplets, TestTube"
+                />
+                <p className="text-xs text-muted-foreground">
+                  Available: Wind, Droplets, TreePine, Factory, Shield, TestTube, Fuel, Droplet, Utensils, FileCheck, Microscope, Beaker, Gauge, MapPin, HardHat, Users
+                </p>
+              </div>
+
+              {/* Active Status */}
+              <div className="flex items-center justify-between p-4 bg-muted/50 rounded-lg">
+                <div>
+                  <Label>Active Status</Label>
+                  <p className="text-sm text-muted-foreground">Enable to show this service on the website</p>
+                </div>
+                <Switch
+                  checked={formData.is_active ?? true}
+                  onCheckedChange={(checked) => setFormData({ ...formData, is_active: checked })}
+                />
+              </div>
+            </TabsContent>
+
+            {/* English Content Tab */}
+            <TabsContent value="english" className="space-y-4 mt-4">
               <div className="grid grid-cols-2 gap-4">
                 <div className="space-y-2">
                   <Label htmlFor="title_en">Title *</Label>
@@ -459,24 +532,83 @@ const ServicesManagementPage = () => {
                   />
                 </div>
               </div>
+
               <div className="space-y-2">
                 <Label htmlFor="short_description_en">Short Description</Label>
                 <Textarea
                   id="short_description_en"
                   value={formData.short_description_en || ''}
                   onChange={(e) => setFormData({ ...formData, short_description_en: e.target.value })}
-                  placeholder="Brief description of the service"
-                  rows={3}
+                  placeholder="Brief description for service cards"
+                  rows={2}
                 />
               </div>
-            </div>
 
-            {/* Arabic Content */}
-            <div className="space-y-4">
-              <h3 className="font-medium text-foreground">Arabic Content</h3>
+              <div className="space-y-2">
+                <Label htmlFor="full_description_en">Full Description</Label>
+                <Textarea
+                  id="full_description_en"
+                  value={formData.full_description_en || ''}
+                  onChange={(e) => setFormData({ ...formData, full_description_en: e.target.value })}
+                  placeholder="Detailed description for service detail page"
+                  rows={4}
+                />
+              </div>
+
+              <div className="space-y-2">
+                <Label>Sub-Services</Label>
+                <ArrayInput
+                  values={(formData.sub_services_en as string[]) || []}
+                  onChange={(values) => setFormData({ ...formData, sub_services_en: values })}
+                  placeholder="Enter a sub-service"
+                />
+              </div>
+
+              <div className="space-y-2">
+                <Label>Features</Label>
+                <ArrayInput
+                  values={(formData.features_en as string[]) || []}
+                  onChange={(values) => setFormData({ ...formData, features_en: values })}
+                  placeholder="Enter a feature"
+                />
+              </div>
+
+              <div className="space-y-2">
+                <Label>Testing Parameters</Label>
+                <ArrayInput
+                  values={(formData.testing_parameters_en as string[]) || []}
+                  onChange={(values) => setFormData({ ...formData, testing_parameters_en: values })}
+                  placeholder="Enter a testing parameter"
+                />
+              </div>
+
               <div className="grid grid-cols-2 gap-4">
                 <div className="space-y-2">
-                  <Label htmlFor="title_ar">Title (العنوان)</Label>
+                  <Label htmlFor="turnaround_time_en">Turnaround Time</Label>
+                  <Input
+                    id="turnaround_time_en"
+                    value={formData.turnaround_time_en || ''}
+                    onChange={(e) => setFormData({ ...formData, turnaround_time_en: e.target.value })}
+                    placeholder="e.g., 3-5 business days"
+                  />
+                </div>
+                <div className="space-y-2">
+                  <Label htmlFor="sample_requirements_en">Sample Requirements</Label>
+                  <Input
+                    id="sample_requirements_en"
+                    value={formData.sample_requirements_en || ''}
+                    onChange={(e) => setFormData({ ...formData, sample_requirements_en: e.target.value })}
+                    placeholder="e.g., Minimum 500ml in clean container"
+                  />
+                </div>
+              </div>
+            </TabsContent>
+
+            {/* Arabic Content Tab */}
+            <TabsContent value="arabic" className="space-y-4 mt-4">
+              <div className="grid grid-cols-2 gap-4">
+                <div className="space-y-2">
+                  <Label htmlFor="title_ar">العنوان *</Label>
                   <Input
                     id="title_ar"
                     dir="rtl"
@@ -486,7 +618,7 @@ const ServicesManagementPage = () => {
                   />
                 </div>
                 <div className="space-y-2">
-                  <Label htmlFor="category_ar">Category (الفئة)</Label>
+                  <Label htmlFor="category_ar">الفئة *</Label>
                   <Input
                     id="category_ar"
                     dir="rtl"
@@ -496,33 +628,126 @@ const ServicesManagementPage = () => {
                   />
                 </div>
               </div>
+
               <div className="space-y-2">
-                <Label htmlFor="short_description_ar">Short Description (الوصف المختصر)</Label>
+                <Label htmlFor="short_description_ar">الوصف المختصر</Label>
                 <Textarea
                   id="short_description_ar"
                   dir="rtl"
                   value={formData.short_description_ar || ''}
                   onChange={(e) => setFormData({ ...formData, short_description_ar: e.target.value })}
-                  placeholder="وصف مختصر للخدمة"
-                  rows={3}
+                  placeholder="وصف مختصر لبطاقات الخدمة"
+                  rows={2}
                 />
               </div>
-            </div>
 
-            {/* Active Status */}
-            <div className="flex items-center justify-between">
-              <div>
-                <Label>Active Status</Label>
-                <p className="text-sm text-muted-foreground">Enable to show this service</p>
+              <div className="space-y-2">
+                <Label htmlFor="full_description_ar">الوصف الكامل</Label>
+                <Textarea
+                  id="full_description_ar"
+                  dir="rtl"
+                  value={formData.full_description_ar || ''}
+                  onChange={(e) => setFormData({ ...formData, full_description_ar: e.target.value })}
+                  placeholder="وصف تفصيلي لصفحة تفاصيل الخدمة"
+                  rows={4}
+                />
               </div>
-              <Switch
-                checked={formData.is_active ?? true}
-                onCheckedChange={(checked) => setFormData({ ...formData, is_active: checked })}
-              />
-            </div>
-          </div>
 
-          <DialogFooter>
+              <div className="space-y-2">
+                <Label>الخدمات الفرعية</Label>
+                <ArrayInput
+                  values={(formData.sub_services_ar as string[]) || []}
+                  onChange={(values) => setFormData({ ...formData, sub_services_ar: values })}
+                  placeholder="أدخل خدمة فرعية"
+                  dir="rtl"
+                />
+              </div>
+
+              <div className="space-y-2">
+                <Label>المميزات</Label>
+                <ArrayInput
+                  values={(formData.features_ar as string[]) || []}
+                  onChange={(values) => setFormData({ ...formData, features_ar: values })}
+                  placeholder="أدخل ميزة"
+                  dir="rtl"
+                />
+              </div>
+
+              <div className="space-y-2">
+                <Label>معايير الاختبار</Label>
+                <ArrayInput
+                  values={(formData.testing_parameters_ar as string[]) || []}
+                  onChange={(values) => setFormData({ ...formData, testing_parameters_ar: values })}
+                  placeholder="أدخل معيار اختبار"
+                  dir="rtl"
+                />
+              </div>
+
+              <div className="grid grid-cols-2 gap-4">
+                <div className="space-y-2">
+                  <Label htmlFor="turnaround_time_ar">وقت التسليم</Label>
+                  <Input
+                    id="turnaround_time_ar"
+                    dir="rtl"
+                    value={formData.turnaround_time_ar || ''}
+                    onChange={(e) => setFormData({ ...formData, turnaround_time_ar: e.target.value })}
+                    placeholder="مثال: 3-5 أيام عمل"
+                  />
+                </div>
+                <div className="space-y-2">
+                  <Label htmlFor="sample_requirements_ar">متطلبات العينة</Label>
+                  <Input
+                    id="sample_requirements_ar"
+                    dir="rtl"
+                    value={formData.sample_requirements_ar || ''}
+                    onChange={(e) => setFormData({ ...formData, sample_requirements_ar: e.target.value })}
+                    placeholder="مثال: 500 مل على الأقل في حاوية نظيفة"
+                  />
+                </div>
+              </div>
+            </TabsContent>
+
+            {/* Additional Info Tab */}
+            <TabsContent value="additional" className="space-y-4 mt-4">
+              <div className="space-y-2">
+                <Label>Certifications</Label>
+                <ArrayInput
+                  values={(formData.certifications as string[]) || []}
+                  onChange={(values) => setFormData({ ...formData, certifications: values })}
+                  placeholder="e.g., ISO 17025, SASO"
+                />
+              </div>
+
+              <div className="space-y-2">
+                <Label>Related Services</Label>
+                <p className="text-xs text-muted-foreground mb-2">
+                  Select services that are related to this one (shown on detail page)
+                </p>
+                <div className="border rounded-lg p-3 max-h-48 overflow-y-auto space-y-2">
+                  {availableRelatedServices.map((service) => (
+                    <label key={service.slug} className="flex items-center gap-2 cursor-pointer hover:bg-muted/50 p-2 rounded">
+                      <input
+                        type="checkbox"
+                        checked={(formData.related_service_slugs as string[] || []).includes(service.slug)}
+                        onChange={(e) => {
+                          const currentSlugs = (formData.related_service_slugs as string[]) || [];
+                          if (e.target.checked) {
+                            setFormData({ ...formData, related_service_slugs: [...currentSlugs, service.slug] });
+                          } else {
+                            setFormData({ ...formData, related_service_slugs: currentSlugs.filter(s => s !== service.slug) });
+                          }
+                        }}
+                        className="rounded"
+                      />
+                      <span className="text-sm">{service.title_en}</span>
+                    </label>
+                  ))}
+                </div>
+              </div>
+            </TabsContent>
+          </Tabs>
+
+          <DialogFooter className="mt-6">
             <Button variant="outline" onClick={() => setIsDialogOpen(false)} disabled={isUploading}>
               Cancel
             </Button>
