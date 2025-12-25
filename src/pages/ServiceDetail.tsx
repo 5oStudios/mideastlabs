@@ -252,7 +252,7 @@ const ServiceDetail = () => {
               {certifications.length > 0 && (
                 <ScrollAnimation>
                   <Card className="card-gradient shadow-elegant p-8">
-                    <div className={`flex items-center gap-4 mb-6 ${isRTL ? 'flex-row-reverse' : ''}`}>
+                    <div className="flex items-center gap-4 mb-6">
                       <Award className="w-8 h-8 text-primary" />
                       <h3 className="font-display font-bold text-2xl">{t('serviceDetail.certifications.title')}</h3>
                     </div>
@@ -270,11 +270,11 @@ const ServiceDetail = () => {
               {sampleRequirements && (
                 <ScrollAnimation delay={100}>
                   <Card className="card-gradient shadow-elegant p-8">
-                    <div className={`flex items-center gap-4 mb-6 ${isRTL ? 'flex-row-reverse' : ''}`}>
+                    <div className="flex items-center gap-4 mb-6">
                       <FileText className="w-8 h-8 text-primary" />
                       <h3 className="font-display font-bold text-2xl">{t('serviceDetail.requirements.title')}</h3>
                     </div>
-                    <p className={`text-muted-foreground leading-relaxed ${isRTL ? 'text-right' : ''}`}>
+                    <p className="text-muted-foreground leading-relaxed">
                       {sampleRequirements}
                     </p>
                   </Card>
