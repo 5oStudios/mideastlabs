@@ -6,6 +6,7 @@ import { Button } from "@/components/ui/button";
 import { ArrowRight, Beaker, Shield, Clock, Activity, Loader2 } from "lucide-react";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
+import ScrollToTop from "@/components/ScrollToTop";
 import { Link } from "react-router-dom";
 import { usePageHeroImage } from "@/hooks/usePageHeroImages";
 import { useServices, getIconByName } from "@/hooks/useServices";
@@ -201,6 +202,7 @@ const Services = () => {
         </section>
       </div>
       <Footer />
+      <ScrollToTop />
     </>
   );
 };

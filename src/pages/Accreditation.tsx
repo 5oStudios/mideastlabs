@@ -4,6 +4,7 @@ import { Badge } from "@/components/ui/badge";
 import { Award, Shield, CheckCircle, FileCheck } from "lucide-react";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
+import ScrollToTop from "@/components/ScrollToTop";
 import CertificateScroller from "@/components/CertificateScroller";
 import { usePageHeroImage } from "@/hooks/usePageHeroImages";
 import { useTranslation } from "react-i18next";
@@ -215,9 +216,10 @@ const Accreditation = () => {
             </div>
           </ScrollAnimation>
         </div>
-      </section>
+        </section>
       </div>
       <Footer />
+      <ScrollToTop />
     </>
   );
 };

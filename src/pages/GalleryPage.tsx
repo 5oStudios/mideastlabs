@@ -6,6 +6,7 @@ import { Dialog, DialogContent, DialogTrigger } from "@/components/ui/dialog";
 import { ZoomIn, Loader2, ImageIcon } from "lucide-react";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
+import ScrollToTop from "@/components/ScrollToTop";
 import { usePageHeroImage } from "@/hooks/usePageHeroImages";
 import { useGalleryImages } from "@/hooks/useGallery";
 
@@ -92,6 +93,7 @@ const GalleryPage = () => {
         </section>
       </div>
       <Footer />
+      <ScrollToTop />
     </>
   );
 };

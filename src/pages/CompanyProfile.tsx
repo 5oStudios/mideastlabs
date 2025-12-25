@@ -2,6 +2,7 @@ import { useState } from "react";
 import { useTranslation } from "react-i18next";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
+import ScrollToTop from "@/components/ScrollToTop";
 import { Button } from "@/components/ui/button";
 import { ArrowLeft, BookOpen, Loader2 } from "lucide-react";
 import companyProfileCover from "@/assets/company-profile-cover.jpg";
@@ -75,6 +76,7 @@ const CompanyProfile = () => {
         </section>
       </main>
       <Footer />
+      <ScrollToTop />
     </>
   );
 };

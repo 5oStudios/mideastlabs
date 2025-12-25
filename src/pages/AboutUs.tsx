@@ -5,6 +5,7 @@ import { Badge } from "@/components/ui/badge";
 import { Target, Eye, Users, Award } from "lucide-react";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
+import ScrollToTop from "@/components/ScrollToTop";
 import { usePageHeroImage } from "@/hooks/usePageHeroImages";
 
 const AboutUs = () => {
@@ -177,6 +178,7 @@ const AboutUs = () => {
         </section>
       </div>
       <Footer />
+      <ScrollToTop />
     </>
   );
 };
