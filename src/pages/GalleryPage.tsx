@@ -24,7 +24,7 @@ const GalleryPage = () => {
             {!heroLoading && heroImage && (
               <img src={heroImage} alt="Laboratory Gallery" className="w-full h-full object-cover object-center md:object-bottom" />
             )}
-            <div className="absolute inset-0 bg-gradient-to-b from-black/60 via-black/40 to-black/60"></div>
+            <div className="absolute inset-0 bg-blue-600/40"></div>
           </div>
           <div className="container mx-auto px-4 lg:px-8 relative z-10">
             <ScrollAnimation>
