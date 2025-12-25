@@ -70,7 +70,7 @@ const AboutUs = () => {
             <div className="grid md:grid-cols-2 gap-8 max-w-6xl mx-auto">
               <ScrollAnimation>
                 <Card className={`p-8 md:p-10 h-full shadow-elegant hover:shadow-glow transition-all duration-500 ${isRTL ? 'text-right' : 'text-left'}`}>
-                  <div className={`flex items-center gap-4 mb-6 ${isRTL ? 'flex-row-reverse justify-end' : ''}`}>
+                  <div className="flex items-center gap-4 mb-6">
                     <div className="w-12 h-12 bg-gradient-to-br from-primary to-primary-glow rounded-lg flex items-center justify-center shrink-0">
                       <Target className="w-6 h-6 text-white" />
                     </div>
@@ -84,7 +84,7 @@ const AboutUs = () => {
 
               <ScrollAnimation delay={0.2}>
                 <Card className={`p-8 md:p-10 h-full shadow-elegant hover:shadow-glow transition-all duration-500 ${isRTL ? 'text-right' : 'text-left'}`}>
-                  <div className={`flex items-center gap-4 mb-6 ${isRTL ? 'flex-row-reverse justify-end' : ''}`}>
+                  <div className="flex items-center gap-4 mb-6">
                     <div className="w-12 h-12 bg-gradient-to-br from-accent to-accent-light rounded-lg flex items-center justify-center shrink-0">
                       <Eye className="w-6 h-6 text-white" />
                     </div>
