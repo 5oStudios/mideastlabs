@@ -29,7 +29,7 @@ const ContactPage = () => {
         },
         {
           title: t('contact.info.phone.title'),
-          details: ["+965 22251577"],
+          details: [isRTL ? "+96522251577" : "+965 22251577"],
           icon: Phone
         },
         {
@@ -62,7 +62,9 @@ const ContactPage = () => {
       },
       {
         title: t('contact.info.phone.title'),
-        details: settings.phone ? [settings.phone] : ["+965 22251577"],
+        details: settings.phone 
+          ? [isRTL ? settings.phone.replace(/\s/g, '') : settings.phone] 
+          : [isRTL ? "+96522251577" : "+965 22251577"],
         icon: Phone
       },
       {
