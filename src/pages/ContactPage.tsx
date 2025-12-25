@@ -152,7 +152,11 @@ const ContactPage = () => {
                         </h3>
                         <div className="space-y-1">
                           {info.details.map((detail, detailIndex) => (
-                            <p key={detailIndex} className="text-muted-foreground text-sm leading-relaxed">
+                            <p 
+                              key={detailIndex} 
+                              className="text-muted-foreground text-sm leading-relaxed"
+                              dir={info.icon === Phone ? 'ltr' : undefined}
+                            >
                               {detail}
                             </p>
                           ))}
