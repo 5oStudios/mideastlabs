@@ -1,6 +1,7 @@
 import { useParams, Link, Navigate } from "react-router-dom";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
+import ScrollToTop from "@/components/ScrollToTop";
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
@@ -395,6 +396,7 @@ const ServiceDetail = () => {
       </section>
 
       <Footer />
+      <ScrollToTop />
     </main>
   );
 };

@@ -4,6 +4,7 @@ import { Badge } from "@/components/ui/badge";
 import { Users, Briefcase, GraduationCap, TrendingUp } from "lucide-react";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
+import ScrollToTop from "@/components/ScrollToTop";
 import { usePageHeroImage } from "@/hooks/usePageHeroImages";
 import { useTranslation } from "react-i18next";
 
@@ -142,6 +143,7 @@ const Career = () => {
         </section>
       </div>
       <Footer />
+      <ScrollToTop />
     </>
   );
 };

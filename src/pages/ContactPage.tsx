@@ -4,6 +4,7 @@ import { Badge } from "@/components/ui/badge";
 import { MapPin, Phone, Mail, Clock, Loader2 } from "lucide-react";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
+import ScrollToTop from "@/components/ScrollToTop";
 import { usePageHeroImage } from "@/hooks/usePageHeroImages";
 import { useTranslation } from "react-i18next";
 import { useContactSettings } from "@/hooks/useContactSettings";
@@ -236,6 +237,7 @@ const ContactPage = () => {
         </section>
       </div>
       <Footer />
+      <ScrollToTop />
     </>
   );
 };
