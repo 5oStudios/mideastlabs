@@ -5,7 +5,6 @@ import { MapPin, Phone, Mail, Clock, Loader2 } from "lucide-react";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import { usePageHeroImage } from "@/hooks/usePageHeroImages";
-import fallbackHeroImage from "@/assets/hero/contact-hero.jpg";
 import { useTranslation } from "react-i18next";
 import { useContactSettings } from "@/hooks/useContactSettings";
 
@@ -13,8 +12,7 @@ const ContactPage = () => {
   const { t, i18n } = useTranslation();
   const isRTL = i18n.language === 'ar';
   const { data: settings, isLoading } = useContactSettings();
-  const { data: heroData } = usePageHeroImage('contact');
-  const heroImage = heroData?.image_url || fallbackHeroImage;
+  const { heroImage, isLoading: heroLoading } = usePageHeroImage('contact');
 
   const getContactInfo = () => {
     if (!settings) {
@@ -94,11 +92,13 @@ const ContactPage = () => {
         <section className="relative py-20 text-white overflow-hidden">
           {/* Background Image */}
           <div className="absolute inset-0 z-0">
-            <img 
-              src={heroImage} 
-              alt={t('contact.hero.imageAlt')} 
-              className="w-full h-full object-cover object-center md:object-bottom" 
-            />
+            {!heroLoading && heroImage && (
+              <img 
+                src={heroImage} 
+                alt={t('contact.hero.imageAlt')} 
+                className="w-full h-full object-cover object-center md:object-bottom" 
+              />
+            )}
             <div className="absolute inset-0 bg-blue-600/40"></div>
           </div>
           <div className="container mx-auto px-4 lg:px-8 relative z-10">

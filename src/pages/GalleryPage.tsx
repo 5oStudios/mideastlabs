@@ -7,15 +7,13 @@ import { ZoomIn, Loader2, ImageIcon } from "lucide-react";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import { usePageHeroImage } from "@/hooks/usePageHeroImages";
-import fallbackHeroImage from "@/assets/hero/gallery-hero.jpg";
 import { useGalleryImages } from "@/hooks/useGallery";
 
 const GalleryPage = () => {
   const { t, i18n } = useTranslation();
   const isRTL = i18n.language === 'ar';
   const { images, isLoading } = useGalleryImages();
-  const { data: heroData } = usePageHeroImage('gallery');
-  const heroImage = heroData?.image_url || fallbackHeroImage;
+  const { heroImage, isLoading: heroLoading } = usePageHeroImage('gallery');
 
   return (
     <>
@@ -23,7 +21,9 @@ const GalleryPage = () => {
       <div className="min-h-screen pt-20" dir={isRTL ? 'rtl' : 'ltr'}>
         <section className="relative py-20 text-white overflow-hidden">
           <div className="absolute inset-0 z-0">
-            <img src={heroImage} alt="Laboratory Gallery" className="w-full h-full object-cover object-center md:object-bottom" />
+            {!heroLoading && heroImage && (
+              <img src={heroImage} alt="Laboratory Gallery" className="w-full h-full object-cover object-center md:object-bottom" />
+            )}
             <div className="absolute inset-0 bg-gradient-to-b from-black/60 via-black/40 to-black/60"></div>
           </div>
           <div className="container mx-auto px-4 lg:px-8 relative z-10">

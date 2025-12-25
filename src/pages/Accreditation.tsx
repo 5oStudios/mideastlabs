@@ -6,14 +6,12 @@ import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import CertificateScroller from "@/components/CertificateScroller";
 import { usePageHeroImage } from "@/hooks/usePageHeroImages";
-import fallbackHeroImage from "@/assets/hero/accreditation-hero.jpg";
 import { useTranslation } from "react-i18next";
 
 const Accreditation = () => {
   const { t, i18n } = useTranslation();
   const isRTL = i18n.language === 'ar';
-  const { data: heroData } = usePageHeroImage('accreditation');
-  const heroImage = heroData?.image_url || fallbackHeroImage;
+  const { heroImage, isLoading: heroLoading } = usePageHeroImage('accreditation');
 
   const certifications = [
     {
@@ -73,11 +71,13 @@ const Accreditation = () => {
       <section className="relative py-20 text-white overflow-hidden">
         {/* Background Image */}
         <div className="absolute inset-0 z-0">
-          <img 
-            src={heroImage} 
-            alt={t('accreditation.hero.imageAlt')}
-            className="w-full h-full object-cover"
-          />
+          {!heroLoading && heroImage && (
+            <img 
+              src={heroImage} 
+              alt={t('accreditation.hero.imageAlt')}
+              className="w-full h-full object-cover"
+            />
+          )}
           <div className="absolute inset-0 bg-blue-600/40"></div>
         </div>
         <div className="container mx-auto px-4 lg:px-8 relative z-10">
