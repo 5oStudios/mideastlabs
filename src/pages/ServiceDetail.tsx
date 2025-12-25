@@ -202,7 +202,7 @@ const ServiceDetail = () => {
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
               {testingParameters.length > 0 && (
                 <ScrollAnimation>
-                  <div>
+                  <div className={isRTL ? 'text-right' : ''}>
                     <h2 className="font-display font-bold text-3xl mb-6">{t('serviceDetail.parameters.title')}</h2>
                     <p className="text-muted-foreground mb-8 leading-relaxed">
                       {t('serviceDetail.parameters.description')}
@@ -210,9 +210,9 @@ const ServiceDetail = () => {
                     
                     <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                       {testingParameters.map((parameter, index) => (
-                        <div key={index} className={`flex items-center gap-3 ${isRTL ? 'flex-row-reverse' : ''}`}>
+                        <div key={index} className={`flex items-center gap-3 ${isRTL ? 'flex-row-reverse justify-end' : ''}`}>
                           <TestTube className="w-4 h-4 text-primary flex-shrink-0" />
-                          <span className={`text-sm text-foreground ${isRTL ? 'text-right' : ''}`}>{parameter}</span>
+                          <span className="text-sm text-foreground">{parameter}</span>
                         </div>
                       ))}
                     </div>
@@ -222,16 +222,16 @@ const ServiceDetail = () => {
 
               {features.length > 0 && (
                 <ScrollAnimation delay={200}>
-                  <div>
+                  <div className={isRTL ? 'text-right' : ''}>
                     <h2 className="font-display font-bold text-3xl mb-6">{t('serviceDetail.features.title')}</h2>
                     <div className="space-y-6">
                       {features.map((feature, index) => (
                         <Card key={index} className="card-gradient shadow-sm p-6">
-                          <div className={`flex items-center gap-4 ${isRTL ? 'flex-row-reverse' : ''}`}>
+                          <div className={`flex items-center gap-4 ${isRTL ? 'flex-row-reverse justify-end' : ''}`}>
                             <div className="bg-primary/10 p-3 rounded-lg">
                               <CheckCircle2 className="w-6 h-6 text-primary" />
                             </div>
-                            <p className={`font-medium text-foreground ${isRTL ? 'text-right' : ''}`}>{feature}</p>
+                            <p className="font-medium text-foreground">{feature}</p>
                           </div>
                         </Card>
                       ))}
