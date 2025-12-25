@@ -8,15 +8,13 @@ import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import { Link } from "react-router-dom";
 import { usePageHeroImage } from "@/hooks/usePageHeroImages";
-import fallbackHeroImage from "@/assets/hero/services-hero.jpg";
 import { useServices, getIconByName } from "@/hooks/useServices";
 
 const Services = () => {
   const { t, i18n } = useTranslation();
   const isRTL = i18n.language === 'ar';
   const { services, isLoading } = useServices();
-  const { data: heroData } = usePageHeroImage('services');
-  const heroImage = heroData?.image_url || fallbackHeroImage;
+  const { heroImage, isLoading: heroLoading } = usePageHeroImage('services');
 
   return (
     <>
@@ -25,7 +23,9 @@ const Services = () => {
         {/* Hero Section */}
         <section className="relative py-20 text-white overflow-hidden">
           <div className="absolute inset-0 z-0">
-            <img src={heroImage} alt="Testing services laboratory" className="w-full h-full object-cover" />
+            {!heroLoading && heroImage && (
+              <img src={heroImage} alt="Testing services laboratory" className="w-full h-full object-cover" />
+            )}
             <div className="absolute inset-0 bg-blue-600/40"></div>
           </div>
           <div className="container mx-auto px-4 lg:px-8 relative z-10">

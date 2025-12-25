@@ -23,7 +23,7 @@ interface PageHeroImage {
 }
 
 export const usePageHeroImage = (pageSlug: string) => {
-  return useQuery({
+  const query = useQuery({
     queryKey: ['page-hero-image', pageSlug],
     queryFn: async () => {
       const { data, error } = await supabase
@@ -40,6 +40,11 @@ export const usePageHeroImage = (pageSlug: string) => {
       return data as PageHeroImage | null;
     },
   });
+  
+  return {
+    ...query,
+    heroImage: query.data?.image_url || null,
+  };
 };
 
 export const useAllPageHeroImages = () => {
