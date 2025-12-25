@@ -210,7 +210,7 @@ const ServiceDetail = () => {
                     
                     <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                       {testingParameters.map((parameter, index) => (
-                        <div key={index} className={`flex items-center gap-3 ${isRTL ? 'flex-row-reverse justify-end' : ''}`}>
+                        <div key={index} className="flex items-center gap-3">
                           <TestTube className="w-4 h-4 text-primary flex-shrink-0" />
                           <span className="text-sm text-foreground">{parameter}</span>
                         </div>
