@@ -227,7 +227,7 @@ const ServiceDetail = () => {
                     <div className="space-y-6">
                       {features.map((feature, index) => (
                         <Card key={index} className="card-gradient shadow-sm p-6">
-                          <div className={`flex items-center gap-4 ${isRTL ? 'flex-row-reverse justify-end' : ''}`}>
+                          <div className="flex items-center gap-4">
                             <div className="bg-primary/10 p-3 rounded-lg">
                               <CheckCircle2 className="w-6 h-6 text-primary" />
                             </div>
