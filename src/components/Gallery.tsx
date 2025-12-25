@@ -50,9 +50,9 @@ const Gallery = () => {
       <div className="container mx-auto px-4 lg:px-8">
         {/* Header */}
         <div className={`text-center max-w-3xl mx-auto mb-16 ${isRTL ? 'rtl' : ''}`} dir={isRTL ? 'rtl' : 'ltr'}>
-          <div className={`inline-flex items-center ${isRTL ? 'space-x-reverse space-x-2' : 'space-x-2'} bg-accent/10 px-4 py-2 rounded-full mb-6`}>
-            <Camera className="w-4 h-4 text-accent" />
-            <span className="text-accent font-semibold text-lg">{t('gallery.badge')}</span>
+          <div className={`inline-flex items-center ${isRTL ? 'space-x-reverse space-x-2' : 'space-x-2'} bg-primary/10 px-4 py-2 rounded-full mb-6`}>
+            <Camera className="w-4 h-4 text-primary" />
+            <span className="text-primary font-semibold text-lg">{t('gallery.badge')}</span>
           </div>
           
           <h2 className="font-display font-bold text-heading text-foreground mb-6">
