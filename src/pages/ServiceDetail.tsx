@@ -183,9 +183,9 @@ const ServiceDetail = () => {
               {subServices.map((subService, index) => (
                 <ScrollAnimation key={index} delay={index * 50}>
                   <Card className="card-gradient shadow-sm hover:shadow-elegant transition-spring p-6">
-                    <div className={`flex items-start gap-4 ${isRTL ? 'flex-row-reverse' : ''}`}>
+                    <div className="flex items-start gap-4">
                       <CheckCircle2 className="w-6 h-6 text-accent flex-shrink-0 mt-1" />
-                      <p className={`text-foreground leading-relaxed ${isRTL ? 'text-right' : ''}`}>{subService}</p>
+                      <p className="text-foreground leading-relaxed">{subService}</p>
                     </div>
                   </Card>
                 </ScrollAnimation>
